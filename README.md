@@ -2,6 +2,9 @@
 Description: Best User Bot To Manage Your Telegram Account
 ---
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6141417ceaf84545bab6bd671503df51)](https://app.codacy.com/gh/jarvis210904/jarvisuserbot?utm_source=github.com&utm_medium=referral&utm_content=jarvis210904/jarvisuserbot&utm_campaign=Badge_Grade_Settings)  [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+
+
 # JARVIS
 
  [![JARVIS USERBOT](https://telegra.ph/file/b2e4901e05a5257cb362a.jpg)](https://github.com/jarvis210904/J.A.R.V.I.S-Userbot/blob/master/jarvis.jpg) 
