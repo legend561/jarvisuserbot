@@ -140,7 +140,7 @@ def generate_change_log(git_repo, diff_marker):
 
 async def deploy_start(bot, message, refspec, remote):
     await message.edit(RESTARTING_APP)
-    await message.edit("I Am Restarting Me. \nPlz Wait Versions Are Being Increased, \nUpdated SuccessFully \nNow Restarting To Finish The Update !!! \nType .alive or .ping After 5 Min... ")
+    await message.edit("I Am Restarting Servers. \nPlz Wait Updates Are Getting Installed, \nUpdated SuccessFully \nNow Restarting MySystem To Finish The Update !!! \nType .alive or .ping After 5 Min... ")
     remote.push(refspec=refspec)
     await bot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
