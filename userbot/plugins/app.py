@@ -11,7 +11,7 @@ from userbot.events import register
 from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="app ?(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="app ?(.*)"))
 async def apk(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -39,7 +39,7 @@ async def apk(e):
     except Exception as err:
         await e.edit("Exception Occured:- "+str(err))
 
-@borg.on(admin_cmd(pattern="apkr ?(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="apkr ?(.*)"))
 async def apkr(e):
     try:
         app_name = e.pattern_match.group(1)
