@@ -1,4 +1,4 @@
-"made br @mrconfused and @sandy1709 dont edit credits"
+#Credits :- Catuserbot Made By @Sandy1709
 import os
 import lyricsgenius
 import random

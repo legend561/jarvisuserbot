@@ -1,4 +1,4 @@
-# Credits ;- @mrconfused
+#Credits :- Catuserbot Made By @Sandy1709
 from geopy.geocoders import Nominatim
 from userbot.utils import admin_cmd
 from telethon.tl import types
@@ -19,7 +19,7 @@ async def gps(event):
 
     await event.edit("Finding This Location In Maps Server.....")
 
-    geolocator = Nominatim(user_agent="F.R.I.D.A.Y USERBOT")
+    geolocator = Nominatim(user_agent="JARVIS USERBOT")
     geoloc = geolocator.geocode(input_str)
 
     if geoloc:

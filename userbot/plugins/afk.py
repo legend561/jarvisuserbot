@@ -1,4 +1,4 @@
-"""AFK Plugin for Friday
+"""AFK Plugin for JARVIS
 Syntax: .afk REASON"""
 import asyncio
 import datetime
