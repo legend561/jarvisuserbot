@@ -18,7 +18,7 @@ Description: Best User Bot To Manage Your Telegram Account
 
 By Team \#J.A.R.V.I.S™
 
- Inspired By Friday
+Inspired By Friday
 
  Credits :    
  
