@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python3 -m userbot
 ```
 
- An example `local_config.py` file could be: Not All of the variables are mandatory The Userbot should work by setting only the first two variables
+  An example `local_config.py` file could be: Not All of the variables are mandatory The Userbot should work by setting only the first two variables
 
 ```text
 from heroku_config import Var
