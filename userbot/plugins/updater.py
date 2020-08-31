@@ -11,7 +11,7 @@ import asyncio
 from git import Repo
 from .. import CMD_HELP
 from os import environ, execle, path, remove
-from ..utils import admin_cmd, sudo_cmd, edit_or_reply
+from ..utils import admin_cmd, edit_or_reply
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
