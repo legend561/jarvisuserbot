@@ -48,6 +48,7 @@ BOT_IS_UP_TO_DATE = "`The userbot is up-to-date.\nThank you for Using this Servi
 NEW_BOT_UP_DATE_FOUND = (
     "New Update Found For {branch_name}\n"
     "Changelog: \n\n{changelog}\n"
+    await asyncio.sleep(8)
     "Updating ..."
 )
 NEW_UP_DATE_FOUND = (
@@ -104,6 +105,7 @@ async def updater(message):
  
     message_one = NEW_BOT_UP_DATE_FOUND.format(
         branch_name=active_branch_name,
+        await asyncio.sleep(8)
         changelog=changelog
     )
     message_two = NEW_UP_DATE_FOUND.format(
