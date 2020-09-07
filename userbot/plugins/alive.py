@@ -65,6 +65,6 @@ async def amireallyalive(alive):
                                 "ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ            : [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
                                 "ʟɪᴄᴇɴꜱᴇ                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
                                 "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-                                "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)"        
+                                "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)")        
         await borg.send_file(alive.chat_id, file=sticker) 
         await alive.delete()
