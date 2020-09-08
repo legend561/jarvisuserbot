@@ -42,7 +42,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @borg.on(admin_cmd(outgoing=True, pattern="alive"))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    if ALV_PIC:
+    if ALIVE_PIC:
         pm_caption = "**ᴊᴀʀᴠɪꜱ ɪꜱ ᴏɴʟɪɴᴇ**\n"
         pm_caption += f"**M̴y̴ ̴B̴o̴s̴s̴**            : {DEFAULTUSER}\n"
         pm_caption += "Telethon Version         : 4.8\n"
