@@ -42,7 +42,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @borg.on(admin_cmd(outgoing=True, pattern="alive"))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    req = requests.get("https://telegra.ph/file/cc2a9fd7b3ec6e862a4b7.jpg")
+    req = requests.get("https://telegra.ph/file/c7b581aac71e7bda597f7.png")
     req.raise_for_status()
     file = BytesIO(req.content)
     file.seek(0)
