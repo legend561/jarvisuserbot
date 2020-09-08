@@ -26,10 +26,6 @@ Inspired By Friday
                     
                     CatUserbot
 
-                    WolfUserBot
-
-                    Munnipopz
-
 ## This Bot is Made With care No Adult Contents and Abusive Memes. If Any Tell in Issue Column With Command Name.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q620SDB)
