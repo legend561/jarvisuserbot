@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://www.jarvisuserbot.com/",
+  "repository": "https://www.jarvisuserbot.ga/userbot",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -28,7 +28,7 @@
       "required": false
     },
     "PMPERMIT_PIC": {
-      "description": "put here any telegraph media link for pmpermit custom pic.",
+      "description": "put here any telegraph media link for pmpermit custom pic Note Use http://telegra.ph/wedwewf-dfwre.jpg instead of https://telegra.ph/wedwewf-dfwre.jpg.",
       "value": "",
       "required": false
     },
