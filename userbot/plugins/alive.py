@@ -6,7 +6,6 @@ from PIL import Image
 from io import BytesIO
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
-from userbot.__init__ import StartTime
 from datetime import datetime
 
 ALV_PIC = os.environ.get("ALIVE_PIC" , None)
