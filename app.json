@@ -36,6 +36,11 @@
       "description": "Fill your Full name or Username like @anonymoushackker.",
       "value": ""
     },
+    "ALIVE_PIC": {
+      "description": "Put here any Telegraph Media link for custom alive pic.",
+      "value": "",
+      "required": false
+    },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
