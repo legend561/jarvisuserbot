@@ -109,9 +109,11 @@ if bool(ENV):
 
     # Cbutton 
     PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
+    
+    #CommandHandler
+    CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
 
-
-# Heroku Credentials for updater.
+    # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
