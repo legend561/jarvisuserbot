@@ -9,7 +9,7 @@ import re
 import logging
 import inspect
 
-handler = Config.CMD_HNLDR
+handler = Config.CMD_HNDLR
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
     
