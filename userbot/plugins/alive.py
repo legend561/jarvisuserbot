@@ -8,7 +8,7 @@ from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
 from datetime import datetime
 
-ALV_PIC = os.environ.get("ALIVE_PIC" , None)
+ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
 
 def get_readable_time(seconds: int) -> str:
     count = 0
