@@ -6,6 +6,7 @@ if ENV:
     class Config(object):
         LOGGER = True
         # Get this value from my.telegram.org! Please do not steal
+        ALV_PIC = os.environ.get("ALIVE_PIC" , None)
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
         # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
