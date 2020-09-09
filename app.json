@@ -23,8 +23,8 @@
       "required": false
     },
     "CMD_HNDLR": {
-      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep '\yoursymbol' ",
-      "value": "\.",
+      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep ' \ yoursymbol' ",
+      "value": "",
       "required": false
     },
 
