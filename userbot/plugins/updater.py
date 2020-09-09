@@ -6,7 +6,7 @@
 # Rewritten for JARVIS by @jarvis210904
 
 """
-This module is used for updating TeleBot
+This module is used for updating JARVIS
 """
 
 from os import remove, execle, path, makedirs, getenv, environ
@@ -26,7 +26,7 @@ requirements_path = path.join(
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 GIT_REPO_NAME = "JARVIS"
-UPSTREAM_REPO_URL = "https://github.com/jarvis210904/jarvisuserbot"
+UPSTREAM_REPO_URL = "https://github.com/Jarvis_Works/jarvisuserbot"
 
 async def gen_chlog(repo, diff):
     ch_log = ''
