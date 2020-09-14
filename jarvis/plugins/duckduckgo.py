@@ -4,7 +4,7 @@ from telethon import events
 import os
 import requests
 import json
-from javis.utils import admin_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("ducduckgo (.*)"))
