@@ -7,7 +7,7 @@ By:-@Zero_cool7870
 """
 import os 
 import asyncio
-from jarvis.util import admin_cmd
+from jarvis.utils import admin_cmd
 from telethon import events
 from jarvis.utils import admin_cmd
 
