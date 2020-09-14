@@ -5,7 +5,7 @@ import asyncio
 from datetime import datetime
 import requests
 import json
-from jarvis.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="calendar (.*)"))
