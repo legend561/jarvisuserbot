@@ -12,7 +12,7 @@ from datetime import datetime
 from uniborg.util import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="barcode ?(.*)")
+@jarvis.on(admin_cmd(pattern="barcode ?(.*)", allow_sudo=True)
 async def _(event):
     if event.fwd_from:
         return
