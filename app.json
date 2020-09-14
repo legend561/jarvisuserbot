@@ -19,7 +19,7 @@
     },
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go. Can be accesed by giving command .ls",
-      "value": "./userbot/DOWNLOADS/",
+      "value": "./jarvis/DOWNLOADS/",
       "required": false
     },
     "CMD_HNDLR": {
