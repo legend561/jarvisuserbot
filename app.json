@@ -24,7 +24,7 @@
     },
     "CMD_HNDLR": {
       "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol ",
-      "value" : "."
+      "value" : "\."
     },
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
