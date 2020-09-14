@@ -1,6 +1,6 @@
 from jarvis import bot
 from telethon import events
-from jarvis.utils import command, remove_plugin, load_module, admin_cmd
+from jarvis.utils import command, remove_plugin, load_module
 from var import Var
 import importlib
 from pathlib import Path
@@ -14,7 +14,7 @@ from datetime import datetime
 
 DELETE_TIMEOUT = 5
 
-@jarvis.on(admin_cmd(pattern="^.install", outgoing=True))
+@command(pattern="^.install", outgoing=True)
 async def install(event):
     if event.fwd_from:
         return
@@ -31,14 +31,14 @@ async def install(event):
                 await event.edit("Installed Plugin `{}`".format(os.path.basename(downloaded_file_name)))
             else:
                 os.remove(downloaded_file_name)
-                await event.edit("Dude This Plugin is Already Installed!!")
+                await event.edit("Errors! This plugin is already installed/pre-installed.")
         except Exception as e:  # pylint:disable=C0103,W0703
             await event.edit(str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="^.send (?P<shortname>\w+)$", outgoing=True))
+@command(pattern="^.send (?P<shortname>\w+)$", outgoing=True)
 async def send(event):
     if event.fwd_from:
         return
@@ -59,7 +59,7 @@ async def send(event):
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="^.unload (?P<shortname>\w+)$", outgoing=True))
+@command(pattern="^.unload (?P<shortname>\w+)$", outgoing=True)
 async def unload(event):
     if event.fwd_from:
         return
@@ -70,7 +70,7 @@ async def unload(event):
     except Exception as e:
         await event.edit("Successfully unload {shortname}\n{}".format(shortname, str(e)))
 
-@jarvis.on(admin_cmd(pattern="^.load (?P<shortname>\w+)$", outgoing=True))
+@command(pattern="^.load (?P<shortname>\w+)$", outgoing=True)
 async def load(event):
     if event.fwd_from:
         return
