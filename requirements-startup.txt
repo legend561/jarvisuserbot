@@ -55,4 +55,4 @@ wikipedia>=1.4.0
 youtube-dl
 covid
 validators
-psycopg2
+psycopg2-binary
