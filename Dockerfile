@@ -71,7 +71,7 @@ RUN apt -qq install -y --no-install-recommends \
 # requiring the use of the entire repo, hence
 RUN pip3 install --upgrade pip setuptools
 # adds files from your Docker client’s current directory.
-RUN git clone https://github.com/Jarvis-Works/jarvisuserbot/jarvis
+RUN git clone https://github.com/Jarvis-Works/jarvisuserbot/
 RUN mkdir /root/jarvis/bin/
 WORKDIR /jarvis/
 RUN chmod +x /usr/local/bin/*
