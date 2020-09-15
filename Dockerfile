@@ -71,11 +71,11 @@ RUN apt -qq install -y --no-install-recommends \
 # requiring the use of the entire repo, hence
 RUN pip3 install --upgrade pip setuptools
 # adds files from your Docker client’s current directory.
-RUN git clone https://github.com/jarvis210904/jarvisuserbot/root/userbot
-RUN mkdir /root/userbot/bin/
-WORKDIR /root/userbot/
+RUN git clone https://github.com/jarvis210904/jarvisuserbot/root/jarvis
+RUN mkdir /root/jarvis/bin/
+WORKDIR /root/jarvis/
 RUN chmod +x /usr/local/bin/*
 # install requirements, inside the container
 RUN pip3 install -r requirements.txt
 # specifies what command to run within the container.
-CMD ["python3", "-m", "userbot"]
+CMD ["python3", "-m", "jarvis"]
