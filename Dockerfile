@@ -1,5 +1,15 @@
+# UniBorg Telegram userBot
+# Copyright (C) The Authors
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# You should have received a copy of the Mozilla Public License
+# along with this program.
+
 #  creates a layer from the base Docker image.
 FROM python:3.8.5-slim-buster
+
+WORKDIR /app
 
 # https://shouldiblamecaching.com/
 ENV PIP_NO_CACHE_DIR 1
@@ -71,9 +81,8 @@ RUN apt -qq install -y --no-install-recommends \
 # requiring the use of the entire repo, hence
 RUN pip3 install --upgrade pip setuptools
 # adds files from your Docker client’s current directory.
-RUN git clone https://github.com/Jarvis-Works/jarvisuserbot/
-RUN mkdir -p /root/jarvis/bin/
-WORKDIR /jarvis/
+RUN git clone https://github.com/Jarvis-Works/jarvisuserbot .
+RUN mkdir -p ./bin/
 RUN chmod +x /usr/local/bin/*
 # install requirements, inside the container
 RUN pip3 install -r requirements.txt
