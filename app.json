@@ -19,15 +19,13 @@
     },
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go. Can be accesed by giving command .ls",
-      "value": "./userbot/DOWNLOADS/",
+      "value": "./jarvis/DOWNLOADS/",
       "required": false
     },
     "CMD_HNDLR": {
-      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep ' backwardslash yoursymbol' ",
-      "value": "",
-      "required": false
+      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol ",
+      "value" : "."
     },
-
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
       "value": "",
