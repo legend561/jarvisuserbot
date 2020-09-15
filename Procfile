@@ -1,1 +1,1 @@
-jarvis: python -m jarvis
+worker: python -m jarvis
