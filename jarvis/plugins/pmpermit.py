@@ -2,12 +2,12 @@ import os
 import time
 import asyncio
 import io
-import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
+import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events, errors, functions, types
-from userbot import ALIVE_NAME
-from userbot.utils import admin_cmd
-from userbot import CMD_HELP
+from jarvis import ALIVE_NAME
+from jarvis.utils import admin_cmd
+from jarvis import CMD_HELP
 
 
 
