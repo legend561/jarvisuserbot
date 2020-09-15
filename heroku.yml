@@ -1,3 +1,5 @@
 build:
   docker:
-    jarvis: Dockerfile
+    worker: Dockerfile
+run:
+    worker:python3 -m jarvis
