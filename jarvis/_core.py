@@ -11,7 +11,7 @@ import traceback
 import os
 import jarvis.utils
 from datetime import datetime
-
+jarvis = bot
 DELETE_TIMEOUT = 5
 
 @jarvis.on(admin_cmd(pattern="install", outgoing=True))
