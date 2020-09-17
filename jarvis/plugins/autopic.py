@@ -10,13 +10,12 @@ from jarvis.utils import admin_cmd
 
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
-@jarvis.on(admin_cmd(pattern=r"autopic", allow_sudo=True))
-#@borg.on(admin_cmd(pattern=r"autopic"))
+@jarvis.on(admin_cmd(pattern=r"autopic"))
 async def autopic(event):
-    downloaded_file_name = "userbot/original_pic.png"
+    downloaded_file_name = "jarvis/original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    photo = "userbot/photo_pfp.png"
+    photo = "jarvis/photo_pfp.png"
     while not downloader.isFinished():
         place_holder = None
     counter = -30
