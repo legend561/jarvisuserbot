@@ -107,6 +107,11 @@ if bool(ENV):
     # FedBan Premium Module
     F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
 
+    #Autopic
+    AUTOPIC_FONT_COLOUR = os.environ.get("AUTOPIC_FONT_COLOUR", None)
+    AUTOPIC_FONT = os.environ.get("AUTOPIC_FONT", None)
+    AUTOPIC_COMMENT = os.environ.get("AUTOPIC_COMMENT", None)
+    
     # Cbutton 
     PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
     
