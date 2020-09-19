@@ -36,7 +36,7 @@ USER_BOT_NO_WARN = ("`Hello My Friend ! This is` **JARVIS** \n"
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @jarvis.on(admin_cmd(pattern="approve ?(.*)"))
+    @jarvis.on(admin_cmd(pattern="allow ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -90,7 +90,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @command(pattern="^.disapprove ?(.*)")
+    @jarvis.on(admin_cmd(pattern="^.disapprove ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -108,7 +108,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 
     
 
-    @command(pattern="^.listapproved")
+    @jarvis.on(admin_cmd(pattern="^.listapproved ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
