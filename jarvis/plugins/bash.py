@@ -4,6 +4,7 @@ from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotMo
 import io
 import asyncio
 import time
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
