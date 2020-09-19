@@ -6,7 +6,7 @@ import asyncio
 import time
 
 
-@command(pattern="^.bash ?(.*)")
+@jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
