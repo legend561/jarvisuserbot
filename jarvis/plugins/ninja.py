@@ -5,7 +5,7 @@
 import asyncio
 from telethon import events
 import telethon.utils
-from jarvis.utils import admin_cmd,re
+from jarvis.utils import *
 
 
 async def get_target_message(event):
