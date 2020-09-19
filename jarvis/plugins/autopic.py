@@ -8,7 +8,7 @@ import shutil
 from jarvis.utils import admin_cmd
 
 
-FONT_FILE_TO_USE = "Fonts/digital.ttf"
+FONT_FILE_TO_USE = "fonts/digital.ttf"
 
 @jarvis.on(admin_cmd(pattern=r"autopic"))
 async def autopic(event):
