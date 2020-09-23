@@ -13,7 +13,7 @@ import os
 import random
 from jarvis.utils import admin_cmd
 #@borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
-@jarvis.on(admin_cmd(pattern="karb", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="karb"))
 async def carbon_api(e):
  RED = random.randint(0,256)
  GREEN = random.randint(0,256)
@@ -98,7 +98,7 @@ async def carbon_api(e):
    await e.client.send_file(
          e.chat_id,
          file,
-         caption="Carbonised by [JARVIS](https://jarvisuserbot.com)",
+         caption="Carbonised by [JARVIS](https://jarvisuserbot.ga)",
          force_document=False,
          reply_to=e.message.reply_to_msg_id,
          )
