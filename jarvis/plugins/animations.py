@@ -179,7 +179,7 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 15])
 				
-@jarvis.on(admin_cmd(pattern="gangasta$",allow_sudo=True),allow_sudo=True)
+@jarvis.on(admin_cmd(pattern="gangasta$",allow_sudo=True))
 async def _(event):
         await event.edit("EVERyBOdy")
         await asyncio.sleep(0.3)
