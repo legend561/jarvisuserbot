@@ -12,7 +12,7 @@ import time
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="exec ?(.*)"))
+@jarvis.on(admin_cmd(pattern="exec ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return

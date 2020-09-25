@@ -10,7 +10,7 @@ from jarvis.utils import admin_cmd
 
 FONT_FILE_TO_USE = "fonts/digital.ttf"
 
-@jarvis.on(admin_cmd(pattern=r"autopic"))
+@jarvis.on(admin_cmd(pattern=r"autopic",allow_sudo=True))
 async def autopic(event):
     downloaded_file_name = "jarvis/original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)

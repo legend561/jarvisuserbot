@@ -8,7 +8,7 @@ import asyncio
 from telethon.tl import functions, types
 
 #neccesary tg shit
-@jarvis.on(admin_cmd(pattern="calc ?(.*)"))
+@jarvis.on(admin_cmd(pattern="calc ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

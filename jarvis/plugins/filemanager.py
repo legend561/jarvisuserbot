@@ -16,7 +16,7 @@ if not os.path.isdir("./SAVED"):
 if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
      os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
-@jarvis.on(events.NewMessage(pattern=r"\.lslocal", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.lslocal", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -57,7 +57,7 @@ async def _(event):
 
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.lsroot", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.lsroot", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -91,7 +91,7 @@ async def _(event):
         return
     await event.edit(f"{OUTPUT}`{stdout.decode()}`")
 	
-@jarvis.on(events.NewMessage(pattern=r"\.lssaved", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.lssaved", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -124,7 +124,7 @@ async def _(event):
         await event.edit(f"**{stderr.decode()}**")
         return
     await event.edit(f"{OUTPUT}`{stdout.decode()}`")
-@jarvis.on(events.NewMessage(pattern=r"\.rnsaved ?(.*)", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.rnsaved ?(.*)", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -162,7 +162,7 @@ async def _(event):
         return
     await event.edit(f"File renamed `{src}` to `{dst}`")
 	
-@jarvis.on(events.NewMessage(pattern=r"\.rnlocal ?(.*)", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.rnlocal ?(.*)", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -200,7 +200,7 @@ async def _(event):
         return
     await event.edit(f"File renamed `{src}` to `{dst}`")
         
-@jarvis.on(events.NewMessage(pattern=r"\.delsave (.*)", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.delsave (.*)", outgoing=True,allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -215,7 +215,7 @@ async def handler(event):
     else:
          await event.edit("⛔️ File Not Found 😬")
         
-@jarvis.on(events.NewMessage(pattern=r"\.delocal (.*)", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.delocal (.*)", outgoing=True,allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return

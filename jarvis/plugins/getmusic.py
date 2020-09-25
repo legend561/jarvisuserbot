@@ -7,7 +7,7 @@ import asyncio
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("smd (.*)"))
+@jarvis.on(admin_cmd("smd (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

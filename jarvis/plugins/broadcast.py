@@ -21,7 +21,7 @@ logs_id = Var.PLUGIN_CHANNEL
 
 
 
-@jarvis.on(admin_cmd("bforward ?(.*)"))
+@jarvis.on(admin_cmd("bforward ?(.*)",allow_sudo=True))
 async def forw(event): 
   if event.fwd_from:
     return

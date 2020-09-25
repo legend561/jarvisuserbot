@@ -18,7 +18,7 @@ import importlib.util
 
 
 
-@jarvis.on(admin_cmd(pattern='(f?c)d '))
+@jarvis.on(admin_cmd(pattern='(f?c)d ',allow_sudo=True))
 
 async def timer_blankx(e):
 
@@ -45,7 +45,7 @@ async def timer_blankx(e):
   await e.edit(txt + 'NaN')
 
 
-@jarvis.on(admin_cmd(pattern='(f?s)cd '))
+@jarvis.on(admin_cmd(pattern='(f?s)cd ',allow_sudo=True))
 
 async def timer_blankx(e):
 

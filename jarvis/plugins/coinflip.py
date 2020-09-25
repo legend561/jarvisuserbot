@@ -2,10 +2,10 @@
 Syntax: .coinflip [optional_choice]"""
 from telethon import events
 import random, re
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="coin ?(.*)"))
+@jarvis.on(admin_cmd(pattern="coin ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

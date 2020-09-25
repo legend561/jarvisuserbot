@@ -5,7 +5,7 @@ import asyncio
 
 
 
-@jarvis.on(admin_cmd("gangasta ?(.*)"))
+@jarvis.on(admin_cmd("gangasta ?(.*)",allow_sudo=True))
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("EVERyBOdy")

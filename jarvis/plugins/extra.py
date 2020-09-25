@@ -11,7 +11,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from jarvis.events import register
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd("leave$"))
+@jarvis.on(admin_cmd("leave$",allow_sudo=True))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`I iz Leaving dis Lol Group kek!`")
@@ -21,7 +21,7 @@ async def leave(e):
         else:
             await e.edit('`But Boss! This is Not A Chat`')
 
-@jarvis.on(admin_cmd(";__;$"))
+@jarvis.on(admin_cmd(";__;$",allow_sudo=True))
 #@register(outgoing=True, pattern="^;__;$")
 async def fun(e):
     t = ";__;"
@@ -29,7 +29,7 @@ async def fun(e):
         t = t[:-1] + "_;"
         await e.edit(t)
 
-@jarvis.on(admin_cmd("yo$"))
+@jarvis.on(admin_cmd("yo$",allow_sudo=True))
 #@register(outgoing=True, pattern="^yo$")
 async def Ooo(e):
     t = "yo"
@@ -37,7 +37,7 @@ async def Ooo(e):
         t = t[:-1] + "oo"
         await e.edit(t)
 
-@jarvis.on(admin_cmd("Oof$"))
+@jarvis.on(admin_cmd("Oof$",allow_sudo=True))
 #@register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
     t = "Oof"
@@ -45,19 +45,19 @@ async def Oof(e):
         t = t[:-1] + "of"
         await e.edit(t)
 
-@jarvis.on(admin_cmd("ccry$"))
+@jarvis.on(admin_cmd("ccry$",allow_sudo=True))
 #@register(outgoing=True, pattern="^.cry$")
 async def cry(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
 
-@jarvis.on(admin_cmd("fp$"))
+@jarvis.on(admin_cmd("fp$",allow_sudo=True))
 #@register(outgoing=True, pattern="^.fp$")
 async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("🤦‍♂")
 
-@jarvis.on(admin_cmd("moon$"))
+@jarvis.on(admin_cmd("moon$",allow_sudo=True))
 #@register(outgoing=True, pattern="^.mmoon$")
 async def _(event):
 	if event.fwd_from:
@@ -69,17 +69,17 @@ async def _(event):
 		deq.rotate(1)
 		
 
-@jarvis.on(admin_cmd("source$"))
+@jarvis.on(admin_cmd("source$",allow_sudo=True))
 #@register(outgoing=True, pattern="^.source$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://jarvisuserbot.gitbook.io/jarvisuserbot/")
+        await e.edit("https://jarvisworks.ga/userbot")
 
-@jarvis.on(admin_cmd("readme$"))
+@jarvis.on(admin_cmd("readme$",allow_sudo=True))
 #@register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://jarvisuserbot.gitbook.io/jarvisuserbot/")
+        await e.edit("https://jarvisworks.ga/userbot")
 
 
 

@@ -8,7 +8,7 @@ from jarvis.utils import admin_cmd
 DEL_TIME_OUT = 60
 
 
-@jarvis.on(admin_cmd(pattern="bio"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="bio",allow_sudo=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

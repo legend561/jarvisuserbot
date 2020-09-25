@@ -42,7 +42,7 @@ async def animepp():
 
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
-@jarvis.on(admin_cmd(pattern="hacker ?(.*)"))
+@jarvis.on(admin_cmd(pattern="hacker ?(.*)",allow_sudo=True))
 
 async def main(event):
 

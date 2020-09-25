@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("join"))
+@jarvis.on(admin_cmd("join",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -21,7 +21,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd("pay"))
+@jarvis.on(admin_cmd("pay",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

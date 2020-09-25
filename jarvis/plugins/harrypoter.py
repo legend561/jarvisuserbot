@@ -12,7 +12,7 @@ import random
 
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.hp", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.hp", outgoing=True,allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

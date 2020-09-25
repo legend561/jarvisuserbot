@@ -18,7 +18,7 @@ import random
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"gott", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"gott", outgoing=True,allow_sudo=True))
 
 async def _(event):
 

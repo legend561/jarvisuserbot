@@ -13,7 +13,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"fleave"))
+@jarvis.on(admin_cmd(pattern=r"fleave",allow_sudo=True))
 
 async def _(event):
 

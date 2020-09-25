@@ -8,14 +8,14 @@ from telethon import events
 
 import asyncio
 
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 from jarvis import AUTONAME
 
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
 
-@jarvis.on(admin_cmd(pattern=r"deploy"))
+@jarvis.on(admin_cmd(pattern=r"deploy",allow_sudo=True))
 
 async def _(event):
 

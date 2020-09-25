@@ -79,7 +79,7 @@ async def get_file_name(content):
     print("File Name: "+str(file_name))
     return file_name                 
 
-@jarvis.on(events.NewMessage(pattern=r"\.gdl", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.gdl", outgoing=True,allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
         return   

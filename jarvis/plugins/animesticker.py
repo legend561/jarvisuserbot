@@ -45,7 +45,7 @@ def deEmojify(inputString: str) -> str:
 
 
 #@register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"waifu(?: |$)(.*)",allow_sudo=True))
 async def waifu(animu):
 #"""Creates random anime sticker!"""
 

@@ -14,7 +14,7 @@ from jarvis.utils import admin_cmd
 msg_cache = {}
 
 
-@jarvis.on(admin_cmd(pattern=r"fpost\s+(.*)"))
+@jarvis.on(admin_cmd(pattern=r"fpost\s+(.*)",allow_sudo=True))
 async def _(event):
     await event.delete()
     text = event.pattern_match.group(1)

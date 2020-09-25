@@ -12,7 +12,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"ding"))
+@jarvis.on(admin_cmd(pattern=r"ding",allow_sudo=True))
 
 async def _(event):
 

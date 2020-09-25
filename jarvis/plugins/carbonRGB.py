@@ -13,7 +13,7 @@ import os
 import random
 from jarvis.utils import admin_cmd
 #@borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
-@jarvis.on(admin_cmd(pattern="karb"))
+@jarvis.on(admin_cmd(pattern="karb",allow_sudo=True))
 async def carbon_api(e):
  RED = random.randint(0,256)
  GREEN = random.randint(0,256)

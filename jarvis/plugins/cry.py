@@ -1,14 +1,14 @@
 """Use cmd `.cry` to cry"""
 
 from telethon import events
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 import asyncio
 
 
 
 
 
-@jarvis.on(admin_cmd(pattern="lcry"))
+@jarvis.on(admin_cmd(pattern="lcry",allow_sudo=True))
 
 async def _(event):
 

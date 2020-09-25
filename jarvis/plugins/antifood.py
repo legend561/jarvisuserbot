@@ -15,7 +15,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@jarvis.on(admin_cmd(incoming=True))
+@jarvis.on(admin_cmd(incoming=True,allow_sudo=True))
 async def _(event):
     # logger.info(CHAT_FLOOD)
     if not CHAT_FLOOD:
@@ -54,7 +54,7 @@ because he reached the defined flood limit.""".format(event.message.from_id),
         )
 
 
-@jarvis.on(admin_cmd(pattern="setflood (.*)"))
+@jarvis.on(admin_cmd(pattern="setflood (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

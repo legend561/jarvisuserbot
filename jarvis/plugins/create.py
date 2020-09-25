@@ -12,7 +12,7 @@ from jarvis import CMD_HELP
 
 
 
-@register(outgoing=True, pattern="^.create (b|g|c)(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="^.create (b|g|c)(?: |$)(.*)",allow_sudo=True))
 
 async def telegraphs(grop):
 

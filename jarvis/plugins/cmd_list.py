@@ -5,7 +5,7 @@ import time
 from jarvis.utils import admin_cmd
 
 #@command(pattern="^.cmds", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"cmds"))
+@jarvis.on(admin_cmd(pattern=r"cmds",allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return

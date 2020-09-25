@@ -12,7 +12,7 @@ from telethon.events import ChatAction
  
 
 
-@command(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@command(outgoing=True, pattern="^.gmute(?: |$)(.*)",allow_sudo=True)
 async def gmute(userbot): 
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -49,7 +49,7 @@ async def gmute(userbot):
     	pass
    return await jarvis.edit(f"`Globelly taped on Mouth`") 
  
-@command(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
+@command(outgoing=True, pattern="^.ungmute(?: |$)(.*)",allow_sudo=True)
 async def gspider(userbot):    
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -85,7 +85,7 @@ async def gspider(userbot):
         
 
 #@javes.on(rekcah05(pattern=f"gban(?: |$)(.*)", allow_sudo=True))
-@command(outgoing=True, pattern="^.gban(?: |$)(.*)")
+@command(outgoing=True, pattern="^.gban(?: |$)(.*)",allow_sudo=True)
 async def gspider(userbot): 
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -139,7 +139,7 @@ async def gspider(userbot):
 
 
 #@javes.on(rekcah05(pattern=f"ungban(?: |$)(.*)", allow_sudo=True))
-@command(outgoing=True, pattern="^.ungban(?: |$)(.*)")
+@command(outgoing=True, pattern="^.ungban(?: |$)(.*)",allow_sudo=True)
 async def gspider(userbot):
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:

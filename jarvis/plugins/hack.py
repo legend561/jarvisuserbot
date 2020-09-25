@@ -10,7 +10,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 
 
-@jarvis.on(admin_cmd(pattern=r"hack"))
+@jarvis.on(admin_cmd(pattern=r"hack",allow_sudo=True))
 
 async def _(event):
 

@@ -19,7 +19,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"(.*)"))
+@jarvis.on(admin_cmd(pattern=r"(.*)",allow_sudo=True))
 
 async def _(event):
 
@@ -59,7 +59,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@jarvis.on(admin_cmd(pattern=r"(.*)"))
+@jarvis.on(admin_cmd(pattern=r"(.*)",allow_sudo=True))
 
 async def _(event):
 

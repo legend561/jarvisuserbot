@@ -11,7 +11,7 @@ import json
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("dns (.*)"))
+@jarvis.on(admin_cmd("dns (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -24,7 +24,7 @@ async def _(event):
         await event.edit("i can't seem to find {} on the internet".format(input_str))
 
 
-@jarvis.on(admin_cmd("url (.*)"))
+@jarvis.on(admin_cmd("url (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,7 +37,7 @@ async def _(event):
         await event.edit("something is wrong. please try again later.")
 
 
-@jarvis.on(admin_cmd("unshort (.*)"))
+@jarvis.on(admin_cmd("unshort (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

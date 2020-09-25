@@ -58,13 +58,13 @@ from emoji import get_emoji_regexp
 
 from jarvis import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRIVER, GOOGLE_CHROME_BIN
 
-from jarvis.utils import register
+from jarvis.utils import admin_cmd
 
 CARBONLANG = "auto"
 
 LANG = "en"
 
-@register(outgoing=True, pattern="^.carbon")
+@jarvis.on(admin_cmd(outgoing=True, pattern="^.carbon",allow_sudo=True))
 
 async def carbon_api(e):
 

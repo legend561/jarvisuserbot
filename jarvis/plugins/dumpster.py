@@ -3,7 +3,7 @@ import asyncio
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="dump ?(.*)"))
+@jarvis.on(admin_cmd(pattern="dump ?(.*)",allow_sudo=True))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)

@@ -7,7 +7,7 @@ import time
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True, allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

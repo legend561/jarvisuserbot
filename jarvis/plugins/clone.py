@@ -13,7 +13,7 @@ from jarvis.utils import admin_cmd
 from telethon.tl import functions
 
 
-@jarvis.on(admin_cmd(pattern="clone ?(.*)"))
+@jarvis.on(admin_cmd(pattern="clone ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

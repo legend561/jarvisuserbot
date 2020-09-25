@@ -260,7 +260,7 @@ csclist = ['ACG',
                 'CTC']         
 
 csclist = sorted(csclist)
-@jarvis.on(events.NewMessage(pattern=r"\.check", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.check", outgoing=True ,allow_sudo=True))
 async def checker(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")
@@ -347,7 +347,7 @@ async def checker(e):
         await e.delete()
         
         
-@jarvis.on(events.NewMessage(pattern=r"\.otaup", outgoing=True))
+@jarvis.on(events.NewMessage(pattern=r"\.otaup", outgoing=True ,allow_sudo=True))
 async def checker(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")

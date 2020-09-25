@@ -7,7 +7,7 @@ from telethon.tl import types, functions
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="frwd"))
+@jarvis.on(admin_cmd(pattern="frwd",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

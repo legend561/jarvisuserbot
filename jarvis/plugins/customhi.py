@@ -1,6 +1,6 @@
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)"))
+@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)",allow_sudo=True))
 async def hhi(event):
     giveVar = event.text
     cat = giveVar[5:6]

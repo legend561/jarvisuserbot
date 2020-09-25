@@ -39,7 +39,7 @@ from uniborg.util import admin_cmd
 from telethon import events
 
 
-@jarvis.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True)) 
+@jarvis.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True ,allow_sudo=True)) 
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))

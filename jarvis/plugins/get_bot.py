@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("get_bot ?(.*)"))
+@jarvis.on(admin_cmd("get_bot ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

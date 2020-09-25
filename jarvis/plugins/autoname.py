@@ -13,7 +13,7 @@ DEL_TIME_OUT = 60
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
-@jarvis.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="autoname",allow_sudo=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

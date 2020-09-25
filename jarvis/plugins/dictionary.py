@@ -6,7 +6,7 @@ from telethon import events
 from uniborg.util import admin_cmd
 
 
-@jarvis.on(admin_cmd("meaning (.*)"))
+@jarvis.on(admin_cmd("meaning (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

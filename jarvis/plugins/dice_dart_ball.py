@@ -8,7 +8,7 @@ BALL_E_MOJI = "🏀"
 # EMOJI CONSTANTS
 
 
-@jarvis.on(admin_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)"))
+@jarvis.on(admin_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
