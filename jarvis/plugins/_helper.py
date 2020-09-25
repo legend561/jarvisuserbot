@@ -74,7 +74,7 @@ async def _(event):
     await event.edit("""Telethon UserBot powered by JARVIS UserBot""")
 
 
-@jarvis.on(admin_cmd(pattern="syntax (.*)))
+@jarvis.on(admin_cmd(pattern="syntax (.*)"))
 async def _(event):
     if event.fwd_from:
         return
