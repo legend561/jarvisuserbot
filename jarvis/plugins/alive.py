@@ -39,7 +39,7 @@ def get_readable_time(seconds: int) -> str:
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="alive"))
+@jarvis.on(admin_cmd(outgoing=True, pattern="alive",allow_sudo=True))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     if ALIVE_PIC:

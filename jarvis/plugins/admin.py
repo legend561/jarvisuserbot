@@ -69,7 +69,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 #@register(outgoing=True, pattern="^.setgpic$", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"setgpic", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"setgpic",allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -211,7 +211,7 @@ async def demote(dmod):
 
 
 #@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)",allow_sudo=True))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -367,7 +367,7 @@ async def spider(spdr):
 
 
 #@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)",allow_sudo=True))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
