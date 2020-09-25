@@ -7,6 +7,7 @@ from telethon.tl import functions, types
 from jarvis.events import register
 
 from jarvis import CMD_HELP
+from jarvis.utils import admin_cmd
 
 
 
