@@ -2,7 +2,7 @@ from telethon import events
 import asyncio
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True,allow_sudo=True))
+@jarvis.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

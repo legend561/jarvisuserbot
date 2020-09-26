@@ -9,6 +9,7 @@ from telethon import events
 import asyncio
 import os
 import sys
+from jarvis.utils import admin_cmd
 
 
 async def download_file_from_google_drive(id):
@@ -79,7 +80,7 @@ async def get_file_name(content):
     print("File Name: "+str(file_name))
     return file_name                 
 
-@jarvis.on(events.NewMessage(pattern=r"\.gdl", outgoing=True,allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"\.gdl", outgoing=True,allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
         return   
