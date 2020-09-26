@@ -9,8 +9,7 @@ import asyncio
 import os
 import sys
 import random
-
-
+from jarvis.utils import admin_cmd
 
 @jarvis.on(events.NewMessage(pattern=r"\.hp", outgoing=True,allow_sudo=True))
 async def _(event):
