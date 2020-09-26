@@ -13,7 +13,7 @@ from telegraph import Telegraph
 from bs4 import BeautifulSoup as bs
 import requests
 from telethon import events
-
+from jarvis.utils import admin_cmd
 
 telegraph = Telegraph()
 telegraph.create_account(short_name='zeroc')
