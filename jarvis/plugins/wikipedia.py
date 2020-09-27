@@ -5,7 +5,7 @@
 Syntax: .wikipedia Query"""
 from telethon import events
 import wikipedia
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="wikipedia (.*)"))
