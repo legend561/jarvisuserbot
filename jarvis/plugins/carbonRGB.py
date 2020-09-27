@@ -11,7 +11,7 @@ from time import sleep
 import asyncio
 import os
 import random
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 #@borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
 @jarvis.on(admin_cmd(pattern="karb"))
 @jarvis.on(sudo_cmd(outgoing=True, pattern="karb", allow_sudo=True))
