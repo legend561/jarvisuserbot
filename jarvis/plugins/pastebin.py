@@ -5,7 +5,7 @@ import asyncio
 from datetime import datetime
 import os
 import requests
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 def progress(current, total):
