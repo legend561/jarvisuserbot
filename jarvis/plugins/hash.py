@@ -10,10 +10,9 @@ from subprocess import run as runapp
 import pybase64
 from jarvis import CMD_HELP
 from jarvis.events import register, errors_handler
-from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="^.hash (.*)",allow_sudo=True))
+@register(outgoing=True, pattern="^.hash (.*)")
 @errors_handler
 async def gethash(hash_q):
     """ For .hash command, find the md5, sha1, sha256, sha512 of the string. """
@@ -46,7 +45,7 @@ async def gethash(hash_q):
         await hash_q.reply(ans)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="^.hbase (en|de) (.*)",allow_sudo=True))
+@register(outgoing=True, pattern="^.hbase (en|de) (.*)")
 @errors_handler
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """

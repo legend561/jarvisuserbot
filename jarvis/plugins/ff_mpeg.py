@@ -13,7 +13,7 @@ from jarvis.utils import admin_cmd, progress
 FF_MPEG_DOWN_LOAD_MEDIA_PATH = "uniborg.media.ffmpeg"
 
 
-@jarvis.on(admin_cmd("ffmpegsave",allow_sudo=True))
+@jarvis.on(admin_cmd("ffmpegsave"))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def ff_mpeg_trim_cmd(event):
         await event.edit(f"a media file already exists in path. Please remove the media and try again!\n`.exec rm {FF_MPEG_DOWN_LOAD_MEDIA_PATH}`")
 
 
-@jarvis.on(admin_cmd("ffmpegtrim",allow_sudo=True))
+@jarvis.on(admin_cmd("ffmpegtrim"))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return

@@ -18,7 +18,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=f"gdm", outgoing=True,allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=f"gdm", outgoing=True))
 
 async def _(event):
 

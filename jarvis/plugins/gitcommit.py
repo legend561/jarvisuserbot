@@ -16,7 +16,7 @@ from telethon.tl.types import DocumentAttributeVideo
 from jarvis.utils import admin_cmd, progress
 
 GIT_TEMP_DIR = "./userbot/temp/"
-@jarvis.on(admin_cmd(pattern="^.commit", outgoing=True,allow_sudo=True))
+@command(pattern="^.commit", outgoing=True)
 async def download(event):
     if event.fwd_from:
         return	

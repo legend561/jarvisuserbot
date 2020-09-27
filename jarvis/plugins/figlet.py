@@ -2,7 +2,7 @@ import pyfiglet
 from jarvis.utils import admin_cmd
 
 #@command(pattern="^.figlet ?(.*)", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"figlet ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"figlet ?(.*)"))
 async def figlet(event):
     if event.fwd_from:
         return

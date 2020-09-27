@@ -1,10 +1,9 @@
 """CoronaVirus LookUp
 Syntax: .covid <country>"""
 from covid import Covid
-from jarvis.utils import admin_cmd, sudo_cmd
+from uniborg.util import admin_cmd
 
 @jarvis.on(admin_cmd(pattern="covid (.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="covid", allow_sudo=True))
 async def _(event):
     covid = Covid()
     data = covid.get_data()

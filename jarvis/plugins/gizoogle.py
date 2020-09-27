@@ -3,7 +3,7 @@ import bs4
 import requests
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="giz ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="giz ?(.*)"))
 async def gizoogle(event):
     if event.fwd_from:
         return

@@ -7,7 +7,7 @@ import asyncio
 from jarvis.utils import admin_cmd
 from telethon import events
 #@command(outgoing=True, pattern=r"^.gmute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
 async def startgmute(event):
     private = False
     if event.fwd_from:
@@ -62,7 +62,7 @@ async def startgmute(event):
         await event.edit("Successfully putted Duct Tape on that person's mouth")
 
 #@command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
     if event.fwd_from:

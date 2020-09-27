@@ -4,7 +4,7 @@ from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="join",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="join"))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,7 +20,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="pay",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="pay"))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +36,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="climb",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="climb"))
 async def _(event):
     if event.fwd_from:
         return
@@ -52,7 +52,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="aag",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="aag"))
 async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +68,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="push",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="push"))
 async def _(event):
     if event.fwd_from:
         return
@@ -84,7 +84,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd(pattern="work",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="work"))
 async def _(event):
     if event.fwd_from:
         return

@@ -8,11 +8,10 @@ from telethon import events
 import os
 import requests
 import json
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("dns (.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="dns (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,7 +25,6 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd("url (.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="url (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +38,6 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd("unshort (.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="unshort (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -8,7 +8,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern="eye",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="eye"))
 
 async def _(event):
 

@@ -6,7 +6,7 @@ from telethon import events
 from telethon.tl.functions.messages import SaveDraftRequest
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="chain",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="chain"))
 async def _(event):
     await event.edit("Counting...")
     count = -1

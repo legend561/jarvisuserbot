@@ -11,7 +11,7 @@ import re
 import jarvis.plugins.sql_helper.blacklist_sql as sql
 from telethon import events, utils
 from telethon.tl import types, functions
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(events.NewMessage(incoming=True))
@@ -30,8 +30,7 @@ async def on_new_message(event):
             break
 
 
-@jarvis.on(admin_cmd("addblacklist ((.|\n)*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="addblacklist ((.|\n)*)", allow_sudo=True))
+@jarvis.on(admin_cmd("addblacklist ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     text = event.pattern_match.group(1)
     to_blacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))
@@ -65,8 +64,7 @@ async def on_view_blacklist(event):
         await event.edit(OUT_STR)
 
 
-@jarvis.on(admin_cmd("rmblacklist ((.|\n)*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="rmblacklist ((.|\n)*)", allow_sudo=True))
+@jarvis.on(admin_cmd("rmblacklist ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     text = event.pattern_match.group(1)
     to_unblacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))

@@ -22,7 +22,7 @@ def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@jarvis.on(admin_cmd("go (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd("go (.*)"))
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)

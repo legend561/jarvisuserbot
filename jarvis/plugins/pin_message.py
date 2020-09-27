@@ -2,11 +2,10 @@
 Syntax: .cpin [LOUD]"""
 from telethon import events
 from telethon.tl import functions, types
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("cpin ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="cpin ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

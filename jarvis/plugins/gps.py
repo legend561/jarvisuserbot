@@ -5,7 +5,7 @@ from telethon.tl import types
 from jarvis import CMD_HELP 
 
 
-@jarvis.on(admin_cmd(pattern="gps ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="gps ?(.*)"))
 async def gps(event):
     if event.fwd_from:
         return

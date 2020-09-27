@@ -2,10 +2,10 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd("sg ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="sg ?(.*)", allow_sudo=True))
+
 async def _(event):
 
     if event.fwd_from:
@@ -63,7 +63,6 @@ async def _(event):
              await event.edit(f"{response.message.message}")
 
 @jarvis.on(admin_cmd("fakemail ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="fakemail ?(.*)", allow_sudo=True))
 
 async def _(event):
 
@@ -122,7 +121,7 @@ async def _(event):
              await event.edit(f"{response.message.message}")
 
 @jarvis.on(admin_cmd("ub ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="ub ?(.*)", allow_sudo=True))
+
 async def _(event):
 
     if event.fwd_from:
@@ -180,7 +179,6 @@ async def _(event):
              await event.edit(f"{response.message.message}")
 
 @jarvis.on(admin_cmd("gid ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="gid ?(.*)", allow_sudo=True))
 
 async def _(event):
 
@@ -245,7 +243,6 @@ async def _(event):
                 
 
 @jarvis.on(admin_cmd("urban ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="urban ?(.*)", allow_sudo=True))
 
 async def _(event):
 

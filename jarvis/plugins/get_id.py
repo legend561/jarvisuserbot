@@ -5,7 +5,7 @@ from telethon.utils import pack_bot_file_id
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("get_id",allow_sudo=True))
+@jarvis.on(admin_cmd("get_id"))
 async def _(event):
     if event.fwd_from:
         return

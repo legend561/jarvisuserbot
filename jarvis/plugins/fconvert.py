@@ -66,7 +66,7 @@ def time_formatter(milliseconds: int) -> str:
 
 
 
-@jarvis.on(admin_cmd(pattern="nfc (.*)",allow_sudo=True))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

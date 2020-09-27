@@ -4,11 +4,10 @@ from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotMo
 import io
 import asyncio
 import time
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="bash (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

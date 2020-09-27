@@ -2,7 +2,7 @@ import asyncio
 from telethon import events
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 import jarvis.plugins.sql_helper.antiflood_sql as sql
 from jarvis import CMD_HELP
 
@@ -55,7 +55,6 @@ because he reached the defined flood limit.""".format(event.message.from_id),
 
 
 @jarvis.on(admin_cmd(pattern="setflood (.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="setflood (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

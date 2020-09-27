@@ -5,7 +5,7 @@ import asyncio
 from datetime import datetime
 import os
 import requests
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 def progress(current, total):
@@ -13,7 +13,6 @@ def progress(current, total):
 
 
 @jarvis.on(admin_cmd("paste ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="paste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

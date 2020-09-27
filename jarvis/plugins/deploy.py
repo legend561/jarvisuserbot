@@ -8,12 +8,12 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from uniborg.util import admin_cmd
 
 from jarvis import AUTONAME
 
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "Unknown"
+DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
 
 @jarvis.on(admin_cmd(pattern=r"deploy"))
 

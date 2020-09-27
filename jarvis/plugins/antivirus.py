@@ -3,10 +3,9 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from jarvis.utils import admin_cmd, register, sudo_cmd
+from jarvis.utils import admin_cmd,register
 
 @jarvis.on(admin_cmd("scan ?(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="scan ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 

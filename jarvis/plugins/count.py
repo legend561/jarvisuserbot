@@ -53,7 +53,7 @@ logger = logging.getLogger(__name__)
 
 
 
-@jarvis.on(admin_cmd(pattern='count',allow_sudo=True))  
+@jarvis.on(admin_cmd(pattern='count'))  
 async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
     waiting_message = await event.edit('`Collecting stats, Wait Master`')

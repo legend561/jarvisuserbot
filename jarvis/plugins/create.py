@@ -7,13 +7,12 @@ from telethon.tl import functions, types
 from jarvis.events import register
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd
 
 
 
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="^.create (b|g|c)(?: |$)(.*)",allow_sudo=True))
+@register(outgoing=True, pattern="^.create (b|g|c)(?: |$)(.*)")
 
 async def telegraphs(grop):
 

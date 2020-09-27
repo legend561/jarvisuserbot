@@ -2,7 +2,7 @@
 Syntax: .coinflip [optional_choice]"""
 from telethon import events
 import random, re
-from jarvis.utils import admin_cmd
+from uniborg.util import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="coin ?(.*)"))

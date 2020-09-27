@@ -6,7 +6,7 @@ from PIL import Image, ImageColor
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="color (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="color (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -31,7 +31,7 @@ async def _(event):
                 caption=input_str,
                 reply_to=message_id
             )
-            os.remove("jarvis.png")
+            os.remove("UniBorg.png")
             await event.delete()
     else:
         await event.edit("Syntax: `.color <color_code>`")

@@ -8,11 +8,11 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"ding",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"ding"))
 
 async def _(event):
 

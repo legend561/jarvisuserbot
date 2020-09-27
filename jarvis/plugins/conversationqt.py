@@ -38,7 +38,7 @@ from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"qt",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"qt"))
 
 
 

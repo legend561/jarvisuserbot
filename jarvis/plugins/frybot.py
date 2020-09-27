@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd("frybot ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd("frybot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

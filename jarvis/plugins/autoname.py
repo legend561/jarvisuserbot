@@ -5,7 +5,7 @@ import asyncio
 import time
 from telethon.tl import functions
 from telethon.errors import FloodWaitError
-from jarvis.utils import admin_cmd, sudo_cmd
+from uniborg.util import admin_cmd
 from jarvis import ALIVE_NAME
 
 
@@ -14,7 +14,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
 @jarvis.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
-@jarvis.on(sudo_cmd(outgoing=True, pattern="autoname", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

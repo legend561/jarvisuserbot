@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="filext (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="filext (.*)"))
 async def _(event):
     if event.fwd_from:
         return

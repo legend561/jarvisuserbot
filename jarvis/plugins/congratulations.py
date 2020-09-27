@@ -1,6 +1,6 @@
 from telethon import events
 import random, re
-from jarvis.utils import admin_cmd, sudo_cmd
+from uniborg.util import admin_cmd
 
 RUNSREACTS = [
     "`Congratulations and BRAVO!`",
@@ -16,7 +16,6 @@ RUNSREACTS = [
 ]
 
 @jarvis.on(admin_cmd(pattern="congo"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="congo", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
          return

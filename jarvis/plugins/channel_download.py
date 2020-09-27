@@ -11,7 +11,7 @@ import subprocess
 import sys
 from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
 
-@jarvis.on(admin_cmd(pattern=r"getc",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"getc"))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -47,7 +47,7 @@ async def get_media(event):
              
              
              
-@jarvis.on(admin_cmd(pattern=r"geta",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"geta"))
 async def get_media(event):
     if event.fwd_from:
         return

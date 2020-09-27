@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from uniborg.util import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="admins",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="admins"))
 async def _(event):
     if event.fwd_from:
         return

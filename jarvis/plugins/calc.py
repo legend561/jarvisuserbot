@@ -3,13 +3,12 @@
 # Syntax (.calc <term1><operator><term2>)
 # For eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)
 from telethon import events
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 import asyncio
 from telethon.tl import functions, types
 
 #neccesary tg shit
-@jarvis.on(admin_cmd(pattern="calc ?(.*)",))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="calc ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="calc ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

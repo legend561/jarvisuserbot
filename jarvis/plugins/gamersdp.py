@@ -52,7 +52,7 @@ async def animepp():
 
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
-@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)"))
 
 async def main(event):
 

@@ -4,7 +4,7 @@ import os
 import sys
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern=r"gaali",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"gaali"))
 async def test(event):
     if event.fwd_from:
         return 
