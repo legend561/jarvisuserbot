@@ -3,7 +3,7 @@
 # Syntax (.calc <term1><operator><term2>)
 # For eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 import asyncio
 from telethon.tl import functions, types
 
