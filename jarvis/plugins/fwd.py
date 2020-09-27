@@ -1,10 +1,10 @@
-"""Enable Seen Counter in any message, Fix by @pureindialover
+"""Enable Seen Counter in any message, Fix by Spidy
 to know how many users have seen your message
 Syntax: .fwd as reply to any message"""
 from telethon import events
 from telethon import sync
 from telethon.tl import types, functions
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="frwd"))
