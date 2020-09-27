@@ -1,15 +1,14 @@
+
 """
 G-Drive File Downloader Plugin For Userbot. 
 usage: .gdl File-Link
 By: @Zero_cool7870
-
 """
 import requests
 from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import admin_cmd
 
 
 async def download_file_from_google_drive(id):
@@ -80,7 +79,8 @@ async def get_file_name(content):
     print("File Name: "+str(file_name))
     return file_name                 
 
-@jarvis.on(admin_cmd(pattern=r"\.gdl", outgoing=True,allow_sudo=True))
+@jarvis.on(events.NewMessage(pattern=r"gdl", outgoing=True))
+@jarvis.on(sudo_cmd(outgoing=True, pattern=r"gdl", allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
         return   
@@ -90,4 +90,3 @@ async def g_download(event):
     await event.edit("Downloading Requested File from G-Drive...")
     file_name = await download_file_from_google_drive(file_id)
     await event.edit("File Downloaded.\nName: `"+str(file_name)+"`")
-            

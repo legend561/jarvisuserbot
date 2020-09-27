@@ -13,6 +13,7 @@ def progress(current, total):
 
 
 @jarvis.on(admin_cmd("paste ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="paste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

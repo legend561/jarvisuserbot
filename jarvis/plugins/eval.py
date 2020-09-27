@@ -13,7 +13,8 @@ import io
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd("eval",allow_sudo=True))
+@jarvis.on(admin_cmd("eval"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="eval ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

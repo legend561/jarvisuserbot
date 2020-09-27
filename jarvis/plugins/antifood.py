@@ -4,7 +4,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 from jarvis.utils import admin_cmd
 import jarvis.plugins.sql_helper.antiflood_sql as sql
-from jarvis import CMD_HELP
+from jarvis import CMD_HELP ,admin_cmd ,sudo_cmd
 
 CHAT_FLOOD = sql.__load_flood_settings()
 # warn mode for anti flood
@@ -15,7 +15,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@jarvis.on(admin_cmd(incoming=True,allow_sudo=True))
+@jarvis.on(admin_cmd(incoming=True))
 async def _(event):
     # logger.info(CHAT_FLOOD)
     if not CHAT_FLOOD:
@@ -54,7 +54,8 @@ because he reached the defined flood limit.""".format(event.message.from_id),
         )
 
 
-@jarvis.on(admin_cmd(pattern="setflood (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="setflood (.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="setflood (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

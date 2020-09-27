@@ -15,7 +15,8 @@ RUNSREACTS = [
     "`Feeling so much joy for you today. What an impressive achievement!`",
 ]
 
-@jarvis.on(admin_cmd(pattern="congo",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="congo"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="congo", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
          return

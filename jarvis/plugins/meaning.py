@@ -7,6 +7,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="meaning (.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

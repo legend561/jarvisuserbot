@@ -9,10 +9,11 @@ import os
 import asyncio
 from jarvis.utils import admin_cmd
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"upb", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"upb"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="upb", allow_sudo=True))
 async def batch_upload(event):
 	if event.fwd_from:
 		return   

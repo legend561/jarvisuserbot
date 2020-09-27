@@ -1,13 +1,14 @@
 from jarvis import CMD_LIST
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd , sudo_cmd
 from platform import uname
 import sys
 from telethon import events, functions, __version__
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 
-@jarvis.on(admin_cmd(pattern="help ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="help ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="help", allow_sudo=True))
 async def cmd_list(event):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)

@@ -11,7 +11,8 @@ from jarvis.events import register
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="app ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="app ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="app ?(.*)", allow_sudo=True))
 async def apk(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -39,7 +40,8 @@ async def apk(e):
     except Exception as err:
         await e.edit("Exception Occured:- "+str(err))
 
-@jarvis.on(admin_cmd(pattern="apkr ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="apkr ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="apkr ?(.*)", allow_sudo=True))
 async def apkr(e):
     try:
         app_name = e.pattern_match.group(1)

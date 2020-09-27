@@ -24,7 +24,7 @@ from telethon.tl.types import (ChannelParticipantsAdmins, ChatAdminRights,
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot 
 from jarvis.utils import register, errors_handler
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
@@ -69,7 +69,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 #@register(outgoing=True, pattern="^.setgpic$", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"setgpic",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"setgpic"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="setgpic", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -108,7 +109,8 @@ async def set_group_photo(gpic):
 
 
 #@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -160,7 +162,8 @@ async def promote(promt):
 
 
 #@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"demote(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="demote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -211,7 +214,8 @@ async def demote(dmod):
 
 
 #@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="ban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -266,7 +270,8 @@ async def ban(bon):
 
 
 #@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"unban(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="unban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -306,6 +311,7 @@ async def nothanos(unbon):
 
 #@register(outgoing=True, pattern="^.mute(?: |$)(.*)", allow_sudo=True))
 @jarvis.on(admin_cmd(pattern=r"mute(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="mute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def spider(spdr):
     """
@@ -338,7 +344,7 @@ async def spider(spdr):
 
     if user.id == self_user.id:
         await spdr.edit(
-            "`Hands too short, can't duct tape myself...\n(ヘ･_･)ヘ┳━┳`")
+            "`Hands too short, can't tape myself...\n(ヘ･_･)ヘ┳━┳`")
         return
 
     # If everything goes well, do announcing and mute
@@ -367,7 +373,8 @@ async def spider(spdr):
 
 
 #@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="unmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -449,7 +456,8 @@ async def muter(moot):
 
 
 #@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="ungmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
@@ -494,7 +502,8 @@ async def ungmoot(un_gmute):
 
 
 #@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"gmute(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"gmute(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="gmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
@@ -540,7 +549,8 @@ async def gspider(gspdr):
 
 
 #@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"delusers(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="delusers(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -613,7 +623,8 @@ async def rm_deletedacc(show):
 
 
 #@register(outgoing=True, pattern="^.adminlist$")
-@jarvis.on(admin_cmd(pattern=r"adminlist", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"adminlist"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="adminlist(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -635,7 +646,8 @@ async def get_admin(show):
 
 
 #@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"pin(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="pin(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -683,6 +695,7 @@ async def pin(msg):
 
 #@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 @jarvis.on(admin_cmd(pattern=r"kick(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="kick(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -726,7 +739,8 @@ async def kick(usr):
 
 
 #@register(outgoing=True, pattern="^.users ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"users ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"users ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="users(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """

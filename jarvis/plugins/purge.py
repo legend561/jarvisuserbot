@@ -16,6 +16,7 @@ from jarvis.utils import admin_cmd
 
 #@register(outgoing=True, pattern="^.purge$")
 @jarvis.on(admin_cmd(pattern=r"purge"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern=r"purge", allow_sudo=True))
 @errors_handler
 async def fastpurger(purg):
     """ For .purge command, purge all messages starting from the reply. """
@@ -49,6 +50,7 @@ async def fastpurger(purg):
 
 #@register(outgoing=True, pattern="^.purgeme")
 @jarvis.on(admin_cmd(pattern=r"purgeme"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern=r"purgeme", allow_sudo=True))
 @errors_handler
 async def purgeme(delme):
     """ For .purgeme, delete x count of your latest message."""
@@ -78,6 +80,7 @@ async def purgeme(delme):
 
 #@register(outgoing=True, pattern="^.del$")
 @jarvis.on(admin_cmd(pattern=r"del"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern=r"del", allow_sudo=True))
 @errors_handler
 async def delete_it(delme):
     """ For .del command, delete the replied message. """
@@ -97,6 +100,7 @@ async def delete_it(delme):
 
 #@register(outgoing=True, pattern="^.edit")
 @jarvis.on(admin_cmd(pattern=r"edit"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="edit", allow_sudo=True))
 @errors_handler
 async def editer(edit):
     """ For .editme command, edit your last message. """
@@ -118,6 +122,7 @@ async def editer(edit):
 
 #@register(outgoing=True, pattern="^.sd")
 @jarvis.on(admin_cmd(pattern=r"sd"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern=r"sd", allow_sudo=True))
 @errors_handler
 async def selfdestruct(destroy):
     """ For .sd command, make seflf-destructable messages. """

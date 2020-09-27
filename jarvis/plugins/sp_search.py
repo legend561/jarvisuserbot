@@ -8,11 +8,12 @@ By: @Zero_cool7870
 import os
 import asyncio
 import json
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="sch ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="sch ?(.*)", allow_sudo=True))
 async def sp_search(event):
 	search_str = event.pattern_match.group(1)
 

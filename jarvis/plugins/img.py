@@ -11,6 +11,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="img ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="img ?(.*)", allow_sudo=True))
 async def img_sampler(event):
     await event.edit("`Processing...`")
     reply = await event.get_reply_message()

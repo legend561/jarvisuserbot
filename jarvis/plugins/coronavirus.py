@@ -3,7 +3,8 @@ Syntax: .covid <country>"""
 from covid import Covid
 from uniborg.util import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="covid (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="covid (.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="covid", allow_sudo=True))
 async def _(event):
     covid = Covid()
     data = covid.get_data()

@@ -64,7 +64,8 @@ CARBONLANG = "auto"
 
 LANG = "en"
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="^.carbon",allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern="carbon"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="carbon", allow_sudo=True))
 
 async def carbon_api(e):
 

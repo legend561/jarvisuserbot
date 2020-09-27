@@ -10,7 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from google_images_download import google_images_download
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 def progress(current, total):
@@ -18,6 +18,7 @@ def progress(current, total):
 
 
 @jarvis.on(admin_cmd(pattern="google search (.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="google search (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -43,6 +44,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern="google image (.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="google image (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -84,6 +86,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern="google reverse search"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="google reverse search", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

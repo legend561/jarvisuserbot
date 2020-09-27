@@ -4,7 +4,7 @@
 import asyncio
 import datetime
 from telethon import events
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
@@ -21,7 +21,8 @@ logs_id = Var.PLUGIN_CHANNEL
 
 
 
-@jarvis.on(admin_cmd("bforward ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd("bforward ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="bforward ?(.*)", allow_sudo=True))
 async def forw(event): 
   if event.fwd_from:
     return
@@ -61,7 +62,8 @@ async def forw(event):
         await event.edit("Set up log channel for checking errors.")
     
     
-@jarvis.on(admin_cmd("broadcast ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("broadcast ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="broadcast ?(.*)", allow_sudo=True))
 
 async def _(event):
   if event.fwd_from:
@@ -144,7 +146,8 @@ async def _(event):
 
 # Written by @HeisenbergTheDanger
 
-@jarvis.on(admin_cmd("badd ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("badd ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="badd ?(.*)", allow_sudo=True))
 async def add_ch(event):
     if event.fwd_from:
         return
@@ -179,7 +182,8 @@ async def add_ch(event):
         await event.delete()
 
 
-@jarvis.on(admin_cmd("brm ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("brm ?(.*)"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="brm ?(.*)", allow_sudo=True))
 async def remove_ch(event):
     if event.fwd_from:
         return
@@ -207,7 +211,8 @@ async def remove_ch(event):
         await asyncio.sleep(3)
         await event.delete()
         
-@jarvis.on(admin_cmd("listchannels", allow_sudo=True))
+@jarvis.on(admin_cmd("listchannels"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="listchannels", allow_sudo=True))
 async def list(event):
     if event.fwd_from:
         return

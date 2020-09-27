@@ -5,13 +5,14 @@ import asyncio
 import os
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
 @jarvis.on(admin_cmd("time ?(.*)"))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(outgoing=True, pattern="time ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +37,7 @@ async def _(event):
     await borg.send_file(  # pylint:disable=E0602
         event.chat_id,
         required_file_name,
-        caption="Userbot: Powered by @JARVISOT",
+        caption="Userbot : Powered by @JARVISOT",
         # Courtesy: @ManueI15
         reply_to=reply_msg_id
     )
@@ -49,6 +50,7 @@ async def _(event):
 
 
 @borg.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(outgoing=True, pattern="gtime (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

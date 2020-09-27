@@ -4,10 +4,11 @@ Syntax: .screencapture <Website URL>"""
 import io
 import requests
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd("screencapture (.*)"))
+@jarvis.on(sudo_cmd("screencapture (.*)"))
 async def _(event):
     if event.fwd_from:
         return

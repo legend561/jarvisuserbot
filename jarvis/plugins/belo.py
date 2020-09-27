@@ -15,11 +15,12 @@ import sys
 
 import random
 
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"belo", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"belo"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="belo", allow_sudo=True))
 
 async def _(event):
 
