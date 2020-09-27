@@ -9,12 +9,10 @@ from telethon.tl.types import Channel
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import GetCommonChatsRequest
 from telethon.events import ChatAction
-from jarvis.utils import admin_cmd, sudo_cmd
  
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="gmute(?: |$)(.*)"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="gmute(?: |$)(.*)", allow_sudo=True))
+@command(outgoing=True, pattern="^.gmute(?: |$)(.*)")
 async def gmute(userbot): 
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -51,8 +49,7 @@ async def gmute(userbot):
     	pass
    return await jarvis.edit(f"`Globelly taped on Mouth`") 
  
-@jarvis.on(admin_cmd(outgoing=True, pattern="ungmute(?: |$)(.*)")
-@jarvis.on(sudo_cmd(outgoing=True, pattern="ungmute(?: |$)(.*)", allow_sudo=True))
+@command(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
 async def gspider(userbot):    
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -88,7 +85,7 @@ async def gspider(userbot):
         
 
 #@javes.on(rekcah05(pattern=f"gban(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(outgoing=True, pattern="gban(?: |$)(.*)"))
+@command(outgoing=True, pattern="^.gban(?: |$)(.*)")
 async def gspider(userbot): 
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -142,7 +139,7 @@ async def gspider(userbot):
 
 
 #@javes.on(rekcah05(pattern=f"ungban(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(outgoing=True, pattern="ungban(?: |$)(.*)"))
+@command(outgoing=True, pattern="^.ungban(?: |$)(.*)")
 async def gspider(userbot):
    lol = userbot ; sender = await lol.get_sender() ; me = await lol.client.get_me()
    if not sender.id == me.id:
@@ -207,4 +204,3 @@ CMD_HELP.update({
 \n\n**All commands support sudo**\
 "
 })
-
