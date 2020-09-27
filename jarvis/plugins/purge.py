@@ -11,7 +11,7 @@ from telethon.errors import rpcbaseerrors
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from jarvis.utils import register, errors_handler
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 #@register(outgoing=True, pattern="^.purge$")
