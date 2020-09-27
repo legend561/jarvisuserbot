@@ -47,8 +47,8 @@ def get_readable_time(seconds: int) -> str:
 
 
 #@command(pattern="^.ping$")
-@jarvis.on(admin_cmd(pattern="ping$"))
-@jarvis.on(sudo_cmd(outgoing=True, pattern="ping$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ping"))
+@jarvis.on(sudo_cmd(outgoing=True, pattern="ping", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
