@@ -1,7 +1,7 @@
 """CoronaVirus LookUp
 Syntax: .covid <country>"""
 from covid import Covid
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 @jarvis.on(admin_cmd(pattern="covid (.*)"))
 @jarvis.on(sudo_cmd(outgoing=True, pattern="covid", allow_sudo=True))
