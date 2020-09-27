@@ -58,7 +58,7 @@ from emoji import get_emoji_regexp
 
 from jarvis import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRIVER, GOOGLE_CHROME_BIN
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 CARBONLANG = "auto"
 
