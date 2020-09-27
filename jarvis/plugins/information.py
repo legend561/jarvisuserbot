@@ -6,7 +6,7 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd("info ?(.*)"))
