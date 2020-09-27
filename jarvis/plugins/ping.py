@@ -2,7 +2,7 @@ from telethon import events
 from datetime import datetime
 from telethon import events
 from datetime import datetime
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 import time
 
 @jarvis.on(admin_cmd(pattern="pong ?(.*)"))
