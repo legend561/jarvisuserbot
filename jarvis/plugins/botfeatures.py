@@ -4,7 +4,7 @@ import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 from jarvis import CMD_HELP
 
 
