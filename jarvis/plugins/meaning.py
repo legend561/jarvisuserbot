@@ -3,7 +3,7 @@ Syntax: .meaning <word>"""
 
 import requests
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="meaning (.*)"))
