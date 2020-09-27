@@ -9,7 +9,7 @@ from telethon import events
 import asyncio
 import os
 import sys
-
+from jarvis.utils import sudo_cmd
 
 async def download_file_from_google_drive(id):
     URL = "https://docs.google.com/uc?export=download"
