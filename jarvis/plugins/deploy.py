@@ -13,9 +13,9 @@ from jarvis.utils import admin_cmd
 from jarvis import AUTONAME
 
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
+DEFAULTUSER = str(AUTONAME) if AUTONAME else "Unknown"
 
-@jarvis.on(admin_cmd(pattern=r"deploy",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"deploy"))
 
 async def _(event):
 

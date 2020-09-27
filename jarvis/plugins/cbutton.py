@@ -10,7 +10,7 @@ from jarvis.utils import admin_cmd
 BTN_URL_REGEX = re.compile(r"(\{([^\[]+?)\}\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@jarvis.on(admin_cmd(pattern="cbutton",allow_sudo=True))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="cbutton"))  # pylint:disable=E0602
 async def _(event):
     if Config.TG_BOT_USER_NAME_BF_HER is None or tgbot is None:
         await event.edit("need to set up a @BotFather bot for this module to work")

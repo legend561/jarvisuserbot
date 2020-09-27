@@ -5,7 +5,7 @@ import random, re
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="coin ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="coin ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
