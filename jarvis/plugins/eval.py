@@ -10,7 +10,7 @@ import traceback
 import asyncio
 import sys
 import io
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd("eval"))
