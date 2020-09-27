@@ -9,7 +9,7 @@ DEL_TIME_OUT = 60
 
 
 @jarvis.on(admin_cmd(pattern="autobio"))  # pylint:disable=E0602
-@jarvis.on(sudo_cmd(outgoing=True, pattern="autobio", allow_sudo=True))
+
 async def _(event):
     if event.fwd_from:
         return
