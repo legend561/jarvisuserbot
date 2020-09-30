@@ -47,8 +47,8 @@ The Easy Way
  Simply clone the repository and run the main file:
 
 ```text
-git clone https://github.com/jarvis210904/JARVISuserbot/
-cd Userbot
+git clone https://github.com/Jarvis-Works/JARVISuserbot/
+cd jarvis
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
@@ -68,7 +68,7 @@ class Development(Var):
 
 ###  UniBorg Configuration
 
- The UniBorg Config is situated in `userbot/uniborgConfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
+ The UniBorg Config is situated in `jarvis/uniborgConfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
 ##  Mandatory Vars
 
