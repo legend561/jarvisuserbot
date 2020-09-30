@@ -186,4 +186,3 @@ async def upstream(ups):
         args = [sys.executable, "-m", "stdborg"]
         execle(sys.executable, *args, environ)
         return
-© 2020
