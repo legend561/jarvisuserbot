@@ -4,7 +4,7 @@ Description: Best User Bot To Manage Your Telegram Account
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ad529e93eb74102a0f73c40cd98e541)](https://app.codacy.com/manual/jarvis210904/jarvisuserbot?utm_source=github.com&utm_medium=referral&utm_content=jarvis210904/jarvisuserbot&utm_campaign=Badge_Grade_Dashboard)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![AGPL-3.0 license](https://img.shields.io/badge/License-AGPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-[![Build Status](https://travis-ci.com/jarvis210904/jarvisuserbot.svg?token=b6puyaTUc7SAy1uLzygu&branch=master)](https://travis-ci.com/jarvis210904/jarvisuserbot)
+[![Build Status](https://travis-ci.com/Jarvis-Works/jarvisuserbot.svg?branch=stable)](https://travis-ci.com/Jarvis-Works/jarvisuserbot)
 
 # JARVIS
 
@@ -23,7 +23,7 @@ Inspired By Friday
  Credits :    
  
                     FridayUserBot
-                    
+                    Telebot
                     CatUserbot
 
 ## This Bot is Made With care No Adult Contents and Abusive Memes. If Any Tell in Issue Column With Command Name.
