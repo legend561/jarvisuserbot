@@ -26,7 +26,7 @@ requirements_path = path.join(
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 GIT_REPO_NAME = "JARVIS"
-UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot/tree/stable"
+UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot.git"
 
 async def gen_chlog(repo, diff):
     ch_log = ''
@@ -120,10 +120,10 @@ async def upstream(ups):
             file.close()
             await ups.client.send_file(
                 ups.chat_id,
-                "output.txt",
+                "changelogs.txt",
                 reply_to=ups.id,
             )
-            remove("output.txt")
+            remove("changelogs.txt")
         else:
             await ups.edit(changelog_str)
         await ups.respond(f'Do `.update now` to update')
