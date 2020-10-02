@@ -26,7 +26,7 @@ requirements_path = path.join(
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 GIT_REPO_NAME = "JARVIS"
-UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot"
+UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot/tree/stable"
 
 async def gen_chlog(repo, diff):
     ch_log = ''
@@ -86,7 +86,7 @@ async def upstream(ups):
         repo.heads.master.checkout(True)
 
     ac_br = repo.active_branch.name
-    if ac_br != 'master':
+    if ac_br != 'stable':
         await ups.edit(
             f'**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). '
             'in that case, Updater is unable to identify '
