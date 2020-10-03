@@ -110,8 +110,8 @@ async def download(target_file):
             speed = downloader.get_speed()
             elapsed_time = round(diff) * 1000
             progress_str = "[{0}{1}] {2}%".format(
-                ''.join(["▰" for i in range(math.floor(percentage / 10))]),
-                ''.join(["▱"
+                ''.join(["⦿" for i in range(math.floor(percentage / 10))]),
+                ''.join(["⦾"
                          for i in range(10 - math.floor(percentage / 10))]),
                 round(percentage, 2))
             estimated_total_time = downloader.get_eta(human=True)
@@ -126,7 +126,7 @@ async def download(target_file):
 
                 if round(diff %
                          10.00) == 0 and current_message != display_message:
-                    await target_file.reply(current_message)
+                    await target_file.edit(current_message)
                     display_message = current_message
             except Exception as e:
                 LOGS.info(str(e))
