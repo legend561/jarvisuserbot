@@ -18,7 +18,7 @@ def progress(current, total):
             (current / total) * 100))
 
 @jarvis.on(admin_cmd("npaste ?(.*)"))
-@jarvis.on(admin_cmd("cpin ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("npaste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
