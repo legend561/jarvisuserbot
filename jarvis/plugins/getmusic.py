@@ -1,4 +1,4 @@
-# modified for FRIDAY by @WhySooSerious
+# modified for jarvis by @sppidy
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -16,7 +16,7 @@ async def _(event):
     chat = "@SpotifyMusicDownloaderBot"
     await event.reply("```Getting Your Music```")
     async with bot.conversation(chat) as conv:
-    await event.delete()
+          await event.delete()
           await asyncio.sleep(2)
           await event.reply("`Downloading Music \nIt may take some time\n   So Stay Tuned.....`")
           try:
