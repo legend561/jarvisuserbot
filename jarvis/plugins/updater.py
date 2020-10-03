@@ -107,7 +107,7 @@ async def upstream(ups):
     changelog = await gen_chlog(repo, f'HEAD..upstream/{ac_br}')
 
     if not changelog and not force_updateme:
-        await ups.reply(
+        await ups.edit(
             f'\n`Your BOT is`  **up-to-date**  `with`  **[[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br})**\n')
         repo.__del__()
         return
@@ -115,7 +115,7 @@ async def upstream(ups):
     if conf != "now" and not force_updateme:
         changelog_str = f'**New UPDATE available for [[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br}):**\n\n' + '**CHANGELOG**\n\n' + f'{changelog}'
         if len(changelog_str) > 4096:
-            await ups.reply("`Changelog is too big, view the file to see it.`")
+            await ups.edit("`Changelog is too big, view the file to see it.`")
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -131,10 +131,10 @@ async def upstream(ups):
         return
 
     if force_updateme:
-        await ups.reply(
+        await ups.edit(
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
-        await ups.reply('`Updating userbot, please wait....`')
+        await ups.edit('`Updating userbot, please wait....`')
     # We're in a Heroku Dyno, handle it's memez.
     if Var.HEROKU_API_KEY is not None:
         import heroku3
@@ -155,7 +155,7 @@ async def upstream(ups):
             )
             repo.__del__()
             return
-        await ups.reply('`Userbot dyno build in progress, please wait for it to complete.`'
+        await ups.edit('`Userbot dyno build in progress, please wait for it to complete.`'
                        )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -169,10 +169,10 @@ async def upstream(ups):
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
         except GitCommandError as error:
-            await ups.reply(f'{txt}\n`Here is the error log:\n{error}`')
+            await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
             repo.__del__()
             return
-        await ups.reply('`Successfully Updated!\n'
+        await ups.edit('`Successfully Updated!\n'
                        'Restarting, please wait...`')
     else:
         # Classic Updater, pretty straightforward.
@@ -181,7 +181,7 @@ async def upstream(ups):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
-        await ups.reply('`Successfully Updated!\n'
+        await ups.edit('`Successfully Updated!\n'
                        'Bot is restarting... Wait for a second!`')
         # Spin a new instance of bot
         args = [sys.executable, "-m", "stdborg"]
