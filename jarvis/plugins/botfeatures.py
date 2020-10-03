@@ -39,7 +39,7 @@ async def _(event):
     if not event.reply_to_msg_id:
        await event.reply("**Reply to an user message.**")
        return
-    reply_message = reply event.get_reply_message() 
+    reply_message = await  event.get_reply_message() 
     if not reply_message.text:
        await event.reply("**Reply to a message.**")
        return
