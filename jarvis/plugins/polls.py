@@ -6,7 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="get_poll"))
-@jarvis.on(admin_cmd(pattern"get_poll", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="get_poll", allow_sudo=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message.media is None:
