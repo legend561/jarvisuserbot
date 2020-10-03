@@ -1,5 +1,5 @@
 # © By StarkGang™ And IndianBot™
-# For F.r.i.d.a.y And Indianbot ™
+# For JARVIS
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
@@ -15,9 +15,9 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from jarvis import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, admin_cmd
+from jarvis import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from jarvis.events import register
-
+from jarvis.utils import admin_cmd
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
