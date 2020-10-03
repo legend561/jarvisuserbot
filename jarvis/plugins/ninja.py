@@ -23,7 +23,7 @@ async def await_read(chat, message):
     async def read_filter(read_event):
         return (read_event.chat_id == chat
                 and read_event.is_read(message))
-    fut = borg.await event(events.MessageRead(inbox=False), read_filter)
+    fut = await borg(events.MessageRead(inbox=False), read_filter)
 
     if await is_read(borg, chat, message):
         fut.cancel()
