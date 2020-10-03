@@ -58,4 +58,4 @@ RUN mkdir /root/jarvis/bin/
 WORKDIR /root/jarvis/
 RUN chmod +x /usr/local/bin/*
 RUN pip3 install -r requirements.txt
-CMD ["python3","-m","jarvis"]
+CMD ["bash","startup.sh"]
