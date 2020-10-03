@@ -4,7 +4,7 @@
 import asyncio
 import datetime
 from telethon import events
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,

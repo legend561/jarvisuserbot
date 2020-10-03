@@ -25,10 +25,11 @@ if not os.path.isdir(extracted):
 
 
 @jarvis.on(admin_cmd(pattern="unzip"))
+@jarvis.on(admin_cmd(pattern="unzip",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    mone = await event.edit("Processing ...")
+    mone = await event.reply("Processing ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -42,17 +43,17 @@ async def _(event):
                 
             )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await mone.edit(str(e))
+            await mone.reply(str(e))
         else:
             end = datetime.now()
             ms = (end - start).seconds
-            await mone.edit("Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms))
+            await mone.reply("Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms))
 
         with zipfile.ZipFile(downloaded_file_name, 'r') as zip_ref:
             zip_ref.extractall(extracted)
         filename = sorted(get_lst_of_files(extracted, []))
         #filename = filename + "/"
-        await event.edit("Unzipping now")
+        await event.reply("Unzipping now")
         # r=root, d=directories, f = files
         for single_file in filename:
             if os.path.exists(single_file):

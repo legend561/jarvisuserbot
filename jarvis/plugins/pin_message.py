@@ -6,6 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("cpin ?(.*)"))
+@jarvis.on(admin_cmd("cpin ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

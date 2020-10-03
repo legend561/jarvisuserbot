@@ -8,6 +8,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern="bash (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -44,4 +45,4 @@ async def _(event):
                 reply_to=reply_to_id
             )
             await event.delete()
-    await event.edit(OUTPUT)
+    await event.reply(OUTPUT)

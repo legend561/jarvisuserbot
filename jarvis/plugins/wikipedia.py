@@ -9,10 +9,11 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="wikipedia (.*)"))
+@jarvis.on(admin_cmd(pattern="wikipedia (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Processing ...")
+    await event.reply("Processing ...")
     input_str = event.pattern_match.group(1)
     result = ""
     results = wikipedia.search(input_str)
@@ -20,4 +21,4 @@ async def _(event):
         page = wikipedia.page(s)
         url = page.url
         result += f"> [{s}]({url}) \n"
-    await event.edit("WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result))
+    await event.reply("WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result))

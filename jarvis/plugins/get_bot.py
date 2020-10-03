@@ -6,6 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("get_bot ?(.*)"))
+@jarvis.on(admin_cmd(pattern="get_bot ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,7 +21,7 @@ async def _(event):
         try:
             chat = await borg.get_entity(input_str)
         except Exception as e:
-            await event.edit(str(e))
+            await event.reply(str(e))
             return None
     try:
         async for x in borg.iter_participants(chat, filter=ChannelParticipantsBots):
@@ -30,4 +31,4 @@ async def _(event):
                 mentions += "\n [{}](tg://user?id={}) `{}`".format(x.first_name, x.id, x.id)
     except Exception as e:
         mentions += " " + str(e) + "\n"
-    await event.edit(mentions)
+    await event.reply(mentions)

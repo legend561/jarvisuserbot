@@ -4,11 +4,12 @@ import requests
 from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd(pattern="giz ?(.*)"))
+@jarvis.on(admin_cmd(pattern="giz ?(.*)", allow_sudo=True))
 async def gizoogle(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
-    await event.edit("Processing...")
+    await event.reply("Processing...")
     if not input_str:
         return await event.edit("I can't gizoogle nothing.")
     else:
@@ -17,7 +18,7 @@ async def gizoogle(event):
         except:
             result = "Failed to gizoogle the text."
         finally:
-            return await event.edit(result)
+            return await event.reply(result)
 
 def text(input_text: str) -> str:
         """Taken from https://github.com/chafla/gizoogle-py/blob/master/gizoogle.py"""

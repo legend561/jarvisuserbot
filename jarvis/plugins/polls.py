@@ -6,12 +6,13 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="get_poll"))
+@jarvis.on(admin_cmd(pattern"get_poll", allow_sudo=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message.media is None:
-        await event.edit("Please reply to a media_type == @gPoll to view the questions and answers")
+        await event.reply("Please reply to a media_type == @gPoll to view the questions and answers")
     elif reply_message.media.poll is None:
-        await event.edit("Please reply to a media_type == @gPoll to view the questions and answers")
+        await event.reply("Please reply to a media_type == @gPoll to view the questions and answers")
     else:
         media = reply_message.media
         poll = media.poll
@@ -31,4 +32,4 @@ Answers: \n""".format(closed_status, question)
         else:
             for answer in answers:
                 edit_caption += "{}> {}\n".format(answer.option, answer.text)
-        await event.edit(edit_caption)
+        await event.reply(edit_caption)

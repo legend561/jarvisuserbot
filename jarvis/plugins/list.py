@@ -13,6 +13,7 @@ import os
 
 
 @jarvis.on(admin_cmd(pattern="ls ?(.*)"))
+@jarvis.on(admin_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
 	if event.fwd_from:
 		return
@@ -26,7 +27,7 @@ async def lst(event):
 	for file in files:
 		msg += "`{}`\n".format(file)
 	if len(msg) <= Config.MAX_MESSAGE_SIZE_LIMIT:
-		await event.edit(msg)
+		await event.reply(msg)
 	else:
 		msg = msg.replace("`","")
 		out = 'filesList.txt'

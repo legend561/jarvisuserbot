@@ -5,9 +5,10 @@ from platform import uname
 import sys
 from telethon import events, functions, __version__
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@Sur_vivor"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
 @jarvis.on(admin_cmd(pattern="help ?(.*)"))
+@jarvis.on(admin_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
@@ -32,19 +33,19 @@ async def cmd_list(event):
                     )
                     await event.delete()
             else:
-                await event.edit(string)
+                await event.reply(string)
         elif input_str:
             if input_str in CMD_LIST:
                 string = "Commands found in {}:".format(input_str)
                 for i in CMD_LIST[input_str]:
                     string += "    " + i
                     string += "\n"
-                await event.edit(string)
+                await event.reply(string)
             else:
-                await event.edit(input_str + " is not a valid plugin!")
+                await event.reply(input_str + " is not a valid plugin!")
         else:
-            help_string = f"""Userbot Helper.. Provided by 💗{DEFAULTUSER}💗 \n
-`Userbot Helper to reveal all the commands`\n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
+            help_string = f"""Userbot Helper.. Provided by 💗{DEFAULTUSER} \n
+`Jarvis Helper to reveal all the commands`\n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
@@ -57,24 +58,27 @@ async def cmd_list(event):
             await event.delete()
             
 @jarvis.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     result = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
-    await event.edit(result.stringify())
+    await event.reply(result.stringify())
 
 
 @jarvis.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     result = await borg(functions.help.GetConfigRequest())  # pylint:disable=E0602
     result = result.stringify()
     logger.info(result)  # pylint:disable=E0602
-    await event.edit("""Telethon UserBot powered by JARVIS UserBot""")
+    await event.reply("""Telethon UserBot powered by JARVIS UserBot""")
 
 
 @jarvis.on(admin_cmd(pattern="syntax (.*)"))
+@jarvis.on(admin_cmd(pattern="syntax (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -92,4 +96,4 @@ async def _(event):
 
         plugin_syntax = "Enter valid **Plugin** name.\nDo `.plinfo` or `.help` to get list of valid plugin names."
 
-    await event.edit(plugin_syntax)
+    await event.reply(plugin_syntax)

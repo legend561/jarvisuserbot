@@ -12,6 +12,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="app ?(.*)"))
+@jarvis.on(admin_cmd(pattern="app ?(.*)", allow_sudo=True))
 async def apk(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -33,13 +34,14 @@ async def apk(e):
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n===> @JarvisOT <==="
-        await e.edit(app_details, link_preview = True, parse_mode = 'HTML')
+        await e.reply(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await e.edit("No result found in search. Please enter **Valid app name**")
+        await e.reply("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await e.edit("Exception Occured:- "+str(err))
+        await e.reply("Exception Occured:- "+str(err))
 
 @jarvis.on(admin_cmd(pattern="apkr ?(.*)"))
+@jarvis.on(admin_cmd(pattern="apkr ?(.*)", allow_sudo=True))
 async def apkr(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -62,8 +64,8 @@ async def apkr(e):
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
         app_details += "\n\n===> @JarvisOt <==="
-        await e.edit(app_details, link_preview = True, parse_mode = 'HTML')
+        await e.reply(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await e.edit("No result found in search. Please enter **Valid app name**")
+        await e.reply("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await e.edit("Exception Occured:- "+str(err))
+        await e.reply("Exception Occured:- "+str(err))

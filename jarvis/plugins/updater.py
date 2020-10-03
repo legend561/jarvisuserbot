@@ -50,9 +50,10 @@ async def updateme_requirements():
 
 
 @jarvis.on(admin_cmd(pattern="update ?(.*)"))
+@jarvis.on(admin_cmd(pattern="update ?(.*)",allow_sudo=True))
 async def upstream(ups):
     "For .update command, check if the bot is up to date, update if specified"
-    await ups.edit("`Searching for new updates, if any...`")
+    await ups.reply("`Searching for new updates, if any...`")
     conf = ups.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_updateme = False
@@ -62,16 +63,16 @@ async def upstream(ups):
         txt += "some problems occured`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await ups.edit(f'{txt}\n`directory {error} is not found`')
+        await ups.reply(f'{txt}\n`directory {error} is not found`')
         repo.__del__()
         return
     except GitCommandError as error:
-        await ups.edit(f'{txt}\n`Early failure! {error}`')
+        await ups.reply(f'{txt}\n`Early failure! {error}`')
         repo.__del__()
         return
     except InvalidGitRepositoryError as error:
         if conf != "now":
-            await ups.edit(
+            await ups.reply(
                 f"**Unfortunately, the directory {error} does not seem to be a git repository.\
                 \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
             \nBut we can fix that by force updating the userbot using** `.update now`."
@@ -87,7 +88,7 @@ async def upstream(ups):
 
     ac_br = repo.active_branch.name
     if ac_br != 'stable':
-        await ups.edit(
+        await ups.reply(
             f'**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). '
             'in that case, Updater is unable to identify '
              'which branch is to be merged. '
@@ -106,7 +107,7 @@ async def upstream(ups):
     changelog = await gen_chlog(repo, f'HEAD..upstream/{ac_br}')
 
     if not changelog and not force_updateme:
-        await ups.edit(
+        await ups.reply(
             f'\n`Your BOT is`  **up-to-date**  `with`  **[[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br})**\n')
         repo.__del__()
         return
@@ -114,7 +115,7 @@ async def upstream(ups):
     if conf != "now" and not force_updateme:
         changelog_str = f'**New UPDATE available for [[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br}):**\n\n' + '**CHANGELOG**\n\n' + f'{changelog}'
         if len(changelog_str) > 4096:
-            await ups.edit("`Changelog is too big, view the file to see it.`")
+            await ups.reply("`Changelog is too big, view the file to see it.`")
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -125,15 +126,15 @@ async def upstream(ups):
             )
             remove("changelogs.txt")
         else:
-            await ups.edit(changelog_str)
+            await ups.reply(changelog_str)
         await ups.respond(f'Do `.update now` to update')
         return
 
     if force_updateme:
-        await ups.edit(
+        await ups.reply(
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
-        await ups.edit('`Updating userbot, please wait....`')
+        await ups.reply('`Updating userbot, please wait....`')
     # We're in a Heroku Dyno, handle it's memez.
     if Var.HEROKU_API_KEY is not None:
         import heroku3
@@ -141,7 +142,7 @@ async def upstream(ups):
         heroku_app = None
         heroku_applications = heroku.apps()
         if not Var.HEROKU_APP_NAME:
-            await ups.edit('`Please set up the HEROKU_APP_NAME variable to be able to update userbot.`')
+            await ups.reply('`Please set up the HEROKU_APP_NAME variable to be able to update userbot.`')
             repo.__del__()
             return
         for app in heroku_applications:
@@ -149,12 +150,12 @@ async def upstream(ups):
                 heroku_app = app
                 break
         if heroku_app is None:
-            await ups.edit(
+            await ups.reply(
                 f'{txt}\n`Invalid Heroku credentials for updating userbot dyno.`'
             )
             repo.__del__()
             return
-        await ups.edit('`Userbot dyno build in progress, please wait for it to complete.`'
+        await ups.reply('`Userbot dyno build in progress, please wait for it to complete.`'
                        )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -168,10 +169,10 @@ async def upstream(ups):
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
         except GitCommandError as error:
-            await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
+            await ups.reply(f'{txt}\n`Here is the error log:\n{error}`')
             repo.__del__()
             return
-        await ups.edit('`Successfully Updated!\n'
+        await ups.reply('`Successfully Updated!\n'
                        'Restarting, please wait...`')
     else:
         # Classic Updater, pretty straightforward.
@@ -180,7 +181,7 @@ async def upstream(ups):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
-        await ups.edit('`Successfully Updated!\n'
+        await ups.reply('`Successfully Updated!\n'
                        'Bot is restarting... Wait for a second!`')
         # Spin a new instance of bot
         args = [sys.executable, "-m", "stdborg"]

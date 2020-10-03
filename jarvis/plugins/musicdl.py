@@ -8,14 +8,15 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd("sdd ?(.*)"))
+@jarvis.on(admin_cmd(pattern="sdd ?(')", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     d_link = event.pattern_match.group(1)
     if ".com" not in d_link:
-        await event.edit("` I need a link to download something pro.`**(._.)**")
+        await event.reply("` I need a link to download something pro.`**(._.)**")
     else:
-        await event.edit("🎶**Initiating Download!**🎶")
+        await event.reply("🎶**Initiating Download!**🎶")
     bot = "@DeezLoadBot"
     
     async with borg.conversation("@DeezLoadBot") as conv:
@@ -31,7 +32,7 @@ async def _(event):
               await borg.send_message(event.chat_id, details)
               await conv.get_response()
               songh = await conv.get_response()
-              await borg.send_file(event.chat_id, songh, caption="🔆**Here's the requested song!**🔆\n`Check out` [Friday userbot](https://github.com/StarkGang/FridayUserbot)")
+              await borg.send_file(event.chat_id, songh, caption="🔆**Here's the requested song!**🔆\n`Check out` [JARVIS Userbot](https://github.com/Jarvis-Works/JarvisUserbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
+              await event.reply("**Error:** `unblock` @DeezLoadBot `and retry!`")

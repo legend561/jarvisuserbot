@@ -69,12 +69,13 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 #@register(outgoing=True, pattern="^.setgpic$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"setgpic"))
 @jarvis.on(admin_cmd(pattern=r"setgpic", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     if not gpic.is_group:
-        await gpic.edit("`I don't think this is a group.`")
+        await gpic.reply("`I don't think this is a group.`")
         return
     replymsg = await gpic.get_reply_message()
     chat = await gpic.get_chat()
@@ -83,7 +84,7 @@ async def set_group_photo(gpic):
     photo = None
 
     if not admin and not creator:
-        await gpic.edit(NO_ADMIN)
+        await gpic.reply(NO_ADMIN)
         return
 
     if replymsg and replymsg.media:
@@ -92,22 +93,23 @@ async def set_group_photo(gpic):
         elif "image" in replymsg.media.document.mime_type.split('/'):
             photo = await gpic.client.download_file(replymsg.media.document)
         else:
-            await gpic.edit(INVALID_MEDIA)
+            await gpic.reply(INVALID_MEDIA)
 
     if photo:
         try:
             await gpic.client(
-                EditPhotoRequest(gpic.chat_id, await
+                replyPhotoRequest(gpic.chat_id, await
                                  gpic.client.upload_file(photo)))
-            await gpic.edit(CHAT_PP_CHANGED)
+            await gpic.reply(CHAT_PP_CHANGED)
 
         except PhotoCropSizeSmallError:
-            await gpic.edit(PP_TOO_SMOL)
+            await gpic.reply(PP_TOO_SMOL)
         except ImageProcessFailedError:
-            await gpic.edit(PP_ERROR)
+            await gpic.reply(PP_ERROR)
 
 
 #@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -120,7 +122,7 @@ async def promote(promt):
 
     # If not admin and not creator, also return
     if not admin and not creator:
-        await promt.edit(NO_ADMIN)
+        await promt.reply(NO_ADMIN)
         return
 
     new_rights = ChatAdminRights(add_admins=False,
@@ -130,7 +132,7 @@ async def promote(promt):
                                  delete_messages=True,
                                  pin_messages=True)
 
-    await promt.edit("`Promoting...`")
+    await promt.reply("`Promoting...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "MemeMaster"  # Just in case.
@@ -142,13 +144,13 @@ async def promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(
-            EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully! Now gib Party 🥳`")
+            replyAdminRequest(promt.chat_id, user.id, new_rights, rank))
+        await promt.reply("`Promoted Successfully! Now gib Party 🥳`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
     except BadRequestError:
-        await promt.edit(NO_PERM)
+        await promt.reply(NO_PERM)
         return
 
     # Announce to the logging group if we have promoted successfully
@@ -160,6 +162,7 @@ async def promote(promt):
 
 
 #@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"demote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
@@ -170,11 +173,11 @@ async def demote(dmod):
     creator = chat.creator
 
     if not admin and not creator:
-        await dmod.edit(NO_ADMIN)
+        await dmod.reply(NO_ADMIN)
         return
 
     # If passing, declare that we're going to demote
-    await dmod.edit("`Demoting...`")
+    await dmod.reply("`Demoting...`")
     rank = "admeme"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -190,17 +193,17 @@ async def demote(dmod):
                                 ban_users=None,
                                 delete_messages=None,
                                 pin_messages=None)
-    # Edit Admin Permission
+    # reply Admin Permission
     try:
         await dmod.client(
-            EditAdminRequest(dmod.chat_id, user.id, newrights, rank))
+            replyAdminRequest(dmod.chat_id, user.id, newrights, rank))
 
     # If we catch BadRequestError from Telethon
     # Assume we don't have permission to demote
     except BadRequestError:
-        await dmod.edit(NO_PERM)
+        await dmod.reply(NO_PERM)
         return
-    await dmod.edit("`Demoted this retard Successfully!`")
+    await dmod.reply("`Demoted this retard Successfully!`")
 
     # Announce to the logging group if we have demoted successfully
     if BOTLOG:
@@ -212,6 +215,7 @@ async def demote(dmod):
 
 #@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
 @jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"ban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -222,7 +226,7 @@ async def ban(bon):
 
     # Well
     if not admin and not creator:
-        await bon.edit(NO_ADMIN)
+        await bon.reply(NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(bon)
@@ -232,13 +236,13 @@ async def ban(bon):
         return
 
     # Announce that we're going to whack the pest
-    await bon.edit("`Whacking the pest!`")
+    await bon.reply("`Whacking the pest!`")
 
     try:
-        await bon.client(EditBannedRequest(bon.chat_id, user.id,
+        await bon.client(replyBannedRequest(bon.chat_id, user.id,
                                            BANNED_RIGHTS))
     except BadRequestError:
-        await bon.edit(NO_PERM)
+        await bon.reply(NO_PERM)
         return
     # Helps ban group join spammers more easily
     try:
@@ -246,16 +250,16 @@ async def ban(bon):
         if reply:
             await reply.delete()
     except BadRequestError:
-        await bon.edit(
+        await bon.reply(
             "`I dont have message nuking rights! But still he was banned!`")
         return
     # Delete message and then tell that the command
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
     if reason:
-        await bon.edit(f"Loser `{str(user.id)}` was banned !!\nReason: {reason}")
+        await bon.reply(f"Loser `{str(user.id)}` was banned !!\nReason: {reason}")
     else:
-        await bon.edit(f"Bitch `{str(user.id)}` was banned !!")
+        await bon.reply(f"Bitch `{str(user.id)}` was banned !!")
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
@@ -266,6 +270,7 @@ async def ban(bon):
 
 
 #@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"unban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
@@ -277,11 +282,11 @@ async def nothanos(unbon):
 
     # Well
     if not admin and not creator:
-        await unbon.edit(NO_ADMIN)
+        await unbon.reply(NO_ADMIN)
         return
 
     # If everything goes well...
-    await unbon.edit("`Unbanning...`")
+    await unbon.reply("`Unbanning...`")
 
     user = await get_user_from_event(unbon)
     user = user[0]
@@ -292,8 +297,8 @@ async def nothanos(unbon):
 
     try:
         await unbon.client(
-            EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await unbon.edit("```Unbanned Successfully. Granting another chance.```")
+            replyBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
+        await unbon.reply("```Unbanned Successfully. Granting another chance.```")
 
         if BOTLOG:
             await unbon.client.send_message(
@@ -301,10 +306,11 @@ async def nothanos(unbon):
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)")
     except UserIdInvalidError:
-        await unbon.edit("`Uh oh my unban logic broke!`")
+        await unbon.reply("`Uh oh my unban logic broke!`")
 
 
 #@register(outgoing=True, pattern="^.mute(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"mute(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"mute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def spider(spdr):
@@ -315,7 +321,7 @@ async def spider(spdr):
     try:
         from jarvis.modules.sql_helper.spam_mute_sql import mute
     except AttributeError:
-        await spdr.edit(NO_SQL)
+        await spdr.reply(NO_SQL)
         return
 
     # Admin or creator check
@@ -325,7 +331,7 @@ async def spider(spdr):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await spdr.edit(NO_ADMIN)
+        await spdr.reply(NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(spdr)
@@ -337,24 +343,24 @@ async def spider(spdr):
     self_user = await spdr.client.get_me()
 
     if user.id == self_user.id:
-        await spdr.edit(
+        await spdr.reply(
             "`Hands too short, can't duct tape myself...\n(ヘ･_･)ヘ┳━┳`")
         return
 
     # If everything goes well, do announcing and mute
-    await spdr.edit("`Gets a tape!`")
+    await spdr.reply("`Gets a tape!`")
     if mute(spdr.chat_id, user.id) is False:
-        return await spdr.edit('`Error! User probably already muted.`')
+        return await spdr.reply('`Error! User probably already muted.`')
     else:
         try:
             await spdr.client(
-                EditBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
+                replyBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
 
             # Announce that the function is done
             if reason:
-                await spdr.edit(f"`Safely taped !!`\nReason: {reason}")
+                await spdr.reply(f"`Safely taped !!`\nReason: {reason}")
             else:
-                await spdr.edit("`Safely taped !!`")
+                await spdr.reply("`Safely taped !!`")
 
             # Announce to logging group
             if BOTLOG:
@@ -363,11 +369,12 @@ async def spider(spdr):
                     f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                     f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)")
         except UserIdInvalidError:
-            return await spdr.edit("`Uh oh my mute logic broke!`")
+            return await spdr.reply("`Uh oh my mute logic broke!`")
 
 
 #@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
 @jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"unmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -378,18 +385,18 @@ async def unmoot(unmot):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await unmot.edit(NO_ADMIN)
+        await unmot.reply(NO_ADMIN)
         return
 
     # Check if the function running under SQL mode
     try:
         from jarvis.modules.sql_helper.spam_mute_sql import unmute
     except AttributeError:
-        await unmot.edit(NO_SQL)
+        await unmot.reply(NO_SQL)
         return
 
     # If admin or creator, inform the user and start unmuting
-    await unmot.edit('```Unmuting...```')
+    await unmot.reply('```Unmuting...```')
     user = await get_user_from_event(unmot)
     user = user[0]
     if user:
@@ -398,15 +405,15 @@ async def unmoot(unmot):
         return
 
     if unmute(unmot.chat_id, user.id) is False:
-        return await unmot.edit("`Error! User probably already unmuted.`")
+        return await unmot.reply("`Error! User probably already unmuted.`")
     else:
 
         try:
             await unmot.client(
-                EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
-            await unmot.edit("```Unmuted Successfully```")
+                replyBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
+            await unmot.reply("```Unmuted Successfully```")
         except UserIdInvalidError:
-            await unmot.edit("`Uh oh my unmute logic broke!`")
+            await unmot.reply("`Uh oh my unmute logic broke!`")
             return
 
         if BOTLOG:
@@ -442,13 +449,14 @@ async def muter(moot):
             if str(i.sender) == str(moot.sender_id):
                 await moot.delete()
                 await moot.client(
-                    EditBannedRequest(moot.chat_id, moot.sender_id, rights))
+                    replyBannedRequest(moot.chat_id, moot.sender_id, rights))
     for i in gmuted:
         if i.sender == str(moot.sender_id):
             await moot.delete()
 
 
 #@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ungmoot(un_gmute):
@@ -460,14 +468,14 @@ async def ungmoot(un_gmute):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await un_gmute.edit(NO_ADMIN)
+        await un_gmute.reply(NO_ADMIN)
         return
 
     # Check if the function running under SQL mode
     try:
         from jarvis.modules.sql_helper.gmute_sql import ungmute
     except AttributeError:
-        await un_gmute.edit(NO_SQL)
+        await un_gmute.reply(NO_SQL)
         return
 
     user = await get_user_from_event(un_gmute)
@@ -478,13 +486,13 @@ async def ungmoot(un_gmute):
         return
 
     # If pass, inform and start ungmuting
-    await un_gmute.edit('```Ungmuting...```')
+    await un_gmute.reply('```Ungmuting...```')
 
     if ungmute(user.id) is False:
-        await un_gmute.edit("`Error! User probably not gmuted.`")
+        await un_gmute.reply("`Error! User probably not gmuted.`")
     else:
         # Inform about success
-        await un_gmute.edit("```Ungmuted Successfully```")
+        await un_gmute.reply("```Ungmuted Successfully```")
 
         if BOTLOG:
             await un_gmute.client.send_message(
@@ -494,6 +502,7 @@ async def ungmoot(un_gmute):
 
 
 #@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"gmute(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"gmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def gspider(gspdr):
@@ -505,14 +514,14 @@ async def gspider(gspdr):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await gspdr.edit(NO_ADMIN)
+        await gspdr.reply(NO_ADMIN)
         return
 
     # Check if the function running under SQL mode
     try:
         from jarvis.modules.sql_helper.gmute_sql import gmute
     except AttributeError:
-        await gspdr.edit(NO_SQL)
+        await gspdr.reply(NO_SQL)
         return
 
     user, reason = await get_user_from_event(gspdr)
@@ -522,15 +531,15 @@ async def gspider(gspdr):
         return
 
     # If pass, inform and start gmuting
-    await gspdr.edit("`Grabs a huge, sticky duct tape!`")
+    await gspdr.reply("`Grabs a huge, sticky duct tape!`")
     if gmute(user.id) is False:
-        await gspdr.edit(
+        await gspdr.reply(
             '`Error! User probably already gmuted.\nRe-rolls the tape.`')
     else:
         if reason:
-            await gspdr.edit(f"`Globally taped!`Reason: {reason}")
+            await gspdr.reply(f"`Globally taped!`Reason: {reason}")
         else:
-            await gspdr.edit("`Globally taped!`")
+            await gspdr.reply("`Globally taped!`")
 
         if BOTLOG:
             await gspdr.client.send_message(
@@ -540,19 +549,20 @@ async def gspider(gspdr):
 
 
 #@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"delusers(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
     if not show.is_group:
-        await show.edit("`I don't think this is a group.`")
+        await show.reply("`I don't think this is a group.`")
         return
     con = show.pattern_match.group(1)
     del_u = 0
     del_status = "`No deleted accounts found, Group is cleaned as Hell`"
 
     if con != "clean":
-        await show.edit("`Searching for zombie accounts...`")
+        await show.reply("`Searching for zombie accounts...`")
         async for user in show.client.iter_participants(show.chat_id,
                                                         aggressive=True):
             if user.deleted:
@@ -562,7 +572,7 @@ async def rm_deletedacc(show):
             del_status = f"Found **{del_u}** deleted account(s) in this group,\
             \nclean them by using .delusers clean"
 
-        await show.edit(del_status)
+        await show.reply(del_status)
         return
 
     # Here laying the sanity check
@@ -572,10 +582,10 @@ async def rm_deletedacc(show):
 
     # Well
     if not admin and not creator:
-        await show.edit("`I am not an admin here!`")
+        await show.reply("`I am not an admin here!`")
         return
 
-    await show.edit("`Deleting deleted accounts...\nOh I can do that?!?!`")
+    await show.reply("`Deleting deleted accounts...\nOh I can do that?!?!`")
     del_u = 0
     del_a = 0
 
@@ -583,15 +593,15 @@ async def rm_deletedacc(show):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
+                    replyBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
-                await show.edit("`I don't have ban rights in this group`")
+                await show.reply("`I don't have ban rights in this group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
             await show.client(
-                EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+                replyBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
     if del_u > 0:
@@ -601,7 +611,7 @@ async def rm_deletedacc(show):
         del_status = f"Cleaned **{del_u}** deleted account(s) \
         \n**{del_a}** deleted admin accounts are not removed"
 
-    await show.edit(del_status)
+    await show.reply(del_status)
     await sleep(2)
     await show.delete()
 
@@ -613,6 +623,7 @@ async def rm_deletedacc(show):
 
 
 #@register(outgoing=True, pattern="^.adminlist$")
+@jarvis.on(admin_cmd(pattern=r"adminlist"))
 @jarvis.on(admin_cmd(pattern=r"adminlist", allow_sudo=True))
 @errors_handler
 async def get_admin(show):
@@ -631,10 +642,11 @@ async def get_admin(show):
                 mentions += f"\nDeleted Account <code>{user.id}</code>"
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
-    await show.edit(mentions, parse_mode="html")
+    await show.reply(mentions, parse_mode="html")
 
 
 #@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+@jarvis.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
 @jarvis.on(admin_cmd(pattern=r"pin(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def pin(msg):
@@ -646,13 +658,13 @@ async def pin(msg):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await msg.edit(NO_ADMIN)
+        await msg.reply(NO_ADMIN)
         return
 
     to_pin = msg.reply_to_msg_id
 
     if not to_pin:
-        await msg.edit("`Reply to a message to pin it.`")
+        await msg.reply("`Reply to a message to pin it.`")
         return
 
     options = msg.pattern_match.group(1)
@@ -666,10 +678,10 @@ async def pin(msg):
         await msg.client(
             UpdatePinnedMessageRequest(msg.to_id, to_pin, is_silent))
     except BadRequestError:
-        await msg.edit(NO_PERM)
+        await msg.reply(NO_PERM)
         return
 
-    await msg.edit("`Pinned Successfully!`")
+    await msg.reply("`Pinned Successfully!`")
 
     user = await get_user_from_id(msg.from_id, msg)
 
@@ -683,6 +695,7 @@ async def pin(msg):
 
 #@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 @jarvis.on(admin_cmd(pattern=r"kick(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"kick(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -693,29 +706,29 @@ async def kick(usr):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await usr.edit(NO_ADMIN)
+        await usr.reply(NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(usr)
     if not user:
-        await usr.edit("`Couldn't fetch user.`")
+        await usr.reply("`Couldn't fetch user.`")
         return
 
-    await usr.edit("`Kicking...`")
+    await usr.reply("`Kicking...`")
 
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(.5)
     except Exception as e:
-        await usr.edit(NO_PERM + f"\n{str(e)}")
+        await usr.reply(NO_PERM + f"\n{str(e)}")
         return
 
     if reason:
-        await usr.edit(
+        await usr.reply(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await usr.edit(
+        await usr.reply(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
 
     if BOTLOG:
@@ -726,6 +739,7 @@ async def kick(usr):
 
 
 #@register(outgoing=True, pattern="^.users ?(.*)")
+@jarvis.on(admin_cmd(pattern=r"users ?(.*)"))
 @jarvis.on(admin_cmd(pattern=r"users ?(.*)", allow_sudo=True))
 @errors_handler
 async def get_users(show):
@@ -751,9 +765,9 @@ async def get_users(show):
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
     try:
-        await show.edit(mentions)
+        await show.reply(mentions)
     except MessageTooLongError:
-        await show.edit(
+        await show.reply(
             "Damn, this is a huge group. Uploading users lists as file.")
         file = open("userslist.txt", "w+")
         file.write(mentions)
@@ -784,7 +798,7 @@ async def get_user_from_event(event):
             user = int(user)
 
         if not user:
-            await event.edit("`Pass the user's username, id or reply!`")
+            await event.reply("`Pass the user's username, id or reply!`")
             return
 
         if event.message.entities is not None:
@@ -798,7 +812,7 @@ async def get_user_from_event(event):
         try:
             user_obj = await event.client.get_entity(user)
         except (TypeError, ValueError) as err:
-            await event.edit(str(err))
+            await event.reply(str(err))
             return None
 
     return user_obj, extra
@@ -811,7 +825,7 @@ async def get_user_from_id(user, event):
     try:
         user_obj = await event.client.get_entity(user)
     except (TypeError, ValueError) as err:
-        await event.edit(str(err))
+        await event.reply(str(err))
         return None
 
     return user_obj

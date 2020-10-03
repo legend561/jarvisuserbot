@@ -11,15 +11,16 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="img ?(.*)"))
+@jarvis.on(admin_cmd(pattern="img ?(.*)", allow_sudo=True))
 async def img_sampler(event):
-    await event.edit("`Processing...`")
+    await event.reply("`Processing...`")
     reply = await event.get_reply_message()
     if event.pattern_match.group(1):
         query = event.pattern_match.group(1)
     elif reply:
         query = reply.message
     else:
-    	await event.edit("`um, mind mentioning what I actually need to search for ;_;`")
+    	await event.reply("`um, mind mentioning what I actually need to search for ;_;`")
     	return
         
     lim = findall(r"lim=\d+", query)

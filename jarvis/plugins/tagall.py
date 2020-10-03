@@ -8,6 +8,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern=r"tagall", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"tagall", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,6 +21,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"admin", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"admin", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -5,11 +5,8 @@ Credits to noone
 """
 
 from telethon import events
-
 import asyncio
-
 from jarvis.utils import admin_cmd
-
 @jarvis.on(admin_cmd("supporthelp"))
 async def _(event):
     if event.fwd_from:

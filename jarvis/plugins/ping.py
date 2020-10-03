@@ -47,12 +47,11 @@ def get_readable_time(seconds: int) -> str:
 
 #@command(pattern="^.ping$")
 @jarvis.on(admin_cmd(pattern="ping$"))
+@jarvis.on(admin_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    await event.edit("Pong!✌️")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
-    await event.edit(f"✭𝕄𝕪 𝕡𝕚𝕟𝕘▬⇩\n▀▄▀▄  𝙎𝙥𝙚𝙚𝙙 ➯  ")
-    await event.edit(f"Pong! 🎾 {ms} 💎️")
+    await event.reply(f"Pong! 🎾 {ms} 💎️")

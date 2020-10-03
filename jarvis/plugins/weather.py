@@ -10,6 +10,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="weathers (.*)"))
+@jarvis.on(admin_cmd(pattern="weathers (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +24,7 @@ async def _(event):
         country_time_zone = int(response_api["timezone"])
         sun_rise_time = int(response_api["sys"]["sunrise"]) + country_time_zone
         sun_set_time = int(response_api["sys"]["sunset"]) + country_time_zone
-        await event.edit(
+        await event.reply(
             """{}
 **Temperature**: {}°С
     __minimium__: {}°С
@@ -48,7 +49,7 @@ async def _(event):
             )
         )
     else:
-        await event.edit(response_api["message"])
+        await event.reply(response_api["message"])
 
 
 @jarvis.on(admin_cmd(pattern="wttr (.*)"))
@@ -66,4 +67,4 @@ async def _(event):
             await event.reply(
                 file=out_file
             )
-    await event.edit(input_str)
+    await event.reply(input_str)

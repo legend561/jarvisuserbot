@@ -17,8 +17,9 @@ GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="lyrics (.*)"))
+@jarvis.on(admin_cmd(pattern="lyrics (.*)", allow_sudo=True))
 async def _(event):
-    await event.edit("wi8..! I am searching your lyrics....`")
+    await event.reply("wi8..! I am searching your lyrics....`")
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
@@ -28,7 +29,7 @@ async def _(event):
     elif reply.text:
         query = reply.message
     else:
-    	await event.edit("`What I am Supposed to find `")
+    	await event.reply("`What I am Supposed to find `")
     	return
     
     song = ""
@@ -54,19 +55,19 @@ async def _(event):
             )
             await event.delete()
     else:
-        await event.edit(reply)       
+        await event.reply(reply)       
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
 async def lyrics(lyric):
     if r"-" in lyric.text:
         pass
     else:
-        await lyric.edit("Error: please use '-' as divider for <artist> and <song>\n"
+        await lyric.reply("Error: please use '-' as divider for <artist> and <song>\n"
                          "eg: `.lyrics Nicki Minaj - Super Bass`")
         return
 
     if GENIUS is None:
-        await lyric.edit(
+        await lyric.reply(
             "`Provide genius access token to config.py or Heroku Var first kthxbye!`")
     else:
         genius = lyricsgenius.Genius(GENIUS)
@@ -75,14 +76,14 @@ async def lyrics(lyric):
             artist = args[0].strip(' ')
             song = args[1].strip(' ')
         except Exception:
-            await lyric.edit("`LMAO please provide artist and song names`")
+            await lyric.reply("`LMAO please provide artist and song names`")
             return
 
     if len(args) < 1:
-        await lyric.edit("`Please provide artist and song names`")
+        await lyric.reply("`Please provide artist and song names`")
         return
 
-    await lyric.edit(f"`Searching lyrics for {artist} - {song}...`")
+    await lyric.reply(f"`Searching lyrics for {artist} - {song}...`")
 
     try:
         songs = genius.search_song(song, artist)
@@ -90,10 +91,10 @@ async def lyrics(lyric):
         songs = None
 
     if songs is None:
-        await lyric.edit(f"Song **{artist} - {song}** not found!")
+        await lyric.reply(f"Song **{artist} - {song}** not found!")
         return
     if len(songs.lyrics) > 4096:
-        await lyric.edit("`Lyrics is too big, view the file to see it.`")
+        await lyric.reply("`Lyrics is too big, view the file to see it.`")
         with open("lyrics.txt", "w+") as f:
             f.write(f"Search query: \n{artist} - {song}\n\n{songs.lyrics}")
         await lyric.client.send_file(
@@ -103,7 +104,7 @@ async def lyrics(lyric):
             )
         os.remove("lyrics.txt")
     else:
-        await lyric.edit(f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```")
+        await lyric.reply(f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```")
     return
 
 

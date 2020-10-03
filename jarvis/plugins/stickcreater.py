@@ -13,6 +13,7 @@ from jarvis.utils import admin_cmd
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 @jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)",allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)
@@ -28,7 +29,7 @@ async def sticklet(event):
         reply_message = await event.get_reply_message()
         sticktext = reply_message.message
     elif not sticktext:
-        await event.edit("need something, hmm")
+        await event.reply("need something, hmm")
         return
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
@@ -50,7 +51,7 @@ async def sticklet(event):
     width, height = draw.multiline_textsize(sticktext, font=font)
     draw.multiline_text(((512-width)/2,(512-height)/2), sticktext, font=font, fill=(R, G, B))
     image_stream = io.BytesIO()
-    image_stream.name = "@mrconfused.webp"
+    image_stream.name = "@jarvisot.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker

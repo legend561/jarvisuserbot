@@ -9,15 +9,16 @@ from jarvis.utils import admin_cmd, progress
 
 
 @jarvis.on(admin_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="convert (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit("reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot")
+        await event.reply("reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot")
         return
-    await event.edit("trying to download media file, to my local")
+    await event.reply("trying to download media file, to my local")
     try:
         start = datetime.now()
         c_time = time.time()
@@ -29,11 +30,11 @@ async def _(event):
             )
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
+        await event.reply(str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+        await event.reply("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
         new_required_file_name = ""
         new_required_file_caption = ""
         command_to_run = []
@@ -72,7 +73,7 @@ async def _(event):
             voice_note = False
             supports_streaming = True
         else:
-            await event.edit("not supported")
+            await event.reply("not supported")
             os.remove(downloaded_file_name)
             return
         logger.info(command_to_run)
@@ -105,4 +106,4 @@ async def _(event):
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
-            await event.edit(f"converted in {ms_two} seconds")
+            await event.reply(f"converted in {ms_two} seconds")

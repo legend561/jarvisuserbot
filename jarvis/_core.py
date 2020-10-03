@@ -15,6 +15,7 @@ jarvis = bot
 DELETE_TIMEOUT = 5
 
 @jarvis.on(admin_cmd(pattern="install", outgoing=True))
+@jarvis.on(admin_cmd(pattern="install", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return
@@ -28,17 +29,18 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit("Installed Plugin `{}`".format(os.path.basename(downloaded_file_name)))
+                await event.reply("Installed Plugin `{}`".format(os.path.basename(downloaded_file_name)))
             else:
                 os.remove(downloaded_file_name)
-                await event.edit("Errors! This plugin is already installed/pre-installed.")
+                await event.reply("Errors! This plugin is already installed/pre-installed.")
         except Exception as e:  # pylint:disable=C0103,W0703
-            await event.edit(str(e))
+            await event.reply(str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
 @jarvis.on(admin_cmd(pattern="send (?P<shortname>\w+)$", outgoing=True))
+@jarvis.on(admin_cmd(pattern="send (?P<shortname>\w+)$", allow_sudo=True))
 async def send(event):
     if event.fwd_from:
         return
@@ -55,22 +57,24 @@ async def send(event):
     )
     end = datetime.now()
     time_taken_in_ms = (end - start).seconds
-    await event.edit("Uploaded {} in {} seconds".format(input_str, time_taken_in_ms))
+    await event.reply("Uploaded {} in {} seconds".format(input_str, time_taken_in_ms))
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
 @jarvis.on(admin_cmd(pattern="unload (?P<shortname>\w+)$", outgoing=True))
+@jarvis.on(admin_cmd(pattern="unload (?P<shortname>\w+)$", allow_sudo=True))
 async def unload(event):
     if event.fwd_from:
         return
     shortname = event.pattern_match["shortname"]
     try:
         remove_plugin(shortname)
-        await event.edit(f"Unloaded {shortname} successfully")
+        await event.reply(f"Unloaded {shortname} successfully")
     except Exception as e:
-        await event.edit("Successfully unload {shortname}\n{}".format(shortname, str(e)))
+        await event.reply("Successfully unload {shortname}\n{}".format(shortname, str(e)))
 
 @jarvis.on(admin_cmd(pattern="load (?P<shortname>\w+)$", outgoing=True))
+@jarvis.on(admin_cmd(pattern="load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:
         return
@@ -81,6 +85,6 @@ async def load(event):
         except:
             pass
         load_module(shortname)
-        await event.edit(f"Successfully loaded {shortname}")
+        await event.reply(f"Successfully loaded {shortname}")
     except Exception as e:
-        await event.edit(f"Could not load {shortname} because of the following error.\n{str(e)}")
+        await event.reply(f"Could not load {shortname} because of the following error.\n{str(e)}")

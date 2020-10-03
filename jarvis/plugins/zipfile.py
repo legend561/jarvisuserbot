@@ -13,6 +13,7 @@ import os
 from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
 
 @jarvis.on(admin_cmd(pattern="compress ?(.*)"))
+@jarvis.on(admin_cmd(pattern="compress ?(.*)",allow_sudo=True))
 
 async def _(event):
 
@@ -22,7 +23,7 @@ async def _(event):
 
     input_str = event.pattern_match.group(1)
 
-    mone = await event.edit("Processing ...")
+    mone = await event.reply("Processing ...")
 
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
@@ -48,7 +49,7 @@ async def _(event):
 
             directory_name = downloaded_file_name
 
-            await event.edit("Finish downloading to my local")
+            await event.reply("Finish downloading to my local")
 
             zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
 
@@ -58,7 +59,7 @@ async def _(event):
 
                 directory_name + ".zip",
 
-                caption="Zipped By [JARVIS](https://t.me/JARVISOT)",
+                caption="Zipped By [JARVIS](https://t.me/JarvisOT)",
 
                 force_document=True,
 
@@ -78,7 +79,7 @@ async def _(event):
 
                     pass
 
-            await event.edit("task Completed")
+            await event.reply("task Completed")
 
             await asyncio.sleep(3)
 
@@ -86,7 +87,7 @@ async def _(event):
 
         except Exception as e:  # pylint:disable=C0103,W0703
 
-            await mone.edit(str(e))
+            await mone.reply(str(e))
 
     elif input_str:
 
@@ -94,4 +95,4 @@ async def _(event):
 
         zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
 
-        await event.edit("Local file compressed to `{}`".format(directory_name + ".zip"))
+        await event.reply("Local file compressed to `{}`".format(directory_name + ".zip"))

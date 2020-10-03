@@ -7,6 +7,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="meaning (.*)"))
+@jarvis.on(admin_cmd(pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -41,4 +42,4 @@ async def _(event):
         )
     except:
         pass
-    await event.edit(caption_str)
+    await event.reply(caption_str)

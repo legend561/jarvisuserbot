@@ -12,6 +12,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="voice (.*)"))
+@jarvis.on(admin_cmd(pattern="voice (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -24,7 +25,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.edit("Invalid Syntax. Module stopping.")
+        await event.reply("Invalid Syntax. Module stopping.")
         return
     text = text.strip()
     lan = lan.strip()
@@ -52,7 +53,7 @@ async def _(event):
         try:
             t_response = subprocess.check_output(command_to_execute, stderr=subprocess.STDOUT)
         except (subprocess.CalledProcessError, NameError, FileNotFoundError) as exc:
-            await event.edit(str(exc))
+            await event.reply(str(exc))
             # continue sending required_file_name
         else:
             os.remove(required_file_name)
@@ -68,11 +69,11 @@ async def _(event):
             voice_note=True
         )
         os.remove(required_file_name)
-        await event.edit("Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms))
+        await event.reply("Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms))
         await asyncio.sleep(5)
         await event.delete()
     except Exception as e:
-        await event.edit(str(e))
+        await event.reply(str(e))
 
         
 CMD_HELP.update({

@@ -6,6 +6,7 @@ from telethon.tl.types import User, Chat, Channel
 from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd(pattern=r"stats"))
+@jarvis.on(admin_cmd(pattern=r"stats", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,7 +38,7 @@ async def _(event):
             print(d)
     end = datetime.now()
     ms = (end - start).seconds
-    await event.edit("""`Your Stats Obtained in {} seconds`
+    await event.reply("""`Your Stats Obtained in {} seconds`
 `You have {} Private Messages`
 `You are in {} Groups`
 `You are in {} Super Groups`

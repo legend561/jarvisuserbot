@@ -6,6 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("get_ad?(m)in ?(.*)"))
+@jarvis.on(admin_cmd(pattern="get_ad?(m)in ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -28,7 +29,7 @@ async def _(event):
         try:
             chat = await borg.get_entity(input_str)
         except Exception as e:
-            await event.edit(str(e))
+            await event.reply(str(e))
             return None
     try:
         async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
@@ -51,4 +52,4 @@ async def _(event):
             await event.reply(mentions)
         await event.delete()
     else:
-        await event.edit(mentions)
+        await event.reply(mentions)

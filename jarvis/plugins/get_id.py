@@ -6,6 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("get_id"))
+@jarvis.on(admin_cmd(pattern="get_id", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -14,8 +15,8 @@ async def _(event):
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await event.edit("Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(str(event.chat_id), str(r_msg.from_id), bot_api_file_id))
+            await event.reply("Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(str(event.chat_id), str(r_msg.from_id), bot_api_file_id))
         else:
-            await event.edit("Current Chat ID: `{}`\nFrom User ID: `{}`".format(str(event.chat_id), str(r_msg.from_id)))
+            await event.reply("Current Chat ID: `{}`\nFrom User ID: `{}`".format(str(event.chat_id), str(r_msg.from_id)))
     else:
-        await event.edit("Current Chat ID: `{}`".format(str(event.chat_id)))
+        await event.reply("Current Chat ID: `{}`".format(str(event.chat_id)))

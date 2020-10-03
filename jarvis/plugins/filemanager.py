@@ -10,6 +10,7 @@ import io
 import asyncio
 import time
 import os
+from jarvis.utils import admin_cmd
 
 if not os.path.isdir("./SAVED"):
      os.makedirs("./SAVED")
@@ -17,6 +18,7 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
      os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 @jarvis.on(events.NewMessage(pattern=r"\.lslocal", outgoing=True))
+@jarvis.on(admin_cmd(pattern="\.lslocal", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -34,7 +36,7 @@ async def _(event):
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
-    OUTPUT = f"**Files in [FRIDAY](tg://FridayOT/) DOWNLOADS Folder:**\n"
+    OUTPUT = f"**Files in [JARVIS](tg://JarvisOT/) DOWNLOADS Folder:**\n"
     stdout, stderr = await process.communicate()
     if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(stdout)) as out_file:
@@ -49,15 +51,16 @@ async def _(event):
             )
             await event.delete()
     if stderr.decode():
-        await event.edit(f"**{stderr.decode()}**")
+        await event.reply(f"**{stderr.decode()}**")
         return
-    await event.edit(f"{OUTPUT}`{stdout.decode()}`")
+    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
 #    else:
 #        await event.edit("Unknown Command")
 
 
 
 @jarvis.on(events.NewMessage(pattern=r"\.lsroot", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.lsroot", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,11 +90,12 @@ async def _(event):
             )
             await event.delete()
     if stderr.decode():
-        await event.edit(f"**{stderr.decode()}**")
+        await event.reply(f"**{stderr.decode()}**")
         return
-    await event.edit(f"{OUTPUT}`{stdout.decode()}`")
+    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
 	
 @jarvis.on(events.NewMessage(pattern=r"\.lssaved", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.lssaved", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -121,10 +125,11 @@ async def _(event):
             )
             await event.delete()
     if stderr.decode():
-        await event.edit(f"**{stderr.decode()}**")
+        await event.reply(f"**{stderr.decode()}**")
         return
-    await event.edit(f"{OUTPUT}`{stdout.decode()}`")
+    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
 @jarvis.on(events.NewMessage(pattern=r"\.rnsaved ?(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.rnsaved ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -158,11 +163,12 @@ async def _(event):
             )
             await event.delete()
     if stderr.decode():
-        await event.edit(f"**{stderr.decode()}**")
+        await event.reply(f"**{stderr.decode()}**")
         return
-    await event.edit(f"File renamed `{src}` to `{dst}`")
+    await event.reply(f"File renamed `{src}` to `{dst}`")
 	
 @jarvis.on(events.NewMessage(pattern=r"\.rnlocal ?(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.rnlocal (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -196,11 +202,12 @@ async def _(event):
             )
             await event.delete()
     if stderr.decode():
-        await event.edit(f"**{stderr.decode()}**")
+        await event.reply(f"**{stderr.decode()}**")
         return
-    await event.edit(f"File renamed `{src}` to `{dst}`")
+    await event.reply(f"File renamed `{src}` to `{dst}`")
         
 @jarvis.on(events.NewMessage(pattern=r"\.delsave (.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.delsave (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -210,12 +217,13 @@ async def handler(event):
 	
     if os.path.isfile(pathtofile):
      os.remove(pathtofile)
-     await event.edit("✅ File Deleted 🗑")
+     await event.reply("✅ File Deleted 🗑")
 	 
     else:
-         await event.edit("⛔️ File Not Found 😬")
+         await event.reply("⛔️ File Not Found 😬")
         
 @jarvis.on(events.NewMessage(pattern=r"\.delocal (.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.delocal (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -225,7 +233,7 @@ async def handler(event):
 	
     if os.path.isfile(pathtofile):
      os.remove(pathtofile)
-     await event.edit("✅ File Deleted 🗑")
+     await event.reply("✅ File Deleted 🗑")
 	 
     else:
-         await event.edit("⛔️ File Not Found 😬")
+         await event.reply("⛔️ File Not Found 😬")

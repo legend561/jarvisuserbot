@@ -6,6 +6,7 @@ from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("mention (.*)"))
+@jarvis.on(admin_cmd("mention (.*)", allow_sudo=True))
 async def _(event):
 	if event.fwd_from:
 		return	
@@ -17,7 +18,7 @@ async def _(event):
 		else:
 			replied_user = previous_message.from_id
 	else:
-		await event.edit("reply To Message")
+		await event.reply("reply To Message")
 	user_id = replied_user
 	caption = """<a href='tg://user?id={}'>{}</a>""".format(user_id, input_str)
-	await event.edit(caption, parse_mode="HTML")
+	await event.reply(caption, parse_mode="HTML")

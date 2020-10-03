@@ -15,16 +15,17 @@ from telethon import events
 from telethon.tl.types import DocumentAttributeVideo
 from jarvis.utils import admin_cmd, progress
 
-GIT_TEMP_DIR = "./userbot/temp/"
-@command(pattern="^.commit", outgoing=True)
+GIT_TEMP_DIR = "./jarvis/temp/"
+@jarvis.on(admin_cmd(pattern="commit", outgoing=True))
+@jarvis.on(admin_cmd(pattern="commit", allow_sudo=True))
 async def download(event):
     if event.fwd_from:
         return	
     if Var.GITHUB_ACCESS_TOKEN is None:
-        await event.edit("`Please ADD Proper Access Token from github.com`") 
+        await event.reply("`Please ADD Proper Access Token from github.com`") 
         return   
     if Var.GIT_REPO_NAME is None:
-        await event.edit("`Please ADD Proper Github Repo Name of your userbot`")
+        await event.reply("`Please ADD Proper Github Repo Name of your userbot`")
         return 
     mone = await event.reply("Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
@@ -44,8 +45,8 @@ async def download(event):
         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await mone.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
-        await mone.edit("Committing to Github....")
+        await mone.reply("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+        await mone.reply("Committing to Github....")
         await git_commit(downloaded_file_name, mone)
 
 async def git_commit(file_name,mone):        
@@ -64,20 +65,20 @@ async def git_commit(file_name,mone):
     for i in content_list:
         create_file = True
         if i == 'ContentFile(path="'+file_name+'")':
-            return await mone.edit("`File Already Exists`")
+            return await mone.reply("`File Already Exists`")
             create_file = False
-    file_name = "userbot/plugins/" + file_name		
+    file_name = "jarvis/plugins/" + file_name		
     if create_file == True:
-        file_name = file_name.replace("./userbot/temp/","")
+        file_name = file_name.replace("./jarvis/temp/","")
         print(file_name)
         try:
             repo.create_file(file_name, "Uploaded New Plugin", commit_data, branch="master")
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
-            await mone.edit(f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)")
+            await mone.reply(f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/stable/jarvis/plugins/)")
         except:    
             print("Cannot Create Plugin")
-            await mone.edit("Cannot Upload Plugin")
+            await mone.reply("Cannot Upload Plugin")
     else:
-        return await mone.edit("`Committed Suicide`")
+        return await mone.reply("`Committed Suicide`")

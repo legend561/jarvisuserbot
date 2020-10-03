@@ -18,6 +18,7 @@ def progress(current, total):
             (current / total) * 100))
 
 @jarvis.on(admin_cmd("npaste ?(.*)"))
+@jarvis.on(admin_cmd("cpin ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -46,7 +47,7 @@ async def _(event):
         else:
             message = previous_message.message
     else:
-        await event.edit("Give Some Text Or File To Paste")
+        await event.reply("Give Some Text Or File To Paste")
     py_file = ""
     name = "ok"
     if previous_message.media:
@@ -65,8 +66,8 @@ async def _(event):
                 "content": data}).json().get('result').get('key')
         url = f'https://nekobin.com/{key}{py_file}'
         raw = f'https://nekobin.com/raw/{key}{py_file}'
-        reply_text = f'Pasted Text [neko]({url})\n Raw ? [View Raw]({raw})'
-        await event.edit(reply_text)
+        reply_text = f'Pasted Text [Here]({url})\n Raw ? [View Raw]({raw})'
+        await event.reply(reply_text)
     else:
         data = message
         key = requests.post(
@@ -75,5 +76,5 @@ async def _(event):
                 "content": data}).json().get('result').get('key')
         url = f'https://nekobin.com/{key}'
         raw = f'https://nekobin.com/raw/{key}'
-        reply_text = f'Pasted Text [neko]({url})\n Raw ? [View Raw]({raw})'
-        await event.edit(reply_text)
+        reply_text = f' ~ Pasted Text [Here]({url})\n ~ Raw ? [View Raw]({raw})'
+        await event.reply(reply_text)
