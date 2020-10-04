@@ -35,7 +35,7 @@ Inspired By Friday
 
 The Easy Way
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/tree/stable)
 
 ##  GET STRING SESSION FROM REPL RUN
 
