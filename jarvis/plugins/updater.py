@@ -63,16 +63,16 @@ async def upstream(ups):
         txt += "some problems occured`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await ups.reply(f'{txt}\n`directory {error} is not found`')
+        await ups.edit(f'{txt}\n`directory {error} is not found`')
         repo.__del__()
         return
     except GitCommandError as error:
-        await ups.reply(f'{txt}\n`Early failure! {error}`')
+        await ups.edit(f'{txt}\n`Early failure! {error}`')
         repo.__del__()
         return
     except InvalidGitRepositoryError as error:
         if conf != "now":
-            await ups.reply(
+            await ups.edit(
                 f"**Unfortunately, the directory {error} does not seem to be a git repository.\
                 \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
             \nBut we can fix that by force updating the userbot using** `.update now`."
@@ -87,8 +87,8 @@ async def upstream(ups):
         repo.heads.master.checkout(True)
 
     ac_br = repo.active_branch.name
-    if ac_br != 'stable':
-        await ups.reply(
+    if ac_br != 'master':
+        await ups.edit(
             f'**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). '
             'in that case, Updater is unable to identify '
              'which branch is to be merged. '
