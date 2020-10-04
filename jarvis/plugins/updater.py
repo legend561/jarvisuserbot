@@ -107,7 +107,7 @@ async def upstream(ups):
     changelog = await gen_chlog(repo, f'HEAD..upstream/{ac_br}')
 
     if not changelog and not force_updateme:
-        await ups.edit(
+        await ups.reply(
             f'\n`Your BOT is`  **up-to-date**  `with`  **[[{ac_br}]]({UPSTREAM_REPO_URL}/tree/{ac_br})**\n')
         repo.__del__()
         return
