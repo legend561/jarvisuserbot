@@ -1,5 +1,5 @@
 # © By StarkGang™ And IndianBot™
-# For JARVIS
+# For F.r.i.d.a.y And Indianbot ™
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
@@ -17,7 +17,7 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from jarvis import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from jarvis.events import register
-from jarvis.utils import admin_cmd
+
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -30,8 +30,8 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-            ''.join(["⦿" for i in range(math.floor(percentage / 10))]),
-            ''.join(["⦾" for i in range(10 - math.floor(percentage / 10))]),
+            ''.join(["▰" for i in range(math.floor(percentage / 10))]),
+            ''.join(["▱" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2))
         tmp = progress_str + \
             "{0} of {1}\nETA: {2}".format(
@@ -40,10 +40,10 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
                 time_formatter(estimated_total_time)
             )
         if file_name:
-            await event.reply("{}\nFile Name: `{}`\n{}".format(
+            await event.edit("{}\nFile Name: `{}`\n{}".format(
                 type_of_ps, file_name, tmp))
         else:
-            await event.reply("{}\n{}".format(type_of_ps, tmp))
+            await event.edit("{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
@@ -78,10 +78,9 @@ def time_formatter(milliseconds: int) -> str:
 
 
 @register(pattern=r".dl(?: |$)(.*)", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"dl(?: |$)(.*)",allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
-    await target_file.reply("Processing using userbot server ( ◜‿◝ )♡")
+    await target_file.edit("Processing using userbot server ( ◜‿◝ )♡")
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -110,14 +109,14 @@ async def download(target_file):
             speed = downloader.get_speed()
             elapsed_time = round(diff) * 1000
             progress_str = "[{0}{1}] {2}%".format(
-                ''.join(["⦿" for i in range(math.floor(percentage / 10))]),
-                ''.join(["⦾"
+                ''.join(["▰" for i in range(math.floor(percentage / 10))]),
+                ''.join(["▱"
                          for i in range(10 - math.floor(percentage / 10))]),
                 round(percentage, 2))
             estimated_total_time = downloader.get_eta(human=True)
             try:
                 current_message = f"{status}..\
-                \nFOR : JARVIS™\
+                \nFOR : J.A.R.V.I.S™\
                 \nURL: {url}\
                 \nFile Name: {file_name}\
                 \n{progress_str}\
@@ -131,10 +130,10 @@ async def download(target_file):
             except Exception as e:
                 LOGS.info(str(e))
         if downloader.isSuccessful():
-            await target_file.reply("Downloaded to `{}` successfully !!".format(
+            await target_file.edit("Downloaded to `{}` successfully !!".format(
                 downloaded_file_name))
         else:
-            await target_file.reply("Incorrect URL\n{}".format(url))
+            await target_file.edit("Incorrect URL\n{}".format(url))
     elif target_file.reply_to_msg_id:
         try:
             c_time = time.time()
@@ -145,22 +144,21 @@ async def download(target_file):
                 ).create_task(
                     progress(d, t, target_file, c_time, "Downloading...")))
         except Exception as e:  # pylint:disable=C0103,W0703
-            await target_file.reply(str(e))
+            await target_file.edit(str(e))
         else:
-            await target_file.reply("Downloaded to `{}` successfully !!".format(
+            await target_file.edit("Downloaded to `{}` successfully !!".format(
                 downloaded_file_name))
     else:
-        await target_file.reply(
+        await target_file.edit(
             "Reply to a message to download to my local server.")
 
 
-@register(pattern=r"uploadir (.*)", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"uploadir(.*)",allow_sudo=True))
+@register(pattern=r".uploadir (.*)", outgoing=True)
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
     if os.path.exists(input_str):
-        await udir_event.reply("Downloading Using Userbot Server....")
+        await udir_event.edit("Downloading Using Userbot Server....")
         lst_of_files = []
         for r, d, f in os.walk(input_str):
             for file in f:
@@ -169,7 +167,7 @@ async def uploadir(udir_event):
                 lst_of_files.append(os.path.join(r, file))
         LOGS.info(lst_of_files)
         uploaded = 0
-        await udir_event.reply(
+        await udir_event.edit(
             "Found {} files. Uploading will start soon. Please wait!".format(
                 len(lst_of_files)))
         for single_file in lst_of_files:
@@ -225,20 +223,19 @@ async def uploadir(udir_event):
                                      single_file)))
                 os.remove(single_file)
                 uploaded = uploaded + 1
-        await udir_event.reply(
+        await udir_event.edit(
             "Uploaded {} files successfully !!".format(uploaded))
     else:
-        await udir_event.reply("404: Directory Not Found")
+        await udir_event.edit("404: Directory Not Found")
 
 
 @register(pattern=r".upload (.*)", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"upload (.*)",allow_sudo=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
-    await u_event.reply("Processing ...")
+    await u_event.edit("Processing ...")
     input_str = u_event.pattern_match.group(1)
     if input_str in ("userbot.session", "config.env"):
-        await u_event.reply("`That's a dangerous operation! Not Permitted!`")
+        await u_event.edit("`That's a dangerous operation! Not Permitted!`")
         return
     if os.path.exists(input_str):
         c_time = time.time()
@@ -251,9 +248,9 @@ async def upload(u_event):
             progress_callback=lambda d, t: asyncio.get_event_loop(
             ).create_task(
                 progress(d, t, u_event, c_time, "Uploading...", input_str)))
-        await u_event.reply("Uploaded successfully !!")
+        await u_event.edit("Uploaded successfully !!")
     else:
-        await u_event.reply("404: File Not Found")
+        await u_event.edit("404: File Not Found")
 
 
 def get_video_thumb(file, output=None, width=90):
@@ -309,10 +306,9 @@ def extract_w_h(file):
 
 
 @register(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"uploadas(stream|vn|all)(.*)",allow_sudo=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
-    await uas_event.reply("Processing ...")
+    await uas_event.edit("Processing ...")
     type_of_upload = uas_event.pattern_match.group(1)
     supports_streaming = False
     round_message = False
@@ -392,14 +388,14 @@ async def uploadas(uas_event):
                         progress(d, t, uas_event, c_time, "Uploading...",
                                  file_name)))
             elif spam_big_messages:
-                await uas_event.reply("TBD: Not (yet) Implemented")
+                await uas_event.edit("TBD: Not (yet) Implemented")
                 return
             os.remove(thumb)
-            await uas_event.reply("Uploaded successfully !!")
+            await uas_event.edit("Uploaded successfully !!")
         except FileNotFoundError as err:
-            await uas_event.reply(str(err))
+            await uas_event.edit(str(err))
     else:
-        await uas_event.reply("404: File Not Found")
+        await uas_event.edit("404: File Not Found")
 
 
 CMD_HELP.update({
