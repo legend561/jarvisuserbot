@@ -23,6 +23,7 @@ Inspired By Friday
  
                     FridayUserBot
                     Telebot
+                    Plus Userbot
                     CatUserbot
 
 ## This Bot is Made With care No Adult Contents and Abusive Memes. If Any Tell in Issue Column With Command Name.
@@ -35,7 +36,7 @@ Inspired By Friday
 
 The Easy Way
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/tree/stable)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/)
 
 ##  GET STRING SESSION FROM REPL RUN
 
