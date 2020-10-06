@@ -21,7 +21,7 @@ async def _(event):
         Config.SCREEN_SHOT_LAYER_ACCESS_KEY,
         input_str,
         "1",
-        "2560x1440",
+        "1024x768",
         "PNG",
         "1"
     ))
