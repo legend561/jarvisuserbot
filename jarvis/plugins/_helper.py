@@ -7,7 +7,7 @@ from telethon import events, functions, __version__
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
-@jarvis.on(admin_cmd(pattern="help ?(.*)"))
+@jarvis.on(admin_cmd(pattern="ihelp ?(.*)"))
 @jarvis.on(admin_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
