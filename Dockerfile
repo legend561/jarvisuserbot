@@ -1,7 +1,7 @@
 FROM kalilinux/kali-rolling
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt upgrade -y && apt-get install sudo -y
-RUN “touch ~/.hushlogin”
+RUN touch ~/.hushlogin
 
 RUN apt-get install -y\
     coreutils \
