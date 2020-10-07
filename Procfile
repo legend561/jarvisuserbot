@@ -1,1 +1,1 @@
-worker: python -m jarvis
+worker: python -m start.sh
