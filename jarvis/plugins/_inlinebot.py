@@ -52,7 +52,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     [custom.Button.url("👨‍💻Source Code‍💻", "https://github.com/Jarvis-Works/JarvisUserbot"), custom.Button.url(
                         "Deploy 🌀",
                         "https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/")],
-                    [custom.Button.url("Updates Channel↗️", "https://t.me/JarvisOT"), custom.Button.url("Support Group↗️", "https://t.me/JarvisSupportOT")]
+                    [custom.Button.url("Updates Channel↗️", "https://t.me/JarvisOT"), custom.Button.url("Support Group↗️", "https://t.me/JarvisSupportOT")],
+                    [custom.Button.url("Help Menu", callback_data="paginate_help")]
                 ],
                 link_preview=False
             )
