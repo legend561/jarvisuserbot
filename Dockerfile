@@ -59,4 +59,5 @@ RUN mkdir /root/jarvis/bin/
 WORKDIR /root/jarvis/
 RUN chmod +x /usr/local/bin/*
 RUN pip3 install -r requirements.txt
+RUN touch ~/.hushlogin
 CMD ["bash","startup.sh"]
