@@ -1,4 +1,4 @@
-# Ported from other Telegram UserBots for TeleBot
+# Ported from Telebot for Jarvis
 # Kangers, don't remove this line 
 # @its_xditya
 
@@ -8,13 +8,12 @@ import json
 import random
 import re
 from telethon import events, errors, custom, Button
-from userbot import CMD_LIST
+from jarvis import CMD_LIST
 import io
-from userbot.plugins import telestats
-from userbot import ALIVE_NAME
-from userbot import bot
+from jarvis import ALIVE_NAME
+from jarvis import bot
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "TeleBot User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS User"
 myid = bot.uid
 
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
