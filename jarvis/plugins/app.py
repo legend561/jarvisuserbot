@@ -8,7 +8,7 @@ import re
 from telethon import *
 from jarvis import CMD_HELP
 from jarvis.events import register
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern="app ?(.*)"))
