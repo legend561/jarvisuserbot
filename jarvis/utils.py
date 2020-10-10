@@ -9,6 +9,7 @@ import re
 import logging
 import inspect
 
+SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
