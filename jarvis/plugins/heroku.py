@@ -16,8 +16,8 @@ Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"^\.(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)"))
-@jarvis.on(admin_cmd(pattern=r"^\.(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)"))
+@jarvis.on(admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
 async def variable(var):
     """
         Manage most of ConfigVars setting, set new var, get current var,
