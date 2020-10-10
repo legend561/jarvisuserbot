@@ -35,11 +35,11 @@ async def apk(e):
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n===> @JarvisOT <==="
-        await e.er(app_details, link_preview = True, parse_mode = 'HTML')
+        e = await er(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await e.er("No result found in search. Please enter **Valid app name**")
+        e = await er("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await e.er("Exception Occured:- "+str(err))
+        e = await er("Exception Occured:- "+str(err))
 
 @jarvis.on(admin_cmd(pattern="apkr ?(.*)"))
 @jarvis.on(admin_cmd(pattern="apkr ?(.*)", allow_sudo=True))
@@ -65,8 +65,8 @@ async def apkr(e):
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
         app_details += "\n\n===> @JarvisOt <==="
-        await e.er(app_details, link_preview = True, parse_mode = 'HTML')
+        e = await er(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await e.er("No result found in search. Please enter **Valid app name**")
+        e = await er("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await e.er("Exception Occured:- "+str(err))
+        e = await er("Exception Occured:- "+str(err))
