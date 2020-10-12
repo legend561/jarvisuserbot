@@ -53,7 +53,7 @@ async def updateme_requirements():
 @jarvis.on(admin_cmd(pattern="update ?(.*)",allow_sudo=True))
 async def upstream(ups):
     "For .update command, check if the bot is up to date, update if specified"
-    await ups.reply("`Searching for new updates, if any...`")
+    await ups.edit("`Searching for new updates, if any...`")
     conf = ups.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_updateme = False
