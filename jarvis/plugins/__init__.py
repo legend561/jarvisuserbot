@@ -13,7 +13,6 @@ isherokuokay = Var.HEROKU_APP_NAME
 gdriveisshit = Config.AUTH_TOKEN_DATA
 wttrapi = Config.OPEN_WEATHER_MAP_APPID
 rmbg = Config.REM_BG_API_KEY
-hmmok = Config.LYDIA_API
 currentversion = "3.0"
 if issudousing:
     amiusingsudo = "Active ✅"
