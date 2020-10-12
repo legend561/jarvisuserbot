@@ -116,7 +116,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["jarvis.plugins."+shortname] = mod
-        print("Successfully imported "+shortname)
+        print("Successfully (re)imported "+shortname)
 
 def remove_plugin(shortname):
     try:
@@ -187,11 +187,7 @@ async def edit_or_reply(event, text):
         if reply_to:
             return await reply_to.reply(text)
         return await event.reply(text)
-    elif event.from_id in Config.OWNER_ID :
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(text) 
-        return await event.reply(text)
+    return await event.edit(text)
 
 """ Userbot module for managing events.
  One of the main components of the userbot. """
@@ -395,7 +391,7 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        import userbot.utils
+        import jarvis.utils
 
         path = Path(f"jarvis/plugins/assistant/{shortname}.py")
         name = "jarvis.plugins.assistant.{}".format(shortname)
