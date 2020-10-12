@@ -10,6 +10,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 @jarvis.on(admin_cmd(pattern="help ?(.*)"))
 @jarvis.on(admin_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
         if tgbotusername is None or input_str == "text":
