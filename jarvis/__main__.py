@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 import os
 from telethon import TelegramClient
 from var import Var
-from jarvis.utils import load_module
+from jarvis.utils import load_module, start_assistant
 from jarvis import LOAD_PLUG, BOTLOG_CHATID, LOGS
 from pathlib import Path
 import asyncio
@@ -49,7 +49,15 @@ for name in files:
 
 import jarvis._core
 
-print("JARVIS AI is Active Enjoy Join @JarvisOT For Updates.")
+path = "jarvis/plugins/assistant/*.py"
+files = glob.glob(path)
+for name in files:
+    with open(name) as f:
+        path1 = Path(f.name)
+        shortname = path1.stem
+        start_assistant(shortname.replace(".py", ""))
+
+print("JARVIS AI AND YOUR ASSISTANT is Active Enjoy Join @JarvisOT For Updates.")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
