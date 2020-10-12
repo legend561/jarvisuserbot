@@ -15,7 +15,7 @@ import time
 
 from var import Var
 
-from .function import fridayfunction as topfunc
+from .function import jarvisfunction as topfunc
 
 Lastupdate = time.time()
 
