@@ -8,12 +8,12 @@ import re
 from telethon import *
 from jarvis import CMD_HELP
 from jarvis.events import register
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 from jarvis.utils import edit_or_reply as er
 
 
 @jarvis.on(admin_cmd(pattern="app ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="app ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="app ?(.*)", allow_sudo=True))
 async def apk(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -35,14 +35,14 @@ async def apk(e):
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n===> @JarvisOT <==="
-        e = await er(app_details, link_preview = True, parse_mode = 'HTML')
+        e = await reply(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        e = await er("No result found in search. Please enter **Valid app name**")
+        e = await reply("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        e = await er("Exception Occured:- "+str(err))
+        e = await reply("Exception Occured:- "+str(err))
 
 @jarvis.on(admin_cmd(pattern="apkr ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="apkr ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="apkr ?(.*)", allow_sudo=True))
 async def apkr(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -65,8 +65,8 @@ async def apkr(e):
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
         app_details += "\n\n===> @JarvisOt <==="
-        e = await er(app_details, link_preview = True, parse_mode = 'HTML')
+        e = await reply(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        e = await er("No result found in search. Please enter **Valid app name**")
+        e = await reply("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        e = await er("Exception Occured:- "+str(err))
+        e = await reply("Exception Occured:- "+str(err))
