@@ -189,6 +189,48 @@ async def edit_or_reply(event, text):
         return await event.reply(text)
     return await event.edit(text)
 
+def sudo_cmd(pattern=None, **args):
+    args["func"] = lambda e: e.via_bot_id is None
+    stack = inspect.stack()
+    previous_stack_frame = stack[1]
+    file_test = Path(previous_stack_frame.filename)
+    file_test = file_test.stem.replace(".py", "")
+    allow_sudo = args.get("allow_sudo", False)
+    # get the pattern from the decorator
+    if pattern is not None:
+        if pattern.startswith("\#"):
+            # special fix for snip.py
+            args["pattern"] = re.compile(pattern)
+        else:
+            args["pattern"] = re.compile(Config.SUDO_HNDLR + pattern)
+            reg = Config.SUDO_HNDLR[1]
+            cmd = (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
+            try:
+                SUDO_LIST[file_test].append(cmd)
+            except:
+                SUDO_LIST.update({file_test: [cmd]})
+    args["outgoing"] = True
+    # should this command be available for other users?
+    if allow_sudo:
+        args["from_users"] = list(Config.SUDO_USERS)
+        # Mutually exclusive with outgoing (can only set one of either).
+        args["incoming"] = True
+        del args["allow_sudo"]
+    # error handling condition check
+    elif "incoming" in args and not args["incoming"]:
+        args["outgoing"] = True
+    # add blacklist chats, UB should not respond in these chats
+    args["blacklist_chats"] = True
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if len(black_list_chats) > 0:
+        args["chats"] = black_list_chats
+    # add blacklist chats, UB should not respond in these chats
+    if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        args["allow_edited_updates"]
+        del args["allow_edited_updates"]
+    # check if the plugin should listen for outgoing 'messages'
+    return events.NewMessage(**args)
+
 """ Userbot module for managing events.
  One of the main components of the userbot. """
 
@@ -265,7 +307,7 @@ def errors_handler(func):
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
-            link = "[Here](https://t.me/jarvissupportt)"
+            link = "[Here](https://t.me/jarvissupportot)"
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n"
@@ -377,7 +419,7 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        import userbot.utils
+        import jarvis.utils
 
         path = Path(f"jarvis/plugins/assistant/{shortname}.py")
         name = "jarvis.plugins.assistant.{}".format(shortname)
@@ -399,5 +441,5 @@ def start_assistant(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.tgbot = bot.jarvisbot
         spec.loader.exec_module(mod)
-        sys.modules["userbot.plugins.assistant" + shortname] = mod
+        sys.modules["jarvis.plugins.assistant" + shortname] = mod
         print("Assistant Has imported " + shortname)
