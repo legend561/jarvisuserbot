@@ -187,8 +187,7 @@ async def edit_or_reply(event, text):
         if reply_to:
             return await reply_to.reply(text)
         return await event.reply(text)
-    else:
-        event.from_id in Config.OWNER_ID:
+    elif event.from_id in Config.OWNER_ID :
         reply_to = await event.get_reply_message()
         if reply_to:
             return await reply_to.reply(text) 
