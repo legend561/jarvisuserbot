@@ -44,11 +44,6 @@ if wttrapi:
 else:
     starknoobs = "Not Added ❌"
 
-if hmmok:
-    meiko = "Added ✅"
-else:
-    meiko = "Not Added ❌"
-
 if isdbfine:
     dbstats = "Fine ✅"
 else:
