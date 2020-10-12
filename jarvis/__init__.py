@@ -13,6 +13,10 @@ import pylast
 from requests import get
 import time
 
+from var import Var
+
+from .function import fridayfunction as topfunc
+
 Lastupdate = time.time()
 
 os.system("pip install --upgrade pip")
