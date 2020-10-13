@@ -17,7 +17,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 import time
 from jarvis import Lastupdate, bot
 import asyncio
-
+from jarvis import OWNER_ID, SUDO_USERS
 from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
@@ -54,7 +54,7 @@ async def is_administrator(user_id: int, message):
     admin = False
     async for user in tgbot.iter_participants(message.chat_id,
                              filter=ChannelParticipantsAdmins):
-        if user_id == user.id or user_id in SUDO_USERS:
+        if user_id == user.id or user_id in OWNER_ID:
             admin = True
             break
     return admin
