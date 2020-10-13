@@ -16,7 +16,7 @@ import emoji
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID
 from telethon.tl.types import DocumentAttributeSticker
-from jarvi.utils import edit_or_reply
+from jarvis.utils import edit_or_reply
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
