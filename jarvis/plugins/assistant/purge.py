@@ -17,7 +17,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 import time
 from jarvis import Lastupdate, bot
 import asyncio
-from jarvis import OWNER_ID, SUDO_USERS
+from jarvis.utils import bot
 from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
@@ -49,6 +49,7 @@ from telethon.tl.types import (
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from jarvis.utils import admin_cmd, errors_handler, register, sudo_cmd
+OWNER_ID = bot.uid
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
