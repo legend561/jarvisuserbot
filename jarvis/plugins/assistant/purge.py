@@ -118,4 +118,4 @@ async def delete_msg(event):
     to_delete = event.message
     chat = await event.get_input_chat()
     rm = [msg, to_delete]
-    await event.tgbot.delete_messages(chat, rm)
+    await tgbot.delete_messages(chat, rm)
