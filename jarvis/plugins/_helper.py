@@ -2,7 +2,7 @@ from jarvis import CMD_LIST
 from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd(pattern="help ?(.*)"))
-async def cmd_list(event):
+async def Jarvis(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
