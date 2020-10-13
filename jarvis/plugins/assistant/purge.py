@@ -52,7 +52,7 @@ from jarvis.utils import admin_cmd, errors_handler, register, sudo_cmd
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in client.iter_participants(message.chat_id,
+    async for user in tgbot.iter_participants(message.chat_id,
                              filter=ChannelParticipantsAdmins):
         if user_id == user.id or user_id in SUDO_USERS:
             admin = True
@@ -78,17 +78,17 @@ async def purge(event):
            msg_id = msg.id
            count = 0        
            to_delete = event.message.id - 1
-           await event.client.delete_messages(chat, event.message.id)
+           await event.tgbot.delete_messages(chat, event.message.id)
            msgs.append(event.reply_to_msg_id)
            for m_id in range(to_delete, msg_id - 1, -1):
                msgs.append(m_id)
                count += 1            
                if len(msgs) == 100:
-                   await event.client.delete_messages(chat, msgs)
+                   await event.tgbot.delete_messages(chat, msgs)
                    msgs = []
 
-           await event.client.delete_messages(chat, msgs)
-           del_res = await event.client.send_message(
+           await event.tgbot.delete_messages(chat, msgs)
+           del_res = await event.tgbot.send_message(
            event.chat_id, f"Fast Purged {count} messages.")
 
            await asyncio.sleep(4)
@@ -117,4 +117,4 @@ async def delete_msg(event):
     to_delete = event.message
     chat = await event.get_input_chat()
     rm = [msg, to_delete]
-    await event.client.delete_messages(chat, rm)
+    await event.tgbot.delete_messages(chat, rm)
