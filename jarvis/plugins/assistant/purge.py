@@ -85,11 +85,11 @@ async def purge(event):
                msgs.append(m_id)
                count += 1            
                if len(msgs) == 100:
-                   await event.tgbot.delete_messages(chat, msgs)
+                   await tgbot.delete_messages(chat, msgs)
                    msgs = []
 
-           await event.tgbot.delete_messages(chat, msgs)
-           del_res = await event.tgbot.send_message(
+           await tgbot.delete_messages(chat, msgs)
+           del_res = await tgbot.send_message(
            event.chat_id, f"Fast Purged {count} messages.")
 
            await asyncio.sleep(4)
@@ -98,7 +98,7 @@ async def purge(event):
         except MessageDeleteForbiddenError:
             text = "Failed to delete messages.\n"
             text += "Messages maybe too old or I'm not admin! or dont have delete rights!"
-            del_res = await event.respond(text, parse_mode='md')
+            del_res = await respond(text, parse_mode='md')
             await asyncio.sleep(5)
             await del_res.delete()
 
