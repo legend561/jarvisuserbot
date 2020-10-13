@@ -79,7 +79,7 @@ async def purge(event):
            msg_id = msg.id
            count = 0        
            to_delete = event.message.id - 1
-           await event.tgbot.delete_messages(chat, event.message.id)
+           await tgbot.delete_messages(chat, event.message.id)
            msgs.append(event.reply_to_msg_id)
            for m_id in range(to_delete, msg_id - 1, -1):
                msgs.append(m_id)
