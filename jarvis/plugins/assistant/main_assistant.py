@@ -50,7 +50,7 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.from_id))
     firstname = replied_user.user.first_name
     vent = event.chat_id
-    starttext = (f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Friday Userbot](t.me/FridayOT)")
+    starttext = (f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [JARVIS Userbot](t.me/JarvisOT)")
     if event.from_id == bot.uid:
         await tgbot.send_message(
            vent,
