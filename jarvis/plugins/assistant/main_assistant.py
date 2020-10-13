@@ -24,7 +24,7 @@ from googletrans import Translator
 import re
 import io
 from math import ceil
-from userbot.plugins import inlinestats
+from jarvis.plugins import inlinestats
 from telethon import custom, events, Button
 from jarvis import CMD_LIST
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
