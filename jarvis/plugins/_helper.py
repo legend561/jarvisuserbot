@@ -31,10 +31,6 @@ async def cmd_list(event):
         else:
             help_string = """JARVIS Userbot Modules Are Listed Here !\n
 For More Help or Support Visit @JarvisOT 😉🎖️ """
-            results = await bot.inline_query(  # pylint:disable=E0602
-                tgbotusername, help_string
-            )
-            await results[0].click(
-                event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-            )
+            results = await bot.inline_query(tgbotusername, help_string)
+            await results[0].click(event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True)
             await event.delete()
