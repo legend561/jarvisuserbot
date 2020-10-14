@@ -71,7 +71,7 @@ async def is_administrator(user_id: int, message):
     admin = False
     async for user in tgbot.iter_participants(message.chat_id,
                              filter=ChannelParticipantsAdmins):
-        if user_id == user.id or OWNER_ID :
+        if user_id == user.id or OWNER_ID or SUDO_USERS :
             admin = True
             break
     return admin
