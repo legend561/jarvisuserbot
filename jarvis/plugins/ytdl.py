@@ -83,7 +83,7 @@ async def download_video(v_url):
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
 
-    await v_url.edit_or_reply("`Preparing to download...`")
+    await v_url.edit("`Preparing to download...`")
 
     if type == "a":
         opts = {
@@ -145,41 +145,41 @@ async def download_video(v_url):
         video = True
 
     try:
-        await v_url.edit_or_reply("`Fetching data, please wait..`")
+        await v_url.edit("`Fetching data, please wait..`")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
         await v_url.edit(f"`{str(DE)}`")
         return
     except ContentTooShortError:
-        await v_url.edit_or_reply("`The download content was too short.`")
+        await v_url.reply("`The download content was too short.`")
         return
     except GeoRestrictedError:
-        await v_url.edit_or_reply(
+        await v_url.reply(
             "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
         )
         return
     except MaxDownloadsReached:
-        await v_url.edit_or_reply("`Max-downloads limit has been reached.`")
+        await v_url.reply("`Max-downloads limit has been reached.`")
         return
     except PostProcessingError:
-        await v_url.edit_or_reply("`There was an error during post processing.`")
+        await v_url.reply("`There was an error during post processing.`")
         return
     except UnavailableVideoError:
-        await v_url.edit_or_reply("`Media is not available in the requested format.`")
+        await v_url.reply("`Media is not available in the requested format.`")
         return
     except XAttrMetadataError as XAME:
-        await v_url.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        await v_url.reply(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
         return
     except ExtractorError:
-        await v_url.edit_or_reply("`There was an error during info extraction.`")
+        await v_url.reply("`There was an error during info extraction.`")
         return
     except Exception as e:
-        await v_url.edit(f"{str(type(e)): {str(e)}}")
+        await v_url.reply(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
     if song:
-        await v_url.edit_or_reply(f"`Preparing to upload song:`\
+        await v_url.edit(f"`Preparing to upload song:`\
         \n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*")
         await v_url.client.send_file(
@@ -198,7 +198,7 @@ async def download_video(v_url):
         os.remove(f"{ytdl_data['id']}.mp3")
         await v_url.delete()
     elif video:
-        await v_url.edit_or_reply(f"`Preparing to upload video:`\
+        await v_url.edit(f"`Preparing to upload video:`\
         \n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*")
         await v_url.client.send_file(
