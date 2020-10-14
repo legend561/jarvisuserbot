@@ -11,7 +11,7 @@ Description: Best User Bot To Manage Your Telegram Account
 ---
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ad529e93eb74102a0f73c40cd98e541)](https://app.codacy.com/manual/jarvis210904/jarvisuserbot?utm_source=github.com&utm_medium=referral&utm_content=jarvis210904/jarvisuserbot&utm_campaign=Badge_Grade_Dashboard)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![AGPL-3.0 license](https://img.shields.io/badge/License-AGPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![AGPL-3.0 license](https://img.shields.io/badge/License-GPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
 
 **Best User Bot To Manage Your Telegram Account**
@@ -20,7 +20,7 @@ Description: Best User Bot To Manage Your Telegram Account
 
 By Team \#JARVIS™
 
-Inspired By Friday
+Speacial Thanks To Friday For Their Assistant Modules Bases
 
  Credits :    
  
@@ -33,7 +33,9 @@ Inspired By Friday
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q620SDB)
 
-### For any query or want to know how it works join Group And Channel[![](https://camo.githubusercontent.com/e531cdc1dbdcb78f8ffe767875a6b6d33c43e2e0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d2532304368616e6e656c2d7265642e7376673f6c6f676f3d54656c656772616d)](https://t.me/jarvisot) [![](https://camo.githubusercontent.com/7b0a8bb8af0b2466dd1c38a6c1367ddee45ba266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d25323047726f75702d626c75652e7376673f6c6f676f3d74656c656772616d)](https://t.me/jarvissupportot)
+### For any query or want to know how it works join Group And Channel
+[![](https://camo.githubusercontent.com/e531cdc1dbdcb78f8ffe767875a6b6d33c43e2e0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d2532304368616e6e656c2d7265642e7376673f6c6f676f3d54656c656772616d)](https://t.me/jarvisot) 
+[![](https://camo.githubusercontent.com/7b0a8bb8af0b2466dd1c38a6c1367ddee45ba266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d25323047726f75702d626c75652e7376673f6c6f676f3d74656c656772616d)](https://t.me/jarvissupportot)
 
 ## Installing Heroku
 
