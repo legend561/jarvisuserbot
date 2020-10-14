@@ -36,10 +36,10 @@ async def variable(var):
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await var.edit_or_reply("**ConfigVars**:"
+                return await var.reply("**ConfigVars**:"
                                       f"\n\n`{variable} = {heroku_var[variable]}`\n")
             else:
-                return await var.edit_or_reply("**ConfigVars**:"
+                return await var.reply("**ConfigVars**:"
                                       f"\n\n`Error:\n-> {variable} don't exists`")
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -55,7 +55,7 @@ async def variable(var):
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
-                    await var.edit_or_reply("`[HEROKU]` ConfigVars:\n\n"
+                    await var.reply("`[HEROKU]` ConfigVars:\n\n"
                                    "================================"
                                    f"\n```{result}```\n"
                                    "================================"
@@ -63,35 +63,35 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        await var.edit_or_reply("`Setting information ! Plz Wait ....`")
+        await var.edit("`Setting information ! Plz Wait ....`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await var.edit_or_reply(">`.set var <ConfigVars-name> <value>`")
+            return await var.edit(">`.set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await var.edit_or_reply(">`.set var <ConfigVars-name> <value>`")
+                return await var.edit(">`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await var.edit_or_reply(f"**{variable}**  `successfully changed to`  ->  **{value}**")
+            await var.reply(f"**{variable}**  `successfully changed to`  ->  **{value}**")
         else:
-            await var.edit_or_reply(f"**{variable}**  `successfully added with value`  ->  **{value}**")
+            await var.reply(f"**{variable}**  `successfully added with value`  ->  **{value}**")
         heroku_var[variable] = value
     elif exe == "del":
-        await var.edit_or_reply("`Getting information to deleting variable...`")
+        await var.edit("`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await var.edit_or_reply("`Please specify ConfigVars you want to delete`")
+            return await var.reply("`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await var.edit_or_reply(f"**{variable}**  `successfully deleted`")
+            await var.reply(f"**{variable}**  `successfully deleted`")
             del heroku_var[variable]
         else:
-            return await var.edit_or_reply(f"**{variable}**  `is not exists`")
+            return await var.reply(f"**{variable}**  `is not exists`")
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"usage(?: |$)"))
@@ -100,7 +100,7 @@ async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
     """
-    await dyno.edit_or_reply("`Processing...`")
+    await dyno.edit("`Processing...`")
     useragent = ('Mozilla/5.0 (Linux; Android 10; SM-G975F) '
                  'AppleWebKit/537.36 (KHTML, like Gecko) '
                  'Chrome/80.0.3987.149 Mobile Safari/537.36'
@@ -142,7 +142,7 @@ async def dyno_usage(dyno):
 
     await asyncio.sleep(1.5)
 
-    return await dyno.edit_or_reply("**Dyno Usage**:\n\n"
+    return await dyno.reply("**Dyno Usage**:\n\n"
                            f" 🧊 `Dyno usage of Jarvis for`  **{Var.HEROKU_APP_NAME}**:\n"
                            f"     💎  `{AppHours}`**h**  `{AppMinutes}`**m**  "
                            f"**|**  [`{AppPercentage}`**%**]"
