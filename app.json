@@ -1,7 +1,7 @@
 {
   "name": "JARVIS",
   "description": "Userbot created by a Poor Student and join https://t.me/jarvissupportot for any problems or support",
-  "logo": "https://github.com/jarvis210904/J.A.R.V.I.S-Userbot/blob/master/jarvis.jpg?raw=true",
+  "logo": "https://github.com/jarvis210904/J.A.R.V.I.S-Userbot/blob/master/jarvis.png?raw=true",
     "keywords": [
     "telegram",
     "userbot",
@@ -25,7 +25,7 @@
     },
     "CMD_HNDLR": {
       "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol ",
-      "value" : "\."
+      "value" : " \. "
     },
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
