@@ -20,20 +20,13 @@ Description : Best User Bot To Manage Your Telegram Account
 
 ## By Team \#JARVIS™
 
-Speacial Thanks To Friday For Their Assistant Modules Bases
-
- Credits :    
- 
-                    FridayUserBot
-                    Telebot
-                    Plus Userbot
-                    CatUserbot
+### Speacial Thanks To Friday For Their Assistant Modules Bases
 
 ## This Bot is Made With care No Adult Contents and Abusive Memes. If Any Tell in Issue Column With Command Name.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q620SDB)
 
-### For any query or want to know how it works join Group And Channel
+## For any query or want to know how it works join Group And Channel
 [![](https://camo.githubusercontent.com/e531cdc1dbdcb78f8ffe767875a6b6d33c43e2e0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d2532304368616e6e656c2d7265642e7376673f6c6f676f3d54656c656772616d)](https://t.me/jarvisot) 
 
 [![](https://camo.githubusercontent.com/7b0a8bb8af0b2466dd1c38a6c1367ddee45ba266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d25323047726f75702d626c75652e7376673f6c6f676f3d74656c656772616d)](https://t.me/jarvissupportot)
@@ -48,7 +41,7 @@ Speacial Thanks To Friday For Their Assistant Modules Bases
 
  [![Run on Repl.it](https://camo.githubusercontent.com/05149b448485553c6f14f6430a45c12dcc79ed3c/68747470733a2f2f7265706c2e69742f62616467652f6769746875622f6a61727669733231303930342f4a6172766973)](https://jarvisuserbot.jarvis210904.repl.run/)
 
-###  The Normal Way
+##  The Normal Way
 
  Simply clone the repository and run the main file:
 
@@ -72,7 +65,7 @@ class Development(Var):
   API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 ```
 
-###  UniBorg Configuration
+##  UniBorg Configuration
 
  The UniBorg Config is situated in `jarvis/uniborgConfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
