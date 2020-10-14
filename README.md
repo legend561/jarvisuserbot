@@ -14,7 +14,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 ![Python Version](https://img.shields.io/badge/Python-v3.8-blue)
 ![Repo Size](https://img.shields.io/github/repo-size/Jarvis-Works/jarvisuserbot)
-[![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserbot)](https://github.com/Jarvis-Works/jarvisuserbot/pulse)
+[![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserbot)]
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ad529e93eb74102a0f73c40cd98e541)](https://app.codacy.com/manual/jarvis210904/jarvisuserbot?utm_source=github.com&utm_medium=referral&utm_content=jarvis210904/jarvisuserbot&utm_campaign=Badge_Grade_Dashboard)
 [![HitCount](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot.svg)](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot)
 [![Contributors](https://img.shields.io/github/contributors/Jarvis-Works/jarvisuserbot)](https://github.com/Jarvis-Works/jarvisuserbot/graphs/contributors)
