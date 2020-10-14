@@ -8,10 +8,21 @@
 
 ## Best UserBot To Manage Your Telegram Account
 
-
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) 
+[![GPL-3.0 license](https://img.shields.io/badge/License-GPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html) 
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+![Python Version](https://img.shields.io/badge/Python-v3.8-blue)
+![Repo Size](https://img.shields.io/github/repo-size/Jarvis-Works/jarvisuserbot)
+[![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserbot)](https://github.com/Jarvis-Works/jarvisuserbot/pulse)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ad529e93eb74102a0f73c40cd98e541)](https://app.codacy.com/manual/jarvis210904/jarvisuserbot?utm_source=github.com&utm_medium=referral&utm_content=jarvis210904/jarvisuserbot&utm_campaign=Badge_Grade_Dashboard)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![AGPL-3.0 license](https://img.shields.io/badge/License-GPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-
+[![HitCount](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot.svg)](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot)
+[![Contributors](https://img.shields.io/github/contributors/Jarvis-Works/jarvisuserbot)](https://github.com/Jarvis-Works/jarvisuserbot/graphs/contributors)
+![Last Commit](https://img.shields.io/github/last-commit/Jarvis-Works/jarvisuserbot/master)
+![Issues](https://img.shields.io/github/issues/Jarvis-Works/jarvisuserbot)
+![Pull Requests](https://img.shields.io/github/issues-pr/Jarvis-Works/jarvisuserbot)
+[![StyleCI](https://github.styleci.io/repos/288419893/shield?branch=master)](https://github.styleci.io/repos/288419893?branch=master)
+[![License](https://img.shields.io/github/license/Jarvis-Works/jarvisuserbot)](LICENSE)
 
 **Best User Bot To Manage Your Telegram Account**
 
