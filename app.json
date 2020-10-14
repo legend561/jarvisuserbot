@@ -25,12 +25,16 @@
     },
     "CMD_HNDLR": {
       "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol ",
-      "value" : "."
+      "value" : "\."
     },
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
       "value": "",
       "required": false
+    },
+    "OWNER_ID": {
+      "description": "Add Your ID For Assitant Bot Functionality",
+      "value" : ""
     },
     "PMPERMIT_PIC": {
       "description": "put here any telegraph media link for pmpermit custom pic Note Use http://telegra.ph/wedwewf-dfwre.jpg instead of https://telegra.ph/wedwewf-dfwre.jpg.",
