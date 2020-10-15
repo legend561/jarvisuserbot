@@ -25,9 +25,6 @@
 [![License](https://img.shields.io/github/license/Jarvis-Works/jarvisuserbot)](LICENSE)
 [![CodeFactor](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot/badge)](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot)
 
-
-**Best User Bot To Manage Your Telegram Account**
-
 ##  Most PowerFul And Better And Secure
 
 ## By Team \#JARVIS™
