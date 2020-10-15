@@ -23,6 +23,8 @@
 ![Pull Requests](https://img.shields.io/github/issues-pr/Jarvis-Works/jarvisuserbot)
 [![StyleCI](https://github.styleci.io/repos/288419893/shield?branch=master)](https://github.styleci.io/repos/288419893?branch=master)
 [![License](https://img.shields.io/github/license/Jarvis-Works/jarvisuserbot)](LICENSE)
+[![CodeFactor](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot/badge)](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot)
+
 
 **Best User Bot To Manage Your Telegram Account**
 
