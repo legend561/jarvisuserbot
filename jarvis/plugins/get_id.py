@@ -2,7 +2,7 @@
 Syntax: .get_id"""
 from telethon import events
 from telethon.utils import pack_bot_file_id
-from jarvis.utils import jarvis_cmd, sudo__cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
 @jarvis.on(jarvis_cmd("get_id"))
