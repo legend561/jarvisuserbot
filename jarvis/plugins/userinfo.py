@@ -28,6 +28,8 @@ from telethon.tl.types import (
     InputPeerChannel,
     InputPeerChat)
 
+from jarvis.utils import jarvis_cmd
+
 
 def parse_arguments(message: str, valid: List[str]) -> (dict, str):
     options = {}
@@ -301,7 +303,7 @@ class TGDoc:
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"^\.u(?:ser)?(\s+[\S\s]+|$)", outgoing=True))
+@jarvis.on(jarvis_cmd(pattern=r"u(?:ser)?(\s+[\S\s]+|$)", outgoing=True))
 async def who(event: NewMessage.Event):
     """ For .user command, get info about a user. """
     if event.fwd_from:
