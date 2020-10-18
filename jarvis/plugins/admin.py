@@ -24,7 +24,7 @@ from telethon.tl.types import (ChannelParticipantsAdmins, ChatAdminRights,
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from jarvis.utils import register, errors_handler
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
