@@ -173,7 +173,7 @@ async def nekobot(borg):
     await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id )
     await borg.delete()
 
-@jarvis.om(jarvis_cmd(pattern="kanna(?: |$)(.*)", outgoing=True))
+@jarvis.on(jarvis_cmd(pattern="kanna(?: |$)(.*)", outgoing=True))
 async def nekobot(borg):
     text = borg.pattern_match.group(1)
     reply_to_id = borg.message
