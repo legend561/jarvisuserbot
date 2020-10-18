@@ -32,7 +32,7 @@ async def _(event):
 
 
 @jarvis.on(jarvis_cmd(pattern="shutdown"))
-@jarvis.on(jarvus_cmd(pattern="shutdown", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="shutdown", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
