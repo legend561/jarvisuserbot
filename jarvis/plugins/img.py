@@ -7,7 +7,7 @@ from jarvis.google_imgs import googleimagesdownload
 import os
 import shutil
 from re import findall
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
 @jarvis.on(jarvis_cmd(pattern="img ?(.*)"))
