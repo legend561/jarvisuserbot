@@ -6,9 +6,9 @@ Credits to @mariodevs
 
 from telethon import events
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd("nope"))
+@jarvis.on(jarvis_cmd("nope"))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,9 +26,9 @@ async def _(event):
             "No Problem Boss😇.Lol",
             "No Problem Man😇.Lol"
          ]
-            
+
 
     for i in animation_ttl:
-        	
+
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])

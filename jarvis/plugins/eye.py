@@ -4,11 +4,11 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern="eye"))
+@jarvis.on(jarvis_cmd(pattern="eye"))
 
 async def _(event):
 
@@ -29,13 +29,13 @@ async def _(event):
     animation_chars = [
 
             "👁👁\n  👄  =====> Abey Ja Na Gandu",
-            "👁👁\n  👅  =====> Abey Ja Na Madarchod",    
+            "👁👁\n  👅  =====> Abey Ja Na Madarchod",
             "👁👁\n  💋  =====> Abey Ja Na Randi",
             "👁👁\n  👄  =====> Abey Ja Na Betichod",
-            "👁👁\n  👅  =====> Abey Ja Na Behenchod",    
+            "👁👁\n  👅  =====> Abey Ja Na Behenchod",
             "👁👁\n  💋  =====> Abey Ja Na Na Mard",
             "👁👁\n  👄  =====> Abey Ja Na Randi",
-            "👁👁\n  👅  =====> Abey Ja Na Bhosdk",    
+            "👁👁\n  👅  =====> Abey Ja Na Bhosdk",
             "👁👁\n  💋  =====> Abey Ja Na Chutiye",
             "👁👁\n  👄  =====> Hi All, How Are You Guys..."
         ]

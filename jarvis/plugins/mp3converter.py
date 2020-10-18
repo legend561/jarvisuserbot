@@ -5,11 +5,11 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import jarvis_cmd, progress
 
 
-@jarvis.on(admin_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
-@jarvis.on(admin_cmd(pattern="convert (.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
+@jarvis.on(jarvis_cmd(pattern="convert (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

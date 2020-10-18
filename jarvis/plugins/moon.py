@@ -12,9 +12,9 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd(pattern=r"smoon"))
+@jarvis.on(jarvis_cmd(pattern=r"smoon"))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,7 +26,7 @@ async def _(event):
     animation_chars = [
 
             "🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗",
-            "🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘",    
+            "🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘",
             "🌑🌑🌑🌑🌑\n🌕🌕🌕🌕🌕\n🌑🌑🌑🌑🌑\n🌕🌕🌕🌕🌕\n🌑🌑🌑🌑🌑",
             "🌒🌒🌒🌒🌒\n🌖🌖🌖🌖🌖\n🌒🌒🌒🌒🌒\n🌖🌖🌖🌖🌖\n🌒🌒🌒🌒🌒",
             "🌓🌓🌓🌓🌓\n🌓🌓🌓🌓🌓\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓",
@@ -43,7 +43,7 @@ async def _(event):
 
 
 
-@jarvis.on(admin_cmd(pattern=r"tmoon"))
+@jarvis.on(jarvis_cmd(pattern=r"tmoon"))
 
 async def _(event):
 
@@ -64,7 +64,7 @@ async def _(event):
     animation_chars = [
 
             "🌗",
-            "🌘",    
+            "🌘",
             "🌑",
             "🌒",
             "🌓",
@@ -72,7 +72,7 @@ async def _(event):
             "🌕",
             "🌖",
             "🌗",
-            "🌘",    
+            "🌘",
             "🌑",
             "🌒",
             "🌓",
@@ -80,7 +80,7 @@ async def _(event):
             "🌕",
             "🌖",
             "🌗",
-            "🌘",    
+            "🌘",
             "🌑",
             "🌒",
             "🌓",
@@ -88,7 +88,7 @@ async def _(event):
             "🌕",
             "🌖",
             "🌗",
-            "🌘",    
+            "🌘",
             "🌑",
             "🌒",
             "🌓",
@@ -102,4 +102,3 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 33])
-

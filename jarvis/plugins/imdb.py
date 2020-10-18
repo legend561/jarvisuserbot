@@ -1,6 +1,6 @@
 
 # For UniBorg
-# Copyright (c) JeepBot | 2019 
+# Copyright (c) JeepBot | 2019
 # (c) JeepBot is not occur to all modules in here
 """
 Imdb Module
@@ -15,12 +15,12 @@ import re
 import subprocess
 import time
 from datetime import datetime
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 langi = "en"
 
 #kanged from Blank-x ;---;
-@jarvis.on(admin_cmd("imdb (.*)", outgoing=True)) 
+@jarvis.on(jarvis_cmd("imdb (.*)", outgoing=True))
 async def imdb(e):
  try:
     movie_name = e.pattern_match.group(1)

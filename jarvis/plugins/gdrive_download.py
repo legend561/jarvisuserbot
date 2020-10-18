@@ -1,5 +1,5 @@
 """
-G-Drive File Downloader Plugin For Userbot. 
+G-Drive File Downloader Plugin For Userbot.
 usage: .gdl File-Link
 By: @Zero_cool7870
 
@@ -9,7 +9,7 @@ from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import admin_cmd
+from jarvis.utils import sudo_cmd
 
 
 async def download_file_from_google_drive(id):
@@ -25,10 +25,10 @@ async def download_file_from_google_drive(id):
 
     headers = response.headers
     content = headers['Content-Disposition']
-    destination = await get_file_name(content)    
+    destination = await get_file_name(content)
 
-    file_name = await save_response_content(response, destination) 
-    return file_name   
+    file_name = await save_response_content(response, destination)
+    return file_name
 
 async def get_confirm_token(response):
     for key, value in response.cookies.items():
@@ -43,7 +43,7 @@ async def save_response_content(response, destination):
         for chunk in response.iter_content(CHUNK_SIZE):
             if chunk: # filter out keep-alive new chunks
                 f.write(chunk)
-    return destination            
+    return destination
 
 async def get_id(link): # Extract File Id from G-Drive Link
     file_id = ""
@@ -55,7 +55,7 @@ async def get_id(link): # Extract File Id from G-Drive Link
             if c =="/":
                 break
             fid = fid + c
-        return fid     
+        return fid
     for c in link:
         if c == "=":
             c_append=True
@@ -64,7 +64,7 @@ async def get_id(link): # Extract File Id from G-Drive Link
         if c_append:
             file_id = file_id + c
     file_id = file_id[1:]
-    return file_id   
+    return file_id
 
 async def get_file_name(content):
     file_name = ""
@@ -73,22 +73,21 @@ async def get_file_name(content):
         if c == '"':
             c_append = True
         if c == ";":
-            c_append = False    
+            c_append = False
         if c_append:
             file_name = file_name + c
-    file_name = file_name.replace('"',"")            
+    file_name = file_name.replace('"',"")
     print("File Name: "+str(file_name))
-    return file_name                 
+    return file_name
 
 @jarvis.on(events.NewMessage(pattern=r"\.gdl", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.gdl", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"\.gdl", allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
-        return   
+        return
     drive_link = event.text[4:]
     print("Drive Link: "+drive_link)
     file_id = await get_id(drive_link)
     await event.reply("Downloading Requested File from G-Drive...")
     file_name = await download_file_from_google_drive(file_id)
     await event.reply("File Downloaded.\nName: `"+str(file_name)+"`")
-            

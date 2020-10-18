@@ -5,9 +5,9 @@
 # By @buddhhu, @Itzsjdude ,@xditya
 #
 import os
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd(pattern=r"reveal", outgoing=True))
+@jarvis.on(jarvis_cmd(pattern=r"reveal", outgoing=True))
 
 async def _(event):
     b = await event.client.download_media(await event.get_reply_message())

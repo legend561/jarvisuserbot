@@ -5,10 +5,10 @@ import asyncio
 from datetime import datetime
 import requests
 import json
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd(pattern="calendar (.*)"))
+@jarvis.on(jarvis_cmd(pattern="calendar (.*)"))
 async def _(event):
     if event.fwd_from:
         return

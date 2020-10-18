@@ -1,5 +1,3 @@
-# © By StarkGang™ And IndianBot™
-# For F.r.i.d.a.y And Indianbot ™
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
@@ -17,7 +15,7 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from jarvis import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from jarvis.events import register
-
+from jarvis.utils import jarvis_cmd
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -77,7 +75,7 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-@register(pattern=r".dl(?: |$)(.*)", outgoing=True)
+@jarvis.on(jarvis_cmd(pattern=r"dl(?: |$)(.*)", outgoing=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
     await target_file.edit("Processing using userbot server ( ◜‿◝ )♡")
@@ -116,7 +114,7 @@ async def download(target_file):
             estimated_total_time = downloader.get_eta(human=True)
             try:
                 current_message = f"{status}..\
-                \nFOR : J.A.R.V.I.S™\
+                \nFOR : JARVIS™\
                 \nURL: {url}\
                 \nFile Name: {file_name}\
                 \n{progress_str}\
@@ -146,14 +144,14 @@ async def download(target_file):
         except Exception as e:  # pylint:disable=C0103,W0703
             await target_file.edit(str(e))
         else:
-            await target_file.edit("Downloaded to `{}` successfully !!".format(
+            await target_file.reply("Downloaded to `{}` successfully !!".format(
                 downloaded_file_name))
     else:
-        await target_file.edit(
+        await target_file.reply(
             "Reply to a message to download to my local server.")
 
 
-@register(pattern=r".uploadir (.*)", outgoing=True)
+@jarvis.on(jarvis_cmd(pattern=r"uploadir (.*)", outgoing=True))
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
@@ -229,7 +227,7 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-@register(pattern=r".upload (.*)", outgoing=True)
+@jarvis.on(jarvis_cmd(pattern=r".upload (.*)", outgoing=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
     await u_event.edit("Processing ...")
@@ -305,7 +303,7 @@ def extract_w_h(file):
         return width, height
 
 
-@register(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True)
+@jarvis.on(jarvis_cmd(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
     await uas_event.edit("Processing ...")

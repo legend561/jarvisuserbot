@@ -4,10 +4,10 @@ from telethon import events
 import asyncio
 from datetime import datetime
 import requests
-from uniborg.util import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd(pattern="currency (.*)"))
+@jarvis.on(jarvis_cmd(pattern="currency (.*)"))
 async def _(event):
     if event.fwd_from:
         return

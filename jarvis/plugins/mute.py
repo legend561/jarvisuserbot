@@ -2,10 +2,10 @@
 '''
 from jarvis.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 #@command(outgoing=True, pattern=r"^.mute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern="mute ?(\d+)?"))
+@jarvis.on(jarvis_cmd(pattern="mute ?(\d+)?"))
 async def startmute(event):
     private = False
     if event.fwd_from:
@@ -28,7 +28,7 @@ async def startmute(event):
             return await event.edit("Please reply to a user or add their userid into the command to mute them.")
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None: 
+        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -49,7 +49,7 @@ async def startmute(event):
             await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 #@command(outgoing=True, pattern=r"^.unmute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern="unmute ?(\d+)?"))
+@jarvis.on(jarvis_cmd(pattern="unmute ?(\d+)?"))
 async def endmute(event):
     private = False
     if event.fwd_from:
@@ -79,7 +79,7 @@ async def endmute(event):
             await event.edit("Error occured!\nError is " + str(e))
         else:
             await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
-            
+
 
 @command(incoming=True)
 async def watcher(event):

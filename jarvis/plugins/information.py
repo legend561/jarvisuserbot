@@ -6,11 +6,11 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd("info ?(.*)"))
-@jarvis.on(admin_cmd("info ?(.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd("info ?(.*)"))
+@jarvis.on(sudo_cmd("info ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -138,6 +138,3 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
-
-
-        

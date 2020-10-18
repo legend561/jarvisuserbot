@@ -4,11 +4,11 @@
 # Syntax (.hl <link>)
 
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import asyncio
 from telethon.tl import functions, types
 
-@jarvis.on(admin_cmd(pattern="hl ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="hl ?(.*)"))
 async def _(event):
         if event.fwd_from:
             return

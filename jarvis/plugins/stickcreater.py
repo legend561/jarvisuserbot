@@ -8,12 +8,12 @@ import random
 import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
-@jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)",allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)",allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)
@@ -61,7 +61,7 @@ async def sticklet(event):
         os.remove(FONT_FILE)
     except:
         pass
-    
+
 async def get_font_file(client, channel_id, search_kw=""):
     # first get the font messages
     font_file_message_s = await client.get_messages(

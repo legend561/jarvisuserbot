@@ -6,7 +6,7 @@ from telethon import events
 import asyncio
 from datetime import datetime
 import os
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import qrcode
 from bs4 import BeautifulSoup
 
@@ -15,7 +15,7 @@ def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@jarvis.on(admin_cmd(pattern="getqr"))
+@jarvis.on(jarvis_cmd(pattern="getqr"))
 async def _(event):
     if event.fwd_from:
         return
@@ -59,7 +59,7 @@ async def _(event):
     await event.edit(qr_contents)
 
 
-@jarvis.on(admin_cmd(pattern="makeqr ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="makeqr ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

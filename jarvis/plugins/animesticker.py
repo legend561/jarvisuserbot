@@ -20,7 +20,7 @@ from PIL import ImageEnhance, ImageOps
 
 from jarvis import CMD_HELP
 from jarvis.events import register
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 EMOJI_PATTERN = re.compile(
@@ -35,7 +35,7 @@ EMOJI_PATTERN = re.compile(
     "\U0001F900-\U0001F9FF"  # Supplemental Symbols and Pictographs
     "\U0001FA00-\U0001FA6F"  # Chess Symbols
     "\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
-    "\U00002702-\U000027B0"  # Dingbats 
+    "\U00002702-\U000027B0"  # Dingbats
     "]+")
 
 
@@ -45,7 +45,7 @@ def deEmojify(inputString: str) -> str:
 
 
 #@register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"waifu(?: |$)(.*)"))
 async def waifu(animu):
 #"""Creates random anime sticker!"""
 
@@ -64,8 +64,8 @@ async def waifu(animu):
                             silent=True if animu.is_reply else False,
                             hide_via=True)
     await animu.delete()
-    
-    
+
+
     CMD_HELP.update({
     'waifu':
     ".waifu : Anime that makes your writing fun."

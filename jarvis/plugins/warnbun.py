@@ -2,10 +2,10 @@
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("warn1"))
+@jarvis.on(jarvis_cmd("warn1"))
 async def _(event):
     if event.fwd_from:
         return
@@ -25,10 +25,10 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("warn2"))
+@jarvis.on(jarvis_cmd("warn2"))
 async def _(event):
     if event.fwd_from:
         return
@@ -48,10 +48,10 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("warn3"))
+@jarvis.on(jarvis_cmd("warn3"))
 async def _(event):
     if event.fwd_from:
         return
@@ -71,10 +71,10 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("warn0"))
+@jarvis.on(jarvis_cmd("warn0"))
 async def _(event):
     if event.fwd_from:
         return
@@ -94,11 +94,11 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 
-@jarvis.on(admin_cmd("ocb"))
+@jarvis.on(jarvis_cmd("ocb"))
 async def _(event):
     if event.fwd_from:
         return
@@ -114,7 +114,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd("fw"))
+@jarvis.on(jarvis_cmd("fw"))
 async def _(event):
     if event.fwd_from:
         return

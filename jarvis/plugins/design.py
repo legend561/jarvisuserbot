@@ -2,10 +2,10 @@
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("join"))
+@jarvis.on(jarvis_cmd("join"))
 async def _(event):
     if event.fwd_from:
         return
@@ -21,7 +21,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@jarvis.on(admin_cmd("pay"))
+@jarvis.on(jarvis_cmd("pay"))
 async def _(event):
     if event.fwd_from:
         return

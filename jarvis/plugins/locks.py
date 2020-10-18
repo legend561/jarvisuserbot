@@ -3,11 +3,11 @@ from telethon.tl.types import ChatBannedRights
 from jarvis import ALIVE_NAME
 from jarvis import CMD_HELP
 from jarvis.events import register, errors_handler
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 #@register(outgoing=True, pattern=r"^.lock ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"lock ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"lock ?(.*)"))
 @errors_handler
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()

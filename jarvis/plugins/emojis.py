@@ -6,10 +6,10 @@ Available Commands:
 .emoji -_-"""
 from telethon import events
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd(pattern="emoji (.*)"))
+@jarvis.on(jarvis_cmd(pattern="emoji (.*)"))
 async def _(event):
     if event.fwd_from:
         return

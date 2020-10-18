@@ -18,12 +18,12 @@ import logging
 import requests
 import base64
 import json
-import os 
+import os
 import telethon
 
 from PIL import Image
 from io import BytesIO
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 logger = logging.getLogger(__name__)
 
@@ -50,14 +50,14 @@ if 1 == 1:
         "channel": "Channel"
     }
 
-    config = dict({"api_token": os.environ.get("API_TOKEN"), 
+    config = dict({"api_token": os.environ.get("API_TOKEN"),
                                           "api_url": "http://api.antiddos.systems",
                                           "username_colors": ["#fb6169", "#faa357", "#b48bf2", "#85de85",
                                                               "#62d4e3", "#65bdf3", "#ff5694"],
                                           "default_username_color": "#b48bf2"})
     client = borg
 
-    @jarvis.on(admin_cmd(pattern="chat(.*)"))
+    @jarvis.on(jarvis_cmd(pattern="chat(.*)"))
     async def quotecmd(message):  # noqa: C901
         """Quote a message.
         Usage: .quote [template]

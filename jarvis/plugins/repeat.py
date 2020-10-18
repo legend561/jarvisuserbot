@@ -1,9 +1,9 @@
 import asyncio
 from asyncio import wait
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("repeat ?(.*)"))
+@jarvis.on(jarvis_cmd("repeat ?(.*)"))
 async def _(event):
     message = event.text[10:]
     count = int(event.text[8:10])

@@ -5,11 +5,11 @@ originaly from : @corsicanu_bot
 
 import sys
 from telethon import events, functions
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import random
 
 
-@jarvis.on(admin_cmd(pattern=r"shout"))
+@jarvis.on(jarvis_cmd(pattern=r"shout"))
 async def shout(args):
     if args.fwd_from:
         return
@@ -27,6 +27,3 @@ async def shout(args):
         result = "".join(result)
         msg = "\n" + result
         await args.edit("`"+msg+"`")
-        
-    
-    

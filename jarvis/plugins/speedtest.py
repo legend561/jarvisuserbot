@@ -5,10 +5,10 @@ from telethon import events
 from datetime import datetime
 import io
 import speedtest
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("speed ?(.*)"))
+@jarvis.on(jarvis_cmd("speed ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

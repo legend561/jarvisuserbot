@@ -10,14 +10,14 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from google_images_download import google_images_download
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@jarvis.on(admin_cmd(pattern="google search (.*)"))
+@jarvis.on(jarvis_cmd(pattern="google search (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
     await event.edit("Google: {}\n{}".format(input_str, output_str), link_preview=False)
 
 
-@jarvis.on(admin_cmd(pattern="google image (.*)"))
+@jarvis.on(jarvis_cmd(pattern="google image (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,7 +83,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="google reverse search"))
+@jarvis.on(jarvis_cmd(pattern="google reverse search"))
 async def _(event):
     if event.fwd_from:
         return

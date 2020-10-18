@@ -5,7 +5,7 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import jarvis_cmd, progress
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -66,7 +66,7 @@ def time_formatter(milliseconds: int) -> str:
 
 
 
-@jarvis.on(admin_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
+@jarvis.on(jarvis_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

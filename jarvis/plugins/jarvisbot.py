@@ -5,9 +5,9 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd("newsupport"))
+@jarvis.on(jarvis_cmd("ns"))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,9 +20,9 @@ async def _(event):
             "Click here to Go to Telegraph",
             "[Click Here For 💗💗💗](https://telegra.ph/JARVIS-UserBot-07-26)"
          ]
-            
+
 
     for i in animation_ttl:
-        	
+
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])

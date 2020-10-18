@@ -3,9 +3,9 @@
 # @its_xditya
 # Kangers keep credits
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd("pmto ?(.*)"))
+@jarvis.on(jarvis_cmd("pmto ?(.*)"))
 async def pmto(event):
     a = event.pattern_match.group(1)
     b = a.split(" ")
@@ -16,7 +16,7 @@ async def pmto(event):
         pass
     msg = ""
     for i in b[1:]:
-        msg += (i + " ") 
+        msg += (i + " ")
     if msg == "":
         return
     try:

@@ -3,11 +3,11 @@ Syntax: .meaning <word>"""
 
 import requests
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="meaning (.*)"))
-@jarvis.on(admin_cmd(pattern="meaning (.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="meaning (.*)"))
+@jarvis.on(sudo_cmd(pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

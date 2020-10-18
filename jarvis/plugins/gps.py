@@ -1,11 +1,11 @@
 #Credits :- Catuserbot Made By @Sandy1709
 from geopy.geocoders import Nominatim
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 from telethon.tl import types
-from jarvis import CMD_HELP 
+from jarvis import CMD_HELP
 
 
-@jarvis.on(admin_cmd(pattern="gps ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="gps ?(.*)"))
 async def gps(event):
     if event.fwd_from:
         return

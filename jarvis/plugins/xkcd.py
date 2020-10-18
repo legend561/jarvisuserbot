@@ -5,10 +5,10 @@ import asyncio
 import json
 import requests
 from urllib.parse import quote
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd(pattern="xkcd ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="xkcd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

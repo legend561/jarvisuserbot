@@ -2,7 +2,7 @@
 import os
 import lyricsgenius
 import random
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 from jarvis import CMD_HELP, LOGS
 from tswift import Song
 from telethon import events
@@ -16,8 +16,8 @@ GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="lyrics (.*)"))
-@jarvis.on(admin_cmd(pattern="lyrics (.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd(outgoing=True, pattern="lyrics (.*)"))
+@jarvis.on(sudo_cmd(pattern="lyrics (.*)", allow_sudo=True))
 async def _(event):
     await event.reply("wi8..! I am searching your lyrics....`")
     reply_to_id = event.message.id
@@ -31,7 +31,7 @@ async def _(event):
     else:
     	await event.reply("`What I am Supposed to find `")
     	return
-    
+
     song = ""
     song = Song.find_song(query)
     if song:
@@ -41,7 +41,7 @@ async def _(event):
             reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try `.glyrics`"
     else:
         reply = "lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
-        
+
     if len(reply) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(reply)) as out_file:
             out_file.name = "lyrics.text"
@@ -55,9 +55,9 @@ async def _(event):
             )
             await event.delete()
     else:
-        await event.reply(reply)       
+        await event.reply(reply)
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
+@jarvis.on(jarvis_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)")) 
 async def lyrics(lyric):
     if r"-" in lyric.text:
         pass

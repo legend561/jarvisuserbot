@@ -1,18 +1,19 @@
 """CoronaVirus LookUp
 Syntax: .covid <country>"""
 from covid import Covid
-from uniborg.util import admin_cmd
+from uniborg.util import jarvis_cmd, sudo_cmd
 
-@jarvis.on(admin_cmd(pattern="covid (.*)"))
+@jarvis.on(jarvis_cmd(pattern="covid (.*)"))
+@jarvis.on(sudo_cmd(pattern="covid (.*)", allow_sudo=True))
 async def _(event):
     covid = Covid()
     data = covid.get_data()
     country = event.pattern_match.group(1)
     country_data = get_country_data(country, data)
-    output_text = "" 
+    output_text = ""
     for name, value in country_data.items():
         output_text += "`{}`: `{}`\n".format(str(name), str(value))
-    await event.edit("**CoronaVirus Info in {}**:\n\n{}".format(country.capitalize(), output_text))
+    await event.reply("**CoronaVirus Info in {}**:\n\n{}".format(country.capitalize(), output_text))
 
 def get_country_data(country, world):
     for country_data in world:

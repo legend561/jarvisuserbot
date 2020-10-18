@@ -17,8 +17,9 @@ import sys
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from jarvis import CMD_HELP, bot 
-from jarvis.events import admin_cmd
+from jarvis import CMD_HELP, bot
+from jarvis.events import jarvis_cmd, sudo_cmd
+from jarvis import CMD_HNDLR
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), 'requirements.txt')
@@ -49,8 +50,8 @@ async def updateme_requirements():
         return repr(e)
 
 
-@jarvis.on(admin_cmd(pattern="update ?(.*)"))
-@jarvis.on(admin_cmd(pattern="update ?(.*)",allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="update ?(.*)"))
+@jarvis.on(sudo_cmd(pattern="update ?(.*)",allow_sudo=True))
 async def upstream(ups):
     "For .update command, check if the bot is up to date, update if specified"
     await ups.edit("`Searching for new updates, if any...`")
@@ -127,7 +128,7 @@ async def upstream(ups):
             remove("changelogs.txt")
         else:
             await ups.reply(changelog_str)
-        await ups.respond(f'Do `.update now` to update')
+        await ups.respond(f'Do `{CMD_HNDLR}update now` to update')
         return
 
     if force_updateme:
@@ -184,6 +185,6 @@ async def upstream(ups):
         await ups.edit('`Successfully Updated!\n'
                        'Bot is restarting... Wait for a second!`')
         # Spin a new instance of bot
-        args = [sys.executable, "-m", "stdborg"]
+        args = [sys.executable, "-m", "jarvis"]
         execle(sys.executable, *args, environ)
         return

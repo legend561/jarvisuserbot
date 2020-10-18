@@ -10,10 +10,10 @@ import time
 
 import os
 
-from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
+from jarvis.utils import jarvis_cmd, humanbytes, progress, time_formatter, sudo_cmd
 
-@jarvis.on(admin_cmd(pattern="compress ?(.*)"))
-@jarvis.on(admin_cmd(pattern="compress ?(.*)",allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="compress ?(.*)"))
+@jarvis.on(sudo_cmd(pattern="compress ?(.*)",allow_sudo=True))
 
 async def _(event):
 
@@ -43,7 +43,7 @@ async def _(event):
 
                 Config.TMP_DOWNLOAD_DIRECTORY
 
-                
+
 
             )
 

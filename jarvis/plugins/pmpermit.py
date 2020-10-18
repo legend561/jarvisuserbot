@@ -6,7 +6,7 @@ import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events, errors, functions, types
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 from jarvis import CMD_HELP
 
 
@@ -36,7 +36,7 @@ USER_BOT_NO_WARN = ("`Hello My Friend ! This is` **JARVIS** \n"
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @jarvis.on(admin_cmd(pattern="allow ?(.*)"))
+    @jarvis.on(jarvis_cmd(pattern="allow ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -69,9 +69,9 @@ if Var.PRIVATE_GROUP_ID is not None:
                     rko = await borg.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
-                    
-                    
-    @jarvis.on(admin_cmd(pattern="block ?(.*)"))
+
+
+    @jarvis.on(jarvis_cmd(pattern="block ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -90,7 +90,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @jarvis.on(admin_cmd(pattern="dis ?(.*)"))
+    @jarvis.on(jarvis_cmd(pattern="dis ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -105,10 +105,10 @@ if Var.PRIVATE_GROUP_ID is not None:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
                 await event.edit("Disapproved [{}](tg://user?id={})".format(firstname, chat.id))
-                
-    
 
-    @jarvis.on(admin_cmd(pattern="listapproved ?(.*)"))
+
+
+    @jarvis.on(jarvis_cmd(pattern="listapproved ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -176,7 +176,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # don't log verified accounts
 
             return
-          
+
         if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
             return
 
@@ -218,7 +218,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             await PREV_REPLY_MESSAGE[chat_id].delete()
         PREV_REPLY_MESSAGE[chat_id] = r
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import io
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon import events
@@ -231,9 +231,9 @@ async def hehehe(event):
         if not pmpermit_sql.is_approved(chat.id):
             pmpermit_sql.approve(chat.id, "**My Creator Is Best🔥**")
             await borg.send_message(chat, "**This User Is My Creator ! So Auto Approved !!!!**")
-           
 
-          
+
+
 CMD_HELP.update({
     "pmpermit":
     "\

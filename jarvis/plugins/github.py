@@ -2,10 +2,10 @@
 Syntax: .github USERNAME"""
 from telethon import events
 import requests
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("github (.*)"))
+@jarvis.on(jarvis_cmd("github (.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -1,7 +1,7 @@
 """
 Telegram Channel Media Downloader Plugin for userbot.
 usage: .geta channel_username [will  get all media from channel, tho there is limit of 3000 there to prevent API limits.]
-       .getc number_of_messsages channel_username  
+       .getc number_of_messsages channel_username
 By: @Zero_cool7870
 """
 from telethon import events
@@ -9,9 +9,9 @@ import asyncio
 import os
 import subprocess
 import sys
-from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
+from jarvis.utils import jarvis_cmd, humanbytes, progress, time_formatter
 
-@jarvis.on(admin_cmd(pattern=r"getc"))
+@jarvis.on(jarvis_cmd(pattern=r"getc"))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -41,13 +41,13 @@ async def get_media(event):
     output = output.replace("b'","")
     output = output.replace("\n'","")
     await event.edit("Downloaded "+output+" files.")
-             
-             
-             
-             
-             
-             
-@jarvis.on(admin_cmd(pattern=r"geta"))
+
+
+
+
+
+
+@jarvis.on(jarvis_cmd(pattern=r"geta"))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -59,8 +59,8 @@ async def get_media(event):
     channel_username= event.text
     command = ['ls','temp','|','wc','-l' ]
     channel_username = channel_username[7:]
- 
-   
+
+
     print(channel_username)
     await event.edit("Downloading All Media From this Channel.")
     msgs = await borg.get_messages(channel_username,limit=3000)
@@ -69,7 +69,7 @@ async def get_media(event):
     for msg in msgs:
        if msg.media is not None:
 	        await borg.download_media(
-                msg,dir)          
+                msg,dir)
     ps = subprocess.Popen(('ls', 'temp'), stdout=subprocess.PIPE)
     output = subprocess.check_output(('wc', '-l'), stdin=ps.stdout)
     ps.wait()
@@ -77,6 +77,3 @@ async def get_media(event):
     output = output.replace("b'","")
     output = output.replace("\n'","")
     await event.edit("Downloaded "+output+" files.")
-             
-             
-             

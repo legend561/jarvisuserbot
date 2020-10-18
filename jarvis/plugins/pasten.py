@@ -1,6 +1,6 @@
 """IX.IO pastebin like site
 Syntax: .npaste"""
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 from datetime import datetime
 import requests
 import os
@@ -17,8 +17,8 @@ def progress(current, total):
             total,
             (current / total) * 100))
 
-@jarvis.on(admin_cmd("npaste ?(.*)"))
-@jarvis.on(admin_cmd("npaste ?(.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd("npaste ?(.*)"))
+@jarvis.on(sudo_cmd("npaste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -66,7 +66,7 @@ async def _(event):
                 "content": data}).json().get('result').get('key')
         url = f'https://nekobin.com/{key}{py_file}'
         raw = f'https://nekobin.com/raw/{key}{py_file}'
-        reply_text = f'Pasted Text [Here]({url})\n Raw ? [View Raw]({raw})'
+        reply_text = f'Pasted Text [Here]({url})\n Raw ? [View Raw]({raw})', link_preview=False
         await event.reply(reply_text)
     else:
         data = message

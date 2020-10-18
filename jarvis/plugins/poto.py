@@ -5,7 +5,7 @@
 
 
 import logging
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
@@ -24,7 +24,7 @@ if 1 == 1:
 
 
 
-    @jarvis.on(admin_cmd(pattern="poto(.*)"))
+    @jarvis.on(jarvis_cmd(pattern="poto(.*)"))
 
     async def potocmd(event):
 

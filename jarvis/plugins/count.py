@@ -7,14 +7,14 @@ from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
-# @jarvis.on(admin_cmd(pattern="count"))
+# @jarvis.on(jarvis_cmd(pattern="count"))
 # async def _(event):
 #     if event.fwd_from:
 #         return
@@ -53,7 +53,7 @@ logger = logging.getLogger(__name__)
 
 
 
-@jarvis.on(admin_cmd(pattern='count'))  
+@jarvis.on(jarvis_cmd(pattern='count'))
 async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
     waiting_message = await event.edit('`Collecting stats, Wait Master`')

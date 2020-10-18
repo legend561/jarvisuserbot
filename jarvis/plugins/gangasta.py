@@ -1,11 +1,11 @@
 from telethon import events
 import random, re
-from jarvis.utils import admin_cmd
-import asyncio 
+from jarvis.utils import jarvis_cmd
+import asyncio
 
 
 
-@jarvis.on(admin_cmd("gangasta ?(.*)"))
+@jarvis.on(jarvis_cmd("gangasta ?(.*)"))
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("EVERyBOdy")

@@ -6,11 +6,11 @@ import aiohttp
 import io
 import time
 from datetime import tzinfo, datetime
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="weathers (.*)"))
-@jarvis.on(admin_cmd(pattern="weathers (.*)",allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="weathers (.*)"))
+@jarvis.on(sudo_cmd(pattern="weathers (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -52,7 +52,7 @@ async def _(event):
         await event.reply(response_api["message"])
 
 
-@jarvis.on(admin_cmd(pattern="wttr (.*)"))
+@jarvis.on(jarvis_cmd(pattern="wttr (.*)"))
 async def _(event):
     if event.fwd_from:
         return

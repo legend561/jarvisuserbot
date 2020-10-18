@@ -1,14 +1,14 @@
 """ by the @therrs 😎"""
 
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import asyncio
 
 
 
 
 
-@jarvis.on(admin_cmd(pattern="watt"))
+@jarvis.on(jarvis_cmd(pattern="watt"))
 
 async def _(event):
 
@@ -17,13 +17,13 @@ async def _(event):
         return
 
     animation_interval = 1
-    
+
 
     animation_ttl = range(0, 15)
 
-    
 
-  
+
+
 
     await event.edit("watt!!!")
 

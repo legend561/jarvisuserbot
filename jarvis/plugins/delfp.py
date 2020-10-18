@@ -14,9 +14,9 @@ from telethon.tl.functions.photos import (DeletePhotosRequest,
 
 from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
 
-from uniborg.util import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd(pattern="delpfp ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="delpfp ?(.*)"))
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
     group = delpfp.text[8:]

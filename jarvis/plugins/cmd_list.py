@@ -2,10 +2,10 @@ from telethon import events
 import subprocess
 import asyncio
 import time
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 #@command(pattern="^.cmds", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"cmds"))
+@jarvis.on(jarvis_cmd(pattern=r"cmds"))
 async def install(event):
     if event.fwd_from:
         return

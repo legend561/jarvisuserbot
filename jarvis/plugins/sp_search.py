@@ -1,6 +1,6 @@
 """
 StartPage Search Plugin for Userbot . //Alternative to Google Search
-cmd : .sch search_query 
+cmd : .sch search_query
 By: @Zero_cool7870
 
 """
@@ -8,11 +8,11 @@ By: @Zero_cool7870
 import os
 import asyncio
 import json
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="sch ?(.*)", allow_sudo=True))
 async def sp_search(event):
 	search_str = event.pattern_match.group(1)
 
@@ -31,4 +31,4 @@ async def sp_search(event):
 	for element in data:
 		msg = msg + "⁍ ["+element['title']+"]("+element['link']+")\n\n"
 
-	await event.edit(msg)	
+	await event.edit(msg)

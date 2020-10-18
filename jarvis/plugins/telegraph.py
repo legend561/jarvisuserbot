@@ -7,15 +7,15 @@ import os
 from PIL import Image
 from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@jarvis.on(admin_cmd("telegraph (media|text) ?(.*)"))
-@jarvis.on(admin_cmd("telegraph (media|text) ?(.*)", allow_sudo=True))
+@jarvis.on(jarvis_cmd("telegraph (media|text) ?(.*)"))
+@jarvis.on(sudo_cmd("telegraph (media|text) ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
             )
             end = datetime.now()
             ms = (end - start).seconds
-            await event.reply("Downloaded to {} in {} seconds.".format(downloaded_file_name, ms))
+            await event.edit("Downloaded to {} in {} seconds.".format(downloaded_file_name, ms))
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
             try:

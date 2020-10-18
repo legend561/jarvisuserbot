@@ -2,10 +2,10 @@
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from uniborg.util import jarvis_cmd
 
 
-@jarvis.on(admin_cmd(pattern="admins"))
+@jarvis.on(jarvis_cmd(pattern="admins"))
 async def _(event):
     if event.fwd_from:
         return

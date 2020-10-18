@@ -2,11 +2,11 @@
 Syntax: .wikimedia Query"""
 from telethon import events
 import requests
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="wikimedia (.*)"))
-@jarvis.on(admin_cmd(pattern="wikimedia (.*)",allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="wikimedia (.*)"))
+@jarvis.on(sudo_cmd(pattern="wikimedia (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,4 +40,4 @@ async def _(event):
         mime: {}
         mediatype: {}
         """.format(pageid, title, timestamp, user, descriptionurl, mime, mediatype)
-    await event.edit("**Search**: {} \n\n **Results**: {}".format(input_str, result))
+    await event.reply("**Search**: {} \n\n **Results**: {}".format(input_str, result))

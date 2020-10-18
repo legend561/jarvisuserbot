@@ -9,21 +9,22 @@
 
 from random import randint
 from time import sleep
-
-
+from jarvis.utils import jarvis_cmd, sudo_cmd
 from jarvis.events import register
 
 
-@register(outgoing=True, pattern="^.random")
+@jarvis.on(jarvis_cmd(outgoing=True, pattern="random"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="random"))
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
     if not items.text[0].isalpha() and items.text[0] not in ("/", "#", "@", "!"):
         itemo = (items.text[8:]).split()
         index = randint(1, len(itemo) - 1)
-        await items.edit("**Query: **\n`" + items.text[8:] + "`\n**Output: **\n`" + itemo[index] + "`")
+        await items.reply("**Query: **\n`" + items.text[8:] + "`\n**Output: **\n`" + itemo[index] + "`")
 
 
-@register(outgoing=True, pattern="^.sleep( [0-9]+)?$")
+@jarvis.on(jarvis_cmd(outgoing=True, pattern="sleep( [0-9]+)?$"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="sleep( [0-9]+)?$"))
 async def sleepybot(time):
     """ For .sleep command, let the userbot snooze for a few second. """
     message = time.text
@@ -32,7 +33,7 @@ async def sleepybot(time):
             await time.reply("Syntax: `.sleep [seconds]`")
         else:
             counter = int(time.pattern_match.group(1))
-            await time.edit("`I am sulking and snoozing....`")
+            await time.reply("`I am sulking and snoozing....`")
             sleep(2)
             if LOGGER:
                 await time.client.send_message(
@@ -40,8 +41,3 @@ async def sleepybot(time):
                     "You put the bot to sleep for " + str(counter) + " seconds",
                 )
             sleep(counter)
-
-
-
-
-

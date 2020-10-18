@@ -123,14 +123,14 @@ async def get_weather(weather):
         f"**Human Feeling** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n" +
         f"**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n" +
         f"**Max. Temp.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n" +
-        f"**Humidity:** `{humidity}%`\n" + 
-        f"**Pressure** `{pressure} hPa`\n" + 
+        f"**Humidity:** `{humidity}%`\n" +
+        f"**Pressure** `{pressure} hPa`\n" +
         f"**Wind:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
-        f"**Cloud:** `{cloud} %`\n" + 
+        f"**Cloud:** `{cloud} %`\n" +
         f"**Sunrise:** `{sun(sunrise)}`\n" +
-        f"**Sunset:** `{sun(sunset)}`\n\n\n" + 
+        f"**Sunset:** `{sun(sunset)}`\n\n\n" +
         f"**{desc}**\n" +
-        f"`{cityname}, {fullc_n}`\n" + 
+        f"`{cityname}, {fullc_n}`\n" +
         f"`{time}`\n")
 
 

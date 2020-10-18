@@ -9,10 +9,12 @@ from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
+import jarvis import CMD_HNDLR
 
 
-@jarvis.on(admin_cmd(pattern="restart"))
+@jarvis.on(jarvis_cmd(pattern="restart"))
+@jarvis.on(sudo_cmd(pattern="restart", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -21,7 +23,7 @@ async def _(event):
     # await asyncio.sleep(2)
     # await event.edit("Restarting [███]...\n`.ping` me or `.helpme` to check if I am online")
     # await asyncio.sleep(2)
-    await event.edit("Restarted. `.ping` me or `.helpme` to check if I am online")
+    await event.edit("Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online")
     await borg.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -29,7 +31,7 @@ async def _(event):
     quit()
 
 
-@jarvis.on(admin_cmd(pattern="shutdown"))
+@jarvis.on(jarvis_cmd(pattern="shutdown"))
 async def _(event):
     if event.fwd_from:
         return

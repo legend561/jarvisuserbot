@@ -1,4 +1,4 @@
-"""Remove.BG Plugin for @UniBorg
+"""Remove.BG Plugin for JarvisUserbot
 Syntax: .rmbg https://link.to/image.extension
 Syntax: .rmbg as reply to a media"""
 import asyncio
@@ -7,16 +7,17 @@ import io
 import os
 import requests
 from telethon import events
-from jarvis.utils import progress, admin_cmd
+from jarvis.utils import progress, jarvis_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd("rmbg ?(.*)"))
+@jarvis.on(jarvis_cmd("rmbg ?(.*)"))
+@jarvis.on(sudo_cmd("rmbg ?(.*)", allow_sudo=True))
 async def _(event):
     HELP_STR = "`.rmbg` as reply to a media, or give a link as an argument to this command"
     if event.fwd_from:
         return
     if Config.REM_BG_API_KEY is None:
-        await event.edit("You need API token from remove.bg to use this plugin.")
+        await event.reply("You need API token from remove.bg to use this plugin.")
         return False
     input_str = event.pattern_match.group(1)
     start = datetime.now()
@@ -25,7 +26,7 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit("Connecting to Official J.A.R.V.I.S Server and analysing that img ...")
+        await event.edit("Connecting to Official JARVIS Server and analysing that img ...")
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message,
@@ -58,9 +59,9 @@ async def _(event):
             )
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit("Removed dat annoying Backgroup in {} seconds, powered by JARVIS Userbot".format(ms))
+        await event.reply("Removed that annoying BG in {} seconds, powered by JARVIS Userbot".format(ms))
     else:
-        await event.edit("ReMove.BG API returned Errors. Please report to @JarvisOt Support Group\n`{}".format(output_file_name.content.decode("UTF-8")))
+        await event.reply("ReMove.BG API returned Errors. Please report to @JarvisOt Support Group\n`{}".format(output_file_name.content.decode("UTF-8")))
 
 
 # this method will call the API, and return in the appropriate format

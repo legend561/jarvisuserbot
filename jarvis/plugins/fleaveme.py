@@ -9,11 +9,11 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 
-@jarvis.on(admin_cmd(pattern=r"fleave"))
+@jarvis.on(jarvis_cmd(pattern=r"fleave"))
 
 async def _(event):
 
@@ -32,12 +32,12 @@ async def _(event):
     await event.edit("fleave")
 
     animation_chars = [
-        
+
             "⬛⬛⬛\n⬛⬛⬛\n⬛⬛⬛",
             "⬛⬛⬛\n⬛🔄⬛\n⬛⬛⬛",
             "⬛⬆️⬛\n⬛🔄⬛\n⬛⬛⬛",
             "⬛⬆️↗️\n⬛🔄⬛\n⬛⬛⬛",
-            "⬛⬆️↗️\n⬛🔄➡️\n⬛⬛⬛",    
+            "⬛⬆️↗️\n⬛🔄➡️\n⬛⬛⬛",
             "⬛⬆️↗️\n⬛🔄➡️\n⬛⬛↘️",
             "⬛⬆️↗️\n⬛🔄➡️\n⬛⬇️↘️",
             "⬛⬆️↗️\n⬛🔄➡️\n↙️⬇️↘️",

@@ -2,7 +2,7 @@
 Pulls Up A Random Chant From Harry Potter Series...
 Syntax: .hp
     orginal author : AlenPaulVarghese(@STARKTM1)
-    custom editing : @Spiderman210904
+    custom editing : @sppidy
 """
 from telethon import events
 import asyncio
@@ -16,7 +16,7 @@ import random
 async def _(event):
     if event.fwd_from:
         return
-    x=(random.randrange(1,40)) 
+    x=(random.randrange(1,40))
     if (x==1):
       await event.edit("**Aberto**")
     if (x==2):
@@ -97,5 +97,3 @@ async def _(event):
       await event.edit("**Tergeo**")
     if (x==39):
       await event.edit("**Wingardium Leviosa**")
-
-

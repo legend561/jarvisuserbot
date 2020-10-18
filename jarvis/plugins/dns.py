@@ -8,10 +8,10 @@ from telethon import events
 import os
 import requests
 import json
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
-@jarvis.on(admin_cmd("dns (.*)"))
+@jarvis.on(jarvis_cmd("dns (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -24,7 +24,7 @@ async def _(event):
         await event.edit("i can't seem to find {} on the internet".format(input_str))
 
 
-@jarvis.on(admin_cmd("url (.*)"))
+@jarvis.on(jarvis_cmd("url (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,7 +37,7 @@ async def _(event):
         await event.edit("something is wrong. please try again later.")
 
 
-@jarvis.on(admin_cmd("unshort (.*)"))
+@jarvis.on(jarvis_cmd("unshort (.*)"))
 async def _(event):
     if event.fwd_from:
         return

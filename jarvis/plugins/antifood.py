@@ -2,7 +2,7 @@ import asyncio
 from telethon import events
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 import jarvis.plugins.sql_helper.antiflood_sql as sql
 from jarvis import CMD_HELP
 
@@ -15,7 +15,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@jarvis.on(admin_cmd(incoming=True))
+@jarvis.on(jarvis_cmd(incoming=True))
 async def _(event):
     # logger.info(CHAT_FLOOD)
     if not CHAT_FLOOD:
@@ -54,7 +54,7 @@ because he reached the defined flood limit.""".format(event.message.from_id),
         )
 
 
-@jarvis.on(admin_cmd(pattern="setflood (.*)"))
+@jarvis.on(jarvis_cmd(pattern="setflood (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -65,11 +65,11 @@ async def _(event):
         await event.edit("Antiflood updated to {} in the current chat".format(input_str))
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
-        
-        
+
+
 CMD_HELP.update({
     "antiflood":
     ".setflood [number]\
 \nUsage: warns the user if he spams the chat  if you are admin mutes him in that group .\
 "
-})        
+})

@@ -6,8 +6,8 @@ Credits to noone
 
 from telethon import events
 import asyncio
-from jarvis.utils import admin_cmd
-@jarvis.on(admin_cmd("supporthelp"))
+from jarvis.utils import jarvis_cmd
+@jarvis.on(jarvis_cmd("supporthelp"))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,9 +20,9 @@ async def _(event):
             "Click here",
             "[Support Group](https://t.me/jarvissupportot)"
          ]
-            
+
 
     for i in animation_ttl:
-        	
+
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])

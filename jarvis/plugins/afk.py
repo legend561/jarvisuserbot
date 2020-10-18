@@ -4,7 +4,7 @@ import asyncio
 import datetime
 from telethon import events
 from telethon.tl import functions, types
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -38,7 +38,7 @@ async def set_not_afk(event):
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
 
-@jarvis.on(admin_cmd(pattern=r"afk ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"afk ?(.*)"))
 
 async def _(event):
     if event.fwd_from:

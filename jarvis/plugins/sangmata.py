@@ -2,15 +2,15 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd("sg ?(.*)"))
+@jarvis.on(jarvis_cmd("sg ?(.*)"))
 
 async def _(event):
 
     if event.fwd_from:
 
-        return 
+        return
 
     if not event.reply_to_msg_id:
 
@@ -18,7 +18,7 @@ async def _(event):
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
 
     if not reply_message.text:
 
@@ -40,15 +40,15 @@ async def _(event):
 
     async with borg.conversation(chat) as conv:
 
-          try:     
+          try:
 
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
 
               await borg.forward_messages(chat, reply_message)
 
-              response = await response 
+              response = await response
 
-          except YouBlockedUserError: 
+          except YouBlockedUserError:
 
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
 
@@ -58,17 +58,17 @@ async def _(event):
 
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
 
-          else: 
+          else:
 
              await event.edit(f"{response.message.message}")
 
-@jarvis.on(admin_cmd("fakemail ?(.*)"))
+@jarvis.on(jarvis_cmd("fakemail ?(.*)"))
 
 async def _(event):
 
     if event.fwd_from:
 
-        return 
+        return
 
     if not event.reply_to_msg_id:
 
@@ -76,7 +76,7 @@ async def _(event):
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
 
     if not reply_message.text:
 
@@ -98,15 +98,15 @@ async def _(event):
 
     async with borg.conversation(chat) as conv:
 
-          try:     
+          try:
 
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=177914997))
 
               await borg.forward_messages(chat, reply_message)
 
-              response = await response 
+              response = await response
 
-          except YouBlockedUserError: 
+          except YouBlockedUserError:
 
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
 
@@ -116,17 +116,17 @@ async def _(event):
 
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
 
-          else: 
+          else:
 
              await event.edit(f"{response.message.message}")
 
-@jarvis.on(admin_cmd("ub ?(.*)"))
+@jarvis.on(jarvis_cmd("ub ?(.*)"))
 
 async def _(event):
 
     if event.fwd_from:
 
-        return 
+        return
 
     if not event.reply_to_msg_id:
 
@@ -134,7 +134,7 @@ async def _(event):
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
 
     if not reply_message.text:
 
@@ -156,15 +156,15 @@ async def _(event):
 
     async with borg.conversation(chat) as conv:
 
-          try:     
+          try:
 
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=97342984))
 
               await borg.forward_messages(chat, reply_message)
 
-              response = await response 
+              response = await response
 
-          except YouBlockedUserError: 
+          except YouBlockedUserError:
 
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
 
@@ -174,17 +174,17 @@ async def _(event):
 
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
 
-          else: 
+          else:
 
              await event.edit(f"{response.message.message}")
 
-@jarvis.on(admin_cmd("gid ?(.*)"))
+@jarvis.on(jarvis_cmd("gid ?(.*)"))
 
 async def _(event):
 
     if event.fwd_from:
 
-        return 
+        return
 
     if not event.reply_to_msg_id:
 
@@ -192,7 +192,7 @@ async def _(event):
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
 
     if not reply_message.text:
 
@@ -214,15 +214,15 @@ async def _(event):
 
     async with borg.conversation(chat) as conv:
 
-          try:     
+          try:
 
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=186675376))
 
               await borg.forward_messages(chat, reply_message)
 
-              response = await response 
+              response = await response
 
-          except YouBlockedUserError: 
+          except YouBlockedUserError:
 
               await event.reply("```oh  shit```")
 
@@ -232,23 +232,23 @@ async def _(event):
 
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
 
-          else: 
+          else:
 
              await event.edit(f"{response.message.message}")
 
 
 
-                
 
-                
 
-@jarvis.on(admin_cmd("urban ?(.*)"))
+
+
+@jarvis.on(jarvis_cmd("urban ?(.*)"))
 
 async def _(event):
 
     if event.fwd_from:
 
-        return 
+        return
 
     if not event.reply_to_msg_id:
 
@@ -256,7 +256,7 @@ async def _(event):
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
 
     if not reply_message.text:
 
@@ -278,15 +278,15 @@ async def _(event):
 
     async with borg.conversation(chat) as conv:
 
-          try:     
+          try:
 
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=185693644))
 
               await borg.forward_messages(chat, reply_message)
 
-              response = await response 
+              response = await response
 
-          except YouBlockedUserError: 
+          except YouBlockedUserError:
 
               await event.reply("```oh shitt ```")
 
@@ -296,6 +296,6 @@ async def _(event):
 
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
 
-          else: 
+          else:
 
              await event.edit(f"{response.message.message}")

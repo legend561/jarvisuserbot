@@ -9,7 +9,7 @@ import time
 import math
 from datetime import datetime
 from telethon import events
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import jarvis_cmd, progress
 #
 from googleapiclient.discovery import build
 from apiclient.http import MediaFileUpload
@@ -35,7 +35,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 #@command(pattern="^.ugdrive ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"ugdrive ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -101,13 +101,13 @@ async def _(event):
         await mone.edit("File Not found in local server. Give me a file path :((")
 
 #@command(pattern="^.drivesch ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"drivesch ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"drivesch ?(.*)"))
 async def sch(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await event.edit("This module requires credentials from https://da.gd/so63O. Aborting!")
-        return False    
+        return False
     try:
         with open(G_DRIVE_TOKEN_FILE) as f:
             pass
@@ -118,7 +118,7 @@ async def sch(event):
         token_file_data = f.read()
         await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
-    http = authorize(G_DRIVE_TOKEN_FILE, None)    
+    http = authorize(G_DRIVE_TOKEN_FILE, None)
     input_str = event.pattern_match.group(1).strip()
     await event.edit("Searching for {} in G-Drive.".format(input_str))
     if parent_id is not None:
@@ -148,11 +148,11 @@ async def gsearch(http,query,filename):
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
-    return msg        
+    return msg
 
 
 #@command(pattern="^.gdrivedir ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"gdrivedir ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -322,9 +322,9 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 
 #@command(pattern="^.gfolder ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"gfolder ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"gfolder ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
-    folder_link = "https://drive.google.com/folderview?id="+parent_id    
+    folder_link = "https://drive.google.com/folderview?id="+parent_id
     await event.edit("`Here is Your G-Drive Folder link : `\n"+folder_link)

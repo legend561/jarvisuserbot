@@ -1,7 +1,7 @@
 """
 GITHUB File Uploader Plugin for userbot. Heroku Automation should be Enabled. Else u r not that lazy // For lazy people
 Instructions:- Set GITHUB_ACCESS_TOKEN and GIT_REPO_NAME Variables in Heroku vars First
-usage:- .commit reply_to_any_plugin //can be any type of file too. but for plugin must be in .py 
+usage:- .commit reply_to_any_plugin //can be any type of file too. but for plugin must be in .py
 """
 
 
@@ -13,20 +13,20 @@ import time
 from datetime import datetime
 from telethon import events
 from telethon.tl.types import DocumentAttributeVideo
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import jarvis_cmd, progress
 
 GIT_TEMP_DIR = "./jarvis/temp/"
-@jarvis.on(admin_cmd(pattern="commit", outgoing=True))
-@jarvis.on(admin_cmd(pattern="commit", allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="commit", outgoing=True))
+@jarvis.on(jarvis_cmd(pattern="commit", allow_sudo=True))
 async def download(event):
     if event.fwd_from:
-        return	
+        return
     if Var.GITHUB_ACCESS_TOKEN is None:
-        await event.reply("`Please ADD Proper Access Token from github.com`") 
-        return   
+        await event.reply("`Please ADD Proper Access Token from github.com`")
+        return
     if Var.GIT_REPO_NAME is None:
         await event.reply("`Please ADD Proper Github Repo Name of your userbot`")
-        return 
+        return
     mone = await event.reply("Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
@@ -39,7 +39,7 @@ async def download(event):
                 reply_message.media,
                 GIT_TEMP_DIR
             )
-    except Exception as e: 
+    except Exception as e:
         await mone.edit(str(e))
     else:
         end = datetime.now()
@@ -49,7 +49,7 @@ async def download(event):
         await mone.reply("Committing to Github....")
         await git_commit(downloaded_file_name, mone)
 
-async def git_commit(file_name,mone):        
+async def git_commit(file_name,mone):
     content_list = []
     access_token = Var.GITHUB_ACCESS_TOKEN
     g = Github(access_token)
@@ -67,7 +67,7 @@ async def git_commit(file_name,mone):
         if i == 'ContentFile(path="'+file_name+'")':
             return await mone.reply("`File Already Exists`")
             create_file = False
-    file_name = "jarvis/plugins/" + file_name		
+    file_name = "jarvis/plugins/" + file_name
     if create_file == True:
         file_name = file_name.replace("./jarvis/temp/","")
         print(file_name)
@@ -77,7 +77,7 @@ async def git_commit(file_name,mone):
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
             await mone.reply(f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/stable/jarvis/plugins/)")
-        except:    
+        except:
             print("Cannot Create Plugin")
             await mone.reply("Cannot Upload Plugin")
     else:

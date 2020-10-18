@@ -4,9 +4,9 @@
 from telethon import events
 import random
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
-@jarvis.on(admin_cmd(pattern=r"jainder(.*)"))
+@jarvis.on(jarvis_cmd(pattern=r"jainder(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -86,7 +86,7 @@ async def _(event):
             "-ᄒᴥᄒ-",
             "◖⚆ᴥ⚆◗",
         ]
-    else:    
+    else:
         emoticons = [
             "( ͡° ͜ʖ ͡°)",
             "¯\_(ツ)_/¯",

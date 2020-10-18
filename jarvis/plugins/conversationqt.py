@@ -31,14 +31,14 @@ import sys
 import random
 
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import jarvis_cmd
 
 
 
 
 
 
-@jarvis.on(admin_cmd(pattern=r"qt"))
+@jarvis.on(jarvis_cmd(pattern=r"qt"))
 
 
 

@@ -32,9 +32,9 @@ async def await_read(chat, message):
     await fut
 
 
-@jarvis.on(admin_cmd(pattern="(del)(?:ete)?$"))
-@jarvis.on(admin_cmd(pattern="(del)(?:ete)?$", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern="(edit)(?:\s+(.*))?$"))
+@jarvis.on(jarvis_cmd(pattern="(del)(?:ete)?$"))
+@jarvis.on(jarvis_cmd(pattern="(del)(?:ete)?$", allow_sudo=True))
+@jarvis.on(jarvis_cmd(pattern="(edit)(?:\s+(.*))?$"))
 async def delete(event):
     await event.delete()
     command = event.pattern_match.group(1)
