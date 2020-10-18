@@ -2,7 +2,7 @@ import coffeehouse
 from coffeehouse.lydia import LydiaAI
 import asyncio
 from telethon import events
-from jarvus.utils import jarvis_cmd
+from jarvis.utils import jarvis_cmd
 
 # Non-SQL Mode
 ACC_LYDIA = {}
