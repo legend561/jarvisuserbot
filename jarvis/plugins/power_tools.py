@@ -10,7 +10,7 @@ import asyncio
 import os
 import sys
 from jarvis.utils import jarvis_cmd
-from jarvis import CMD_HNDLR
+from jarvis import CMD_HNDLR, SUDO_CMD
 
 
 @jarvis.on(jarvis_cmd(pattern="restart"))
@@ -32,6 +32,7 @@ async def _(event):
 
 
 @jarvis.on(jarvis_cmd(pattern="shutdown"))
+@jarvis.on(jarvus_cmd(pattern="shutdown", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
