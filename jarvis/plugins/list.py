@@ -13,7 +13,7 @@ import os
 
 
 @jarvis.on(jarvis_cmd(pattern="ls ?(.*)"))
-@jarvis.on(sudo__cmd(pattern="ls ?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
 	if event.fwd_from:
 		return
