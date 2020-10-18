@@ -10,7 +10,7 @@ import asyncio
 import os
 import sys
 from jarvis.utils import jarvis_cmd
-import jarvis import CMD_HNDLR
+from jarvis import CMD_HNDLR
 
 
 @jarvis.on(jarvis_cmd(pattern="restart"))
