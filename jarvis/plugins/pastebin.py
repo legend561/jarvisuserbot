@@ -10,7 +10,7 @@ from jarvis.utils import jarvis_cmd, sudo_cmd
 def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
-@jarvis.on(admin_cmd(pattern="paste ?(.*)"))
+@jarvis.on(jarvis_cmd(pattern="paste ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
