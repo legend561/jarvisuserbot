@@ -4,7 +4,7 @@ import requests , re
 from PIL import Image
 from validators.url import url
 from jarvis import CMD_HELP
-from jarvis import jarvis_cmd
+from jarvis.utils import jarvis_cmd
 
 EMOJI_PATTERN = re.compile(
     "["
