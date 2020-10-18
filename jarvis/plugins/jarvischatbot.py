@@ -45,7 +45,7 @@ async def addcf(event):
     else:
         await event.edit("Reply to a user to activate Lydia AI on them")
 
-@jarvis.on(pattern="remcf", outgoing=True)
+@jarvis.on(jarvis_cmd(pattern="remcf", outgoing=True))
 async def remcf(event):
     if event.fwd_from:
         return
