@@ -2,7 +2,7 @@
 Syntax: .cpin [LOUD]"""
 from telethon import events
 from telethon.tl import functions, types
-from jarvis.utils import jarvis_cmd,, sudo_cmd
+from jarvis.utils import jarvis_cmd, sudo_cmd
 
 
 @jarvis.on(jarvis_cmd("cpin ?(.*)"))
