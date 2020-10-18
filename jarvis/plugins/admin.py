@@ -100,9 +100,9 @@ async def set_group_photo(gpic):
             await gpic.client(
                 replyPhotoRequest(gpic.chat_id, await
                                  gpic.client.upload_file(photo)))
-            await- gpic.reply(CHAT_PP_CHANGED)
+            await gpic.reply(CHAT_PP_CHANGED)
 
-        except PhotoCropSizeSmallError:
+        except PhoCropSizeSmallError:
             await gpic.reply(PP_TOO_SMOL)
         except ImageProcessFailedError:
             await gpic.reply(PP_ERROR)
