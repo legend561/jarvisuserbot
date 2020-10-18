@@ -9,8 +9,8 @@ from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import jarvis_cmd
-from jarvis import CMD_HNDLR, SUDO_CMD
+from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis import CMD_HNDLR
 
 
 @jarvis.on(jarvis_cmd(pattern="restart"))
