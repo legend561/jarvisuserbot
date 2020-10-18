@@ -64,9 +64,9 @@ async def _(event):
             'https://nekobin.com/api/documents',
             json={
                 "content": data}).json().get('result').get('key')
-        url = f'https://nekobin.com/{key}{py_file}'
-        raw = f'https://nekobin.com/raw/{key}{py_file}'
-        reply_text = f" ~ Pasted Text [Here]({url})\n ~ Raw ? [View Raw]({raw})", link_preview=False
+        url = 'https://nekobin.com/{key}{py_file}'
+        raw = 'https://nekobin.com/raw/{key}{py_file}'
+        reply_text = " ~ Pasted Text [Here]({url})\n ~ Raw ? [View Raw]({raw})", link_preview=False
         await event.reply(reply_text)
     else:
         data = message
@@ -74,7 +74,7 @@ async def _(event):
             'https://nekobin.com/api/documents',
             json={
                 "content": data}).json().get('result').get('key')
-        url = f'https://nekobin.com/{key}'
-        raw = f'https://nekobin.com/raw/{key}'
-        reply_text = f" ~ Pasted Text [Here]({url})\n ~ Raw ? [View Raw]({raw})", link_preview=False
+        url = 'https://nekobin.com/{key}'
+        raw = 'https://nekobin.com/raw/{key}'
+        reply_text = " ~ Pasted Text [Here]({url})\n ~ Raw ? [View Raw]({raw})", link_preview=False
         await event.reply(reply_text)
