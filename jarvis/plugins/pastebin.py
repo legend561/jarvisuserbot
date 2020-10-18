@@ -5,15 +5,12 @@ import asyncio
 from datetime import datetime
 import os
 import requests
-from jarvis.utils import jarvis_cmd, sudo_cmd
-
+from userbot.utils import admin_cmd
 
 def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
-
-@jarvis.on(jarvis_cmd("paste ?(.*)"))
-@jarvis.on(sudo_cmd("paste ?(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="paste ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -50,6 +47,6 @@ async def _(event):
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await event.reply("Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)), link_preview=False
+        await event.edit("Dogged to [dogbin]({}) in {} seconds. GoTo Original URL: {}".format(url, ms, nurl))
     else:
-        await event.reply("Dogged to {} in {} seconds".format(url, ms)), link_preview=False
+        await event.edit("Dogged to [dogbin]({}) in {} seconds".format(url, ms))
