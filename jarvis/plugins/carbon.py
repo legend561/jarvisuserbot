@@ -35,7 +35,7 @@ CARBONLANG = "auto"
 
 LANG = "en"
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="carbon")
+@jarvis.on(jarvis_cmd(outgoing=True, pattern="carbon"))
 
 async def carbon_api(e):
 
