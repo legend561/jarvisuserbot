@@ -7,7 +7,7 @@ from io import BytesIO
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd
 from datetime import datetime
-from jarvis.plugins import inlinestats
+from jarvis.plugins import inlinestats, currentversion
 
 ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
 
