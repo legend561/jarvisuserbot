@@ -7,6 +7,7 @@ from io import BytesIO
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd
 from datetime import datetime
+from jarvis.plugins import inlinestats
 
 ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
 
@@ -46,14 +47,20 @@ async def amireallyalive(alive):
     if ALIVE_PIC:
         pm_caption = "**ᴊᴀʀᴠɪꜱ ɪꜱ ᴏɴʟɪɴᴇ**\n"
         pm_caption += f"**M̴y̴ ̴B̴o̴s̴s̴**            : {DEFAULTUSER}\n"
-        pm_caption += "Telethon Version         : 4.8\n"
         pm_caption += "Python Version           : 3.8.5\n"
         pm_caption += "Bot Version              : 7.0.9\n"
         pm_caption += "ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ          : [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
         pm_caption += "ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ            : [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
         pm_caption += "ʟɪᴄᴇɴꜱᴇ                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
         pm_caption += "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-        pm_caption += "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)"
+        pm_caption += " ✓ JARVIS STATS ✓ "
+        pm_caption += f"• VERSION = {currentversion} \n"
+        pm_caption += f"• DATABASE = {dbstats} \n"
+        pm_caption += f"• SUDO = {ssudo} \n"
+        pm_caption += f"• PM LOGS = {pmllogs} \n"
+        pm_caption += f"• HEROKU = {updaterr} \n"
+        pm_caption += f"• G-DRIVE = {wearenoob}\n\n"
+        pm_caption += "[Git Repo](https://jarvisworks.ga/userbot)"
         chat = await alive.get_chat()
         await alive.delete()
         """ For .alive command, check if the bot is running.  """
@@ -79,5 +86,12 @@ async def amireallyalive(alive):
                                 "ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ            : [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
                                 "ʟɪᴄᴇɴꜱᴇ                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
                                 "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-                                "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)" , link_preview = False) 
+                                " ✓ JARVIS STATS ✓ "
+                                f"• VERSION = {currentversion} \n"
+                                f"• DATABASE = {dbstats} \n"
+                                f"• SUDO = {ssudo} \n"
+                                f"• PM LOGS = {pmllogs} \n"
+                                f"• HEROKU = {updaterr} \n"
+                                f"• G-DRIVE = {wearenoob}\n\n"
+                                "[Git Repo](https://jarvisworks.ga/userbot)" , link_preview = False) 
         await alive.delete()
