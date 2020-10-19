@@ -6,28 +6,28 @@ from jarvis.uniborgConfig import Config
 
 idgen = topfunc.id_generator
 findnemo = topfunc.stark_finder
-issudousing = Config.SUDO_USERS
-islogokay = Config.PRIVATE_GROUP_ID
+sudousing = Config.SUDO_USERS
+pmlogss = Config.PM_LOGGR_BOT_API_ID
 isdbfine = Var.DB_URI
-isherokuokay = Var.HEROKU_APP_NAME
+updaterok = Var.HEROKU_APP_NAME
 gdriveisshit = Config.AUTH_TOKEN_DATA
 wttrapi = Config.OPEN_WEATHER_MAP_APPID
 rmbg = Config.REM_BG_API_KEY
-currentversion = "3.0"
-if issudousing:
-    amiusingsudo = "Active ✅"
+currentversion = "3.2"
+if sudousing:
+    ssudo = "Active ✅"
 else:
-    amiusingsudo = "Inactive ❌"
+    ssudo = "Inactive ❌"
 
-if islogokay:
-    logchat = "Connected ✅"
+if pmlogss:
+    pmllogs = "Connected ✅"
 else:
-    logchat = "Dis-Connected ❌"
+    pmllogs = "Dis-Connected ❌"
 
-if isherokuokay:
-    riplife = "Connected ✅"
+if updaterok:
+    updaterr = "Connected ✅"
 else:
-    riplife = "Not Connected ❌"
+    updaterr = "Not Connected ❌"
 
 if gdriveisshit:
     wearenoob = "Active ✅"
@@ -39,11 +39,6 @@ if rmbg:
 else:
     gendu = "Not Added ❌"
 
-if wttrapi:
-    starknoobs = "Added ✅"
-else:
-    starknoobs = "Not Added ❌"
-
 if isdbfine:
     dbstats = "Fine ✅"
 else:
@@ -52,7 +47,7 @@ else:
 inlinestats = (f"✘ SHOWING JARVIS STATS ✘\n"
                f"VERSION = {currentversion} \n"
                f"DATABASE = {dbstats} \n"
-               f"SUDO = {amiusingsudo} \n"
-               f"LOG-CHAT = {logchat} \n"
-               f"HEROKU = {riplife} \n"
+               f"SUDO = {ssudo} \n"
+               f"PM LOGS = {pmllogs} \n"
+               f"HEROKU = {updaterr} \n"
                f"G-DRIVE = {wearenoob}")
