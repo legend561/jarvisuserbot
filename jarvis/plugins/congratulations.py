@@ -1,6 +1,6 @@
 from telethon import events
 import random, re
-from uniborg.util import jarvis_cmd
+from uniborg.util import admin_cmd
 
 RUNSREACTS = [
     "`Congratulations and BRAVO!`",
@@ -15,10 +15,10 @@ RUNSREACTS = [
     "`Feeling so much joy for you today. What an impressive achievement!`",
 ]
 
-@jarvis.on(jarvis_cmd(pattern="congo"))
+@jarvis.on(admin_cmd(pattern="congo"))
 async def _(event):
     if event.fwd_from:
          return
-    bro = random.randint(0, len(RUNSREACTS) - 1)
+    bro = random.randint(0, len(RUNSREACTS) - 1)    
     reply_text = RUNSREACTS[bro]
     await event.edit(reply_text)

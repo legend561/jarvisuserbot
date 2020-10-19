@@ -4,7 +4,7 @@ from telethon import events
 
 from datetime import datetime
 
-from jarvis.utils import jarvis_cmd
+from uniborg.util import admin_cmd
 
 import importlib.util
 
@@ -18,7 +18,7 @@ import importlib.util
 
 
 
-@jarvis.on(jarvis_cmd(pattern='(f?c)d '))
+@jarvis.on(admin_cmd(pattern='(f?c)d '))
 
 async def timer_blankx(e):
 
@@ -45,7 +45,7 @@ async def timer_blankx(e):
   await e.edit(txt + 'NaN')
 
 
-@jarvis.on(jarvis_cmd(pattern='(f?s)cd '))
+@jarvis.on(admin_cmd(pattern='(f?s)cd '))
 
 async def timer_blankx(e):
 
@@ -95,3 +95,4 @@ async def timer_blankx(e):
  if e.pattern_match.group(1) == 'f':
 
   await e.edit("`Successfully Promoted As Admin.` ")
+

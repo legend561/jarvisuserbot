@@ -9,15 +9,15 @@ import os
 import requests
 import math
 from jarvis.utils import register
-from jarvis.utils import jarvis_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import admin_cmd, edit_or_reply
 
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)"))
-@jarvis.on(sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)"))
+@jarvis.on(admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
 async def variable(var):
     """
         Manage most of ConfigVars setting, set new var, get current var,
@@ -94,8 +94,8 @@ async def variable(var):
             return await var.reply(f"**{variable}**  `is not exists`")
 
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern=r"usage(?: |$)"))
-@jarvis.on(sudo_cmd(pattern=r"usage(?: |$)", allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"usage(?: |$)"))
+@jarvis.on(admin_cmd(pattern=r"usage(?: |$)", allow_sudo=True))
 async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
@@ -153,8 +153,8 @@ async def dyno_usage(dyno):
                            )
 
 
-@jarvis.on(jarvis_cmd(pattern="info heroku"))
-@jarvis.on(sudo_cmd(pattern="info heroku", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="info heroku"))
+@jarvis.on(admin_cmd(pattern="info heroku", allow_sudo=True))
 async def info(event):
     await borg.send_message(event.chat_id, "**Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**")
     await event.delete()
@@ -166,12 +166,12 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
     items, _ = getsubitems(obj, itemkey="", islast=True, maxlinelength=maxlinelength - indent, indent=indent)
     return indentitems(items, indent, level=0)
-
-@jarvis.on(jarvis_cmd(outgoing=True, pattern=r"logs"))
-@jarvis.on(sudo_cmd(pattern=r"logs", allow_sudo=True))
-async def _(dyno):
+   
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"logs"))
+@jarvis.on(admin_cmd(pattern=r"logs", allow_sudo=True))
+async def _(dyno):        
         try:
-             Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
+             Heroku = heroku3.from_key(Var.HEROKU_API_KEY)                         
              app = Heroku.app(Var.HEROKU_APP_NAME)
         except:
   	       return await dyno.reply(" Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var please check https://t.me/IndianBot_Official/55?single")

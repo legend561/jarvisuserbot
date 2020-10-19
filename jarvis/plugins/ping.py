@@ -2,10 +2,10 @@ from telethon import events
 from datetime import datetime
 from telethon import events
 from datetime import datetime
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 import time
 
-@jarvis.on(jarvis_cmd(pattern="pong ?(.*)"))
+@jarvis.on(admin_cmd(pattern="pong ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -15,7 +15,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).microseconds * 0.00001
     await mone.edit("‎‎‎‎‎‎‎‎‎‌‌‌‌‌‌‌‌‎🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦🟦📶📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟦🟦🟦🟦🟦📶🟦🟪\n🟪🟦🟦🟦🟦📶🟦🟦🟪\n🟪🟦🟦🟦📶🟦🟦🟦🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦📶🟦🟦🟦📶🟪\n🟪🟦📶📶🟦🟦📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶🟦📶📶📶📶📶🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n\n\n📥Ironman📥\n‌‌‌‌‌‌‌‌‎ \n \n 🔥𝕄𝕪 𝕡𝕚𝕟𝕘 𝕚𝕤🔥 : {} ms".format(ms))
-
+ 
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -46,8 +46,8 @@ def get_readable_time(seconds: int) -> str:
 
 
 #@command(pattern="^.ping$")
-@jarvis.on(jarvis_cmd(pattern="ping$"))
-@jarvis.on(sudo_cmd(pattern="ping$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ping$"))
+@jarvis.on(admin_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

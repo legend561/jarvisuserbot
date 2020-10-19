@@ -5,19 +5,18 @@ import asyncio
 import os
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
-from jarvis.utils import jarvis_cmd, sudo_cmd
-from jarvis import TZ
+from jarvis.utils import admin_cmd
 
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@jarvis.on(jarvis_cmd("time ?(.*)"))  # pylint:disable=E0602
-@jarvis.on(sudo_cmd("time ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd("time ?(.*)"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd("time ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \nJARVIS TIMEZONE \n LOCATION:{TZ}  \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
+    current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \nJARVIS TIMEZONE \n LOCATION: India🇮🇳 \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     reply_msg_id = event.message.id
@@ -46,11 +45,11 @@ async def _(event):
     end = datetime.now()
     time_taken_ms = (end - start).seconds
     await event.reply("Created sticker in {} seconds".format(time_taken_ms))
-    await asyncio.sleep(2)
+    await asyncio.sleep(5)
     await event.delete()
 
 
-@jarvis.on(jarvis_cmd("gtime (.*)"))  # pylint:disable=E0602
+@borg.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

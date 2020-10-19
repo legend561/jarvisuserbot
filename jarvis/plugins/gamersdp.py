@@ -1,6 +1,6 @@
 import requests , re , random 
 
-import urllib , os
+import urllib , os 
 
 from telethon.tl import functions
 
@@ -8,7 +8,7 @@ from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 import asyncio
 
@@ -52,7 +52,7 @@ async def animepp():
 
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
-@jarvis.on(jarvis_cmd(pattern="gamerdp ?(.*)"))
+@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)"))
 
 async def main(event):
 
@@ -62,7 +62,7 @@ async def main(event):
 
         await animepp()
 
-        file = await event.client.upload_file("donottouch.jpg")
+        file = await event.client.upload_file("donottouch.jpg")  
 
         await event.client(functions.photos.UploadProfilePhotoRequest( file))
 

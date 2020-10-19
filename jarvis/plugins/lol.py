@@ -9,11 +9,11 @@ import asyncio
 import os
 import sys
 import random
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"lol"))
+@jarvis.on(admin_cmd(pattern=r"lol"))
 
 async def _(event):
 
@@ -24,7 +24,7 @@ async def _(event):
     await event.edit("Typing...")
 
     await asyncio.sleep(2)
-
+    
     x=(random.randrange(1,28))
     if (x==1):
       await event.edit(";l;;o;;l;")
@@ -82,3 +82,4 @@ async def _(event):
       await event.edit("hola lol")
     if (x==28):
       await event.edit("llllllllllllllooooooooooollllllllll")
+    

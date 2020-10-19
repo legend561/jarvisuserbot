@@ -4,11 +4,11 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("smd (.*)"))
-@jarvis.on(jarvis_cmd(pattern="smd (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("smd (.*)"))
+@jarvis.on(admin_cmd(pattern="smd (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

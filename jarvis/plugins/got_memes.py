@@ -14,9 +14,9 @@ import sys
 
 import random
 
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern=r"gotm"))
+@jarvis.on(admin_cmd(pattern=r"gotm"))
 
 async def _(event):
 
@@ -56,7 +56,7 @@ async def _(event):
 
     if x==7:
 
-        await event.edit("[ When your friend asks about the food he/she just cooked and you don't want to break his/her heart...](https://telegra.ph/file/702df36088f5c26fef931.jpg)", link_preview=True)
+        await event.edit("[ When your friend asks about the food he/she just cooked and you don't want to break his/her heart...](https://telegra.ph/file/702df36088f5c26fef931.jpg)", link_preview=True)    
 
     if x==8:
 

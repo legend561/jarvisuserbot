@@ -4,15 +4,15 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd("moody"))
+@jarvis.on(admin_cmd("moody"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.1
     animation_ttl = range(0, 288)
-
+    
     #await event.edit(input_str)
     await event.edit("I am getting moody now")
     animation_chars = [
@@ -25,10 +25,10 @@ async def _(event):
            "😭🥺😩",
            "😫😠🤬",
            "😬😐😶",
-           "😵😵😵"
+           "😵😵😵"  
         ]
 
     for i in animation_ttl:
-
+        	
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 72])
+        await event.edit(animation_chars[i % 72])           

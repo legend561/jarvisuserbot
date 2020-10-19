@@ -4,7 +4,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 import time
 from jarvis import ALIVE_NAME
 
@@ -12,12 +12,12 @@ naam = str(ALIVE_NAME)
 
 bot = "@jarvisotbot"
 
-@jarvis.on(jarvis_cmd("jarvis ?(.*)"))
+@jarvis.on(admin_cmd("jarvis ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     sysarg = event.pattern_match.group(1)
-
+    
     if sysarg == "hello":
       async with borg.conversation(bot) as conv:
           try:
@@ -98,3 +98,4 @@ async def _(event):
     else:
       await brog.send_message(event.chat_id, "**INVALID** -- FOR HELP COMMAND IS **hcc help**")
       await event.delete()
+

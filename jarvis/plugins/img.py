@@ -7,13 +7,13 @@ from jarvis.google_imgs import googleimagesdownload
 import os
 import shutil
 from re import findall
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="img ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="img ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="img ?(.*)"))
+@jarvis.on(admin_cmd(pattern="img ?(.*)", allow_sudo=True))
 async def img_sampler(event):
-    await event.edit("`Processing...`")
+    await event.reply("`Processing...`")
     reply = await event.get_reply_message()
     if event.pattern_match.group(1):
         query = event.pattern_match.group(1)
@@ -22,7 +22,7 @@ async def img_sampler(event):
     else:
     	await event.reply("`um, mind mentioning what I actually need to search for ;_;`")
     	return
-
+        
     lim = findall(r"lim=\d+", query)
     # lim = event.pattern_match.group(1)
     try:

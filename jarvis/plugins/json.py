@@ -2,11 +2,10 @@
 Syntax: .json"""
 from telethon import events
 import io
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("json"))
-@jarvis.on(sudo_cmd("json", allow_sudo=True))
+@jarvis.on(admin_cmd("json"))
 async def _(event):
     if event.fwd_from:
         return

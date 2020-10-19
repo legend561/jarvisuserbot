@@ -6,9 +6,9 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd("ok"))
+@jarvis.on(admin_cmd("ok"))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,6 +37,6 @@ async def _(event):
         ]
 
     for i in animation_ttl:
-
+        	
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])

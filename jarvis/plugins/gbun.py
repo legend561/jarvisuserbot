@@ -3,10 +3,10 @@ import asyncio
 from telethon import events
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("gbun"))
+@jarvis.on(admin_cmd("gbun"))
 async def gbun(event):
     if event.fwd_from:
         return

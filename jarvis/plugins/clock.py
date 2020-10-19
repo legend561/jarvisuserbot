@@ -4,10 +4,10 @@
 from telethon import events
 import asyncio
 from collections import deque
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern=r"clock"))
+@jarvis.on(admin_cmd(pattern=r"clock"))
 async def _(event):
 	if event.fwd_from:
 		return
@@ -16,3 +16,4 @@ async def _(event):
 		await asyncio.sleep(0.1)
 		await event.edit("".join(deq))
 		deq.rotate(1)
+    

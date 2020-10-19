@@ -1,5 +1,5 @@
 from telethon.tl.types import InputMediaDice
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 # EMOJI CONSTANTS
 DART_E_MOJI = "🎯"
@@ -8,7 +8,7 @@ BALL_E_MOJI = "🏀"
 # EMOJI CONSTANTS
 
 
-@jarvis.on(jarvis_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)"))
+@jarvis.on(admin_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -1,6 +1,6 @@
 """Send Chat Actions
 Syntax: .sca <option> <time in sec>
-        sca options: Options for sca
+        sca options: Options for sca 
 
 typing
 contact
@@ -14,10 +14,10 @@ document
 cancel"""
 
 import asyncio
-from jarvis.utils import jarvis_cmd
-
-
-@jarvis.on(jarvis_cmd("sca ?(.*)"))
+from jarvis.utils import admin_cmd
+ 
+ 
+@jarvis.on(admin_cmd("sca ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

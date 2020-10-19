@@ -8,11 +8,11 @@ import os
 import subprocess
 from datetime import datetime
 from gtts import gTTS
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="voice (.*)"))
-@jarvis.on(sudo_cmd(pattern="voice (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="voice (.*)"))
+@jarvis.on(admin_cmd(pattern="voice (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -75,7 +75,7 @@ async def _(event):
     except Exception as e:
         await event.reply(str(e))
 
-
+        
 CMD_HELP.update({
     "voice":
     " Google Text to Speech\
@@ -83,4 +83,4 @@ CMD_HELP.update({
 \n.voice LanguageCode as reply to a message\
 \n\n.voice LangaugeCode | text to speak\
 "
-})
+}) 

@@ -3,10 +3,10 @@ Syntax: .filext EXTENSION"""
 from telethon import events
 import requests
 from bs4 import BeautifulSoup
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="filext (.*)"))
+@jarvis.on(admin_cmd(pattern="filext (.*)"))
 async def _(event):
     if event.fwd_from:
         return

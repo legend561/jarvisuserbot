@@ -5,11 +5,11 @@
 Syntax: .wikipedia Query"""
 from telethon import events
 import wikipedia
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="wikipedia (.*)"))
-@jarvis.on(sudo_cmd(pattern="wikipedia (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="wikipedia (.*)"))
+@jarvis.on(admin_cmd(pattern="wikipedia (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

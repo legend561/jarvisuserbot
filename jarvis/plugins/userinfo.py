@@ -28,8 +28,6 @@ from telethon.tl.types import (
     InputPeerChannel,
     InputPeerChat)
 
-from jarvis.utils import jarvis_cmd
-
 
 def parse_arguments(message: str, valid: List[str]) -> (dict, str):
     options = {}
@@ -303,7 +301,7 @@ class TGDoc:
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"u(?:ser)?(\s+[\S\s]+|$)", outgoing=True))
+@register(pattern=r"^\.u(?:ser)?(\s+[\S\s]+|$)", outgoing=True)
 async def who(event: NewMessage.Event):
     """ For .user command, get info about a user. """
     if event.fwd_from:
@@ -406,7 +404,7 @@ async def fetch_info(replied_user, **kwargs):
 
 CMD_HELP.update({
     "android":
-    "`.u(ser) [options] (username|id)`"
+    "`.u(ser) [options] (username|id)`" 
 
     "Or, in response to a message"
     "`.u(ser) [options]`"
@@ -417,6 +415,6 @@ CMD_HELP.update({
     "`.bot`: Show bot related info"
     "`.misc`: Show miscelanious info"
     "`.all`: Show all info (overrides other options)"
-    "`.mention`: Inline mention the user"
+    "`.mention`: Inline mention the user" 
     "`.forward`: Follow forwarded message"
 })

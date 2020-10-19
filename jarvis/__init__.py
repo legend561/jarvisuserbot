@@ -120,7 +120,7 @@ if bool(ENV):
     PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
     
     #CommandHandler
-    CMD_HNDLR = os.environ.get("CMD_HNDLR", None)
+    CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
 
     # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
@@ -136,11 +136,9 @@ if bool(ENV):
     AUTONAME = os.environ.get("AUTONAME", None)
 
     # Time & Date - Country and Time Zone
-    COUNTRY = str(os.environ.get("COUNTRY", None))
-    TZ = os.environ.get("TZ" , None)
+    COUNTRY = str(os.environ.get("COUNTRY", "India"))
+
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
-    
-    #Fbam
     FBAN_REASON = os.environ.get("FBAN_REASON", None)
     FBAN_USER = os.environ.get("FBAN_USER", None)
     # Clean Welcome

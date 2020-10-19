@@ -1,8 +1,8 @@
 import random
 import requests
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern="quote ?(.*)"))
+@jarvis.on(admin_cmd(pattern="quote ?(.*)"))
 async def quote_search(event):
     if event.fwd_from:
         return

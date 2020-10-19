@@ -4,9 +4,9 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern=r"mtn"))
+@jarvis.on(admin_cmd(pattern=r"mtn"))
 async def _(event):
 
     if event.fwd_from:
@@ -24,19 +24,19 @@ async def _(event):
     await event.edit("mtn")
 
     animation_chars = [
-
+        
             "`Connecting To MTN NG ....`",
             "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
             "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
             "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
-            "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",
+            "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",    
             "`▒ ▒ ▒ ▒ ▄ ▂ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
             "*Optimising Network...*",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-            "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
+            "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",           
             "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
             "`▁ ▂ ▄ ▒ ▒ ▒ ▒`",
             "`▁ ▂ ▄ ▅ ▒ ▒ ▒`",

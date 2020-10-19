@@ -4,10 +4,9 @@ import requests
 import subprocess
 import time
 import json
-from jarvis.utils import jarvis_cmd , sudo_cmd
+import sys
 
-@jarvis.on(jarvis_cmd(pattern="labstack ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="labstack ?(.*)",allow_sudo=True))
+@command(pattern="^.labstack ?(.*)")
 async def labstack(event):
     if event.fwd_from:
         return
@@ -19,7 +18,7 @@ async def labstack(event):
     elif reply:
         filebase = await event.client.download_media(reply.media, Var.TEMP_DOWNLOAD_DIRECTORY)
     else:
-        await event.reply("Reply to a media file or provide a directory to upload the file to labstack")
+        await event.edit("Reply to a media file or provide a directory to upload the file to labstack")
         return
     filesize = os.path.getsize(filebase)
     filename = os.path.basename(filebase)
@@ -48,3 +47,4 @@ async def labstack(event):
         logger.info(t_response)
         t_response_arry = "https://up.labstack.com/api/v1/links/{}/receive".format(r2json['code'])
     await event.edit(t_response_arry + "\nMax Days:" + str(max_days), link_preview=False)
+    

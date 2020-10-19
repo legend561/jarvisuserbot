@@ -4,7 +4,7 @@
 import asyncio
 import datetime
 from telethon import events
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
@@ -21,8 +21,8 @@ logs_id = Var.PLUGIN_CHANNEL
 
 
 
-@jarvis.on(jarvis_cmd("bforward ?(.*)"))
-async def forw(event):
+@jarvis.on(admin_cmd("bforward ?(.*)"))
+async def forw(event): 
   if event.fwd_from:
     return
   if not event.is_reply:
@@ -31,7 +31,7 @@ async def forw(event):
   channels = get_all_channels()
   await event.edit("Sending...")
   error_count = 0
-  sent_count = 0
+  sent_count = 0 
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
     message = previous_message.message
@@ -59,9 +59,9 @@ async def forw(event):
         await borg.send_message(logs_id, f"{error_count} Errors")
     except:
         await event.edit("Set up log channel for checking errors.")
-
-
-@jarvis.on(jarvis_cmd("broadcast ?(.*)", allow_sudo=True))
+    
+    
+@jarvis.on(admin_cmd("broadcast ?(.*)", allow_sudo=True))
 
 async def _(event):
   if event.fwd_from:
@@ -97,7 +97,7 @@ async def _(event):
                                 caption = raw_text,
                                 link_preview = False
                             )
-
+        
             sent_count += 1
             await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
@@ -116,7 +116,7 @@ async def _(event):
         try:
             await borg.send_message(logs_id, f"{error_count} Errors")
         except:
-            pass
+            pass      
     else:
       raw_text = previous_message.text
       for channel in channels:
@@ -144,7 +144,7 @@ async def _(event):
 
 # Written by @HeisenbergTheDanger
 
-@jarvis.on(jarvis_cmd("badd ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("badd ?(.*)", allow_sudo=True))
 async def add_ch(event):
     if event.fwd_from:
         return
@@ -179,7 +179,7 @@ async def add_ch(event):
         await event.delete()
 
 
-@jarvis.on(jarvis_cmd("brm ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("brm ?(.*)", allow_sudo=True))
 async def remove_ch(event):
     if event.fwd_from:
         return
@@ -191,7 +191,7 @@ async def remove_ch(event):
             rm_channel(channel.chat_id)
         await event.edit("Database cleared.")
         return
-
+        
     if in_channels(chat_id):
         rm_channel(chat_id)
         await event.edit("Removed from database")
@@ -206,8 +206,8 @@ async def remove_ch(event):
         await event.edit("Channel is already removed from database. ")
         await asyncio.sleep(3)
         await event.delete()
-
-@jarvis.on(jarvis_cmd("listchannels", allow_sudo=True))
+        
+@jarvis.on(admin_cmd("listchannels", allow_sudo=True))
 async def list(event):
     if event.fwd_from:
         return

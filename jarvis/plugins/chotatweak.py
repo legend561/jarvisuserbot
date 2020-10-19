@@ -3,16 +3,16 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from uniborg.util import jarvis_cmd
+from uniborg.util import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern="ctg ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ctg ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
-        return
+        return 
     if not event.reply_to_msg_id:
        await event.edit("```Reply to a Link.```")
        return
-    reply_message = await event.get_reply_message()
+    reply_message = await event.get_reply_message() 
     if not reply_message.text:
        await event.edit("```Reply to a Link```")
        return
@@ -20,15 +20,15 @@ async def _(event):
     sender = reply_message.sender
     await event.edit("```Processing```")
     async with event.client.conversation(chat) as conv:
-          try:
+          try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=272572121))
               await event.client.forward_messages(chat, reply_message)
-              response = await response
-          except YouBlockedUserError:
+              response = await response 
+          except YouBlockedUserError: 
               await event.reply("`RIP Check Your Blacklist Boss`")
               return
           if response.text.startswith(""):
              await event.edit("Am I Dumb Or Am I Dumb?")
-          else:
+          else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)

@@ -1,41 +1,70 @@
 # Copyright (C) 2019 The Raphielscape Company LLC.
+
+#
+
 # Licensed under the Raphielscape Public License, Version 1.b (the "License");
+
 # you may not use this file except in compliance with the License.
+
 #
 
 """ Userbot module containing various scrapers. """
 
 import os
+
 import shutil
+
 from bs4 import BeautifulSoup
+
 import re
+
 from time import sleep
+
 from html import unescape
+
 from re import findall
+
 from datetime import datetime
+
 from selenium import webdriver
+
 from urllib.parse import quote_plus
+
 from urllib.error import HTTPError
+
 from selenium.webdriver.support.ui import Select
+
 from selenium.webdriver.chrome.options import Options
+
 from wikipedia import summary
+
 from wikipedia.exceptions import DisambiguationError, PageError
+
 from urbandict import define
+
 from requests import get
+
 from google_images_download import google_images_download
+
 from googleapiclient.discovery import build
+
 from googleapiclient.errors import HttpError
+
 from googletrans import LANGUAGES, Translator
+
 from gtts import gTTS
+
 from emoji import get_emoji_regexp
+
 from jarvis import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRIVER, GOOGLE_CHROME_BIN
-from jarvis.utils import register, jarvis_cmd
+
+from jarvis.utils import register
 
 CARBONLANG = "auto"
 
 LANG = "en"
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="carbon"))
+@register(outgoing=True, pattern="^.carbon")
 
 async def carbon_api(e):
 
@@ -138,3 +167,4 @@ async def carbon_api(e):
    # Removing carbon.png after uploading
 
    await e.delete() # Deleting msg
+   

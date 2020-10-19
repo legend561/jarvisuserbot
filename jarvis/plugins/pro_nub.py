@@ -11,9 +11,9 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd("unoob"))
+@jarvis.on(admin_cmd("unoob"))
 
 async def _(event):
 
@@ -22,7 +22,7 @@ async def _(event):
         return
 
     animation_interval = 0.5
-
+    
 
     animation_ttl = range(0, 9)
 
@@ -45,9 +45,9 @@ async def _(event):
 
         await event.edit(animation_chars[i % 9])
         await asyncio.sleep(animation_interval)
-
-
-@jarvis.on(jarvis_cmd("menoob"))
+            
+            
+@jarvis.on(admin_cmd("menoob"))
 
 async def _(event):
 
@@ -56,7 +56,7 @@ async def _(event):
         return
 
     animation_interval = 0.5
-
+    
 
     animation_ttl = range(0, 9)
 
@@ -78,9 +78,9 @@ async def _(event):
 
 
         await event.edit(animation_chars[i % 9])
-        await asyncio.sleep(animation_interval)
-
-@jarvis.on(jarvis_cmd("upro"))
+        await asyncio.sleep(animation_interval) 
+            
+@jarvis.on(admin_cmd("upro"))
 
 async def _(event):
 
@@ -89,10 +89,10 @@ async def _(event):
         return
 
     animation_interval = 0.5
-
+    
 
     animation_ttl = range(0, 8)
-
+    
     await event.edit("You Pro")
 
     animation_chars = [
@@ -110,9 +110,9 @@ async def _(event):
 
 
         await event.edit(animation_chars[i % 8])
-        await asyncio.sleep(animation_interval)
-
-@jarvis.on(jarvis_cmd("mepro"))
+        await asyncio.sleep(animation_interval)  
+            
+@jarvis.on(admin_cmd("mepro"))
 
 async def _(event):
 
@@ -121,7 +121,7 @@ async def _(event):
         return
 
     animation_interval = 0.5
-
+    
 
     animation_ttl = range(0, 8)
 
@@ -142,4 +142,4 @@ async def _(event):
 
 
         await event.edit(animation_chars[i % 8])
-        await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)                                

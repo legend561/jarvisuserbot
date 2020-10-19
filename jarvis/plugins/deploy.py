@@ -8,14 +8,14 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import jarvis_cmd
+from uniborg.util import admin_cmd
 
 from jarvis import AUTONAME
 
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "Jarvis"
+DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
 
-@jarvis.on(jarvis_cmd(pattern=r"deploy"))
+@jarvis.on(admin_cmd(pattern=r"deploy"))
 
 async def _(event):
 
@@ -34,18 +34,18 @@ async def _(event):
     await event.edit("Deploying...")
 
     animation_chars = [
-
-            "**Heroku Connecting To Latest Github Build (Jarvis-Works/JarvisUserbot)**",
+        
+            "**Heroku Connecting To Latest Github Build (StarkGang/FridayUserbot)**",
             "**Build started by user** **{DEFAULTUSER}**",
             "**Deploy** `535a74f0` **by user** **{DEFAULTUSER}**",
             "**Restarting Heroku Server...**",
-            "**State changed from up to starting**",
+            "**State changed from up to starting**",    
             "**Stopping all processes with SIGTERM**",
             "**Process exited with** `status 143`",
-            "**Starting process with command** `python3 -m jarvis`",
+            "**Starting process with command** `python3 -m stdborg`",
             "**State changed from starting to up**",
-            "__INFO:Jarvis:Logged in as 557667062__",
-            "__INFO:Jarvis:Successfully loaded all plugins__",
+            "__INFO:Friday:Logged in as 557667062__",
+            "__INFO:Friday:Successfully loaded all plugins__",
             "**Build Succeeded**"
 
  ]

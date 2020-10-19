@@ -9,11 +9,11 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 from telethon.tl import functions
 
 
-@jarvis.on(jarvis_cmd(pattern="clone ?(.*)"))
+@jarvis.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -56,7 +56,7 @@ async def _(event):
         about=user_bio
     ))
     n = 1
-    pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060
+    pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060      
     await borg(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
         pfile
     ))

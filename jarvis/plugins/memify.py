@@ -12,7 +12,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
-from jarvis.utils import progress, humanbytes, time_formatter, jarvis_cmd
+from jarvis.utils import progress, humanbytes, time_formatter, admin_cmd
 import datetime
 from collections import defaultdict
 import math
@@ -37,14 +37,14 @@ MessageMediaPhoto
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@jarvis.on(jarvis_cmd("mf ?(.*)"))
+@jarvis.on(admin_cmd("mf ?(.*)"))
 async def _(event):
     if event.fwd_from:
-        return
+        return 
     if not event.reply_to_msg_id:
        await event.edit("`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' ")
        return
-    reply_message = await event.get_reply_message()
+    reply_message = await event.get_reply_message() 
     if not reply_message.media:
        await event.edit("```reply to a image/sticker/gif```")
        return
@@ -58,7 +58,7 @@ async def _(event):
        return
     else:
      await event.edit("```Transfiguration Time! Mwahaha memifying this image! ¯\(◉‿◉)/¯ ```")
-
+    
     async with borg.conversation("@MemeAutobot") as bot_conv:
           try:
             memeVar = event.pattern_match.group(1)
@@ -67,7 +67,7 @@ async def _(event):
             await silently_send_message(bot_conv, memeVar)
             await borg.send_file(chat, reply_message.media)
             response = await bot_conv.get_response()
-          except YouBlockedUserError:
+          except YouBlockedUserError: 
               await event.reply("```Please unblock @MemeAutobot and try again```")
               return
           if response.text.startswith("Forward"):
@@ -122,7 +122,7 @@ async def _(event):
           elif not is_message_image(reply_message):
             await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
             return
-          else:
+          else: 
                await borg.send_file(event.chat_id, response.media)
 
 def is_message_image(message):
@@ -134,9 +134,10 @@ def is_message_image(message):
                 return True
         return False
     return False
-
+    
 async def silently_send_message(conv, text):
     await conv.send_message(text)
     response = await conv.get_response()
     await conv.mark_read(message=response)
     return response
+    

@@ -1,19 +1,19 @@
 """
 List Files plugin for userbot //Simple Module for people who dont wanna use shell executor for listing files.
 cmd: .ls // will return files from current working directory
-	 .ls path // will return output according to path
+	 .ls path // will return output according to path  
 
 By:- @Zero_cool7870
 
 """
 
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 import asyncio
 import os
 
 
-@jarvis.on(jarvis_cmd(pattern="ls ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="ls ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ls ?(.*)"))
+@jarvis.on(admin_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
 	if event.fwd_from:
 		return
@@ -40,4 +40,12 @@ async def lst(event):
 				allow_cache=False,
 				caption="`Output is huge. Sending as a file...`"
 		)
-		await event.delete()
+		await event.delete()	
+
+			
+
+			
+
+				
+
+        

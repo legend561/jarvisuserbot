@@ -13,7 +13,7 @@ SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
-
+    
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -116,7 +116,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["jarvis.plugins."+shortname] = mod
-        print("Successfully Imported "+shortname)
+        print("Successfully (re)imported "+shortname)
 
 def remove_plugin(shortname):
     try:
@@ -135,54 +135,9 @@ def remove_plugin(shortname):
     except:
         raise ValueError
 
-def jarvis_cmd(pattern=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
-
-    stack = inspect.stack()
-    previous_stack_frame = stack[1]
-    file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace(".py", "")
-    allow_sudo = args.get("allow_sudo", None)
-
-    # get the pattern from the decorator
-    if pattern is not None:
-        if pattern.startswith("\#"):
-            # special fix for snip.py
-            args["pattern"] = re.compile(pattern)
-        else:
-            args["pattern"] = re.compile(handler + pattern)
-            cmd = handler + pattern
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except:
-                CMD_LIST.update({file_test: [cmd]})
-
-    args["outgoing"] = True
-    # should this command be available for other users?
-    if allow_sudo:
-        args["from_users"] = list(Config.SUDO_USERS)
-        # Mutually exclusive with outgoing (can only set one of either).
-        args["incoming"] = True
-        del args["allow_sudo"]
-
-    # error handling condition check
-    elif "incoming" in args and not args["incoming"]:
-        args["outgoing"] = True
-
-    # add blacklist chats, UB should not respond in these chats
-    allow_edited_updates = False
-    if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        allow_edited_updates = args["allow_edited_updates"]
-        del args["allow_edited_updates"]
-
-    # check if the plugin should listen for outgoing 'messages'
-    is_message_enabled = True
-
-    return events.NewMessage(**args)
-
 def admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
-
+    
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -224,6 +179,15 @@ def admin_cmd(pattern=None, **args):
     is_message_enabled = True
 
     return events.NewMessage(**args)
+
+
+async def edit_or_reply(event, text):
+    if event.from_id in Config.SUDO_USERS:
+        reply_to = await event.get_reply_message()
+        if reply_to:
+            return await reply_to.reply(text)
+        return await event.reply(text)
+    return await event.edit(text)
 
 def sudo_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -234,34 +198,16 @@ def sudo_cmd(pattern=None, **args):
     allow_sudo = args.get("allow_sudo", False)
     # get the pattern from the decorator
     if pattern is not None:
-        if pattern.startswith(r"\#"):
+        if pattern.startswith("\#"):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
-        elif pattern.startswith(r"^"):
-            args["pattern"] = re.compile(pattern)
-            cmd = (
-                (pattern)
-                .replace("$", "")
-                .replace("^", "")
-                .replace("\\", "")
-                .replace("^", "")
-            )
-            try:
-                SUDO_LIST[file_test].append(cmd)
-            except BaseException:
-                SUDO_LIST.update({file_test: [cmd]})
         else:
-            if len(Config.SUDO_HNDLR) == 2:
-                catreg = "^" + Config.SUDO_HNDLR
-                reg = Config.SUDO_HNDLR[1]
-            elif len(Config.SUDO_HNDLR) == 1:
-                catreg = "^\\" + Config.SUDO_HNDLR
-                reg = Config.SUDO_HNDLR
-            args["pattern"] = re.compile(catreg + pattern)
+            args["pattern"] = re.compile(Config.SUDO_HNDLR + pattern)
+            reg = Config.SUDO_HNDLR[1]
             cmd = (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
             try:
                 SUDO_LIST[file_test].append(cmd)
-            except BaseException:
+            except:
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # should this command be available for other users?
@@ -276,7 +222,7 @@ def sudo_cmd(pattern=None, **args):
     # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
     black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
-    if black_list_chats:
+    if len(black_list_chats) > 0:
         args["chats"] = black_list_chats
     # add blacklist chats, UB should not respond in these chats
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
@@ -285,13 +231,6 @@ def sudo_cmd(pattern=None, **args):
     # check if the plugin should listen for outgoing 'messages'
     return events.NewMessage(**args)
 
-async def edit_or_reply(event, text):
-    if event.from_id in Config.SUDO_USERS:
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(text)
-        return await event.reply(text)
-    return await event.edit(text)
 """ Userbot module for managing events.
  One of the main components of the userbot. """
 
@@ -310,7 +249,7 @@ import datetime
 def register(**args):
     """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
-
+    
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -323,7 +262,7 @@ def register(**args):
 
     if "disable_edited" in args:
         del args['disable_edited']
-
+    
     reg = re.compile('(.*)')
     if not pattern == None:
         try:
@@ -470,8 +409,8 @@ class Loader():
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
 
-
-# Assistant
+      
+# Assistant 
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass

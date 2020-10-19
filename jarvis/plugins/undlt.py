@@ -1,9 +1,9 @@
 from telethon import events
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 import asyncio
 
 
-@jarvis.on(jarvis_cmd(pattern="undlt"))
+@jarvis.on(admin_cmd(pattern="undlt"))
 async def _(event):
     if event.fwd_from:
         return

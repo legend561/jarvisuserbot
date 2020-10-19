@@ -14,7 +14,7 @@ from urllib.parse import quote_plus
 from urllib.error import HTTPError
 from google_images_download import google_images_download
 from gsearch.googlesearch import search
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 from search_engine_parser import GoogleSearch
 
 
@@ -22,8 +22,7 @@ def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@jarvis.on(jarvis_cmd("go (.*)"))
-@jarvis.on(sudo_cmd("go (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("go (.*)"))
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)

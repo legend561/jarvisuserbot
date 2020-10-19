@@ -1,14 +1,14 @@
 from jarvis import CMD_LIST
 from jarvis import ALIVE_NAME
-from jarvis.utils import jarvis_cmd , sudo_cmd
+from jarvis.utils import admin_cmd
 from platform import uname
 import sys
 from telethon import events, functions, version
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
-@jarvis.on(jarvis_cmd(pattern="help ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="help ?(.*)"))
+@jarvis.on(admin_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
@@ -44,7 +44,7 @@ async def cmd_list(event):
             else:
                 await event.reply(input_str + " is not a valid plugin!")
         else:
-            help_string = f"""Jarvis bot Helper.. Provided by {DEFAULTUSER} \n
+            help_string = f"""Userbot Helper.. Provided by 💗{DEFAULTUSER} \n
 Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
@@ -56,9 +56,9 @@ Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, i
                 hide_via=True
             )
             await event.delete()
-
-@jarvis.on(jarvis_cmd(pattern="dc"))  # pylint:disable=E0602
-@jarvis.on(sudo_cmd(pattern="dc", allow_sudo=True))
+            
+@jarvis.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -66,8 +66,8 @@ async def _(event):
     await event.reply(result.stringify())
 
 
-@jarvis.on(jarvis_cmd(pattern="config"))  # pylint:disable=E0602
-@jarvis.on(sudo_cmd(pattern="config", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -77,8 +77,8 @@ async def _(event):
     await event.reply("""Telethon UserBot powered by JARVIS UserBot""")
 
 
-@jarvis.on(jarvis_cmd(pattern="syntax (.*)"))
-@jarvis.on(sudo_cmd(pattern="syntax (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="syntax (.*)"))
+@jarvis.on(admin_cmd(pattern="syntax (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,7 +87,7 @@ async def _(event):
     if plugin_name in CMD_LIST:
         help_string = CMD_LIST[plugin_name].__doc__
         unload_string = f"Use .unload {plugin_name} to remove this plugin.\n           © JARVIS UserBot"
-
+        
         if help_string:
             plugin_syntax = f"Syntax for plugin {plugin_name}:\n\n{help_string}\n{unload_string}"
         else:

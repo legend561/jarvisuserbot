@@ -5,7 +5,7 @@ import time
 from PIL import Image
 from io import BytesIO
 from jarvis import ALIVE_NAME
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 from datetime import datetime
 
 ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
@@ -39,8 +39,8 @@ def get_readable_time(seconds: int) -> str:
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="alive"))
-@jarvis.on(sudo_cmd(pattern="alive", allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern="alive"))
+@jarvis.on(admin_cmd(pattern="alive", allow_sudo=True))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     if ALIVE_PIC:
@@ -79,5 +79,5 @@ async def amireallyalive(alive):
                                 "ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ            : [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
                                 "ʟɪᴄᴇɴꜱᴇ                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
                                 "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-                                "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)" , link_preview = False)
+                                "[╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝](https://t.me/jarvisot)" , link_preview = False) 
         await alive.delete()

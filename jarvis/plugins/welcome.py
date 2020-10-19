@@ -3,7 +3,7 @@ from telethon.utils import pack_bot_file_id
 from jarvis.plugins.sql_helper.welcome_sql import get_current_welcome_settings, \
     add_welcome_setting, rm_welcome_setting, update_previous_welcome
 from jarvis import CMD_HELP
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 @jarvis.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
@@ -41,7 +41,7 @@ async def _(event):
             userid = a_user.id
             current_saved_welcome_message = cws.custom_welcome_message
             mention = "[{}](tg://user?id={})".format(a_user.first_name, a_user.id)
-
+            
             current_message = await event.reply(
                 current_saved_welcome_message.format(mention=mention, title=title, count=count, first=first, last=last, fullname=fullname, username=username, userid=userid),
                 file=cws.media_file_id
@@ -49,7 +49,7 @@ async def _(event):
             update_previous_welcome(event.chat_id, current_message.id)
 
 
-@jarvis.on(jarvis_cmd(pattern="savewel"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="savewel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -64,7 +64,7 @@ async def _(event):
         await event.edit("Welcome note saved. ")
 
 
-@jarvis.on(jarvis_cmd(pattern="clearwel"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="clearwel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -75,7 +75,7 @@ async def _(event):
         "The previous welcome message was `{}`.".format(cws.custom_welcome_message)
     )
 
-@jarvis.on(jarvis_cmd(pattern="listwel"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="listwel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -89,9 +89,9 @@ async def _(event):
         await event.edit(
             "No Welcome Message found"
         )
-
-
-
+        
+        
+        
 CMD_HELP.update({
     "welcome":
     "\
@@ -104,4 +104,4 @@ CMD_HELP.update({
 \n\n.clearwelcome\
 \nUsage: Deletes the welcome note for the current chat.\
 "
-})
+})        

@@ -8,7 +8,7 @@ from PIL import Image
 import random
 from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
 from jarvis import bot, CMD_HELP
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 import emoji
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID
@@ -28,7 +28,7 @@ KANGING_STR = [
 ]
 
 
-@jarvis.on(jarvis_cmd(pattern="kang ?(.*)"))
+@jarvis.on(admin_cmd(pattern="kang ?(.*)"))
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -277,7 +277,7 @@ def char_is_emoji(character):
     return character in emoji.UNICODE_EMOJI
 
 
-@jarvis.on(jarvis_cmd(pattern="stkrinfo$"))
+@jarvis.on(admin_cmd(pattern="stkrinfo$"))
 async def get_pack_info(event):
     if not event.is_reply:
         await event.edit("`I can't fetch info from nothing, can I ?!`")

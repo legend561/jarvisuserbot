@@ -6,11 +6,11 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"padmin"))
+@jarvis.on(admin_cmd(pattern=r"padmin"))
 
 async def _(event):
 
@@ -21,11 +21,11 @@ async def _(event):
     animation_interval = 1
 
     animation_ttl = range(0, 20)
-
+    
     await event.edit("Promoting")
 
     animation_chars = [
-
+        
             "**Promoting User As Admin...**",
             "**Enabling All Permissions To User...**",
             "**(1) Send Messages: ☑️**",
@@ -33,7 +33,7 @@ async def _(event):
             "**(2) Send Media: ☑️**",
             "**(2) Send Media: ✅**",
             "**(3) Send Stickers & GIFs: ☑️**",
-            "**(3) Send Stickers & GIFs: ✅**",
+            "**(3) Send Stickers & GIFs: ✅**",    
             "**(4) Send Polls: ☑️**",
             "**(4) Send Polls: ✅**",
             "**(5) Embed Links: ☑️**",

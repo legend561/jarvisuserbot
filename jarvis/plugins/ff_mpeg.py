@@ -7,14 +7,13 @@ import time
 from datetime import datetime
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from jarvis.utils import jarvis_cmd, progress, sudo_cmd
+from jarvis.utils import admin_cmd, progress
 
 
-FF_MPEG_DOWN_LOAD_MEDIA_PATH = "jarvis.media.ffmpeg"
+FF_MPEG_DOWN_LOAD_MEDIA_PATH = "uniborg.media.ffmpeg"
 
 
-@jarvis.on(jarvis_cmd("ffmpegsave"))
-@jarvis.on(sudo_cmd("ffmpegsave" , allow_sudo=True))
+@jarvis.on(admin_cmd("ffmpegsave"))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -29,7 +28,7 @@ async def ff_mpeg_trim_cmd(event):
                 downloaded_file_name = await borg.download_media(
                     reply_message,
                     FF_MPEG_DOWN_LOAD_MEDIA_PATH,
-
+                    
                 )
             except Exception as e:  # pylint:disable=C0103,W0703
                 await event.edit(str(e))
@@ -43,8 +42,7 @@ async def ff_mpeg_trim_cmd(event):
         await event.edit(f"a media file already exists in path. Please remove the media and try again!\n`.exec rm {FF_MPEG_DOWN_LOAD_MEDIA_PATH}`")
 
 
-@jarvis.on(jarvis_cmd("ffmpegtrim"))
-@jarvis.on(sudo_cmd("ffmpegtrim", allow_sudo=True))
+@jarvis.on(admin_cmd("ffmpegtrim"))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -75,7 +73,7 @@ async def ff_mpeg_trim_cmd(event):
                 supports_streaming=True,
                 allow_cache=False,
                 # reply_to=event.message.id,
-
+                
             )
             os.remove(o)
         except Exception as e:

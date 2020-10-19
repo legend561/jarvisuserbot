@@ -10,7 +10,7 @@ import zipfile
 
 from telethon import events
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
-from jarvis.utils import jarvis_cmd, humanbytes, progress, time_formatter, sudo_cmd
+from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
 import time
 from datetime import datetime
 from pySmartDL import SmartDL
@@ -24,8 +24,8 @@ if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
 
-@jarvis.on(jarvis_cmd(pattern="unzip"))
-@jarvis.on(sudo_cmd(pattern="unzip",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="unzip"))
+@jarvis.on(admin_cmd(pattern="unzip",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
             downloaded_file_name = await borg.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
-
+                
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.reply(str(e))

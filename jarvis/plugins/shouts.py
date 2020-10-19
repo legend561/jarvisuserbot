@@ -5,7 +5,7 @@ originaly from : @corsicanu_bot
 
 import sys
 from telethon import events, functions
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 import random
 
 
@@ -27,3 +27,6 @@ async def shout(args):
         result = "".join(result)
         msg = "\n" + result
         await args.edit("`"+msg+"`")
+        
+    
+    

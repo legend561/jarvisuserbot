@@ -2,10 +2,10 @@ from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern=r"test"))
+@jarvis.on(admin_cmd(pattern=r"test"))
 async def test(event):
     if event.fwd_from:
-        return
-    await event.edit("Test Successfull. Boss !")
+        return 
+    await event.edit("Test Successfull. Boss !")      

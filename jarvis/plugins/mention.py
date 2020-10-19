@@ -2,14 +2,14 @@
 # (c) @INF1N17Y
 
 from telethon import events
-from jarvis.utils import jarvis_cmd,sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("mention (.*)"))
-@jarvis.on(sudo_cmd("mention (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("mention (.*)"))
+@jarvis.on(admin_cmd("mention (.*)", allow_sudo=True))
 async def _(event):
 	if event.fwd_from:
-		return
+		return	
 	input_str = event.pattern_match.group(1)
 	if event.reply_to_msg_id:
 		previous_message = await event.get_reply_message()

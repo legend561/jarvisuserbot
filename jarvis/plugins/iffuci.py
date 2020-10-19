@@ -6,14 +6,14 @@ import asyncio
 from datetime import datetime
 import os
 import requests
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@jarvis.on(jarvis_cmd(pattern="iffuci ?(.*)"))
+@jarvis.on(admin_cmd(pattern="iffuci ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

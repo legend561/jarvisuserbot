@@ -17,7 +17,7 @@ from telethon import events
 from telethon.tl.types import DocumentAttributeVideo
 from telethon.errors import MessageNotModifiedError
 import time
-from jarvis.utils import progress, humanbytes, time_formatter, jarvis_cmd
+from jarvis.utils import progress, humanbytes, time_formatter, admin_cmd
 import io
 import math
 import os
@@ -41,7 +41,7 @@ def get_video_thumb(file, output=None, width=90):
         return output
 
 
-@jarvis.on(jarvis_cmd("rename (.*)"))
+@jarvis.on(admin_cmd("rename (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -70,7 +70,7 @@ async def _(event):
         await event.edit("Syntax // `.rename file.name` as reply to a Telegram media")
 
 
-@jarvis.on(jarvis_cmd("rnupload (.*)"))
+@jarvis.on(admin_cmd("rnupload (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -103,7 +103,7 @@ async def _(event):
                 allow_cache=False,
                 reply_to=event.message.id,
                 thumb=thumb,
-
+                
             )
             end_two = datetime.now()
             os.remove(downloaded_file_name)
@@ -115,7 +115,7 @@ async def _(event):
         await event.edit("Syntax // .rnupload file.name as reply to a Telegram media")
 
 
-@jarvis.on(jarvis_cmd("rnstreamupload (.*)"))
+@jarvis.on(admin_cmd("rnstreamupload (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -167,7 +167,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="This file Has Been Uploaded Using [Jarvis Userbot](t.me/jarvisot)",
+                    caption="This file Has Been Uploaded Using [Friday Userbot](t.me/fridayot)",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,

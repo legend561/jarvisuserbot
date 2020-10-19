@@ -5,9 +5,9 @@
 # Creted by @buddhhu, @itzsjdude, @xditya
 #
 import os, asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern="repack ?(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
 
 async def _(event):
     a = await event.get_reply_message()

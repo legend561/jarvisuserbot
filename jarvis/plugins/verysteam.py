@@ -12,10 +12,10 @@ import os
 import requests
 import time
 from datetime import datetime
-from jarvis.utils import jarvis_cmd, progress
+from jarvis.utils import admin_cmd, progress
 
 
-@jarvis.on(jarvis_cmd(pattern="verystream ?(.*)"))
+@jarvis.on(admin_cmd(pattern="verystream ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

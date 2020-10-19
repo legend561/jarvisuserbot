@@ -14,7 +14,7 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.GOOGLE_CHROME_BIN is None:
-        await event.edit("Need to install Google Chrome. Module Stopping.")
+        await event.edit("need to install Google Chrome. Module Stopping.")
         return
     await event.edit("Processing ...")
     start = datetime.now()
@@ -36,7 +36,7 @@ async def _(event):
         width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
         await event.edit("Painting web-page")
         driver.set_window_size(width + 100, height + 100)
-        # Add some pixels on top of the calculated dimensions
+        # Add some pixels on top of the calculated dimensions 
         # for good measure to make the scroll bars disappear
         im_png = driver.get_screenshot_as_png()
         # saves screenshot of entire page
@@ -46,7 +46,7 @@ async def _(event):
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
         with io.BytesIO(im_png) as out_file:
-            out_file.name = "@Jarvis Userbot ScreenCapture.PNG"
+            out_file.name = "@UniBorg.ScreenCapture.PNG"
             await borg.send_file(
                 event.chat_id,
                 out_file,

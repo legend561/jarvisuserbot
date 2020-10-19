@@ -5,10 +5,10 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd("sdd ?(.*)"))
-@jarvis.on(jarvis_cmd(pattern="sdd ?(')", allow_sudo=True))
+@jarvis.on(admin_cmd("sdd ?(.*)"))
+@jarvis.on(admin_cmd(pattern="sdd ?(')", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -18,7 +18,7 @@ async def _(event):
     else:
         await event.reply("🎶**Initiating Download!**🎶")
     bot = "@DeezLoadBot"
-
+    
     async with borg.conversation("@DeezLoadBot") as conv:
           try:
               await conv.send_message("/start")

@@ -2,13 +2,13 @@ import asyncio
 import time
 from telethon.tl import functions
 from telethon.errors import FloodWaitError
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 DEL_TIME_OUT = 60
 
 
-@jarvis.on(jarvis_cmd(pattern="bio"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd(pattern="bio"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -31,3 +31,5 @@ async def _(event):
             #     "Successfully Changed Profile Bio"
             # )
         await asyncio.sleep(DEL_TIME_OUT)
+
+

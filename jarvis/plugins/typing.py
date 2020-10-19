@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="type (.*)"))
+@jarvis.on(admin_cmd(pattern="type (.*)"))
 async def _(event):
     if event.fwd_from:
         return

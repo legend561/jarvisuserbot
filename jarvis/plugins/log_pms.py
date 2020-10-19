@@ -7,13 +7,13 @@ from asyncio import sleep
 from jarvis import CMD_HELP
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 from os import remove
 from telethon import events
 import asyncio
 from datetime import datetime
 import time
-from jarvis.utils import register, errors_handler, jarvis_cmd
+from jarvis.utils import register, errors_handler, admin_cmd
 import asyncio
 import logging
 import os
@@ -31,7 +31,7 @@ BOTLOG = True
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern=r"save(?: |$)([\s\S]*)"))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"save(?: |$)([\s\S]*)"))
 async def log(log_text):
     """ For .log command, forwards a message or the command argument to the bot logs group """
     if BOTLOG:
@@ -52,8 +52,8 @@ async def log(log_text):
     await log_text.delete()
 
 
-
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="kickme$"))
+    
+@jarvis.on(admin_cmd(outgoing=True, pattern="kickme$"))
 async def kickme(leave):
     """ Basically it's a .kickme command """
     await leave.edit("Nope, no, no, I go away")
@@ -83,9 +83,9 @@ async def monito_p_m_s(event):
                 exc_type, exc_obj, exc_tb = sys.exc_info()
                 fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
                 print(exc_type, fname, exc_tb.tb_lineno)
-                print(e)
+                print(e) 
 
-@jarvis.on(jarvis_cmd(pattern="log(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern="log(?: |$)(.*)"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         reason = event.pattern_match.group(1)
@@ -95,9 +95,9 @@ async def set_no_log_p_m(event):
                 NO_PM_LOG_USERS.remove(chat.id)
                 await event.edit("Will Log Messages from this chat")
                 await asyncio.sleep(3)
+                
 
-
-@jarvis.on(jarvis_cmd(pattern="nolog(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern="nolog(?: |$)(.*)"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         reason = event.pattern_match.group(1)
@@ -107,7 +107,7 @@ async def set_no_log_p_m(event):
                 NO_PM_LOG_USERS.append(chat.id)
                 await event.edit("Won't Log Messages from this chat")
                 await asyncio.sleep(3)
-
+                
 CMD_HELP.update({"log_pms": "`.save` :\
       \nUSAGE: saves taged message in private group .\
       \n\n `.kickme`:\
@@ -116,4 +116,4 @@ CMD_HELP.update({"log_pms": "`.save` :\
       \nUSAGE:By default will log all private chat messages if you use .nolog and want to log again then you need to use this\
       \n\n`.nolog`:\
       \nUSAGE:to stops logging from a private chat "
-})
+})                 

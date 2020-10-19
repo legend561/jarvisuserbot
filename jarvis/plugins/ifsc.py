@@ -3,10 +3,10 @@ Syntax: .ifsc rp <IFSC CODE>"""
 from telethon import events
 import requests
 import json
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="ifsc(.*)"))
+@jarvis.on(admin_cmd(pattern="ifsc(.*)"))
 async def _(event):
     if event.fwd_from:
         return

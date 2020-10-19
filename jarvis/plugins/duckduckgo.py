@@ -4,10 +4,10 @@ from telethon import events
 import os
 import requests
 import json
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("ducduckgo (.*)"))
+@jarvis.on(admin_cmd("ducduckgo (.*)"))
 async def _(event):
     if event.fwd_from:
         return

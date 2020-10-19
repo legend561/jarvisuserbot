@@ -3,11 +3,11 @@ from telethon import events
 
 import asyncio
 
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"macos"))
+@jarvis.on(admin_cmd(pattern=r"macos"))
 
 async def _(event):
 
@@ -22,12 +22,12 @@ async def _(event):
     await event.edit("Mac")
 
     animation_chars = [
-
+        
             "`Connecting To Hackintosh...`",
             "`Initiating Hackintosh Login.`",
             "`Loading Hackintosh... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Hackintosh... 3%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-            "`Loading Hackintosh... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+            "`Loading Hackintosh... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",    
             "`Loading Hackintosh... 23%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Hackintosh... 39%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Hackintosh... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
@@ -43,7 +43,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(jarvis_cmd(pattern=r"windows"))
+@jarvis.on(admin_cmd(pattern=r"windows"))
 
 async def _(event):
 
@@ -58,12 +58,12 @@ async def _(event):
     await event.edit("Windows")
 
     animation_chars = [
-
+        
             "`Connecting To Windows 10...`",
             "`Initiating Windows 10 Login.`",
             "`Loading Windows 10... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Windows 10... 3%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-            "`Loading Windows 10... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+            "`Loading Windows 10... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",    
             "`Loading Windows 10... 23%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Windows 10... 39%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Windows 10... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
@@ -80,7 +80,7 @@ async def _(event):
 
 
 
-@borg.on(jarvis_cmd(pattern=r"linux"))
+@borg.on(admin_cmd(pattern=r"linux"))
 
 async def _(event):
 
@@ -95,12 +95,12 @@ async def _(event):
     await event.edit("Linux")
 
     animation_chars = [
-
+        
             "`Connecting To Linux...`",
             "`Initiating Linux Login.`",
             "`Loading Linux... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Linux... 3%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-            "`Loading Linux... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+            "`Loading Linux... 9%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",    
             "`Loading Linux... 23%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Linux... 39%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Linux... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
@@ -116,7 +116,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@borg.on(jarvis_cmd(pattern=r"stock"))
+@borg.on(admin_cmd(pattern=r"stock"))
 
 async def _(event):
 
@@ -131,12 +131,12 @@ async def _(event):
     await event.edit("Stock")
 
     animation_chars = [
-
+        
             "`Connecting To Symbian OS...`",
             "`Initiating Symbian OS Login.`",
             "`Loading Symbian OS... 0%\n█████████████████████████ `",
             "`Loading Symbian OS... 3%\n█████████████████████▒▒▒▒ `",
-            "`Loading Symbian OS... 9%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
+            "`Loading Symbian OS... 9%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",    
             "`Loading Symbian OS... 23%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Symbian OS... 39%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
             "`Loading Symbian OS... 69%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
@@ -152,7 +152,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@borg.on(jarvis_cmd(pattern=r"os"))
+@borg.on(admin_cmd(pattern=r"os"))
 
 async def _(event):
 
@@ -167,7 +167,7 @@ async def _(event):
     await event.edit("OS")
 
     animation_chars = [
-
+        
             "`Scanning OS...`",
             "`Scanning OS......`",
             "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n☑️ `.macos`\n☑️ `.windows`\n☑️ `.linux`\n☑️ `.stock`",

@@ -4,8 +4,8 @@
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
-from jarvis.events import register
+#from jarvis.utils import admin_cmd
+from jarvis.events import register 
 from jarvis import bot, CMD_HELP
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 import os
@@ -13,19 +13,19 @@ try:
  import subprocess
 except:
  os.system("pip install instantmusic")
-
+ 
 
 
 os.system("rm -rf *.mp3")
 
 
 def bruh(name):
-
+    
     os.system("instantmusic -q -s "+name)
+    
 
 
-
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="spd(?: |$)(.*)"))
+@register(outgoing=True, pattern="^.spd(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -45,7 +45,7 @@ async def _(event):
           await event.delete()
           await bot.forward_messages(event.chat_id, respond.message)
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="song(?: |$)(.*)"))
+@register(outgoing=True, pattern="^.song(?: |$)(.*)")
 async def WooMai(netase):
     if netase.fwd_from:
         return
@@ -73,7 +73,7 @@ async def WooMai(netase):
     await netase.delete()
 
 
-@jarvis.on(jarvis_cmd(outgoing=True, pattern="dzd(?: |$)(.*)"))
+@register(outgoing=True, pattern="^.dzd(?: |$)(.*)")
 async def DeezLoader(Deezlod):
     if Deezlod.fwd_from:
         return
@@ -99,8 +99,8 @@ async def DeezLoader(Deezlod):
           await bot.send_file(Deezlod.chat_id, song, caption=details.text)
           await Deezlod.client.delete_messages(conv.chat_id,
                                              [msg_start.id, response.id, r.id, msg.id, details.id, song.id])
-          await Deezlod.delete()
-
+          await Deezlod.delete()          
+    
 CMD_HELP.update({
         "music":
         ".spd`<Artist - Song Title>\
@@ -115,3 +115,5 @@ CMD_HELP.update({
             \n\n *Format= `FLAC`, `MP3_320`, `MP3_256`, `MP3_128`.\
             \n\n\n Guide:Video guide of arl token: [here](https://www.youtube.com/watch?v=O6PRT47_yds&feature=youtu.be) or Read [This](https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken)."
 })
+
+

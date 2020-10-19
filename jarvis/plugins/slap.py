@@ -6,7 +6,7 @@ usage:- .slap in reply to any message, or u gonna slap urself.
 
 import sys
 from telethon import events, functions
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 import random
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
@@ -75,7 +75,7 @@ HIT = [
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 
-@jarvis.on(jarvis_cmd(pattern="slap ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
 async def who(event):
     if event.fwd_from:
         return

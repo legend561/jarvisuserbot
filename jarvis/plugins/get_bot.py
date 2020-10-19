@@ -2,11 +2,11 @@
 Syntax: .get_bot"""
 from telethon import events
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
-from jarvis.utils import jarvis_cmd, sudo_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("get_bot ?(.*)"))
-@jarvis.on(sudo_cmd(pattern="get_bot ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("get_bot ?(.*)"))
+@jarvis.on(admin_cmd(pattern="get_bot ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

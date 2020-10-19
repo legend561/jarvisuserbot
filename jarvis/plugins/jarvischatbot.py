@@ -2,7 +2,6 @@ import coffeehouse
 from coffeehouse.lydia import LydiaAI
 import asyncio
 from telethon import events
-from jarvis.utils import jarvis_cmd
 
 # Non-SQL Mode
 ACC_LYDIA = {}
@@ -13,7 +12,7 @@ if Var.LYDIA_API_KEY:
     api_client = coffeehouse.API(api_key)
     Lydia = LydiaAI(api_client)
 
-@jarvis.on(jarvis_cmd(pattern="repcf", outgoing=True))
+@command(pattern="^.repcf", outgoing=True)
 async def repcf(event):
     if event.fwd_from:
         return
@@ -28,7 +27,7 @@ async def repcf(event):
     except Exception as e:
         await event.edit(str(e))
 
-@jarvis.on(jarvis_cmd(pattern="addcf", outgoing=True))
+@command(pattern="^.addcf", outgoing=True)
 async def addcf(event):
     if event.fwd_from:
         return
@@ -41,11 +40,11 @@ async def addcf(event):
         session_id = session.id
         ACC_LYDIA.update({str(event.chat_id) + " " + str(reply_msg.from_id): session})
         SESSION_ID.update({str(event.chat_id) + " " + str(reply_msg.from_id): session_id})
-        await event.edit("Lydia successfully enabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
+        await event.edit("JARVIS CHATBOT successfully enabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
     else:
-        await event.edit("Reply to a user to activate Lydia AI on them")
+        await event.edit("Reply to a user to activate JARVIS AI on them")
 
-@jarvis.on(jarvis_cmd(pattern="remcf", outgoing=True))
+@command(pattern="^.remcf", outgoing=True)
 async def remcf(event):
     if event.fwd_from:
         return
@@ -56,9 +55,9 @@ async def remcf(event):
     try:
         del ACC_LYDIA[str(event.chat_id) + " " + str(reply_msg.from_id)]
         del SESSION_ID[str(event.chat_id) + " " + str(reply_msg.from_id)]
-        await event.edit("Lydia AI successfully disabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
+        await event.edit("JARVIS CHATBOT successfully disabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
     except KeyError:
-        await event.edit("This person does not have Lydia activated on him/her.")
+        await event.edit("This person does not have JARVIS activated on him/her.")
 
 @bot.on(events.NewMessage(incoming=True))
 async def user(event):

@@ -7,9 +7,9 @@ Available Commands:
 
 from telethon import events
 import asyncio
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern=r"jio"))
+@jarvis.on(admin_cmd(pattern=r"jio"))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,19 +19,19 @@ async def _(event):
    # if input_str == "jio":
     await event.edit("jio")
     animation_chars = [
-
+        
             "`Connecting To JIO Network 📡 ....`",
             "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
             "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
             "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
-            "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",
+            "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",    
             "`▒ ▒ ▒ ▒ ▄ ▂ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
             "*Optimising Network....*",
             "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-            "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
+            "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",           
             "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
             "`▁ ▂ ▄ ▒ ▒ ▒ ▒`",
             "`▁ ▂ ▄ ▅ ▒ ▒ ▒`",

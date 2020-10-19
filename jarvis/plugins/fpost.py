@@ -9,12 +9,12 @@ import string
 
 from telethon import events
 from telethon.tl import types
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 msg_cache = {}
 
 
-@jarvis.on(jarvis_cmd(pattern=r"fpost\s+(.*)"))
+@jarvis.on(admin_cmd(pattern=r"fpost\s+(.*)"))
 async def _(event):
     await event.delete()
     text = event.pattern_match.group(1)

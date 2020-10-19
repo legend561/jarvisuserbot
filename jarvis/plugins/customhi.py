@@ -1,6 +1,6 @@
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
-@jarvis.on(jarvis_cmd(pattern=r"hhi ?(.*)"))
+@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)"))
 async def hhi(event):
     giveVar = event.text
     cat = giveVar[5:6]

@@ -2,11 +2,11 @@ from telethon import events
 import asyncio
 import os
 import sys
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
 
-@jarvis.on(jarvis_cmd(pattern="ftext ?(.*)"))
+@jarvis.on(admin_cmd(pattern="ftext ?(.*)"))
 async def payf(event):
     input_str=event.pattern_match.group(1)
     if input_str:

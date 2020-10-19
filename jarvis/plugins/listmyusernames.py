@@ -2,11 +2,11 @@
 # (c) Shrimadhav U K
 
 from telethon import events, functions, types
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 
-@jarvis.on(jarvis_cmd("listmyusernames"))
+@jarvis.on(admin_cmd("listmyusernames"))
 
 async def mine(event):
     """ For .reserved command, get a list of your reserved usernames. """

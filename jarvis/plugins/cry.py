@@ -1,14 +1,14 @@
 """Use cmd `.cry` to cry"""
 
 from telethon import events
-from jarvis.utils import jarvis_cmd
+from uniborg.util import admin_cmd
 import asyncio
 
 
 
 
 
-@jarvis.on(jarvis_cmd(pattern="lcry"))
+@jarvis.on(admin_cmd(pattern="lcry"))
 
 async def _(event):
 
@@ -17,13 +17,13 @@ async def _(event):
         return
 
     animation_interval = 1
-
+    
 
     animation_ttl = range(0, 103)
 
+    
 
-
-
+  
 
     await event.edit("crying")
 

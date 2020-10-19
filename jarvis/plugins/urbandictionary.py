@@ -5,10 +5,10 @@
 Syntax: .ud Query"""
 from telethon import events
 import urbandict
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd("ud (.*)"))
+@jarvis.on(admin_cmd("ud (.*)"))
 async def _(event):
     if event.fwd_from:
         return

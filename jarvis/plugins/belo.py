@@ -15,11 +15,11 @@ import sys
 
 import random
 
-from jarvis.utils import jarvis_cmd
+from uniborg.util import admin_cmd
 
 
 
-@jarvis.on(jarvis_cmd(pattern=r"belo", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"belo", allow_sudo=True))
 
 async def _(event):
 
@@ -411,12 +411,15 @@ async def _(event):
 
     if x==95:
 
-        await event.edit("`\"Someday you will either not wake up or not go to sleep.\"`")
+        await event.edit("`\"Someday you will either not wake up or not go to sleep.\"`")     
 
     if x==96:
 
         await event.edit("`\"Bermuda Triangle might be the exit portal of this simulation.\"`")
-
+    
     if x==97:
 
         await event.edit("`\"If we put solar panels above parking lots, then our cars wouldn't get hot and we would have a lot of clean energy.\"`")
+
+    
+

@@ -4,10 +4,10 @@ Syntax: .fwd as reply to any message"""
 from telethon import events
 from telethon import sync
 from telethon.tl import types, functions
-from jarvis.utils import jarvis_cmd
+from jarvis.utils import admin_cmd
 
 
-@jarvis.on(jarvis_cmd(pattern="frwd"))
+@jarvis.on(admin_cmd(pattern="frwd"))
 async def _(event):
     if event.fwd_from:
         return
