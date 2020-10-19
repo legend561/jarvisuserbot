@@ -225,14 +225,6 @@ def admin_cmd(pattern=None, **args):
 
     return events.NewMessage(**args)
 
-async def edit_or_reply(event, text):
-    if event.from_id in Config.SUDO_USERS:
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(text)
-        return await event.reply(text)
-    return await event.edit(text)
-
 def sudo_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
@@ -242,16 +234,34 @@ def sudo_cmd(pattern=None, **args):
     allow_sudo = args.get("allow_sudo", False)
     # get the pattern from the decorator
     if pattern is not None:
-        if pattern.startswith("\#"):
+        if pattern.startswith(r"\#"):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
+        elif pattern.startswith(r"^"):
+            args["pattern"] = re.compile(pattern)
+            cmd = (
+                (pattern)
+                .replace("$", "")
+                .replace("^", "")
+                .replace("\\", "")
+                .replace("^", "")
+            )
+            try:
+                SUDO_LIST[file_test].append(cmd)
+            except BaseException:
+                SUDO_LIST.update({file_test: [cmd]})
         else:
-            args["pattern"] = re.compile(Config.SUDO_HNDLR + pattern)
-            reg = Config.SUDO_HNDLR[1]
+            if len(Config.SUDO_HNDLR) == 2:
+                catreg = "^" + Config.SUDO_HNDLR
+                reg = Config.SUDO_HNDLR[1]
+            elif len(Config.SUDO_HNDLR) == 1:
+                catreg = "^\\" + Config.SUDO_HNDLR
+                reg = Config.SUDO_HNDLR
+            args["pattern"] = re.compile(catreg + pattern)
             cmd = (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
             try:
                 SUDO_LIST[file_test].append(cmd)
-            except:
+            except BaseException:
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # should this command be available for other users?
@@ -266,7 +276,7 @@ def sudo_cmd(pattern=None, **args):
     # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
     black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
-    if len(black_list_chats) > 0:
+    if black_list_chats:
         args["chats"] = black_list_chats
     # add blacklist chats, UB should not respond in these chats
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
