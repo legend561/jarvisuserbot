@@ -7,7 +7,38 @@ from io import BytesIO
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd
 from datetime import datetime
-from jarvis.plugins import inlinestats, currentversion
+
+sudousing = Config.SUDO_USERS
+pmlogss = Config.PM_LOGGR_BOT_API_ID
+isdbfine = Var.DB_URI
+updaterok = Var.HEROKU_APP_NAME
+gdriveisshit = Config.AUTH_TOKEN_DATA
+currentversion = "3.2"
+
+if sudousing:
+    ssudo = "Enabled "
+else:
+    ssudo = "Disabled"
+
+if pmlogss:
+    pmllogs = "Enabled"
+else:
+    pmllogs = "Disabled"
+
+if updaterok:
+    updaterr = "Enabled"
+else:
+    updaterr = "Disabled"
+
+if gdriveisshit:
+    wearenoob = "Enabled"
+else:
+    wearenoob = "Disabled"
+
+if isdbfine:
+    dbstats = "All Fine 😉👍🏻"
+else:
+    dbstats = "Not Fine"
 
 ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
 
@@ -55,7 +86,7 @@ async def amireallyalive(alive):
         pm_caption += "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
         pm_caption += " ✓ JARVIS STATS ✓ "
         pm_caption += f"• VERSION = {currentversion} \n"
-        pm_caption += f"• DATABASE = All Ok 😉👍🏻 \n"
+        pm_caption += f"• DATABASE = {dbstats} \n"
         pm_caption += f"• SUDO = {ssudo} \n"
         pm_caption += f"• PM LOGS = {pmllogs} \n"
         pm_caption += f"• HEROKU = {updaterr} \n"
@@ -88,7 +119,7 @@ async def amireallyalive(alive):
                                 "ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ             : [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
                                 " ✓ JARVIS STATS ✓ "
                                 f"• VERSION = {currentversion} \n"
-                                f"• DATABASE = All Ok 😉👍🏻 \n"
+                                f"• DATABASE = {dbstats} \n"
                                 f"• SUDO = {ssudo} \n"
                                 f"• PM LOGS = {pmllogs} \n"
                                 f"• HEROKU = {updaterr} \n"
