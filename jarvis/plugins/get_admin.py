@@ -2,11 +2,11 @@
 Syntax: .get_admin"""
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin, ChannelParticipantCreator
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd("get_ad?(m)in ?(.*)"))
-@jarvis.on(admin_cmd(pattern="get_ad?(m)in ?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="get_ad?(m)in ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
