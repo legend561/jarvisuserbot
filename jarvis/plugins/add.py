@@ -2,16 +2,17 @@
 Syntax: .invite <User(s)>"""
 
 from telethon import functions
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern="invite ?(.*)"))
+@jarvis.on(sudo_cmd(pattern="invite ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
-        await event.edit("`.invite` users to a chat, not to a Private Message")
+        await event.edit_or_reply("`.invite` users to a chat, not to a Private Message")
     else:
         logger.info(to_add_users)
         if not event.is_channel and event.is_group:
