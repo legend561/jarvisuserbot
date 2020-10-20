@@ -70,18 +70,9 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-async def _(event):
-    if event.fwd_from:
-        return
-    start = datetime.now()
-    end = datetime.now()
-    ms = (end - start).microseconds / 1000
-    uptime = get_readable_time((time.time() - Lastupdate))
-
-
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = "https://telegra.ph/file/d61452c69b961e794eedd.jpg"
-pm_caption = "**JARVIS AT YOU SERVICE 🤗 **\n"
+pm_caption = "**Master JARVIS AT YOU SERVICE 🤗 **\n"
 pm_caption += f"**••Mу Bσѕѕ••**           {DEFAULTUSER}\n"
 pm_caption += " **✓ JARVIS STATS ✓** \n"
 pm_caption += "  🔸 ➣**Pутнση Vєяѕιση**    `3.8.5`\n"
@@ -103,6 +94,11 @@ pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
 @jarvis.on(admin_cmd(pattern=r"alive"))
 @jarvis.on(admin_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
+    start = datetime.now()
+    myid = bot.uid
+    end = datetime.now()
+    (end - start).microseconds / 1000
+    uptime = get_readable_time((time.time() - Lastupdate))
     if ALIVE_PIC :
         await alive.get_chat()
         await borg.send_file(alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False)
