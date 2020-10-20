@@ -17,7 +17,7 @@ import sys
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from jarvis import CMD_HELP, bot 
+from jarvis import CMD_HELP, bot, CMD_HNDLR
 from jarvis.events import admin_cmd
 
 requirements_path = path.join(
@@ -127,7 +127,7 @@ async def upstream(ups):
             remove("changelogs.txt")
         else:
             await ups.reply(changelog_str)
-        await ups.respond(f'Do `.update now` to update')
+        await ups.respond(f'Do `{CMD_HNDLR}update now` to update')
         return
 
     if force_updateme:
