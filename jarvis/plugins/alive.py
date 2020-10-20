@@ -101,5 +101,5 @@ async def jarvis(alive):
         await alive.delete()
     else :
         await alive.get_chat()
-        await jarvis.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
+        await jarvis.send_file(alive.chat_id, PM_IMG, caption=pm_caption, linkpreview=False)
         await alive.delete()
