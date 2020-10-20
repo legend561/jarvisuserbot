@@ -7,6 +7,7 @@ from io import BytesIO
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd
 from datetime import datetime
+from jarvis import Lastupdate
 
 sudousing = Config.SUDO_USERS
 pmlogss = Config.PM_LOGGR_BOT_API_ID
@@ -71,34 +72,34 @@ def get_readable_time(seconds: int) -> str:
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = "https://telegra.ph/file/d61452c69b961e794eedd.jpg"
+uptime = get_readable_time((time.time() - Lastupdate))
+pm_caption = "**ᴊᴀʀᴠɪꜱ ɪꜱ ᴏɴʟɪɴᴇ**\n"
+pm_caption += f"**M̴y̴ ̴B̴o̴s̴s̴**           {DEFAULTUSER}\n"
+pm_caption += "🔹 `Pутнση Vєяѕιση       3.8.5`\n"
+pm_caption += "🔹 `Bσт Vєяѕιση              7.0.9`\n"
+pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ    [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
+pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
+pm_caption += "🔹 ʟɪᴄᴇɴꜱᴇ                        [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
+pm_caption += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ            [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
+pm_caption += " **✓ JARVIS STATS ✓** \n"
+pm_caption += f"  🔸 ➣**VERSION**        `{currentversion}` \n"
+pm_caption += f"  🔸 ➣**DATABASE**    `{dbstats}` \n"
+pm_caption += f"  🔸 ➣**SUDO**               `{ssudo}` \n"
+pm_caption += f"  🔸 ➣**PM LOGS**        `{pmllogs}` \n"
+pm_caption += f"  🔸 ➣**HEROKU**          `{updaterr}` \n"
+pm_caption += f"  🔸 ➣**G-DRIVE**           `{wearenoob}`\n\n"
+pm_caption += f"  🔸 ➣**UPTIME**           `{uptime}`\n\n" 
+pm_caption += "[Git Repo](https://jarvisworks.ga/userbot)"
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="alive"))
-@jarvis.on(admin_cmd(pattern="alive", allow_sudo=True))
-async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
-    if ALIVE_PIC:
-        pm_caption = "**ᴊᴀʀᴠɪꜱ ɪꜱ ᴏɴʟɪɴᴇ**\n"
-        pm_caption += f"**M̴y̴ ̴B̴o̴s̴s̴**           {DEFAULTUSER}\n"
-        pm_caption += "🔹 `Pутнση Vєяѕιση       3.8.5`\n"
-        pm_caption += "🔹 `Bσт Vєяѕιση              7.0.9`\n"
-        pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ    [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
-        pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
-        pm_caption += "🔹 ʟɪᴄᴇɴꜱᴇ                        [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-        pm_caption += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ            [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
-        pm_caption += " **✓ JARVIS STATS ✓** \n"
-        pm_caption += f"  🔸 ➣**VERSION**        `{currentversion}` \n"
-        pm_caption += f"  🔸 ➣**DATABASE**    `{dbstats}` \n"
-        pm_caption += f"  🔸 ➣**SUDO**               `{ssudo}` \n"
-        pm_caption += f"  🔸 ➣**PM LOGS**        `{pmllogs}` \n"
-        pm_caption += f"  🔸 ➣**HEROKU**          `{updaterr}` \n"
-        pm_caption += f"  🔸 ➣**G-DRIVE**           `{wearenoob}`\n\n"
-        pm_caption += "[Git Repo](https://jarvisworks.ga/userbot)"
-        chat = await alive.get_chat()
+
+@jarvis.on(admin_cmd(pattern=r"alive"))
+@jarvis.on(admin_cmd(pattern=r"alive", allow_sudo=True))
+async def jarvis(alive):
+    if ALIVE_PIC :
+        await alive.get_chat()
+        await jarvis.send_file(alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False)
         await alive.delete()
-        """ For .alive command, check if the bot is running.  """
-        await jarvis.send_file(alive.chat_id, ALIVE_PIC,caption=pm_caption, link_preview = False)
-        await alive.delete()
-        return
     else :
-        await jarvis.send_file(alive.chat_id, PM_IMG,caption=pm_caption, link_preview = False)
+        await alive.get_chat()
+        await jarvis.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
         await alive.delete()
