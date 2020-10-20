@@ -17,7 +17,7 @@ from youtube_dl.utils import (DownloadError, ContentTooShortError,
                               UnavailableVideoError, XAttrMetadataError)
 from asyncio import sleep
 from telethon.tl.types import DocumentAttributeAudio
-from jarvis.utils import admin_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -77,13 +77,13 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 @jarvis.on(admin_cmd(pattern="yt(a|v) (.*)"))
-@jarvis.on(admin_cmd(pattern="yt(a|v) (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="yt(a|v) (.*)",allow_sudo=True))
 async def download_video(v_url):
     """ For .ytdl command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
 
-    await v_url.edit("`Preparing to download...`")
+    await v_url.edit_or_reply("`Preparing to download...`")
 
     if type == "a":
         opts = {
@@ -152,30 +152,30 @@ async def download_video(v_url):
         await v_url.edit(f"`{str(DE)}`")
         return
     except ContentTooShortError:
-        await v_url.reply("`The download content was too short.`")
+        await v_url.edit("`The download content was too short.`")
         return
     except GeoRestrictedError:
-        await v_url.reply(
+        await v_url.edit(
             "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
         )
         return
     except MaxDownloadsReached:
-        await v_url.reply("`Max-downloads limit has been reached.`")
+        await v_url.edit("`Max-downloads limit has been reached.`")
         return
     except PostProcessingError:
-        await v_url.reply("`There was an error during post processing.`")
+        await v_url.edit("`There was an error during post processing.`")
         return
     except UnavailableVideoError:
-        await v_url.reply("`Media is not available in the requested format.`")
+        await v_url.edit("`Media is not available in the requested format.`")
         return
     except XAttrMetadataError as XAME:
-        await v_url.reply(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        await v_url.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
         return
     except ExtractorError:
-        await v_url.reply("`There was an error during info extraction.`")
+        await v_url.edit("`There was an error during info extraction.`")
         return
     except Exception as e:
-        await v_url.reply(f"{str(type(e)): {str(e)}}")
+        await v_url.edit(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
     if song:
