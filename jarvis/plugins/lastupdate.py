@@ -38,7 +38,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 #@command(pattern="^.latestupdate")
-@jarvis.on(admin_cmd(pattern="latestupdate"))
+@jarvis.on(admin_cmd(pattern="uptime"))
 async def _(event):
     if event.fwd_from:
         return
