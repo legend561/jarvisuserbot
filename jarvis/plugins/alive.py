@@ -97,9 +97,9 @@ pm_caption += "[Git Repo](https://jarvisworks.ga/userbot)"
 async def jarvis(alive):
     if ALIVE_PIC :
         await alive.get_chat()
-        await jarvis.send_file(alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False)
+        await borg.send_file(alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False)
         await alive.delete()
     else :
         await alive.get_chat()
-        await jarvis.send_file(alive.chat_id, PM_IMG, caption=pm_caption, linkpreview=False)
+        await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption, linkpreview=False)
         await alive.delete()
