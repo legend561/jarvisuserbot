@@ -123,5 +123,5 @@ async def amireallyalive(alive):
                                   f"  🔸 ➣**PM LOGS**        `{pmllogs}` \n"
                                   f"  🔸 ➣**HEROKU**          `{updaterr}` \n"
                                   f"  🔸 ➣**G-DRIVE**           `{wearenoob}`\n\n"
-                                  "[Git Repo](https://jarvisworks.ga/userbot)" ,linkpreview=False)
+                                  "[Git Repo](https://jarvisworks.ga/userbot)" , linkpreview = False)
         await alive.delete()
