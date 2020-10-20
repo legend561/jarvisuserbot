@@ -70,6 +70,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
+PM_IMG = "https://telegra.ph/file/d61452c69b961e794eedd.jpg"
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="alive"))
 @jarvis.on(admin_cmd(pattern="alive", allow_sudo=True))
@@ -98,30 +99,6 @@ async def amireallyalive(alive):
         await jarvis.send_file(alive.chat_id, ALIVE_PIC,caption=pm_caption, link_preview = False)
         await alive.delete()
         return
-    req = requests.get("https://telegra.ph/file/c7b581aac71e7bda597f7.png")
-    req.raise_for_status()
-    file = BytesIO(req.content)
-    file.seek(0)
-    img = Image.open(file)
-    with BytesIO() as sticker:
-        img.save(sticker, "webp")
-        sticker.name = "sticker.webp"
-        sticker.seek(0)
-        await jarvis.send_file(alive.chat_id, file=sticker)
-        await jarvis.send_message(alive.chat_id,"**ᴊᴀʀᴠɪꜱ ɪꜱ ᴏɴʟɪɴᴇ**\n"
-                                  f"**M̴y̴ ̴B̴o̴s̴s̴**        {DEFAULTUSER}\n"
-                                  "🔹` Pутнση Vєяѕιση       3.8.5`\n"
-                                  "🔹 ` Bσт Vєяѕιση              {currentversion}`\n"
-                                  "🔹 ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ    [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
-                                  "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
-                                  "🔹 ʟɪᴄᴇɴꜱᴇ                        [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-                                  "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ            [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
-                                  " **✓ JARVIS STATS ✓** \n"
-                                  f"  🔸 ➣**VERSION**        `{currentversion}` \n"
-                                  f"  🔸 ➣**DATABASE**    `{dbstats}` \n"
-                                  f"  🔸 ➣**SUDO**               `{ssudo}` \n"
-                                  f"  🔸 ➣**PM LOGS**        `{pmllogs}` \n"
-                                  f"  🔸 ➣**HEROKU**          `{updaterr}` \n"
-                                  f"  🔸 ➣**G-DRIVE**           `{wearenoob}`\n\n"
-                                  "[Git Repo](https://jarvisworks.ga/userbot)" , linkpreview = False)
+    else :
+        await jarvis.send_file(alive.chat_id, PM_IMG,caption=pm_caption, link_preview = False)
         await alive.delete()
