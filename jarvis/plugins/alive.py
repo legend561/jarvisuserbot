@@ -73,7 +73,7 @@ def get_readable_time(seconds: int) -> str:
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 @jarvis.on(admin_cmd(pattern=r"alive"))
-@jarvis.on(admin_cmd(pattern=r"alive", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
     start = datetime.now()
     myid = bot.uid
