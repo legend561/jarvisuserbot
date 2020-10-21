@@ -322,7 +322,7 @@ def errors_handler(func):
             ftext += "--------BEGIN USERBOT TRACEBACK LOG--------"
             ftext += "\nDate: " + date
             ftext += "\nGroup ID: " + str(errors.chat_id)
-            ftext += "\nSender ID: " + str(errors.sender_id)
+            ftext += "\nSender ID: " + str(errors.from_id)
             ftext += "\n\nEvent Trigger:\n"
             ftext += str(errors.text)
             ftext += "\n\nTraceback info:\n"
