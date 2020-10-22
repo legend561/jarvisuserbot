@@ -22,7 +22,7 @@ from youtube_dl.utils import (
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, progress, sudo_cmd
-
+from jarvis import time
 
 @jarvis.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
