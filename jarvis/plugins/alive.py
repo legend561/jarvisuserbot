@@ -5,7 +5,7 @@ import time
 from PIL import Image
 from io import BytesIO
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 from datetime import datetime
 from jarvis import Lastupdate
 
