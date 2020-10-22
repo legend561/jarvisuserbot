@@ -105,11 +105,11 @@ async def download_video(v_url):
         await v_url.edit(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
-    catthumb = Path(f"{ytdl_data['id']}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{ytdl_data['id']}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
+    jimg = Path(f"{ytdl_data['id']}.jpg")
+    if not os.path.exists(jimg):
+        jimg = Path(f"{ytdl_data['id']}.webp")
+    elif not os.path.exists(jimg):
+        jimg = None
     if song:
         await v_url.edit(
             f"`Preparing to upload song:`\
@@ -120,7 +120,7 @@ async def download_video(v_url):
             v_url.chat_id,
             f"{ytdl_data['id']}.mp3",
             supports_streaming=True,
-            thumb=catthumb,
+            thumb=jimg,
             attributes=[
                 DocumentAttributeAudio(
                     duration=int(ytdl_data["duration"]),
@@ -135,8 +135,8 @@ async def download_video(v_url):
             ),
         )
         os.remove(f"{ytdl_data['id']}.mp3")
-        if catthumb:
-            os.remove(catthumb)
+        if jimg:
+            os.remove(jimg)
         await v_url.delete()
     elif video:
         await v_url.edit(
@@ -156,8 +156,8 @@ async def download_video(v_url):
             ),
         )
         os.remove(f"{ytdl_data['id']}.mp4")
-        if catthumb:
-            os.remove(catthumb)
+        if jimg:
+            os.remove(jimg)
         await v_url.delete()
 
 
@@ -170,7 +170,7 @@ async def yt_search(video_q):
     if not Config.YOUTUBE_API_KEY:
         await edit_or_reply(
             video_q,
-            "`Error: YouTube API key missing! Add it to reveal config vars in heroku or userbot/uniborgConfig.py in github fork.`",
+            "`Error: YouTube API key missing! Add it to reveal config vars in heroku or jarvis/uniborgConfig.py in github fork.`",
         )
         return
     video_q = await edit_or_reply(video_q, "```Processing...```")
@@ -230,7 +230,7 @@ CMD_HELP.update(
     \n\n**Syntax : **`.ytv link`\
     \n**Usage : **downloads th video from the given link(Suports the all sites which support youtube-dl)\
     \n\n**Syntax : ** `.yts query`\
-    \n**Usage : **Fetches youtube results you need api token for this\
+    \n**Usage : **Fetches youtube results **You need API Token for this**\
     "
     }
 )
