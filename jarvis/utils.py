@@ -190,7 +190,7 @@ def sudo_cmd(pattern=None, **args):
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
     allow_sudo = args.get("allow_sudo", False)
-# (c) TeleBot
+# (c) TeleBot and Jarvis
     # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith("\#"):
