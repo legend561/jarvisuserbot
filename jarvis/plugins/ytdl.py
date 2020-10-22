@@ -2,10 +2,9 @@
 
 import asyncio
 import os
-import time
 from html import unescape
 from pathlib import Path
-
+from time import *
 from googleapiclient.discovery import build
 from telethon.tl.types import DocumentAttributeAudio
 from youtube_dl import YoutubeDL
