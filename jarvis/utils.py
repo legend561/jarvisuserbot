@@ -116,7 +116,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["jarvis.plugins."+shortname] = mod
-        print("Successfully (re)imported "+shortname)
+        #print("Successfully (re)imported "+shortname)
 
 def remove_plugin(shortname):
     try:
@@ -180,7 +180,7 @@ def admin_cmd(pattern=None, **args):
 
     return events.NewMessage(**args)
 
-SUDO_HNDLR = Config.SUDO_HNDLR if Config.SUDO_HNDLR else "!"
+sudo_hndlr = Config.SUDO_HNDLR if Config.SUDO_HNDLR else "!"
 
 def sudo_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -189,16 +189,16 @@ def sudo_cmd(pattern=None, **args):
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
-    allow_sudo = args.get("allow_sudo", None)
-# (c) JARVIS
+    allow_sudo = args.get("allow_sudo", False)
+# (c) Jarvis And Telebot
     # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith("\#"):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
         else:
-            args["pattern"] = re.compile(SUDO_HNDLR + pattern)
-            cmd = SUDO_HNDLR + pattern
+            args["pattern"] = re.compile(sudo_hndlr + pattern)
+            cmd = sudo_hndlr + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
             except:
@@ -430,8 +430,8 @@ def start_assistant(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Starting Your Assistant Bot.")
-        print("Assistant Sucessfully imported " + shortname)
+        #print("Starting Your Assistant Bot.")
+        #print("Assistant Sucessfully imported " + shortname)
     else:
         import importlib
         import sys
@@ -446,4 +446,4 @@ def start_assistant(shortname):
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins.assistant" + shortname] = mod
-        print("Assistant Has imported " + shortname)
+       # print("Assistant Has imported " + shortname)
