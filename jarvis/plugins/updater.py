@@ -87,7 +87,7 @@ async def upstream(ups):
         repo.heads.master.checkout(True)
 
     ac_br = repo.active_branch.name
-    if ac_br != 'master':
+    if ac_br != 'beta':
         await ups.edit(
             f'**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). '
             'in that case, Updater is unable to identify '
@@ -184,6 +184,6 @@ async def upstream(ups):
         await ups.edit('`Successfully Updated!\n'
                        'Bot is restarting... Wait for a second!`')
         # Spin a new instance of bot
-        args = [sys.executable, "-m", "stdborg"]
+        args = [sys.executable, "-m", "jarvis"]
         execle(sys.executable, *args, environ)
         return
