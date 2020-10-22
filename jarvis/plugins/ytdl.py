@@ -24,8 +24,8 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 
 
-@bot.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
 async def download_video(v_url):
     """ For .ytdl command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
@@ -161,8 +161,8 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@bot.on(admin_cmd(pattern="yts (.*)"))
-@bot.on(sudo_cmd(pattern="yts (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="yts (.*)"))
+@jarvis.on(sudo_cmd(pattern="yts (.*)", allow_sudo=True))
 async def yt_search(video_q):
     """ For .yts command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
