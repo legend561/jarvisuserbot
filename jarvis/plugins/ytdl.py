@@ -83,7 +83,7 @@ async def download_video(v_url):
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
 
-    await v_url.edit_or_reply("`Preparing to download...`")
+    await edit_or_reply(v_url, "`Preparing to download...`")
 
     if type == "a":
         opts = {
