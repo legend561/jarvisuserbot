@@ -39,7 +39,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 @jarvis.on(admin_cmd(pattern=r"afk ?(.*)"))
-@jarvis.on(sudo_cmd(pattern=r"afk" ?(.*)"))
+@jarvis.on(sudo_cmd(pattern=r"afk ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
