@@ -6,7 +6,7 @@ if ENV:
     class Config(object):
         LOGGER = True
         # Get this value from my.telegram.org! Please do not steal
-        ALV_PIC = os.environ.get("ALIVE_PIC" , None)
+        ALVE_PIC = os.environ.get("ALIVE_PIC" , None)
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
         # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
@@ -73,8 +73,12 @@ if ENV:
         # can be None in which case plugins requiring
         # DataBase would not work
         DB_URI = os.environ.get("DATABASE_URL", None)
-        # number of rows of buttons to be displayed in .helpme command
-        NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 5))
+        # number of rows of buttons to be displayed in .help command
+        NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 7))
+        # number of columns of buttons to be displayed in .help command
+        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = int(os.envron.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , 3))
+        #emojies tht should display in the .help cmd
+        EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", " ")
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
         CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
