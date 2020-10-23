@@ -81,7 +81,7 @@ if ENV:
         EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", " ")
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
-        CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
+        CMD_HNDLR = os.environ.get("CMD_HNDLR", "\.")
         SUDO_HNDLR = os.environ.get("SUDO_HNDLR", "!")
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
