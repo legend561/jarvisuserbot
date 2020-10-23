@@ -5,7 +5,7 @@ import asyncio
 import time
 from telethon.tl import functions
 from telethon.errors import FloodWaitError
-from uniborg.util import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from jarvis import ALIVE_NAME
 
 
