@@ -10,7 +10,7 @@ from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 import asyncio
 
@@ -55,10 +55,10 @@ async def animepp():
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
 @jarvis.on(admin_cmd(pattern="avengersdp ?(.*)"))
-
+@jarvis.on(sudo_cmd(pattern="avengersdp ?(.*)", allow_sudo=True))
 async def main(event):
 
-    await event.edit("**Starting Avengers Profile Pic...\n\nDone ! Check Your DP By @JarvisOt**")
+    await edit_or_reply(event, "**Starting Avengers Profile Pic...\n\nDone ! Check Your DP By @JarvisOt**")
 
     while True:
 
