@@ -1,14 +1,14 @@
 from jarvis import CMD_LIST
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from platform import uname
 import sys
 from telethon import events, functions, version
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
-@jarvis.on(admin_cmd(pattern="help ?(.*)"))
-@jarvis.on(admin_cmd(pattern="help ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="help ?(.*)",outgoing=True))
+@jarvis.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
@@ -57,28 +57,28 @@ Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, i
             )
             await event.delete()
             
-@jarvis.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
-@jarvis.on(admin_cmd(pattern="dc", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="dc", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(pattern="dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     result = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
-    await event.reply(result.stringify())
+    await edit_or_reply(event ,result.stringify())
 
 
-@jarvis.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
-@jarvis.on(admin_cmd(pattern="config", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="config", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(pattern="config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     result = await borg(functions.help.GetConfigRequest())  # pylint:disable=E0602
     result = result.stringify()
     logger.info(result)  # pylint:disable=E0602
-    await event.reply("""Telethon UserBot powered by JARVIS UserBot""")
+    await edit_or_reply(event, """Telethon UserBot powered by JARVIS UserBot""")
 
 
-@jarvis.on(admin_cmd(pattern="syntax (.*)"))
-@jarvis.on(admin_cmd(pattern="syntax (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="syntax (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="syntax (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -96,4 +96,4 @@ async def _(event):
 
         plugin_syntax = "Enter valid Plugin name.\nDo .plinfo or .help to get list of valid plugin names."
 
-    await event.reply(plugin_syntax)
+    await edit_or_reply(event, plugin_syntax)
