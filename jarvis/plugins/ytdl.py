@@ -4,7 +4,7 @@ import asyncio
 import os
 from html import unescape
 from pathlib import Path
-from time import *
+from time import time
 from googleapiclient.discovery import build
 from telethon.tl.types import DocumentAttributeAudio
 from youtube_dl import YoutubeDL
