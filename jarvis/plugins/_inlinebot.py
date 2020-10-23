@@ -1,9 +1,13 @@
+import os
 import re
 from math import ceil
 from jarvis.plugins import inlinestats
 from telethon import custom, events, Button
 from jarvis import ALIVE_NAME
 from jarvis import CMD_LIST
+
+NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , None)
+EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP" , None)
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
