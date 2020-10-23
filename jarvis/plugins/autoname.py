@@ -5,7 +5,7 @@ import asyncio
 import time
 from telethon.tl import functions
 from telethon.errors import FloodWaitError
-from uniborg.util import admin_cmd
+from uniborg.util import admin_cmd, sudo_cmd, edit_or_reply
 from jarvis import ALIVE_NAME
 
 
@@ -14,6 +14,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
 @jarvis.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(pattern="autoname", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,4 +38,4 @@ async def _(event):
             #     "Successfully Changed Profile Name"
             # )
         await asyncio.sleep(DEL_TIME_OUT)
-    await event.edit(f"Auto Name has been started Master") 
+    await edit_or_reply(event, f"Auto Name has been started Master") 
