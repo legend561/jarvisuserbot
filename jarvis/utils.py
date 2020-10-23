@@ -199,8 +199,8 @@ import subprocess
 import sys
 import traceback
 import datetime
-from time
-
+import time
+from time import time
 def register(**args):
     """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
