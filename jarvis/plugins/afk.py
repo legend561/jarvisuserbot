@@ -4,7 +4,7 @@ import asyncio
 import datetime
 from telethon import events
 from telethon.tl import functions, types
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -31,7 +31,7 @@ async def set_not_afk(event):
                 event.chat_id,
                 "Please set `PLUGIN_CHANNEL` " + \
                 "for the proper functioning of afk functionality " + \
-                "in @jarvissupportofficial\n\n `{}`".format(str(e)),
+                "in @JarvisSupportOT\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
                 silent=True
             )
@@ -39,7 +39,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 @jarvis.on(admin_cmd(pattern=r"afk ?(.*)"))
-
+@jarvis.on(sudo_cmd(pattern=r"afk" ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -61,9 +61,9 @@ async def _(event):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
-            await event.edit(f"My Boss Is Going Away ! And The Reason is {reason}")
+            await edit_or_reply(event, f"My Boss Is Going Away ! And The Reason is {reason}")
         else:
-            await event.edit(f"My Boss is Going")
+            await edit_or_reply(event, f"My Boss is Going")
         await asyncio.sleep(5)
         await event.delete()
         try:
@@ -85,7 +85,7 @@ async def on_afk(event):
     global USER_AFK  # pylint:disable=E0602
     global afk_time  # pylint:disable=E0602
     global last_afk_message  # pylint:disable=E0602
-    afk_since = "**a while ago**"
+    afk_since = datime_since_afk
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text:
         # userbot's should not reply to other userbot's
