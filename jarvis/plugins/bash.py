@@ -4,7 +4,7 @@ from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotMo
 import io
 import asyncio
 import time
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
@@ -45,4 +45,4 @@ async def _(event):
                 reply_to=reply_to_id
             )
             await event.delete()
-    await event.reply(OUTPUT)
+    await edit_or_reply(event, OUTPUT)
