@@ -5,6 +5,9 @@ from jarvis.plugins import inlinestats
 from telethon import custom, events, Button
 from jarvis import ALIVE_NAME
 from jarvis import CMD_LIST
+import math
+import io
+import json
 
 NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , None)
 EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP" , None)
