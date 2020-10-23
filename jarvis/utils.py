@@ -199,7 +199,7 @@ import subprocess
 import sys
 import traceback
 import datetime
-from time import time
+from time
 
 def register(**args):
     """ Register a new event. """
@@ -323,10 +323,10 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
                 time_formatter(estimated_total_time)
             )
         if file_name:
-            await event.edit("{}\nFile Name: `{}`\n{}".format(
+            await edit_or_reply(event ,"{}\nFile Name: `{}`\n{}".format(
                 type_of_ps, file_name, tmp))
         else:
-            await event.edit("{}\n{}".format(type_of_ps, tmp))
+            await edit_or_reply(event , "{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
