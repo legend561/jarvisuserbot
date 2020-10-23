@@ -8,7 +8,7 @@ import asyncio
 import os
 import sys
 import random
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 action_list = ['6 Angels ', '12 Beast ', 'Accel World ', 'Accel World: Infinite Burst ', 'Adventures of Kotetsu ', 'Afro Samurai ', 'Agent Aika ', 'Aika R-16: Virgin Mission ', 'Air Gear ', 'Air Master ', 'Akakichi no Eleven ', 'Akashic Records of Bastard Magic Instructor ', 'Akumetsu ', 'Alive: The Final Evolution ', 'All Purpose Cultural Cat-Girl Nuku Nuku DASH! ', 'Amakusa 1637 ', 'Amefurashi ', 'Angel/Dust ', 'Angel Links ', "Angel's Feather ", 'Anne Freaks ', 'Apocalypse Zero ', 'Aquarion Evol ', 'Aquarion Logos ', 'Arc the Lad ', 'Aria the Scarlet Ammo ', "Armed Girl's Machiavellism ", 'Armitage III ', 'Armored Trooper Votoms ', 'Armored Trooper Votoms: Pailsen Files ', 'Arpeggio of Blue Steel ', 'Ashizuri Suizokukan ', 'The Asterisk War ', 'Aventura (manga) ', 'B.B. (manga) ', 'Bakumatsu Gijinden Roman ', 'Bambi and Her Pink Gun ', 'Baoh ', 'Basquash! ', 'Bastard!! ', 'Bat-Manga!: The Secret History of Batman in Japan ', 'Battle Rabbits ', 'Beelzebub (manga) ', 'Ben-To ', 'Berserk (2016 TV series) ', 'Birdy the Mighty ', 'Birth (anime) ', 'Black Bullet ', 'Black God (manga) ', 'Blame! ', 'Blame! (film) ', 'Blassreiter ', 'Blood-C: The Last Dark ', 'Blood: The Last Vampire ', 'Blue Blink ', 'Blue Seed ', 'Blue Sheep Reverie ', 'Bogle (manga) ', 'Boruto: Naruto the Movie ', 'Brave 10 ', 'Broken Blade ', 'Brotherhood: Final Fantasy XV ', 'Btooom! ', 'Bubblegum Crisis ', 'Bungo Stray Dogs ', 'Burn Up! ', 'Burn-Up Excess ', 'Burn-Up Scramble ', 'Burn-Up W ', 'Butlers: Chitose Momotose Monogatari ', 'C (TV series) ', 'C3 (novel series) ', 'Campus Special Investigator Hikaruon ', 'Caravan Kidd ', 'The Castle of Cagliostro ', 'Cat Paradise ', 'A Certain Magical Index ', 'Chivalry of a Failed Knight ', 'Chōsoku Henkei Gyrozetter ', 'Chronos Ruler ', 'City Hunter ', 'Clockwork Planet ', 'Cluster Edge ', 'Comedy (2002 film) ', 'Coppelion ', 'Cowboy Bebop ', 'Cowboy Bebop: The Movie ', 'Crimson Spell ', 'Crown (manga) ', 'Crusher Joe ', 'D4 Princess ', 'The Dagger of Kamui ', 'Daigunder ', 'Dance in the Vampire Bund ', 'Daphne in the Brilliant Blue ', 'Darkside Blues ', 'Debutante Detective Corps ', 'Demon City Shinjuku ', 'Demonizer Zilch ', 'Dennō Bōkenki Webdiver ', 'Desert Punk ', 'The Devil of the Earth ', 'Devilman ', 'Dimension W ', 'DJ (2013 anime) ', 'Dog Days (Japanese TV series) ', 'Dragon Ball Z: Bardock – The Father of Goku ', 'Dragon Ball Z: The History of Trunks ', 'Dragon Crisis! ', 'Dream Eater Merry ', 'Durarara!! ', 'Dynamic Heroes ', "E's ", "Eden: It's an Endless World! ", "Eden's Bowy ", 'Ehrgeiz (TV series) ', 'Elementalors ', "The Enemy's the Pirates! ", 'Fairy Gone ', 'Final Fantasy: Unlimited ', 'Flag (TV series) ', 'FLCL ', 'Freesia (manga) ', 'Freezing (manga) ', 'Full Metal Panic! ', "Full-Blast Science Adventure – So That's How It Is ", 'Futakoi Alternative ', 'G-On Riders ', 'Ga-Rei ', 'Gaist Crusher ', 'The Galaxy Railways ', 'Gantz ', 'Gantz: O ', 'Genesis of Aquarion ', 'Ghost in the Shell: Stand Alone Complex ', 'Giant Gorg ', 'Girls und Panzer ', 'Glass Maiden ', 'Gokudo the Adventurer ', 'Grenadier (manga) ', 'Grey (manga) ', 'Gulliver Boy ', 'Gunslinger Stratos: The Animation ', 'Guyver: The Bioboosted Armor ', 'Hajime no Ippo ', 'Hanako and the Terror of Allegory ', 'Hand Shakers ', 'Happy World! ', 'Hayate × Blade ', 'Hero Heel ', 'Hero Mask ', 'Hidamari no Ki ', 'Highlander: The Search for Vengeance ', 'Holy Talker ', 'Hyakka Ryōran ', 'Immortal Grand Prix ', 'Iron Virgin Jun ', 'The Irregular at Magic High School The Movie: The Girl Who Calls the Stars ', 'The Irregular at Magic High School ', 'Sword Oratoria ', 'Isuca ', 'Izetta: The Last Witch ', 'Japan (1992 manga) ', 'Jibaku-kun ', 'Jungle Book Shōnen Mowgli ', 'Jungle King Tar-chan ', 'Junk Force (manga) ', 'Junk: Record of the Last Hero ', 'Jushin Liger (TV series) ', 'The Kabocha Wine ', 'Kacchū no Senshi Gamu ', 'Kaiji (manga) ', 'Kamikaze (manga) ', 'Kamiyadori ', 'Kämpfer ', 'Kamui (manga series) ', 'Karakuri Circus ', 'Katanagatari ', 'Kaze ga Gotoku ', 'Kaze no Stigma ', 'Kemurikusa ', 'Kengan Ashura ', 'Kenka Shōbai ', 'Kick-Heart ', 'Kill la Kill ', 'The King Kong Show ', 'The King of Braves GaoGaiGar Final ', 'Kinnikuman ', 'Kishin Corps ', 'Kite (1998 film) ', 'Kite Liberator ', 'Kiznaiver ', 'Knights of Ramune ', 'Koihime Musō ', 'Kon Kon Kokon ', 'Kongō Banchō ', 'Kōtetsu Sangokushi ', 'Kōya no Shōnen Isamu ']
@@ -20,6 +20,7 @@ slice_of_life_list = ['A Channel (manga) ', 'Abandon the Old in Tokyo ', 'Age 12
 isekai_list = ['12 Beast ', '100 Sleeping Princes and the Kingdom of Dreams ', "Arifureta: From Commonplace to World's Strongest ", 'Ascendance of a Bookworm ', 'Aura Battler Dunbine ', 'The Brave-Tuber ', 'Captain N: The Game Master ', 'Conception (video game) ', 'Death March to the Parallel World Rhapsody ', "Didn't I Say to Make My Abilities Average in the Next Life?! ", 'Digimon Adventure ', 'Do You Love Your Mom and Her Two-Hit Multi-Target Attacks? ', 'Dog Days (Japanese TV series) ', 'Drifters (manga) ', 'El-Hazard ', 'Endride ', 'The Familiar of Zero ', 'Fushigi Yûgi ', 'Gate (novel series) ', 'Grimgar of Fantasy and Ash ', 'Hachinantte Sore wa Inai Deshō! ', 'The Hero is Overpowered but Overly Cautious ', 'High School Prodigies Have It Easy Even In Another World ', 'How a Realist Hero Rebuilt the Kingdom ', 'How Not to Summon a Demon Lord ', "I've Been Killing Slimes for 300 Years and Maxed Out My Level ", 'In Another World with My Smartphone ', 'Infinite Dendrogram ', 'Inuyasha ', 'Isekai Cheat Magician ', 'Isekai Izakaya "Nobu" ', 'Isekai Quartet ', 'Kemonomichi ', 'Kiba (TV series) ', "Knight's & Magic ", 'KonoSuba ', 'Kyo Kara Maoh! ', 'Log Horizon ', 'Magic Knight Rayearth ', 'Magical Shopping Arcade Abenobashi ', 'Maō-sama, Retry! ', 'MÄR ', 'The Master of Ragnarok & Blesser of Einherjar ', 'Mushoku Tensei ', 'My Next Life as a Villainess: All Routes Lead to Doom! ', 'New Life+: Young Again in Another World ', 'No Game No Life ', 'No Game, No Life Zero ', 'Outbreak Company ', 'Overlord (novel series) ', 'Pop in Q ', "Problem Children Are Coming from Another World, Aren't They? ", 'Re:Zero − Starting Life in Another World ', 'Reborn as a Vending Machine, I Now Wander the Dungeon ', 'Restaurant to Another World ', 'The Rising of the Shield Hero ', 'The Saga of Tanya the Evil ', "So I'm a Spider, So What? ", 'Spirited Away ', 'Sword Art Online ', 'That Time I Got Reincarnated as a Slime ', 'Tweeny Witches ', 'The Twelve Kingdoms ', "Wise Man's Grandchild "]
 
 @jarvis.on(admin_cmd("anime"))
+@jarvis.on(sudo_cmd("anime", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return   
@@ -46,9 +47,10 @@ async def _(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")    
+    await edit_or_reply(event, "**"+msg_str+"**")    
      
 @jarvis.on(admin_cmd(pattern=r"harem"))
+@jarvis.on(sudo_cmd(pattern=r"harem", allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -75,9 +77,10 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")
+    await edit_or_reply(event, "**"+msg_str+"**")
 
 @jarvis.on(admin_cmd(pattern=r"mecha"))
+@jarvis.on(sudo_cmd(pattern=r"mecha",allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -104,9 +107,10 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")
+    await edit_or_reply(event, "**"+msg_str+"**")
 
 @jarvis.on(admin_cmd(pattern=r"romance"))
+@jarvis.on(sudo_cmd(pattern=r"romance", allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -133,9 +137,10 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")
+    await edit_or_reply(event, "**"+msg_str+"**")
 
 @jarvis.on(admin_cmd(pattern=r"isekai"))
+@jarvis.on(sudo_cmd(pattern=r"isekai",allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -162,9 +167,10 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")
+    await edit_or_reply(event, "**"+msg_str+"**")
 
 @jarvis.on(admin_cmd(pattern=r"adventure"))
+@jarvis.on(sudo_cmd(pattern=r"adventure", allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -191,9 +197,10 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**") 
+    await edit_or_reply(event, "**"+msg_str+"**") 
 
 @jarvis.on(admin_cmd(pattern=r"slice"))
+@jarvis.on(admin_cmd(pattern=r"slice", allow_Sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
@@ -220,5 +227,5 @@ async def action(event):
     msg_str = msg_str.replace("\\n","\n")
     msg_str = msg_str.replace("'","")
     msg_str = msg_str.replace('"',"")
-    await event.edit("**"+msg_str+"**")                   
+    await edit_or_reply(event, "**"+msg_str+"**")                   
     
