@@ -76,7 +76,7 @@ if ENV:
         # number of rows of buttons to be displayed in .help command
         NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 7))
         # number of columns of buttons to be displayed in .help command
-        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = int(os.envron.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , 3))
+        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , 3))
         #emojies tht should display in the .help cmd
         EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", " ")
         # specify command handler that should be used for the plugins
