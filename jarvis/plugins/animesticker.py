@@ -20,7 +20,7 @@ from PIL import ImageEnhance, ImageOps
 
 from jarvis import CMD_HELP
 from jarvis.events import register
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 EMOJI_PATTERN = re.compile(
@@ -46,6 +46,7 @@ def deEmojify(inputString: str) -> str:
 
 #@register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
 @jarvis.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(pattern=r"waifu(?: |$)(.*)", allow_sudo=True))
 async def waifu(animu):
 #"""Creates random anime sticker!"""
 
@@ -54,7 +55,7 @@ async def waifu(animu):
         if animu.is_reply:
             text = (await animu.get_reply_message()).message
         else:
-            await animu.edit("`You haven't written any article, Waifu is going away.`")
+            await edit_or_reply(animu, "`You haven't written any article, Waifu is going away.`")
             return
     animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
     sticcers = await bot.inline_query(
