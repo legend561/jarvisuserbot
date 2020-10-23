@@ -199,7 +199,7 @@ import subprocess
 import sys
 import traceback
 import datetime
-from time import *
+from time import time
 
 def register(**args):
     """ Register a new event. """
