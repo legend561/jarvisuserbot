@@ -9,11 +9,11 @@ from telethon import *
 from jarvis import CMD_HELP
 from jarvis.events import register
 from jarvis.utils import admin_cmd
-from jarvis.utils import edit_or_reply as er
+from jarvis.utils import edit_or_reply , sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="app ?(.*)"))
-@jarvis.on(admin_cmd(pattern="app ?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="app ?(.*)", allow_sudo=True))
 async def apk(e):
     try:
         app_name = e.pattern_match.group(1)
@@ -42,7 +42,7 @@ async def apk(e):
         e = await reply("Exception Occured:- "+str(err))
 
 @jarvis.on(admin_cmd(pattern="apkr ?(.*)"))
-@jarvis.on(admin_cmd(pattern="apkr ?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="apkr ?(.*)", allow_sudo=True))
 async def apkr(e):
     try:
         app_name = e.pattern_match.group(1)
