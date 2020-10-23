@@ -3,18 +3,19 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from jarvis.utils import admin_cmd,register
+from jarvis.utils import admin_cmd,register, sudo_cmd, edit_or_reply
 
 @jarvis.on(admin_cmd("scan ?(.*)"))
+@jarvis.on(sudo_cmd("scan ?(.*)"), allow_sudo=True)
 async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("```Reply to any user message.```")
+       await edit_or_reply(event, "```Reply to any user message.```")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```reply to a media message```")
+       await event.edit_or_reply("```reply to a media message```")
        return
     chat = "@DrWebBot"
     sender = reply_message.sender
