@@ -5,7 +5,7 @@ from pySmartDL import SmartDL
 from telethon.tl import functions
 import asyncio
 import shutil
-from jarvis.utils import admin_cmd,sudo_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 FONT_FILE_TO_USE = "fonts/digital.ttf"
