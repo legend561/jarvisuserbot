@@ -200,7 +200,7 @@ async def action(event):
     await edit_or_reply(event, "**"+msg_str+"**") 
 
 @jarvis.on(admin_cmd(pattern=r"slice"))
-@jarvis.on(admin_cmd(pattern=r"slice", allow_Sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"slice", allow_sudo=True))
 async def action(event):
     if event.fwd_from:
         return   
