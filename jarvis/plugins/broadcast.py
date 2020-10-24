@@ -1,10 +1,8 @@
 # Fully Written by @HeisenbergTheDanger (Keep credits else gay)
-# Permission Seeked By @StarkXD - Approved
-# Credits - FRIDAY UserBot
 import asyncio
 import datetime
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
@@ -21,12 +19,13 @@ logs_id = Var.PLUGIN_CHANNEL
 
 
 
-@jarvis.on(admin_cmd("bforward ?(.*)"))
+@jarvis.on(admin_cmd("bforward ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("bforward ?(.*)", allow_sudo=True))
 async def forw(event): 
   if event.fwd_from:
     return
   if not event.is_reply:
-    await event.edit("Reply to a message to broadcast.")
+    await edit_or_reply(event, "Reply to a message to broadcast.")
     return
   channels = get_all_channels()
   await event.edit("Sending...")
@@ -61,13 +60,13 @@ async def forw(event):
         await event.edit("Set up log channel for checking errors.")
     
     
-@jarvis.on(admin_cmd("broadcast ?(.*)", allow_sudo=True))
-
+@jarvis.on(admin_cmd("broadcast ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("broadcast ?(.*)", allow_sudo=True))
 async def _(event):
   if event.fwd_from:
         return
   if not event.is_reply:
-    await event.edit("Reply to a message to broadcast.")
+    await edit_or_reply(event, "Reply to a message to broadcast.")
     return
   channels = get_all_channels()
   error_count = 0
@@ -144,12 +143,13 @@ async def _(event):
 
 # Written by @HeisenbergTheDanger
 
-@jarvis.on(admin_cmd("badd ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("badd ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("badd ?(.*)", allow_sudo=True))
 async def add_ch(event):
     if event.fwd_from:
         return
     if event.reply_to_msg_id:
-        await event.edit("Adding...")
+        await edit_or_reply(event, "Adding...")
         previous_message = await event.get_reply_message()
         raw_text = previous_message.text
         lines = raw_text.split("\n")
@@ -179,13 +179,14 @@ async def add_ch(event):
         await event.delete()
 
 
-@jarvis.on(admin_cmd("brm ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("brm ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("brm ?(.*)", allow_sudo=True))
 async def remove_ch(event):
     if event.fwd_from:
         return
     chat_id = event.pattern_match.group(1)
     if chat_id == "all":
-        await event.edit("Removing...")
+        await edit_or_reply(event, "Removing...")
         channels = get_all_channels()
         for channel in channels:
             rm_channel(channel.chat_id)
