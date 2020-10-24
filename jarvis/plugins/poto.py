@@ -3,15 +3,9 @@
 """
 
 
-
 import logging
+
 from jarvis.utils import admin_cmd
-from telethon.tl.functions.photos import GetUserPhotosRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
-from telethon.utils import get_input_location
-
-
 
 logger = logging.getLogger(__name__)
 
@@ -22,10 +16,7 @@ if 1 == 1:
 
     client = borg
 
-
-
     @jarvis.on(admin_cmd(pattern="poto(.*)"))
-
     async def potocmd(event):
 
         """Gets the profile photos of replied users, channels or chats"""
@@ -70,9 +61,9 @@ if 1 == 1:
 
             except:
 
-                 await event.edit("`Are you Comedy Me ?`")
+                await event.edit("`Are you Comedy Me ?`")
 
-                 return
+                return
 
             if int(id) <= (len(photos)):
 

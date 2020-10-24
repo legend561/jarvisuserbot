@@ -1,55 +1,13 @@
-
-from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
-
-import emoji
-from googletrans import Translator
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
-from telethon.utils import get_display_name
-from jarvis.utils import admin_cmd, sudo_cmd
-from jarvis.jconfig import Config
 from telethon import events
-from datetime import datetime
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
-import time
-from jarvis import Lastupdate, bot
-import asyncio
-
-from telethon import events
-from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
-from telethon.tl.types import ChannelParticipantsAdmins
-
-from asyncio import sleep
-from os import remove
-
-from telethon.errors import (
-    BadRequestError,
-    ChatAdminRequiredError,
-    ImageProcessFailedError,
-    PhotoCropSizeSmallError,
-    UserAdminInvalidError,
-)
-from telethon.errors.rpcerrorlist import MessageTooLongError, UserIdInvalidError
-from telethon.tl.functions.channels import (
-    EditAdminRequest,
-    EditBannedRequest,
-    EditPhotoRequest,
-)
+from telethon.errors import BadRequestError
+from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
 from telethon.tl.types import (
     ChannelParticipantsAdmins,
     ChatAdminRights,
     ChatBannedRights,
     MessageEntityMentionName,
-    MessageMediaPhoto,
 )
-
-from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from jarvis.utils import admin_cmd, errors_handler, register, sudo_cmd
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
@@ -128,9 +86,11 @@ async def ban(event):
     try:
         reply = await event.get_reply_message()
         if reply:
-             pass
+            pass
     except BadRequestError:
-        await event.reply("`I dont have message nuking rights! But still he was banned!`")
+        await event.reply(
+            "`I dont have message nuking rights! But still he was banned!`"
+        )
         return
     if reason:
         await event.reply(f"Banned `{str(user.id)}` \nReason: {reason}")
@@ -167,7 +127,6 @@ async def nothanos(event):
     except BadRequestError:
         await event.reply("`No Permission 🤭`")
         return
-
 
 
 @tgbot.on(events.NewMessage(pattern="^/prumote(?: |$)(.*)"))
@@ -267,6 +226,7 @@ async def demote(event):
         return
     await event.reply("`Demoted this Guy Successfully!`")
 
+
 @tgbot.on(events.NewMessage(pattern="^/pin(?: |$)(.*)"))
 async def pin(event):
     userids = []
@@ -306,6 +266,7 @@ async def pin(event):
         return
     await event.reply("`Pinned Successfully!`")
     user = await get_user_from_id(msg.from_id, msg)
+
 
 async def get_user_from_event(event):
     """ Get the user from argument or replied message. """

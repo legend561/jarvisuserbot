@@ -4,15 +4,17 @@
 #
 # Creted by @buddhhu, @itzsjdude, @xditya
 #
-import os, asyncio
+import asyncio
+import os
+
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
 
+@jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
 async def _(event):
     a = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
-    b = open(input_str, 'w')
+    b = open(input_str, "w")
     b.write(str(a.message))
     b.close()
     a = await event.reply(f"**Packing into** `{input_str}`")

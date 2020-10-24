@@ -1,16 +1,16 @@
+import math
 import os
 import re
-from math import ceil
-from jarvis.plugins import inlinestats
-from telethon import custom, events, Button
-from jarvis import ALIVE_NAME
-from jarvis import CMD_LIST
-import math
-import io
-import json
 
-NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD" , None)
-EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP" , None)
+from telethon import Button, custom, events
+
+from jarvis import ALIVE_NAME, CMD_LIST
+from jarvis.plugins import inlinestats
+
+NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get(
+    "NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD", None
+)
+EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", None)
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
@@ -30,16 +30,21 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 link_preview=False,
             )
         if event.query.user_id == bot.uid and query == "stats":
-           result = builder.article(
-           title="Stats",
-           text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
-           buttons = [
-                   [custom.Button.inline("Show Stats 🚶", data="terminator")],
-                   [Button.url("Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot")],
-                   [Button.url("Join Channel 📃", "t.me/JarvisOT")],
-             ]
-         )
+            result = builder.article(
+                title="Stats",
+                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
+                buttons=[
+                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
+                    [
+                        Button.url(
+                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
+                        )
+                    ],
+                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
+                ],
+            )
         await event.answer([result] if result else None)
+
     @jarvisbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"helpme_next\((.+?)\)")
@@ -72,11 +77,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-     
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             await event.edit("menu closed")
+
     @jarvisbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"us_plugin_(.*)")
@@ -110,13 +115,14 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
-            if event.query.user_id == bot.uid:
-                text = inlinestats
-                await event.answer(text, alert=True)
-            else:
-                txt = "You Can't View My Masters Stats"
-                await event.answer(txt, alert=True)
-                
+        if event.query.user_id == bot.uid:
+            text = inlinestats
+            await event.answer(text, alert=True)
+        else:
+            txt = "You Can't View My Masters Stats"
+            await event.answer(txt, alert=True)
+
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD

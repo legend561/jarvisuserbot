@@ -1,19 +1,14 @@
-#Credits :- Catuserbot Made By @Sandy1709
-import os
-import lyricsgenius
-import random
-from jarvis.utils import admin_cmd
-from jarvis import CMD_HELP, LOGS
-from tswift import Song
-from telethon import events
-import subprocess
-from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotModifiedError
+# Credits :- Catuserbot Made By @Sandy1709
 import io
-import asyncio
-import time
+import os
+
+import lyricsgenius
+from tswift import Song
+
+from jarvis import CMD_HELP
+from jarvis.utils import admin_cmd
+
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
-
-
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="lyrics (.*)"))
@@ -29,9 +24,9 @@ async def _(event):
     elif reply.text:
         query = reply.message
     else:
-    	await event.reply("`What I am Supposed to find `")
-    	return
-    
+        await event.reply("`What I am Supposed to find `")
+        return
+
     song = ""
     song = Song.find_song(query)
     if song:
@@ -41,7 +36,7 @@ async def _(event):
             reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try `.glyrics`"
     else:
         reply = "lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
-        
+
     if len(reply) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(reply)) as out_file:
             out_file.name = "lyrics.text"
@@ -51,30 +46,34 @@ async def _(event):
                 force_document=True,
                 allow_cache=False,
                 caption=query,
-                reply_to=reply_to_id
+                reply_to=reply_to_id,
             )
             await event.delete()
     else:
-        await event.reply(reply)       
+        await event.reply(reply)
+
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
 async def lyrics(lyric):
     if r"-" in lyric.text:
         pass
     else:
-        await lyric.reply("Error: please use '-' as divider for <artist> and <song>\n"
-                         "eg: `.lyrics Nicki Minaj - Super Bass`")
+        await lyric.reply(
+            "Error: please use '-' as divider for <artist> and <song>\n"
+            "eg: `.lyrics Nicki Minaj - Super Bass`"
+        )
         return
 
     if GENIUS is None:
         await lyric.reply(
-            "`Provide genius access token to config.py or Heroku Var first kthxbye!`")
+            "`Provide genius access token to config.py or Heroku Var first kthxbye!`"
+        )
     else:
         genius = lyricsgenius.Genius(GENIUS)
         try:
-            args = lyric.text.split('.lyrics')[1].split('-')
-            artist = args[0].strip(' ')
-            song = args[1].strip(' ')
+            args = lyric.text.split(".lyrics")[1].split("-")
+            artist = args[0].strip(" ")
+            song = args[1].strip(" ")
         except Exception:
             await lyric.reply("`LMAO please provide artist and song names`")
             return
@@ -101,25 +100,24 @@ async def lyrics(lyric):
             lyric.chat_id,
             "lyrics.txt",
             reply_to=lyric.id,
-            )
+        )
         os.remove("lyrics.txt")
     else:
-        await lyric.reply(f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```")
+        await lyric.reply(
+            f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```"
+        )
     return
 
 
-
-
-
-
-CMD_HELP.update({
-    "lyrics":
-    ".lyrics song name \
+CMD_HELP.update(
+    {
+        "lyrics": ".lyrics song name \
     \n USAGE: searches a song lyrics and sends you if song name doesnt work try along with artisyt name"
-    "**Usage:** .`glyrics <artist name> - <song name>`\n"
-    "__note__: **-** is neccessary when searching the lyrics to divided artist and song \n"
-"Genius lyrics plugin \n"
- "get this value from https://genius.com/developers \n"
-"Add:-  GENIUS_API_TOKEN and token value in heroku app settings \n"
-"Lyrics Plugin Syntax: .lyrics <aritst name - song nane>"
-})
+        "**Usage:** .`glyrics <artist name> - <song name>`\n"
+        "__note__: **-** is neccessary when searching the lyrics to divided artist and song \n"
+        "Genius lyrics plugin \n"
+        "get this value from https://genius.com/developers \n"
+        "Add:-  GENIUS_API_TOKEN and token value in heroku app settings \n"
+        "Lyrics Plugin Syntax: .lyrics <aritst name - song nane>"
+    }
+)

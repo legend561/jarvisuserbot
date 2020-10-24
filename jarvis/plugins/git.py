@@ -1,5 +1,6 @@
-from telethon import events
 import asyncio
+
+from telethon import events
 
 
 @jarvis.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
@@ -13,7 +14,7 @@ async def _(event):
         await event.edit(input_str)
         animation_chars = [
             "https://github.com/Jarvis-Works/jarvisuserbot",
-            "https://github.com/Jarvis-Works/jarvisuserbot"
+            "https://github.com/Jarvis-Works/jarvisuserbot",
         ]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)

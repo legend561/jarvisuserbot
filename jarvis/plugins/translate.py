@@ -5,11 +5,12 @@ Available Commands:
 
 import emoji
 from googletrans import Translator
+
 from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd("tr ?(.*)"))
-@jarvis.on(admin_cmd("tr ?(.*)",allow_sudo=True))
+@jarvis.on(admin_cmd("tr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -38,9 +39,7 @@ async def _(event):
          Source **( {} )**
          Translation **( {} )**
          {}""".format(
-            translated.src,
-            lan,
-            after_tr_text
+            translated.src, lan, after_tr_text
         )
         await event.reply(output_str)
     except Exception as exc:

@@ -1,7 +1,8 @@
 # Credits : @HeisenbergTheDanger And Friday Userbot
 
 from sqlalchemy import Column, String
-from jarvis.plugins.sql_helper import SESSION, BASE
+
+from jarvis.plugins.sql_helper import BASE, SESSION
 
 
 class ghdb(BASE):

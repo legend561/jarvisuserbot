@@ -2,9 +2,11 @@
 Syntax: .afk REASON"""
 import asyncio
 import datetime
+
 from telethon import events
 from telethon.tl import functions, types
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -24,19 +26,20 @@ async def set_not_afk(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                "#AfkLogger My Boss is Busy"
+                "#AfkLogger My Boss is Busy",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PLUGIN_CHANNEL` " + \
-                "for the proper functioning of afk functionality " + \
-                "in @JarvisSupportOT\n\n `{}`".format(str(e)),
+                "Please set `PLUGIN_CHANNEL` "
+                + "for the proper functioning of afk functionality "
+                + "in @JarvisSupportOT\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
-                silent=True
+                silent=True,
             )
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
+
 
 @jarvis.on(admin_cmd(pattern=r"afk ?(.*)"))
 @jarvis.on(sudo_cmd(pattern=r"afk ?(.*)", allow_sudo=True))
@@ -53,15 +56,15 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(
-                types.InputPrivacyKeyStatusTimestamp()
-            )
+            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
-            await edit_or_reply(event, f"My Boss Is Going Away ! And The Reason is {reason}")
+            await edit_or_reply(
+                event, f"My Boss Is Going Away ! And The Reason is {reason}"
+            )
         else:
             await edit_or_reply(event, f"My Boss is Going")
         await asyncio.sleep(5)
@@ -69,16 +72,17 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                f"#AfkLogger Reason : {reason}"
+                f"#AfkLogger Reason : {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
 
 
-@jarvis.on(events.NewMessage(  # pylint:disable=E0602
-    incoming=True,
-    func=lambda e: bool(e.mentioned or e.is_private)
-))
+@jarvis.on(
+    events.NewMessage(  # pylint:disable=E0602
+        incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
+    )
+)
 async def on_afk(event):
     if event.fwd_from:
         return
@@ -107,13 +111,13 @@ async def on_afk(event):
                 afk_since = "**Yesterday**"
             elif days > 1:
                 if days > 6:
-                    date = now + \
-                        datetime.timedelta(
-                            days=-days, hours=-hours, minutes=-minutes)
+                    date = now + datetime.timedelta(
+                        days=-days, hours=-hours, minutes=-minutes
+                    )
                     afk_since = date.strftime("%A, %Y %B %m, %H:%I")
                 else:
                     wday = now + datetime.timedelta(days=-days)
-                    afk_since = wday.strftime('%A')
+                    afk_since = wday.strftime("%A")
             elif hours > 1:
                 afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
             elif minutes > 0:
@@ -121,10 +125,12 @@ async def on_afk(event):
             else:
                 afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"**My Boss is Away** ! \n\n**Reason** : `{reason}` \n\n**Away Since** : {afk_since}" + \
-            f"\n\n__Kindly Leave A Message__ ! \n`He Will Reply To You Soon !`" \
-            if reason \
+        message_to_reply = (
+            f"**My Boss is Away** ! \n\n**Reason** : `{reason}` \n\n**Away Since** : {afk_since}"
+            + f"\n\n__Kindly Leave A Message__ ! \n`He Will Reply To You Soon !`"
+            if reason
             else f"**Hello, Boss Is Away Right Now And May Be Forgot List Reason ! Any Way He Will Come Back Soon !**"
+        )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602

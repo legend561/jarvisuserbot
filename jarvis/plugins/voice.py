@@ -2,17 +2,19 @@
 Available Commands:
 .tts LanguageCode as reply to a message
 .tts LangaugeCode | text to speak"""
-from jarvis import CMD_HELP
 import asyncio
 import os
 import subprocess
 from datetime import datetime
+
 from gtts import gTTS
+
+from jarvis import CMD_HELP
 from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="voice (.*)"))
-@jarvis.on(admin_cmd(pattern="voice (.*)",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="voice (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,25 +35,27 @@ async def _(event):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "voice.ogg"
     try:
-        #https://github.com/SpEcHiDe/UniBorg/commit/17f8682d5d2df7f3921f50271b5b6722c80f4106
+        # https://github.com/SpEcHiDe/UniBorg/commit/17f8682d5d2df7f3921f50271b5b6722c80f4106
         tts = gTTS(text, lang=lan)
         tts.save(required_file_name)
         command_to_execute = [
             "ffmpeg",
             "-i",
-             required_file_name,
-             "-map",
-             "0:a",
-             "-codec:a",
-             "libopus",
-             "-b:a",
-             "100k",
-             "-vbr",
-             "on",
-             required_file_name + ".opus"
+            required_file_name,
+            "-map",
+            "0:a",
+            "-codec:a",
+            "libopus",
+            "-b:a",
+            "100k",
+            "-vbr",
+            "on",
+            required_file_name + ".opus",
         ]
         try:
-            t_response = subprocess.check_output(command_to_execute, stderr=subprocess.STDOUT)
+            t_response = subprocess.check_output(
+                command_to_execute, stderr=subprocess.STDOUT
+            )
         except (subprocess.CalledProcessError, NameError, FileNotFoundError) as exc:
             await event.reply(str(exc))
             # continue sending required_file_name
@@ -66,21 +70,24 @@ async def _(event):
             # caption="Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms),
             reply_to=event.message.reply_to_msg_id,
             allow_cache=False,
-            voice_note=True
+            voice_note=True,
         )
         os.remove(required_file_name)
-        await event.reply("Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms))
+        await event.reply(
+            "Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms)
+        )
         await asyncio.sleep(5)
         await event.delete()
     except Exception as e:
         await event.reply(str(e))
 
-        
-CMD_HELP.update({
-    "voice":
-    " Google Text to Speech\
+
+CMD_HELP.update(
+    {
+        "voice": " Google Text to Speech\
 \nAvailable Commands:\
 \n.voice LanguageCode as reply to a message\
 \n\n.voice LangaugeCode | text to speak\
 "
-}) 
+    }
+)

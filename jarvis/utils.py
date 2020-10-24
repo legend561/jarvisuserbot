@@ -1,21 +1,22 @@
-from jarvis import bot
-from telethon import events
-from var import Var
-from pathlib import Path
-from jarvis.jconfig import Config
-from jarvis import LOAD_PLUG
-from jarvis import CMD_LIST
-import re
-import logging
 import inspect
+import logging
+import re
+from pathlib import Path
+
+from telethon import events
+
+from jarvis import CMD_LIST, LOAD_PLUG, bot
+from jarvis.jconfig import Config
+from var import Var
 
 SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
 sudo_hndlr = "\\" + Config.SUDO_HNDLR
 
+
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -25,24 +26,26 @@ def command(**args):
     else:
         pattern = args.get("pattern", None)
         allow_sudo = args.get("allow_sudo", True)
-        allow_edited_updates = args.get('allow_edited_updates', False)
+        allow_edited_updates = args.get("allow_edited_updates", False)
         args["incoming"] = args.get("incoming", False)
         args["outgoing"] = True
         if bool(args["incoming"]):
             args["outgoing"] = False
 
         try:
-            if pattern is not None and not pattern.startswith('(?i)'):
-                args['pattern'] = '(?i)' + pattern
+            if pattern is not None and not pattern.startswith("(?i)"):
+                args["pattern"] = "(?i)" + pattern
         except:
             pass
 
-        reg = re.compile('(.*)')
+        reg = re.compile("(.*)")
         if not pattern == None:
             try:
                 cmd = re.search(reg, pattern)
                 try:
-                    cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                    cmd = (
+                        cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                    )
                 except:
                     pass
 
@@ -64,7 +67,7 @@ def command(**args):
             pass
 
         if "allow_edited_updates" in args:
-            del args['allow_edited_updates']
+            del args["allow_edited_updates"]
 
         def decorator(func):
             if allow_edited_updates:
@@ -79,10 +82,9 @@ def command(**args):
         return decorator
 
 
-
 def admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -115,15 +117,14 @@ def admin_cmd(pattern=None, **args):
         args["outgoing"] = True
 
     # add blacklist chats, UB should not respond in these chats
-    allow_edited_updates = False
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        allow_edited_updates = args["allow_edited_updates"]
+        args["allow_edited_updates"]
         del args["allow_edited_updates"]
 
     # check if the plugin should listen for outgoing 'messages'
-    is_message_enabled = True
 
     return events.NewMessage(**args)
+
 
 def sudo_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -186,38 +187,41 @@ async def eor(event, text):
         return await event.reply(text)
     return await event.edit(text)
 
+
 """ Userbot module for managing events.
  One of the main components of the userbot. """
 
-from telethon import events
 import asyncio
-from jarvis import bot
-from traceback import format_exc
-from time import gmtime, strftime
-import math
-import subprocess
-import sys
-import traceback
 import datetime
+import math
+import sys
 import time
+import traceback
+from time import gmtime, strftime
+
+from telethon import events
+
+from jarvis import bot
+
+
 def register(**args):
     """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
-    pattern = args.get('pattern', None)
-    disable_edited = args.get('disable_edited', True)
+    pattern = args.get("pattern", None)
+    disable_edited = args.get("disable_edited", True)
 
-    if pattern is not None and not pattern.startswith('(?i)'):
-        args['pattern'] = '(?i)' + pattern
+    if pattern is not None and not pattern.startswith("(?i)"):
+        args["pattern"] = "(?i)" + pattern
 
     if "disable_edited" in args:
-        del args['disable_edited']
-    
-    reg = re.compile('(.*)')
+        del args["disable_edited"]
+
+    reg = re.compile("(.*)")
     if not pattern == None:
         try:
             cmd = re.search(reg, pattern)
@@ -239,7 +243,7 @@ def register(**args):
         bot.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
-        except Exception as e:
+        except Exception:
             LOAD_PLUG.update({file_test: [func]})
 
         return func
@@ -254,10 +258,7 @@ def errors_handler(func):
         except BaseException:
 
             date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            new = {
-                'error': str(sys.exc_info()[1]),
-                'date': datetime.datetime.now()
-            }
+            new = {"error": str(sys.exc_info()[1]), "date": datetime.datetime.now()}
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
@@ -284,21 +285,20 @@ def errors_handler(func):
             ftext += str(sys.exc_info()[1])
             ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
 
-            command = "git log --pretty=format:\"%an: %s\" -5"
+            command = 'git log --pretty=format:"%an: %s" -5'
 
             ftext += "\n\n\nLast 5 commits:\n"
 
             process = await asyncio.create_subprocess_shell(
-                command,
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE)
+                command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+            )
             stdout, stderr = await process.communicate()
-            result = str(stdout.decode().strip()) \
-                + str(stderr.decode().strip())
+            result = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
             ftext += result
 
     return wrapper
+
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for both
@@ -312,20 +312,19 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}]\nProgress: {2}%\n".format(
-            ''.join(["⦿" for i in range(math.floor(percentage / 5))]),
-            ''.join(["⦾" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2))
-        tmp = progress_str + \
-            "{0} of {1}\nETA: {2}".format(
-                humanbytes(current),
-                humanbytes(total),
-                time_formatter(estimated_total_time)
-            )
+            "".join(["⦿" for i in range(math.floor(percentage / 5))]),
+            "".join(["⦾" for i in range(20 - math.floor(percentage / 5))]),
+            round(percentage, 2),
+        )
+        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+        )
         if file_name:
-            await edit_or_reply(event ,"{}\nFile Name: `{}`\n{}".format(
-                type_of_ps, file_name, tmp))
+            await edit_or_reply(
+                event, "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            )
         else:
-            await edit_or_reply(event , "{}\n{}".format(type_of_ps, tmp))
+            await edit_or_reply(event, "{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
@@ -335,7 +334,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2**10
+    power = 2 ** 10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -351,40 +350,46 @@ def time_formatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " day(s), ") if days else "") + \
-        ((str(hours) + " hour(s), ") if hours else "") + \
-        ((str(minutes) + " minute(s), ") if minutes else "") + \
-        ((str(seconds) + " second(s), ") if seconds else "") + \
-        ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    tmp = (
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    )
     return tmp[:-2]
 
-class Loader():
+
+class Loader:
     def __init__(self, func=None, **args):
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
 
-      
-   
-#Userbot
+
+# Userbot
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        import jarvis.utils
-        import sys
         import importlib
+        import sys
         from pathlib import Path
+
+        import jarvis.utils
+
         path = Path(f"jarvis/plugins/{shortname}.py")
         name = "jarvis.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        #print("Jarvis Has Been Started Sucessfully")
+        # print("Jarvis Has Been Started Sucessfully")
     else:
-        import jarvis.utils
-        import sys
         import importlib
+        import sys
         from pathlib import Path
+
+        import jarvis.utils
+
         path = Path(f"jarvis/plugins/{shortname}.py")
         name = "jarvis.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
@@ -404,8 +409,9 @@ def load_module(shortname):
         sys.modules["jarvis.events"] = jarvis.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["jarvis.plugins."+shortname] = mod
-        #print("Jarvis Has Been Started Sucessfully")
+        sys.modules["jarvis.plugins." + shortname] = mod
+        # print("Jarvis Has Been Started Sucessfully")
+
 
 def remove_plugin(shortname):
     try:
@@ -423,9 +429,9 @@ def remove_plugin(shortname):
                     del bot._event_builders[i]
     except:
         raise ValueError
-        
-        
-# Assistant 
+
+
+# Assistant
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
@@ -434,21 +440,17 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        import jarvis.utils
-
         path = Path(f"jarvis/plugins/assistant/{shortname}.py")
         name = "jarvis.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        #print("Starting Your Assistant Bot.")
-        #print("Assistant Sucessfully imported " + shortname)
+        # print("Starting Your Assistant Bot.")
+        # print("Assistant Sucessfully imported " + shortname)
     else:
         import importlib
         import sys
         from pathlib import Path
-
-        import jarvis.utils
 
         path = Path(f"jarvis/plugins/assistant/{shortname}.py")
         name = "jarvis.plugins.assistant.{}".format(shortname)
@@ -457,4 +459,4 @@ def start_assistant(shortname):
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins.assistant" + shortname] = mod
-       # print("Assistant Has imported " + shortname)
+    # print("Assistant Has imported " + shortname)

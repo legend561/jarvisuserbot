@@ -1,7 +1,10 @@
 import re
+
 import bs4
 import requests
+
 from jarvis.utils import admin_cmd
+
 
 @jarvis.on(admin_cmd(pattern="giz ?(.*)"))
 @jarvis.on(admin_cmd(pattern="giz ?(.*)", allow_sudo=True))
@@ -20,14 +23,17 @@ async def gizoogle(event):
         finally:
             return await event.reply(result)
 
+
 def text(input_text: str) -> str:
-        """Taken from https://github.com/chafla/gizoogle-py/blob/master/gizoogle.py"""
-        params = {"translatetext": input_text}
-        target_url = "http://www.gizoogle.net/textilizer.php"
-        resp = requests.post(target_url, data=params)
-        # the html returned is in poor form normally.
-        soup_input = re.sub("/name=translatetext[^>]*>/", 'name="translatetext" >', resp.text)
-        soup = bs4.BeautifulSoup(soup_input, "lxml")
-        giz = soup.find_all(text=True)
-        giz_text = giz[37].strip("\r\n")  # Hacky, but consistent.
-        return giz_text
+    """Taken from https://github.com/chafla/gizoogle-py/blob/master/gizoogle.py"""
+    params = {"translatetext": input_text}
+    target_url = "http://www.gizoogle.net/textilizer.php"
+    resp = requests.post(target_url, data=params)
+    # the html returned is in poor form normally.
+    soup_input = re.sub(
+        "/name=translatetext[^>]*>/", 'name="translatetext" >', resp.text
+    )
+    soup = bs4.BeautifulSoup(soup_input, "lxml")
+    giz = soup.find_all(text=True)
+    giz_text = giz[37].strip("\r\n")  # Hacky, but consistent.
+    return giz_text

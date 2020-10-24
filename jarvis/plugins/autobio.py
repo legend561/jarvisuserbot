@@ -1,9 +1,10 @@
 import asyncio
 import time
-from telethon.tl import functions
-from telethon.errors import FloodWaitError
-from jarvis.utils import admin_cmd, sudo_cmd
 
+from telethon.errors import FloodWaitError
+from telethon.tl import functions
+
+from jarvis.utils import admin_cmd, sudo_cmd
 
 DEL_TIME_OUT = 60
 
@@ -19,18 +20,18 @@ async def _(event):
         bio = f"📅 {DMY} | User Of JarvisUserbot 😎 | ⌚️ {HM}"
         logger.info(bio)
         try:
-            await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
-                about=bio
-            ))
+            await borg(
+                functions.account.UpdateProfileRequest(  # pylint:disable=E0602
+                    about=bio
+                )
+            )
         except FloodWaitError as ex:
             logger.warning(str(e))
             await asyncio.sleep(ex.seconds)
-         #else:
-             #logger.info(r.stringify())
-             #await borg.send_message(  # pylint:disable=E0602
-                 #Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-                 #"Successfully Changed Profile Bio"
-             #)
+        # else:
+        # logger.info(r.stringify())
+        # await borg.send_message(  # pylint:disable=E0602
+        # Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+        # "Successfully Changed Profile Bio"
+        # )
         await asyncio.sleep(DEL_TIME_OUT)
-
-

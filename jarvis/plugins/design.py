@@ -1,7 +1,6 @@
 """.admin Plugin for @UniBorg"""
-import asyncio
-from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
+
 from jarvis.utils import admin_cmd
 
 
@@ -20,6 +19,7 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
+
 
 @jarvis.on(admin_cmd("pay"))
 async def _(event):

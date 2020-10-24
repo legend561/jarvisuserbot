@@ -1,21 +1,18 @@
-from jarvis import bot
-from sys import argv
-import sys
-from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
-import os
-from telethon import TelegramClient
-from var import Var
-from jarvis.utils import load_module, start_assistant
-from jarvis import LOAD_PLUG, BOTLOG_CHATID, LOGS
 from pathlib import Path
-import asyncio
+from sys import argv
+
 import telethon.utils
+from telethon import TelegramClient
+
+from jarvis import bot
+from jarvis.utils import load_module, start_assistant
+from var import Var
+
 
 async def add_bot(bot_token):
     await bot.start(bot_token)
-    bot.me = await bot.get_me() 
+    bot.me = await bot.get_me()
     bot.uid = telethon.utils.get_peer_id(bot.me)
-
 
 
 if len(argv) not in (1, 3, 4):
@@ -26,9 +23,7 @@ else:
         print("Initiating Inline Bot")
         # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH
+            "TG_BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
         ).start(bot_token=Var.TG_BOT_TOKEN_BF_HER)
         print("Initialised Sucessfully")
         print("Starting JARVIS AI")
@@ -36,10 +31,11 @@ else:
         print("Startup Completed")
     else:
         bot.start()
-    
+
 
 import glob
-path = 'jarvis/plugins/*.py'
+
+path = "jarvis/plugins/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
@@ -47,7 +43,6 @@ for name in files:
         shortname = path1.stem
         load_module(shortname.replace(".py", ""))
 
-import jarvis._core
 
 path = "jarvis/plugins/assistant/*.py"
 files = glob.glob(path)
@@ -63,5 +58,3 @@ if len(argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.run_until_disconnected()
-
-
