@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "uniborg.util"
-          replace: "jarvis.utils"
+          find: "uniborgConfig"
+          replace: "jconfig"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -18,5 +18,4 @@ jobs:
           repository: .
           commit_user_name: sppidy
           commit_user_email: creatorofjarvis@gmail.com
-          commit_author: Sρι∂у <68327188+sppidy@users.noreply.github.com>
-          commit_coauthor : xditya <58950863+xditya@users.noreply.github.com>
+          commit_author: Sρι∂у <68327188+xditya@users.noreply.github.com>
