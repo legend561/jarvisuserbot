@@ -4,7 +4,7 @@ from telethon import events
 
 from datetime import datetime
 
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 import importlib.util
 

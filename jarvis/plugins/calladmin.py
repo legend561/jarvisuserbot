@@ -2,7 +2,7 @@
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="admins"))

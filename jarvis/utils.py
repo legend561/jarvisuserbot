@@ -396,7 +396,7 @@ def load_module(shortname):
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for jarvis
-        sys.modules["uniborg.util"] = jarvis.utils
+        sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
         mod.borg = bot
         mod.jarvis = bot

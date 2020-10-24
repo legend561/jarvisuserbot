@@ -14,7 +14,7 @@ from telethon.tl.functions.photos import (DeletePhotosRequest,
 
 from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
 
-from uniborg.util import admin_cmd
+from jarvis.utils import admin_cmd
 
 @jarvis.on(admin_cmd(pattern="delpfp ?(.*)"))
 async def remove_profilepic(delpfp):
