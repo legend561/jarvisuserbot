@@ -379,7 +379,7 @@ def load_module(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Jarvis Has Been Started Sucessfully")
+        #print("Jarvis Has Been Started Sucessfully")
     else:
         import jarvis.utils
         import sys
@@ -405,7 +405,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["jarvis.plugins."+shortname] = mod
-        print("Jarvis Has Been Started Sucessfully")
+        #print("Jarvis Has Been Started Sucessfully")
 
 def remove_plugin(shortname):
     try:
