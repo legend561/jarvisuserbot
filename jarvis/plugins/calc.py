@@ -3,12 +3,13 @@
 # Syntax (.calc <term1><operator><term2>)
 # For eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)
 from telethon import events
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 import asyncio
 from telethon.tl import functions, types
 
 #neccesary tg shit
-@jarvis.on(admin_cmd(pattern="calc ?(.*)"))
+@jarvis.on(admin_cmd(pattern="calc ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="calc ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -27,16 +28,16 @@ async def _(event):
     final_term2 = (int(term2))
     #actual calculations go here
     if input == "help":
-        await event.edit("Syntax .calc <term1><operator><term2>\nFor eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)")
+        await edit_or_reply(event,"Syntax .calc <term1><operator><term2>\nFor eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)")
     elif operator == "*":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
+        await edit_or_reply(event,"Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
     elif operator == "-":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
+        await edit_or_reply(event, "Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
     elif operator == "+":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
+        await edit_or_reply(event, "Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
     elif operator == "/":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
+        await edit_or_reply(event, "Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
     elif operator == "%":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
+        await edit_or_reply(event, "Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
     else:
-        await event.edit("use .calc help")
+        await edit_or_reply(event, "use .calc help")
