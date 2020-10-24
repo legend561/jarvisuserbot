@@ -2,7 +2,7 @@ from jarvis import bot
 from telethon import events
 from var import Var
 from pathlib import Path
-from jarvis.uniborgConfig import Config
+from jarvis.jconfig import Config
 from jarvis import LOAD_PLUG
 from jarvis import CMD_LIST
 import re

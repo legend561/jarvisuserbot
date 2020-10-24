@@ -76,7 +76,7 @@ class Development(Var):
 
 ##  UniBorg Configuration
 
- The UniBorg Config is situated in `jarvis/uniborgConfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
+ The UniBorg Config is situated in `jarvis/jconfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
 ##  Mandatory Vars
 

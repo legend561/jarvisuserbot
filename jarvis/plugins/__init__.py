@@ -1,7 +1,7 @@
 from jarvis import topfunc
 from jarvis.utils import admin_cmd
 from var import Var 
-from jarvis.uniborgConfig import Config
+from jarvis.jconfig import Config
 
 
 idgen = topfunc.id_generator

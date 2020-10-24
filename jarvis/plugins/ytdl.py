@@ -169,7 +169,7 @@ async def yt_search(video_q):
     if not Config.YOUTUBE_API_KEY:
         await edit_or_reply(
             video_q,
-            "`Error: YouTube API key missing! Add it to reveal config vars in heroku or jarvis/uniborgConfig.py in github fork.`",
+            "`Error: YouTube API key missing! Add it to reveal config vars in heroku or jarvis/jconfig.py in github fork.`",
         )
         return
     video_q = await edit_or_reply(video_q, "```Processing...```")

@@ -11,7 +11,7 @@ from googletrans import Translator
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 from telethon.utils import get_display_name
 from jarvis.utils import admin_cmd, sudo_cmd
-from jarvis.uniborgConfig import Config
+from jarvis.jconfig import Config
 from telethon import events
 from datetime import datetime
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd

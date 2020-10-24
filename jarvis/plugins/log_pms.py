@@ -20,7 +20,7 @@ import os
 import sys
 from telethon.tl import functions, types
 from telethon.tl.types import Channel, Chat, User
-from jarvis.uniborgConfig import Config
+from jarvis.jconfig import Config
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.WARN)
