@@ -7,12 +7,13 @@ By:-@Zero_cool7870
 """
 import os 
 import asyncio
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from telethon import events
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"upb", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"upb", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"upb", allow_sudo=True))
 async def batch_upload(event):
 	if event.fwd_from:
 		return   
@@ -20,7 +21,7 @@ async def batch_upload(event):
 	if os.path.exists(temp_dir):    
 		files = os.listdir(temp_dir)
 		files.sort()
-		await event.edit("Uploading Files on Telegram...")
+		await edit_or_reply(event,"Uploading Files on Telegram...")
 		for file in files:
 			required_file_name = temp_dir+"/"+file
 			print(required_file_name)
