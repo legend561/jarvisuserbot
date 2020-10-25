@@ -7,10 +7,11 @@ By: @Zero_cool7870
 import os
 import subprocess
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd,sudo_cmd,edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern=r"getc"))
+@jarvis.on(sudo_cmd(pattern=r"getc", allow_sudo=True))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -24,7 +25,7 @@ async def get_media(event):
     print(limit)
     channel_username = channel_username[11:]
     print(channel_username)
-    await event.edit("Downloading Media From this Channel.")
+    await edit_or_reply(event,"Downloading Media From this Channel.")
     msgs = await borg.get_messages(channel_username, limit=int(limit))
     with open("log.txt", "w") as f:
         f.write(str(msgs))
@@ -41,6 +42,7 @@ async def get_media(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"geta"))
+@jarvis.on(sudo_cmd(pattern=r"geta",aloow_sudo=True))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -53,7 +55,7 @@ async def get_media(event):
     channel_username = channel_username[7:]
 
     print(channel_username)
-    await event.edit("Downloading All Media From this Channel.")
+    await edit_or_reply(event,"Downloading All Media From this Channel.")
     msgs = await borg.get_messages(channel_username, limit=3000)
     with open("log.txt", "w") as f:
         f.write(str(msgs))
