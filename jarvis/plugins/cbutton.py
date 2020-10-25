@@ -6,8 +6,9 @@ import re
 
 from telethon import Button
 
-from .. import CMD_HELP
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from .. import CMD_HELP
 
 # regex obtained from:
 # https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23
@@ -110,4 +111,3 @@ CMD_HELP.update(
     "
     }
 )
-
