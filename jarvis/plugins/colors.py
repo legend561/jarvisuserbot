@@ -4,7 +4,7 @@ import os
 
 from PIL import Image, ImageColor
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="color (.*)", outgoing=True))
@@ -20,7 +20,7 @@ async def _(event):
         try:
             usercolor = ImageColor.getrgb(input_str)
         except Exception as e:
-            await edit_or_reply(event,str(e))
+            await edit_or_reply(event, str(e))
             return False
         else:
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
