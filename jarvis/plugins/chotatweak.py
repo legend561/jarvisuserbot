@@ -1,23 +1,24 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd,sudo_cmd,edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="ctg ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ctg ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="ctg ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("```Reply to a Link.```")
+        await edit_or_reply(event,"```Reply to a Link.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await event.edit("```Reply to a Link```")
+        await edit_or_reply(event,"```Reply to a Link```")
         return
     chat = "@chotamreaderbot"
     reply_message.sender
-    await event.edit("```Processing```")
+    await edit_or_reply(event,```Processing```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
