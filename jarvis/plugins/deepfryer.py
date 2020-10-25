@@ -35,10 +35,11 @@ from random import randint, uniform
 from PIL import Image, ImageEnhance, ImageOps
 from telethon.tl.types import DocumentAttributeFilename
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="deepfry(?: |$)(.*)",allow_sudo=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))
@@ -52,7 +53,7 @@ async def deepfryer(event):
         data = await check_media(reply_message)
 
         if isinstance(data, bool):
-            await event.edit("`I can't deep fry that!`")
+            await edit_or_reply(event,"`I can't deep fry that!`")
             return
     else:
         await event.edit("`Reply to an image or sticker to deep fry it!`")
