@@ -10,8 +10,8 @@ from urllib.parse import quote_plus
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from jarvis import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN, deEmojify
-
+from jarvis import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
+from jarvis.helpers.functions import deEmojify
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "jarvis"
