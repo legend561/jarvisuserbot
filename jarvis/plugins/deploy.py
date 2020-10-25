@@ -10,7 +10,7 @@ import asyncio
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-DEFAULTUSER = str(ALIVE_NAME) if AUTONAME else "jarvis"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "jarvis"
 
 
 @jarvis.on(admin_cmd(pattern=r"deploy", outgoing=True))
