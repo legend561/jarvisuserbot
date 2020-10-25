@@ -42,7 +42,7 @@ async def get_media(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"geta"))
-@jarvis.on(sudo_cmd(pattern=r"geta", aloow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"geta", allow_sudo=True))
 async def get_media(event):
     if event.fwd_from:
         return
