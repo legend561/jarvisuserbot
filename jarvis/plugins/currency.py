@@ -4,10 +4,11 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="currency (.*)"))
+@jarvis.on(admin_cmd(pattern="currency (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="currency (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,7 +27,7 @@ async def _(event):
             if currency_to in current_response["rates"]:
                 current_rate = float(current_response["rates"][currency_to])
                 rebmun = round(number * current_rate, 2)
-                await event.edit(
+                await edit_or_reply(event,
                     "{} {} = {} {}".format(number, currency_from, rebmun, currency_to)
                 )
             else:
