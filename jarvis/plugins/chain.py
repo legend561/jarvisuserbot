@@ -4,11 +4,11 @@
 
 from telethon.tl.functions.messages import SaveDraftRequest
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="chain",outgoing=True))
-@jarvis.on(sudo_cmd(pattern="chain",allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="chain", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="chain", allow_sudo=True))
 async def _(event):
     await edit_or_reply(event, "Counting...")
     count = -1
