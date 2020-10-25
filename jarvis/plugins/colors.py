@@ -4,10 +4,11 @@ import os
 
 from PIL import Image, ImageColor
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="color (.*)"))
+@jarvis.on(admin_cmd(pattern="color (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="color (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,7 +20,7 @@ async def _(event):
         try:
             usercolor = ImageColor.getrgb(input_str)
         except Exception as e:
-            await event.edit(str(e))
+            await edit_or_reply(event,str(e))
             return False
         else:
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
@@ -32,7 +33,7 @@ async def _(event):
                 caption=input_str,
                 reply_to=message_id,
             )
-            os.remove("UniBorg.png")
+            os.remove("jarvis.png")
             await event.delete()
     else:
-        await event.edit("Syntax: `.color <color_code>`")
+        await event.reply("Syntax: `.color <color_code>`")
