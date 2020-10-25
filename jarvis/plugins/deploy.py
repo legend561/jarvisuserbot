@@ -7,13 +7,14 @@ Available Commands:
 
 import asyncio
 
-from jarvis import AUTONAME
-from jarvis.utils import admin_cmd
+from jarvis import ALIVE_NAME
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
+DEFAULTUSER = str(ALIVE_NAME) if AUTONAME else "jarvis"
 
 
-@jarvis.on(admin_cmd(pattern=r"deploy"))
+@jarvis.on(admin_cmd(pattern=r"deploy", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"deploy",allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
@@ -26,20 +27,20 @@ async def _(event):
 
     # input_str = event.pattern_match.group(1)
 
-    await event.edit("Deploying...")
+    await edit_or_reply(event, "Deploying...")
 
     animation_chars = [
-        "**Heroku Connecting To Latest Github Build (StarkGang/FridayUserbot)**",
+        "**Heroku Connecting To Latest Github Build (Jarvis-Works/JarvisUserbot)**",
         "**Build started by user** **{DEFAULTUSER}**",
         "**Deploy** `535a74f0` **by user** **{DEFAULTUSER}**",
         "**Restarting Heroku Server...**",
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m stdborg`",
+        "**Starting process with command** `python3 -m jarvis`",
         "**State changed from starting to up**",
-        "__INFO:Friday:Logged in as 557667062__",
-        "__INFO:Friday:Successfully loaded all plugins__",
+        "__INFO:Jarvis:Logged in as 557667062__",
+        "__INFO:Jarvis:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
 
