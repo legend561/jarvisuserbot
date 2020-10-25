@@ -1,10 +1,11 @@
 """.admin Plugin for @UniBorg"""
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd("join"))
+@jarvis.on(admin_cmd("join", outgoing=True))
+@jarvis.on(sudo_cmd("join",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -21,7 +22,8 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd("pay"))
+@jarvis.on(admin_cmd("pay", outgoing=True))
+@jarvis.on(sudo_cmd("pay",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
