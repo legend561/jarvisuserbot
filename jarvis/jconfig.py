@@ -126,6 +126,7 @@ if ENV:
         GOOGLE_CHROME_BIN = os.environ.get(
             "GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome"
         )
+        CHROME_BIN = os.environ.get("CHROME_BIN", "/usr/bin/chromedriver")
         # Google Drive ()
         G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
         G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
