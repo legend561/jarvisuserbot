@@ -48,4 +48,4 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
 
-        await edit_or_reply(event,animation_chars[i % 12])
+        await edit_or_reply(event, animation_chars[i % 12])
