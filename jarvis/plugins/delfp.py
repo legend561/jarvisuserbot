@@ -1,11 +1,11 @@
 from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosRequest
 from telethon.tl.types import InputPhoto
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="delpfp ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="delpfp ?(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="delpfp ?(.*)", allow_sudo=True))
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
     group = delpfp.text[8:]
@@ -29,4 +29,6 @@ async def remove_profilepic(delpfp):
             )
         )
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await edit_or_reply(delpfp, f"`Successfully deleted {len(input_photos)} profile picture(s).`")
+    await edit_or_reply(
+        delpfp, f"`Successfully deleted {len(input_photos)} profile picture(s).`"
+    )
