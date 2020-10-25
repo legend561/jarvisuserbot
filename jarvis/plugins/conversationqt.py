@@ -14,17 +14,18 @@ Syntax: .qt
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern=r"qt"))
+@jarvis.on(admin_cmd(pattern=r"qt", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"qt", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    await event.edit("selecting question...")
+    await edit_or_reply(event, "selecting question...")
 
     await asyncio.sleep(2)
 
