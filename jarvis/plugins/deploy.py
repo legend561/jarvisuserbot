@@ -8,13 +8,13 @@ Available Commands:
 import asyncio
 
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if AUTONAME else "jarvis"
 
 
 @jarvis.on(admin_cmd(pattern=r"deploy", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"deploy",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"deploy", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
