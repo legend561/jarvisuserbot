@@ -1,6 +1,6 @@
 import random
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 RUNSREACTS = [
     "`Congratulations and BRAVO!`",
