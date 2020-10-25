@@ -2,10 +2,11 @@
 Syntax: .covid <country>"""
 from covid import Covid
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="covid (.*)"))
+@jarvis.on(admin_cmd(pattern="covid (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="covid (.*)", allow_sudo=True))
 async def _(event):
     covid = Covid()
     data = covid.get_data()
@@ -14,7 +15,7 @@ async def _(event):
     output_text = ""
     for name, value in country_data.items():
         output_text += "`{}`: `{}`\n".format(str(name), str(value))
-    await event.edit(
+    await edit_or_reply(event,
         "**CoronaVirus Info in {}**:\n\n{}".format(country.capitalize(), output_text)
     )
 
