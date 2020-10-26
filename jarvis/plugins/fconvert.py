@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
@@ -28,11 +28,11 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
         if file_name:
-            await event.edit(
+            await edit_or_reply(event,
                 "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
             )
         else:
-            await event.edit("{}\n{}".format(type_of_ps, tmp))
+            await edit_or_reply(event,"{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
@@ -75,7 +75,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit(
+        await edit_or_reply(event, 
             "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
         )
         return
@@ -91,11 +91,11 @@ async def _(event):
             ),
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
+        await edit_or_reply(event,str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit(
+        await edit_or_reply(event,
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
@@ -140,7 +140,7 @@ async def _(event):
             voice_note = False
             supports_streaming = True
         else:
-            await event.edit("not supported")
+            await edit_or_reply(event,"not supported")
             os.remove(downloaded_file_name)
             return
         logger.info(command_to_run)
@@ -173,4 +173,4 @@ async def _(event):
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
-            await event.edit(f"converted in {ms_two} seconds")
+            await edit_or_reply(event,f"converted in {ms_two} seconds")
