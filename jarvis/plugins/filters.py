@@ -8,7 +8,7 @@ Available Commands:
 .clearfilter"""
 import asyncio
 import re
-
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from telethon import utils
 from telethon.tl import types
 
@@ -68,7 +68,8 @@ async def on_snip(event):
                 last_triggered_filters[event.chat_id].remove(name)
 
 
-@command(pattern="^.savefilter (.*)")
+@jarvis.on(admin_cmd(pattern="savefilter (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="savefilter (.*)",allow_sudo=True))
 async def on_snip_save(event):
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
@@ -95,14 +96,15 @@ async def on_snip_save(event):
             snip.get("hash"),
             snip.get("fr"),
         )
-        await event.edit(f"filter {name} saved successfully. Get it with {name}")
+        await edit_or_reply(event, f"filter {name} saved successfully. Get it with {name}")
     else:
-        await event.edit(
+        await edit_or_reply(event, 
             "Reply to a message with `savefilter keyword` to save the filter"
         )
 
 
-@command(pattern="^.listfilters$")
+@jarvis.on(admin_cmd(pattern="listfilters$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="listfilters$",allow_sudo=True))
 async def on_snip_list(event):
     all_snips = get_all_filters(event.chat_id)
     OUT_STR = "Available Filters in the Current Chat:\n"
@@ -124,17 +126,19 @@ async def on_snip_list(event):
             )
             await event.delete()
     else:
-        await event.edit(OUT_STR)
+        await edit_or_reply(event, OUT_STR)
 
 
-@command(pattern="^.clearfilter (.*)")
+@jarvis.on(admin_cmd(pattern="clearfilter (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="clearfilter (.*)",allow_sudo=True))
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_filter(event.chat_id, name)
-    await event.edit(f"filter {name} deleted successfully")
+    await edit_or_reply(event,f"filter {name} deleted successfully")
 
 
-@command(pattern="^.clearallfilters$")
+@jarvis.on(admin_cmd(pattern="clearallfilters",outgoing=True))
+@jarvis.on(sudo_cmd(pattern="clearallfilters",allow_sudo=True))
 async def on_all_snip_delete(event):
     remove_all_filters(event.chat_id)
-    await event.edit(f"filters **in current chat** deleted successfully")
+    await edit_or_reply(event,f"filters **in current chat** deleted successfully")
