@@ -8,15 +8,15 @@ import io
 import sys
 import traceback
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern="eval", outgoing=True))
-@jarvis.on(admin_cmd(pattern="eval", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="eval",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.reply("Processing ...")
+    await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -64,7 +64,7 @@ async def _(event):
             )
             await event.delete()
     else:
-        await event.reply(final_output)
+        await event.edit(final_output)
 
 
 async def aexec(code, event):
