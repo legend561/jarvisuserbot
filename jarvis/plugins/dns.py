@@ -1,4 +1,4 @@
-"""Link Shortners
+"""Link Shortners For Jarvis
 Available Commands:
 .isup URL
 .dns google.com
