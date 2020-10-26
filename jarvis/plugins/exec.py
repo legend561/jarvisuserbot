@@ -7,7 +7,7 @@ import asyncio
 import io
 import time
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="exec ?(.*)", outgoing=True))
@@ -47,4 +47,4 @@ async def _(event):
                 reply_to=reply_to_id,
             )
             await event.delete()
-    await edit_or_reply(event,OUTPUT)
+    await edit_or_reply(event, OUTPUT)
