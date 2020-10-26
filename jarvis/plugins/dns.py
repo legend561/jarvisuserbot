@@ -1,4 +1,4 @@
-"""DA.GD helpers in @UniBorg
+"""Link Shortners
 Available Commands:
 .isup URL
 .dns google.com
