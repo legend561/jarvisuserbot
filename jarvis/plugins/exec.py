@@ -7,10 +7,11 @@ import asyncio
 import io
 import time
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="exec ?(.*)"))
+@jarvis.on(admin_cmd(pattern="exec ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="exec ?(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return
@@ -33,7 +34,7 @@ async def _(event):
     else:
         _o = o.split("\n")
         o = "`\n".join(_o)
-    OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Output:**\n{o}"
+    OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n"
     if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "exec.text"
@@ -46,4 +47,4 @@ async def _(event):
                 reply_to=reply_to_id,
             )
             await event.delete()
-    await event.edit(OUTPUT)
+    await edit_or_reply(event,OUTPUT)
