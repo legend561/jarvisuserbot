@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, progress
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
@@ -28,11 +28,11 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
         if file_name:
-            await edit_or_reply(event,
-                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            await edit_or_reply(
+                event, "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
             )
         else:
-            await edit_or_reply(event,"{}\n{}".format(type_of_ps, tmp))
+            await edit_or_reply(event, "{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
@@ -75,8 +75,9 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await edit_or_reply(event, 
-            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
+        await edit_or_reply(
+            event,
+            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot",
         )
         return
     await event.edit("trying to download media file, to my local")
@@ -91,12 +92,12 @@ async def _(event):
             ),
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await edit_or_reply(event,str(e))
+        await edit_or_reply(event, str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await edit_or_reply(event,
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+        await edit_or_reply(
+            event, "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
         new_required_file_caption = ""
@@ -140,7 +141,7 @@ async def _(event):
             voice_note = False
             supports_streaming = True
         else:
-            await edit_or_reply(event,"not supported")
+            await edit_or_reply(event, "not supported")
             os.remove(downloaded_file_name)
             return
         logger.info(command_to_run)
@@ -173,4 +174,4 @@ async def _(event):
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
-            await edit_or_reply(event,f"converted in {ms_two} seconds")
+            await edit_or_reply(event, f"converted in {ms_two} seconds")
