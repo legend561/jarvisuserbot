@@ -3,11 +3,11 @@ Syntax: .filext EXTENSION"""
 import requests
 from bs4 import BeautifulSoup
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="filext (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="filext (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="filext (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,8 +26,9 @@ async def _(event):
             )
         )
     else:
-        await edit_or_reply(event,
+        await edit_or_reply(
+            event,
             "https://www.fileext.com/ responded with {} for query: {}".format(
                 status_code, input_str
-            )
+            ),
         )
