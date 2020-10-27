@@ -7,7 +7,7 @@ from re import findall
 
 from search_engine_parser import GoogleSearch
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 def progress(current, total):
@@ -18,7 +18,8 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd("go (.*)"))
+@jarvis.on(admin_cmd("go (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("go (.*)",allow_sudo=True))
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)
@@ -41,6 +42,6 @@ async def gsearch(q_event):
             msg += f"[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
-    await q_event.edit(
+    await edit_or_reply(q_event,
         "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
