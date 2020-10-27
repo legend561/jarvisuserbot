@@ -11,13 +11,13 @@ from datetime import datetime
 
 from github import Github
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 GIT_TEMP_DIR = "./jarvis/temp/"
 
 
 @jarvis.on(admin_cmd(pattern="commit", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="commit",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="commit", allow_sudo=True))
 async def download(event):
     if event.fwd_from:
         return
@@ -25,7 +25,9 @@ async def download(event):
         await edit_or_reply(event, "`Please ADD Proper Access Token from github.com`")
         return
     if Var.GIT_REPO_NAME is None:
-        await edit_or_reply(event, "`Please ADD Proper Github Repo Name of your userbot`")
+        await edit_or_reply(
+            event, "`Please ADD Proper Github Repo Name of your userbot`"
+        )
         return
     mone = await edit_or_reply(event, "Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
@@ -80,11 +82,12 @@ async def git_commit(file_name, mone):
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
-            await edit_or_reply(mone,
-                f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/jarvis/plugins/)"
+            await edit_or_reply(
+                mone,
+                f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/jarvis/plugins/)",
             )
         except:
             print("Cannot Create Plugin")
             await mone.edit("Cannot Upload Plugin")
     else:
-        return await edit_or_reply(mone,"`Committed Suicide`")
+        return await edit_or_reply(mone, "`Committed Suicide`")
