@@ -1,16 +1,17 @@
 import asyncio
 
 from telethon import events
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
-
-@jarvis.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"\.(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"\.(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.1
     animation_ttl = range(0, 101)
     input_str = event.pattern_match.group(1)
-    if input_str == "githubs":
+    if input_str == "repo":
         await event.edit(input_str)
         animation_chars = [
             "https://github.com/Jarvis-Works/jarvisuserbot",
