@@ -8,7 +8,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd("smd (.*)", outgoing=True))
-@jarvis.on(sudo_cmd("smd (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd("smd (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
