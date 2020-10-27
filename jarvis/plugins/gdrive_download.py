@@ -5,9 +5,8 @@ By: @Zero_cool7870
 
 """
 import requests
-from telethon import events
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 async def download_file_from_google_drive(id):
@@ -84,7 +83,7 @@ async def get_file_name(content):
 
 
 @jarvis.on(admin_cmd(pattern=r"gdl", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"gdl",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"gdl", allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
         return
