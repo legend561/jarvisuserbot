@@ -7,7 +7,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 COLLECTION_STRINGZ = [
     "star-wars-wallpaper-1080p",
@@ -46,10 +46,11 @@ async def animepp():
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
 
-@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)"))
+@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="gamerdp ?(.*)",allow_sudo=True))
 async def main(event):
 
-    await event.edit("**Starting Gamer Profile Pic...\n\nDone !!! Check Your DP")
+    await edit_or_reply(event, "**Starting Gamer Profile Pic...\n\nDone !!! Check Your DP")
 
     while True:
 
