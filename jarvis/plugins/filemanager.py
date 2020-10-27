@@ -8,9 +8,7 @@ import io
 import os
 import time
 
-from telethon import events
-
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, sudo_cmd
 
 if not os.path.isdir("./SAVED"):
     os.makedirs("./SAVED")
@@ -19,7 +17,7 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
 
 @jarvis.on(admin_cmd(pattern="lslocal", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="lslocal",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="lslocal", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -61,7 +59,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"lsroot", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"lsroot",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"lsroot", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -96,7 +94,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"lssaved", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"lssaved",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"lssaved", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -131,7 +129,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"rnsaved ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"rnsaved ?(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"rnsaved ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -170,7 +168,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"rnlocal (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"rnlocal (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"rnlocal (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -209,7 +207,7 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"delsave (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"delsave (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"delsave (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -225,7 +223,7 @@ async def handler(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"delocal (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"delocal (.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"delocal (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
