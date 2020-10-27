@@ -10,17 +10,18 @@ command .gdm and .gdn
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @jarvis.on(admin_cmd(pattern=f"gdm", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"gdm",allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    await event.edit("Typing...")
+    await edit_or_reply(event, "Typing...")
 
     await asyncio.sleep(2)
 
@@ -206,13 +207,14 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=f"gdn", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"gdn",allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    await event.edit("Typing...")
+    await edit_or_reply(event, "Typing...")
 
     await asyncio.sleep(2)
 
