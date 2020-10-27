@@ -1,17 +1,18 @@
 """Enable Seen Counter in any message, Fix by @pureindialover
 to know how many users have seen your message
 Syntax: .fwd as reply to any message"""
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="frwd", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="frwd",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="frwd", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if Config.PLUGIN_CHANNEL is None:
-        await edit_or_reply(event, 
-            "Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work"
+        await edit_or_reply(
+            event,
+            "Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work",
         )
         return
     try:
