@@ -10,7 +10,7 @@ import time
 
 from telethon import events
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 if not os.path.isdir("./SAVED"):
     os.makedirs("./SAVED")
@@ -18,8 +18,8 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
     os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.lslocal", outgoing=True))
-@jarvis.on(admin_cmd(pattern="\.lslocal", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="lslocal", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="lslocal",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +36,7 @@ async def _(event):
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
-    OUTPUT = f"**Files in [JARVIS](tg://JarvisOT/) DOWNLOADS Folder:**\n"
+    OUTPUT = f"**Files in [JARVIS](https://t.me/JarvisOT) DOWNLOADS Folder:**\n"
     stdout, stderr = await process.communicate()
     if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(stdout)) as out_file:
@@ -60,8 +60,8 @@ async def _(event):
 #        await event.edit("Unknown Command")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.lsroot", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.lsroot", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"lsroot", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"lsroot",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -95,8 +95,8 @@ async def _(event):
     await event.reply(f"{OUTPUT}`{stdout.decode()}`")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.lssaved", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.lssaved", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"lssaved", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"lssaved",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -130,8 +130,8 @@ async def _(event):
     await event.reply(f"{OUTPUT}`{stdout.decode()}`")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.rnsaved ?(.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.rnsaved ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"rnsaved ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"rnsaved ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -169,8 +169,8 @@ async def _(event):
     await event.reply(f"File renamed `{src}` to `{dst}`")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.rnlocal ?(.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.rnlocal (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"rnlocal (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"rnlocal (.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -208,8 +208,8 @@ async def _(event):
     await event.reply(f"File renamed `{src}` to `{dst}`")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.delsave (.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.delsave (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"delsave (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"delsave (.*)",allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -224,8 +224,8 @@ async def handler(event):
         await event.reply("⛔️ File Not Found 😬")
 
 
-@jarvis.on(events.NewMessage(pattern=r"\.delocal (.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"\.delocal (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"delocal (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"delocal (.*)",allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
