@@ -1,10 +1,10 @@
 import asyncio
 
-from telethon import events
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, sudo_cmd
+
 
 @jarvis.on(admin_cmd(pattern=r"(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
