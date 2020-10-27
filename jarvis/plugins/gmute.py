@@ -5,12 +5,12 @@ added speciality for sudos if u kang give me credits
 import asyncio
 
 from jarvis.plugins.sql_helper.mute_sql import is_muted, mute, unmute
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 # @command(outgoing=True, pattern=r"^.gmute ?(\d+)?")
 @jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"gmute ?(\d+)?",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"gmute ?(\d+)?", allow_sudo=True))
 async def startgmute(event):
     private = False
     if event.fwd_from:
@@ -62,24 +62,28 @@ async def startgmute(event):
     event.chat_id
     await event.get_chat()
     if is_muted(userid, "gmute"):
-        return await edit_or_reply(event,"Duct Tape is already availabe on this user's mouth")
+        return await edit_or_reply(
+            event, "Duct Tape is already availabe on this user's mouth"
+        )
     try:
         mute(userid, "gmute")
     except Exception as e:
         await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await edit_or_reply(event,"Successfully putted Duct Tape on that person's mouth")
+        await edit_or_reply(
+            event, "Successfully putted Duct Tape on that person's mouth"
+        )
 
 
 # @command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
 @jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"ungmute ?(\d+)?",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"ungmute ?(\d+)?", allow_sudo=True))
 async def endgmute(event):
     private = False
     if event.fwd_from:
         return
     elif event.is_private:
-        await edit_or_reply(event,"Removed Duct Tape from that person's mouth!")
+        await edit_or_reply(event, "Removed Duct Tape from that person's mouth!")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -90,18 +94,21 @@ async def endgmute(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await edit_or_reply(event, 
-            "Please reply to a user or add their into the command to ungmute them."
+        return await edit_or_reply(
+            event,
+            "Please reply to a user or add their into the command to ungmute them.",
         )
     event.chat_id
     if not is_muted(userid, "gmute"):
-        return await edit_or_reply(event,"Duct Tape is not on this user's mouth")
+        return await edit_or_reply(event, "Duct Tape is not on this user's mouth")
     try:
         unmute(userid, "gmute")
     except Exception as e:
-        await edit_or_reply(event,"Error occured!\nError is " + str(e))
+        await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await edit_or_reply(event,"Successfully Removed Duct Tape from that person's mouth")
+        await edit_or_reply(
+            event, "Successfully Removed Duct Tape from that person's mouth"
+        )
 
 
 @command(incoming=True)
