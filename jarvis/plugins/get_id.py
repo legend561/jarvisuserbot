@@ -2,11 +2,11 @@
 Syntax: .get_id"""
 from telethon.utils import pack_bot_file_id
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd("get_id"))
-@jarvis.on(admin_cmd(pattern="get_id", allow_sudo=True))
+@jarvis.on(admin_cmd("get_id", outgoing=True))
+@jarvis.on(sudo_cmd("get_id",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
