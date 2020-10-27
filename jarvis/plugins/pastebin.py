@@ -54,8 +54,12 @@ async def _(event):
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await edit_or_reply(event,
-            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl), link_preview=False
+        await edit_or_reply(
+            event,
+            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl),
+            link_preview=False,
         )
     else:
-        await edit_or_reply(event,"Dogged to {} in {} seconds".format(url, ms), link_preview=False)
+        await edit_or_reply(
+            event, "Dogged to {} in {} seconds".format(url, ms), link_preview=False
+        )
