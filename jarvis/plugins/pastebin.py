@@ -16,8 +16,8 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd("paste ?(.*)"))
-@jarvis.on(admin_cmd("paste ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("paste ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("paste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -54,8 +54,8 @@ async def _(event):
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await event.reply(
-            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)
+        await edit_or_reply(event,
+            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl), link_preview=False
         )
     else:
-        await event.reply("Dogged to {} in {} seconds".format(url, ms))
+        await edit_or_reply(event,"Dogged to {} in {} seconds".format(url, ms), link_preview=False)
