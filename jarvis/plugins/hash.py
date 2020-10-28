@@ -1,8 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
 """ Userbot module containing hash and encode/decode commands. """
 
 from subprocess import PIPE
@@ -12,9 +7,10 @@ import pybase64
 
 from jarvis import CMD_HELP
 from jarvis.events import errors_handler, register
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
-
-@register(outgoing=True, pattern="^.hash (.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="hash (.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True,pattern="hash (.*)"))
 @errors_handler
 async def gethash(hash_q):
     """ For .hash command, find the md5, sha1, sha256, sha512 of the string. """
@@ -56,10 +52,11 @@ async def gethash(hash_q):
         )
         runapp(["rm", "hashes.txt"], stdout=PIPE)
     else:
-        await hash_q.reply(ans)
+        await edit_or_reply(hash_q,ans)
 
 
-@register(outgoing=True, pattern="^.hbase (en|de) (.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="hbase (en|de) (.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True,pattern="hbase (en|de) (.*)"))
 @errors_handler
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
@@ -67,14 +64,14 @@ async def endecrypt(query):
         lething = str(pybase64.b64encode(bytes(query.pattern_match.group(2), "utf-8")))[
             2:
         ]
-        await query.reply("Shhh! It's Encoded: `" + lething[:-1] + "`")
+        await edit_or_reply(query,"Shhh! It's Encoded: `" + lething[:-1] + "`")
     else:
         lething = str(
             pybase64.b64decode(
                 bytes(query.pattern_match.group(2), "utf-8"), validate=True
             )
         )[2:]
-        await query.reply("Decoded: `" + lething[:-1] + "`")
+        await edit_or_reply(query,"Decoded: `" + lething[:-1] + "`")
 
 
 CMD_HELP.update({"base64": "Find the base64 encoding of the given string"})
