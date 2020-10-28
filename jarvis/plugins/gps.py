@@ -3,11 +3,11 @@ from geopy.geocoders import Nominatim
 from telethon.tl import types
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="gps ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="gps ?(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="gps ?(.*)", allow_sudo=True))
 async def gps(event):
     if event.fwd_from:
         return
