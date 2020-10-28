@@ -10,8 +10,8 @@ import os
 import heroku3
 import requests
 
-from jarvis.utils import admin_cmd
-
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis import CMD_HNDLR
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
@@ -20,7 +20,7 @@ heroku_api = "https://api.heroku.com"
     admin_cmd(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)")
 )
 @jarvis.on(
-    admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True)
+    sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",allow_sudo=True)
 )
 async def variable(var):
     """
@@ -30,20 +30,20 @@ async def variable(var):
     if Var.HEROKU_APP_NAME is not None:
         app = Heroku.app(Var.HEROKU_APP_NAME)
     else:
-        return await var.reply("`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
+        return await edit_or_reply(var,"`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
-        await var.reply("`Getting information...`")
+        await edit_or_reply(var,"`Getting information...`")
         await asyncio.sleep(1.5)
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await var.reply(
+                return await edit_or_reply(var,
                     "**ConfigVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n"
                 )
             else:
-                return await var.reply(
+                return await edit_or_reply(var,
                     "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
                 )
         except IndexError:
@@ -60,7 +60,7 @@ async def variable(var):
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
-                    await var.reply(
+                    await edit_or_reply(var,
                         "`[HEROKU]` ConfigVars:\n\n"
                         "================================"
                         f"\n```{result}```\n"
@@ -69,48 +69,48 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        await var.edit("`Setting information ! Plz Wait ....`")
+        await edit_or_reply(var,"`Setting information ! Plz Wait ....`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await var.edit(">`.set var <ConfigVars-name> <value>`")
+            return await edit_or_reply(var,">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await var.edit(">`.set var <ConfigVars-name> <value>`")
+                return await edit_or_reply(var,">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await var.reply(
+            await edit_or_reply(var,
                 f"**{variable}**  `successfully changed to`  ->  **{value}**"
             )
         else:
-            await var.reply(
+            await edit_or_reply(var,
                 f"**{variable}**  `successfully added with value`  ->  **{value}**"
             )
         heroku_var[variable] = value
     elif exe == "del":
-        await var.edit("`Getting information to deleting variable...`")
+        await edit_or_reply(var,"`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await var.reply("`Please specify ConfigVars you want to delete`")
+            return await edit_or_reply(var, "`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await var.reply(f"**{variable}**  `successfully deleted`")
+            await edit_or_reply(var, f"**{variable}**  `successfully deleted`")
             del heroku_var[variable]
         else:
-            return await var.reply(f"**{variable}**  `is not exists`")
+            return await edit_or_reply(var,f"**{variable}**  `is not exists`")
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"usage(?: |$)"))
-@jarvis.on(admin_cmd(pattern=r"usage(?: |$)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"usage(?: |$)",allow_sudo=True))
 async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
     """
-    await dyno.edit("`Processing...`")
+    await edit_or_reply(dyno,"`Processing...`")
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -125,7 +125,7 @@ async def dyno_usage(dyno):
     path = "/accounts/" + user_id + "/actions/get-quota"
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
-        return await dyno.edit_or_reply(
+        return await dyno.edit(
             "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
         )
     result = r.json()
@@ -154,7 +154,7 @@ async def dyno_usage(dyno):
 
     await asyncio.sleep(1.5)
 
-    return await dyno.reply(
+    return await dyno.edit(
         "**Dyno Usage**:\n\n"
         f" 🧊 `Dyno usage of Jarvis for`  **{Var.HEROKU_APP_NAME}**:\n"
         f"     💎  `{AppHours}`**h**  `{AppMinutes}`**m**  "
@@ -166,8 +166,8 @@ async def dyno_usage(dyno):
     )
 
 
-@jarvis.on(admin_cmd(pattern="info heroku"))
-@jarvis.on(admin_cmd(pattern="info heroku", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="info heroku", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="info heroku",allow_sudo=True))
 async def info(event):
     await borg.send_message(
         event.chat_id,
@@ -191,16 +191,17 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"logs"))
-@jarvis.on(admin_cmd(pattern=r"logs", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"logs",allow_sudo=True))
 async def _(dyno):
     try:
         Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
         app = Heroku.app(Var.HEROKU_APP_NAME)
     except:
-        return await dyno.reply(
+        return await edit_or_reply(dyno,
             " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var please check https://t.me/IndianBot_Official/55?single"
         )
-    await dyno.reply("Downloading Logs...")
+    await edit_or_reply(dyno,"Downloading Logs...")
+    await dyno.delete()
     with open("logs.txt", "w") as log:
         log.write(app.get_log())
     await dyno.client.send_file(
