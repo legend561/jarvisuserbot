@@ -7,7 +7,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 COLLECTION_STRINGZ = ["hacker-background"]
 
@@ -41,11 +41,11 @@ async def animepp():
 
 
 @jarvis.on(admin_cmd(pattern="hackerdp ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="hackerdp ?(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="hackerdp ?(.*)", allow_sudo=True))
 async def main(event):
 
-    await edit_or_reply(event,
-        "**Starting Hacker Profile Pic...\n\nDone !!! Check Your DP"
+    await edit_or_reply(
+        event, "**Starting Hacker Profile Pic...\n\nDone !!! Check Your DP"
     )  # Owner MarioDevs
 
     while True:
