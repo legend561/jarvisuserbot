@@ -51,7 +51,7 @@ telegraph
 tswift
 urbandict>=0.5
 wikipedia>=1.4.0
-youtube-dl
+youtube-dl>=257
 covid
 validators
 psycopg2-binary
