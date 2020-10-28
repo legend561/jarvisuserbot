@@ -5,7 +5,7 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 def progress(current, total):
