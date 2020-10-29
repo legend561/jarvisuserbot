@@ -9,11 +9,11 @@ By:- @Zero_cool7870
 
 import os
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="ls ?(.*)"))
-@jarvis.on(admin_cmd(pattern="ls ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ls ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="ls ?(.*)",allow_sudo=True))
 async def lst(event):
     if event.fwd_from:
         return
