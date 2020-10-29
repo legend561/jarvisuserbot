@@ -3,10 +3,11 @@
 
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern=r"jainder(.*)"))
+@jarvis.on(admin_cmd(pattern=r"jainder(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"jainder(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -102,4 +103,4 @@ async def _(event):
         ]
     index = random.randint(0, len(emoticons))
     output_str = emoticons[index]
-    await event.edit(output_str)
+    await edit_or_reply(event,output_str)
