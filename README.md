@@ -2,6 +2,7 @@
 
 ## A USERBOT WITH MORE SECURITY AND ASSISTANT
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c31abbf24d14db89a96e5797b6db93e)](https://app.codacy.com/gh/Jarvis-Works/JarvisUserbot?utm_source=github.com&utm_medium=referral&utm_content=Jarvis-Works/JarvisUserbot&utm_campaign=Badge_Grade)
  [![JARVIS USERBOT](https://telegra.ph/file/e6223f1abf7720c4938f3.jpg)](https://t.me/JarvisOT)
 
 [![forthebadge made-with-python](https://camo.githubusercontent.com/5392ad6fb7875a2520001270f08309896b6cb25d/687474703a2f2f466f7254686542616467652e636f6d2f696d616765732f6261646765732f6d6164652d776974682d707974686f6e2e737667)](https://www.python.org/)
