@@ -7,13 +7,10 @@
 
 import time
 
-from telethon.errors import rpcbaseerrors
 from jarvis.utils import admin_cmd
-import importlib.util
 
 
-
-@jarvis.on(admin_cmd("sd", outgoing=True  ))
+@jarvis.on(admin_cmd("sd", outgoing=True))
 async def selfdestruct(destroy):
     """ For .sd command, make seflf-destructable messages. """
     if not destroy.text[0].isalpha() and destroy.text[0] not in ("/", "#", "@", "!"):

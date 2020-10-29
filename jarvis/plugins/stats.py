@@ -1,9 +1,10 @@
-from jarvis import bot
-from telethon import events
-import asyncio
 from datetime import datetime
-from telethon.tl.types import User, Chat, Channel
+
+from telethon.tl.types import Channel, Chat, User
+
+from jarvis import bot
 from jarvis.utils import admin_cmd
+
 
 @jarvis.on(admin_cmd(pattern=r"stats"))
 @jarvis.on(admin_cmd(pattern=r"stats", allow_sudo=True))
@@ -16,10 +17,7 @@ async def _(event):
     c = 0
     bc = 0
     b = 0
-    dialogs = await bot.get_dialogs(
-        limit=None,
-        ignore_migrated=True
-    )
+    dialogs = await bot.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
         if type(currrent_entity) is User:
@@ -38,9 +36,13 @@ async def _(event):
             print(d)
     end = datetime.now()
     ms = (end - start).seconds
-    await event.reply("""`Your Stats Obtained in {} seconds`
+    await event.reply(
+        """`Your Stats Obtained in {} seconds`
 `You have {} Private Messages`
 `You are in {} Groups`
 `You are in {} Super Groups`
 `You Are in {} Channels`
-`And finally Bots = {}`""".format(ms, u, g, c, bc, b))
+`And finally Bots = {}`""".format(
+            ms, u, g, c, bc, b
+        )
+    )

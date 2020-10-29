@@ -1,12 +1,9 @@
 # Base by @Sur_Vivor
-from telethon import events
-from datetime import datetime
-from telethon import events
-from datetime import datetime
-from jarvis.utils import admin_cmd
-from jarvis.__init__ import Lastupdate
 import time
+from datetime import datetime
 
+from jarvis.__init__ import Lastupdate
+from jarvis.utils import admin_cmd
 
 
 def get_readable_time(seconds: int) -> str:
@@ -37,7 +34,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-#@command(pattern="^.latestupdate")
+# @command(pattern="^.latestupdate")
 @jarvis.on(admin_cmd(pattern="uptime"))
 async def _(event):
     if event.fwd_from:
@@ -45,6 +42,6 @@ async def _(event):
     start = datetime.now()
     await event.edit("Calculating Last Update or Restart Time")
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
     await event.edit(f"🎖️JARVIS Userbot🎖️ Has Been Restarted Or Updated {uptime} Ago !")

@@ -1,13 +1,10 @@
 """Check if your userbot is working."""
 import os
-import requests
 import time
-from PIL import Image
-from io import BytesIO
-from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
 from datetime import datetime
-from jarvis import Lastupdate
+
+from jarvis import ALIVE_NAME, Lastupdate
+from jarvis.utils import admin_cmd, sudo_cmd
 
 sudousing = Config.SUDO_USERS
 pmlogss = Config.PM_LOGGR_BOT_API_ID
@@ -41,7 +38,8 @@ if isdbfine:
 else:
     dbstats = "Not Fine"
 
-ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
+ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -70,17 +68,19 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
+
 @jarvis.on(admin_cmd(pattern=r"alive"))
-@jarvis.on(admin_cmd(pattern=r"alive", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
     start = datetime.now()
-    myid = bot.uid
+    bot.uid
     end = datetime.now()
     (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    if ALIVE_PIC :
+    if ALIVE_PIC:
         pm_caption = "**Master JARVIS AT YOU SERVICE 🤗 **\n"
         pm_caption += f"**••Mу Bσѕѕ••**           {DEFAULTUSER}\n"
         pm_caption += " **✓ JARVIS STATS ✓** \n"
@@ -99,9 +99,11 @@ async def jarvis(alive):
         pm_caption += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ          [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
         pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await borg.send_file(alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False)
+        await borg.send_file(
+            alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False
+        )
         await alive.delete()
-    else :
+    else:
         PM_IMG = "https://telegra.ph/file/d61452c69b961e794eedd.jpg"
         pm_captionn = "**Master JARVIS AT YOU SERVICE 🤗 **\n"
         pm_captionn += f"**••Mу Bσѕѕ••**           {DEFAULTUSER}\n"
@@ -119,7 +121,9 @@ async def jarvis(alive):
         pm_captionn += "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
         pm_captionn += "🔹 ʟɪᴄᴇɴꜱᴇ                     [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
         pm_captionn += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ          [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
-        pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"        
+        pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await borg.send_file(alive.chat_id, PM_IMG, caption=pm_captionn, linkpreview=False)
+        await borg.send_file(
+            alive.chat_id, PM_IMG, caption=pm_captionn, linkpreview=False
+        )
         await alive.delete()

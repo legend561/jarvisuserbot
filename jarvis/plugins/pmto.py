@@ -1,9 +1,9 @@
-
 # By @HeisenbergTheDanger for TeleBot
 # @its_xditya
 # Kangers keep credits
 
 from jarvis.utils import admin_cmd
+
 
 @jarvis.on(admin_cmd("pmto ?(.*)"))
 async def pmto(event):
@@ -16,7 +16,7 @@ async def pmto(event):
         pass
     msg = ""
     for i in b[1:]:
-        msg += (i + " ") 
+        msg += i + " "
     if msg == "":
         return
     try:

@@ -35,11 +35,11 @@ from random import randint, uniform
 from PIL import Image, ImageEnhance, ImageOps
 from telethon.tl.types import DocumentAttributeFilename
 
-from uniborg.util import admin_cmd
-from telethon import events
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True)) 
+@jarvis.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="deepfry(?: |$)(.*)", allow_sudo=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))
@@ -53,7 +53,7 @@ async def deepfryer(event):
         data = await check_media(reply_message)
 
         if isinstance(data, bool):
-            await event.edit("`I can't deep fry that!`")
+            await edit_or_reply(event, "`I can't deep fry that!`")
             return
     else:
         await event.edit("`Reply to an image or sticker to deep fry it!`")
@@ -81,7 +81,7 @@ async def deepfryer(event):
 async def deepfry(img: Image) -> Image:
     colours = (
         (randint(50, 200), randint(40, 170), randint(40, 190)),
-        (randint(190, 255), randint(170, 240), randint(180, 250))
+        (randint(190, 255), randint(170, 240), randint(180, 250)),
     )
 
     img = img.copy().convert("RGB")
@@ -89,9 +89,18 @@ async def deepfry(img: Image) -> Image:
     # Crush image to hell and back
     img = img.convert("RGB")
     width, height = img.width, img.height
-    img = img.resize((int(width ** uniform(0.8, 0.9)), int(height ** uniform(0.8, 0.9))), resample=Image.LANCZOS)
-    img = img.resize((int(width ** uniform(0.85, 0.95)), int(height ** uniform(0.85, 0.95))), resample=Image.BILINEAR)
-    img = img.resize((int(width ** uniform(0.89, 0.98)), int(height ** uniform(0.89, 0.98))), resample=Image.BICUBIC)
+    img = img.resize(
+        (int(width ** uniform(0.8, 0.9)), int(height ** uniform(0.8, 0.9))),
+        resample=Image.LANCZOS,
+    )
+    img = img.resize(
+        (int(width ** uniform(0.85, 0.95)), int(height ** uniform(0.85, 0.95))),
+        resample=Image.BILINEAR,
+    )
+    img = img.resize(
+        (int(width ** uniform(0.89, 0.98)), int(height ** uniform(0.89, 0.98))),
+        resample=Image.BICUBIC,
+    )
     img = img.resize((width, height), resample=Image.BICUBIC)
     img = ImageOps.posterize(img, randint(3, 7))
 
@@ -114,9 +123,17 @@ async def check_media(reply_message):
         if reply_message.photo:
             data = reply_message.photo
         elif reply_message.document:
-            if DocumentAttributeFilename(file_name='AnimatedSticker.tgs') in reply_message.media.document.attributes:
+            if (
+                DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
+                in reply_message.media.document.attributes
+            ):
                 return False
-            if reply_message.gif or reply_message.video or reply_message.audio or reply_message.voice:
+            if (
+                reply_message.gif
+                or reply_message.video
+                or reply_message.audio
+                or reply_message.voice
+            ):
                 return False
             data = reply_message.media.document
         else:

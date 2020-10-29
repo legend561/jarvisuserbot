@@ -4,21 +4,19 @@ Syntax: .eval PythonCode"""
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from telethon import events, errors, functions, types
-import inspect
-import traceback
-import asyncio
-import sys
 import io
-from jarvis.utils import admin_cmd
+import sys
+import traceback
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="eval", outgoing=True))
-@jarvis.on(admin_cmd(pattern="eval", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.reply("Processing ...")
+    await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -62,16 +60,13 @@ async def _(event):
                 force_document=True,
                 allow_cache=False,
                 caption=cmd,
-                reply_to=reply_to_id
+                reply_to=reply_to_id,
             )
             await event.delete()
     else:
-        await event.reply(final_output)
+        await event.edit(final_output)
 
 
 async def aexec(code, event):
-    exec(
-        f'async def __aexec(event): ' +
-        ''.join(f'\n {l}' for l in code.split('\n'))
-    )
-    return await locals()['__aexec'](event)
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    return await locals()["__aexec"](event)

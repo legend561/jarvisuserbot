@@ -3,26 +3,23 @@ Available Commands:
 .go <query> credits to owner of bot
 """
 
-import asyncio
-import os
 from re import findall
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
-from requests import get
-from urllib.parse import quote_plus
-from urllib.error import HTTPError
-from google_images_download import google_images_download
-from gsearch.googlesearch import search
-from jarvis.utils import admin_cmd
+
 from search_engine_parser import GoogleSearch
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 def progress(current, total):
-    logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
+    logger.info(
+        "Downloaded {} of {}\nCompleted {}".format(
+            current, total, (current / total) * 100
+        )
+    )
 
 
-@jarvis.on(admin_cmd("go (.*)"))
+@jarvis.on(admin_cmd("go (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("go (.*)", allow_sudo=True))
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)
@@ -45,6 +42,8 @@ async def gsearch(q_event):
             msg += f"[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
-    await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" +
-                       msg,
-                       link_preview=False)
+    await edit_or_reply(
+        q_event,
+        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg,
+        link_preview=False,
+    )

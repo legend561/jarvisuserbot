@@ -1,20 +1,13 @@
-from telethon import events
-
 import asyncio
-
+import os
+import time
 import zipfile
 
-from pySmartDL import SmartDL
+from jarvis.utils import admin_cmd
 
-import time
-
-import os
-
-from jarvis.utils import admin_cmd, humanbytes, progress, time_formatter
 
 @jarvis.on(admin_cmd(pattern="compress ?(.*)"))
-@jarvis.on(admin_cmd(pattern="compress ?(.*)",allow_sudo=True))
-
+@jarvis.on(admin_cmd(pattern="compress ?(.*)", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
@@ -35,38 +28,27 @@ async def _(event):
 
         try:
 
-            c_time = time.time()
+            time.time()
 
             downloaded_file_name = await borg.download_media(
-
-                reply_message,
-
-                Config.TMP_DOWNLOAD_DIRECTORY
-
-                
-
+                reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
 
             directory_name = downloaded_file_name
 
             await event.reply("Finish downloading to my local")
 
-            zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
+            zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
+                directory_name
+            )
 
             await borg.send_file(
-
                 event.chat_id,
-
                 directory_name + ".zip",
-
                 caption="Zipped By [JARVIS](https://t.me/JarvisOT)",
-
                 force_document=True,
-
                 allow_cache=False,
-
                 reply_to=event.message.id,
-
             )
 
             try:
@@ -77,7 +59,7 @@ async def _(event):
 
             except:
 
-                    pass
+                pass
 
             await event.reply("task Completed")
 
@@ -93,6 +75,10 @@ async def _(event):
 
         directory_name = input_str
 
-        zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
+        zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
+            directory_name
+        )
 
-        await event.reply("Local file compressed to `{}`".format(directory_name + ".zip"))
+        await event.reply(
+            "Local file compressed to `{}`".format(directory_name + ".zip")
+        )

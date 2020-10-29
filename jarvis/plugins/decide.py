@@ -1,11 +1,12 @@
 """Quickly make a decision
 Syntax: .decide"""
-from telethon import events
 import requests
-from jarvis.utils import admin_cmd
+
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd("decide"))
+@jarvis.on(admin_cmd("decide", outgoing=True))
+@jarvis.on(sudo_cmd("decide", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -14,9 +15,6 @@ async def _(event):
         message_id = event.reply_to_msg_id
     r = requests.get("https://yesno.wtf/api").json()
     await borg.send_message(
-        event.chat_id,
-        r["answer"],
-        reply_to=message_id,
-        file=r["image"]
+        event.chat_id, r["answer"], reply_to=message_id, file=r["image"]
     )
     await event.delete()

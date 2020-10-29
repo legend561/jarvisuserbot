@@ -2,23 +2,25 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from telethon import events
 from telethon.tl.functions.messages import SaveDraftRequest
-from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="chain"))
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+
+@jarvis.on(admin_cmd(pattern="chain", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="chain", allow_sudo=True))
 async def _(event):
-    await event.edit("Counting...")
+    await edit_or_reply(event, "Counting...")
     count = -1
     message = event.message
     while message:
         reply = await message.get_reply_message()
         if reply is None:
-            await borg(SaveDraftRequest(
-                await event.get_input_chat(),
-                "",
-                reply_to_msg_id=message.id
-            ))
+            await borg(
+                SaveDraftRequest(
+                    await event.get_input_chat(), "", reply_to_msg_id=message.id
+                )
+            )
         message = reply
         count += 1
     await event.edit(f"Chain length: {count}")

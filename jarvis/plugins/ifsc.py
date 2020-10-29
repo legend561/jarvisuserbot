@@ -1,12 +1,14 @@
 """Query Indian Financial System Code to get address of the relevant bank or branch
 Syntax: .ifsc rp <IFSC CODE>"""
-from telethon import events
-import requests
 import json
-from jarvis.utils import admin_cmd
+
+import requests
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="ifsc(.*)"))
+@jarvis.on(admin_cmd(pattern="ifsc(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="ifsc(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -17,6 +19,6 @@ async def _(event):
         b = r.json()
         a = json.dumps(b, sort_keys=True, indent=4)
         # https://stackoverflow.com/a/9105132/4723940
-        await event.edit(str(a))
+        await edit_or_reply(event, str(a))
     else:
-        await event.edit("`{}`: {}".format(input_str, r.text))
+        await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))

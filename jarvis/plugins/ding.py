@@ -4,16 +4,14 @@ Available Commands:
 
 .ding"""
 
-from telethon import events
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-
-@jarvis.on(admin_cmd(pattern=r"ding"))
-
+@jarvis.on(admin_cmd(pattern=r"ding", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"ding", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
@@ -24,26 +22,24 @@ async def _(event):
 
     animation_ttl = range(0, 10)
 
-    #input_str = event.pattern_match.group(1)
+    # input_str = event.pattern_match.group(1)
 
-    #if input_str == "ding":
+    # if input_str == "ding":
 
-    await event.edit("dong")
+    await edit_or_reply(event, "dong")
 
     animation_chars = [
-        
-            "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-            "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
-            "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
-            "⬜⬜⬛⬜⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬜🔴",
-            "⬜⬜⬛⬛🔴\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",    
-            "⬜⬜⬛⬜⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬜🔴",
-            "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
-            "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
-            "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜  [JARVIS IS BEST](https://www.jarvisworks.ga) ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜"
-
- ]
+        "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
+        "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
+        "⬜⬜⬛⬜⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬜🔴",
+        "⬜⬜⬛⬛🔴\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬜⬜⬛⬜⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬜🔴",
+        "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
+        "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
+        "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜  [JARVIS IS BEST](https://www.jarvisworks.ga/userbot) ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜",
+    ]
 
     for i in animation_ttl:
 

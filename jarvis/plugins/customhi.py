@@ -1,6 +1,8 @@
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)"))
+
+@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"hhi ?(.*)", allow_sudo=True))
 async def hhi(event):
     giveVar = event.text
     cat = giveVar[5:6]
@@ -9,6 +11,7 @@ async def hhi(event):
     ct = giveVar[7:8]
     if not ct:
         ct = "✨"
-    await event.edit(
-        f"{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{cat}{cat}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n☁☁☁☁☁☁☁☁"
+    await edit_or_reply(
+        event,
+        f"{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{cat}{cat}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n☁☁☁☁☁☁☁☁",
     )

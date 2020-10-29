@@ -5,55 +5,59 @@ usage:- .commit reply_to_any_plugin //can be any type of file too. but for plugi
 """
 
 
-from github import Github
-import aiohttp
-import asyncio
 import os
 import time
 from datetime import datetime
-from telethon import events
-from telethon.tl.types import DocumentAttributeVideo
-from jarvis.utils import admin_cmd, progress
+
+from github import Github
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 GIT_TEMP_DIR = "./jarvis/temp/"
+
+
 @jarvis.on(admin_cmd(pattern="commit", outgoing=True))
-@jarvis.on(admin_cmd(pattern="commit", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="commit", allow_sudo=True))
 async def download(event):
     if event.fwd_from:
-        return	
+        return
     if Var.GITHUB_ACCESS_TOKEN is None:
-        await event.reply("`Please ADD Proper Access Token from github.com`") 
-        return   
+        await edit_or_reply(event, "`Please ADD Proper Access Token from github.com`")
+        return
     if Var.GIT_REPO_NAME is None:
-        await event.reply("`Please ADD Proper Github Repo Name of your userbot`")
-        return 
-    mone = await event.reply("Processing ...")
+        await edit_or_reply(
+            event, "`Please ADD Proper Github Repo Name of your userbot`"
+        )
+        return
+    mone = await edit_or_reply(event, "Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.now()
     reply_message = await event.get_reply_message()
     try:
-        c_time = time.time()
+        time.time()
         print("Downloading to TEMP directory")
         downloaded_file_name = await bot.download_media(
-                reply_message.media,
-                GIT_TEMP_DIR
-            )
-    except Exception as e: 
+            reply_message.media, GIT_TEMP_DIR
+        )
+    except Exception as e:
         await mone.edit(str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await mone.reply("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
-        await mone.reply("Committing to Github....")
+        await mone.edit(
+            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+        )
+        await mone.edit("Committing to Github....")
         await git_commit(downloaded_file_name, mone)
 
-async def git_commit(file_name,mone):        
+
+async def git_commit(file_name, mone):
     content_list = []
     access_token = Var.GITHUB_ACCESS_TOKEN
     g = Github(access_token)
-    file = open(file_name,"r",encoding='utf-8')
+    file = open(file_name, "r", encoding="utf-8")
     commit_data = file.read()
     repo = g.get_repo(Var.GIT_REPO_NAME)
     print(repo.name)
@@ -64,21 +68,26 @@ async def git_commit(file_name,mone):
         print(content_file)
     for i in content_list:
         create_file = True
-        if i == 'ContentFile(path="'+file_name+'")':
-            return await mone.reply("`File Already Exists`")
+        if i == 'ContentFile(path="' + file_name + '")':
+            return await edit_or_reply(mone, "`File Already Exists`")
             create_file = False
-    file_name = "jarvis/plugins/" + file_name		
+    file_name = "jarvis/plugins/" + file_name
     if create_file == True:
-        file_name = file_name.replace("./jarvis/temp/","")
+        file_name = file_name.replace("./jarvis/temp/", "")
         print(file_name)
         try:
-            repo.create_file(file_name, "Uploaded New Plugin", commit_data, branch="master")
+            repo.create_file(
+                file_name, "Uploaded New Plugin", commit_data, branch="master"
+            )
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
-            await mone.reply(f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/stable/jarvis/plugins/)")
-        except:    
+            await edit_or_reply(
+                mone,
+                f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/jarvis/plugins/)",
+            )
+        except:
             print("Cannot Create Plugin")
-            await mone.reply("Cannot Upload Plugin")
+            await mone.edit("Cannot Upload Plugin")
     else:
-        return await mone.reply("`Committed Suicide`")
+        return await edit_or_reply(mone, "`Committed Suicide`")

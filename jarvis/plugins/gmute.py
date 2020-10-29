@@ -1,45 +1,51 @@
-'''
+"""
 ThankYou @pureindialover
 added speciality for sudos if u kang give me credits
-'''
-from jarvis.plugins.sql_helper.mute_sql import is_muted, mute, unmute
+"""
 import asyncio
-from jarvis.utils import admin_cmd
-from telethon import events
-#@command(outgoing=True, pattern=r"^.gmute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
-@jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?", allow_sudo=True))
+
+from jarvis.plugins.sql_helper.mute_sql import is_muted, mute, unmute
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+
+# @command(outgoing=True, pattern=r"^.gmute ?(\d+)?")
+@jarvis.on(admin_cmd(pattern=r"gmute ?(\d+)?", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"gmute ?(\d+)?", allow_sudo=True))
 async def startgmute(event):
     private = False
     if event.fwd_from:
         return
     reply = await event.get_reply_message()
     user_id = reply.from_id
-    if user_id == (await borg.get_me()).id:	
-        await event.reply(r"LoL. Why would I Gmute u. You are my owner")	
-        return	
-    if user_id in Config.SUDO_USERS:	
-        await event.reply(	
-            "**He has more power than me.**\nPerhaps I can't gmute him.\n\n"	
-            "**Tip:** He iz a sudo user.")	
+    if user_id == (await borg.get_me()).id:
+        await event.reply(r"LoL. Why would I Gmute u. You are my owner")
         return
-    if user_id in Config.WHITELIST_USERS:	
-        await event.reply(	
-            "**He has more immunity.**\nPerhaps I can't gmute him.\n\n"	
-            "**Tip:** He iz a Whitelist user.")	
+    if user_id in Config.SUDO_USERS:
+        await event.reply(
+            "**He has more power than me.**\nPerhaps I can't gmute him.\n\n"
+            "**Tip:** He iz a sudo user."
+        )
         return
-    if user_id in Config.SUPPORT_USERS:	
-        await event.reply(	
-            "**He has more connections.**\nPerhaps I can't gmute him.\n\n"	
-            "**Tip:** He iz a SUPPORT user.")	
+    if user_id in Config.WHITELIST_USERS:
+        await event.reply(
+            "**He has more immunity.**\nPerhaps I can't gmute him.\n\n"
+            "**Tip:** He iz a Whitelist user."
+        )
         return
-    if user_id in Config.DEVLOPERS:	
-        await event.reply(	
-            "**He my maintainer.**\nPerhaps I can't gmute him.\n\n"	
-            "**Tip:** He iz a devloper.")	
+    if user_id in Config.SUPPORT_USERS:
+        await event.reply(
+            "**He has more connections.**\nPerhaps I can't gmute him.\n\n"
+            "**Tip:** He iz a SUPPORT user."
+        )
+        return
+    if user_id in Config.DEVLOPERS:
+        await event.reply(
+            "**He my maintainer.**\nPerhaps I can't gmute him.\n\n"
+            "**Tip:** He iz a devloper."
+        )
         return
     elif event.is_private:
-        await event.reply("Putting Duct Tape on that person's mouth!")
+        await edit_or_reply(event, "Putting Duct Tape on that person's mouth!")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -50,27 +56,34 @@ async def startgmute(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await event.edit("Please reply to a user or add their into the command to gmute them.")
-    chat_id = event.chat_id
-    chat = await event.get_chat()
+        return await event.edit(
+            "Please reply to a user or add their into the command to gmute them."
+        )
+    event.chat_id
+    await event.get_chat()
     if is_muted(userid, "gmute"):
-        return await event.reply("Duct Tape is already availabe on this user's mouth")
+        return await edit_or_reply(
+            event, "Duct Tape is already availabe on this user's mouth"
+        )
     try:
         mute(userid, "gmute")
     except Exception as e:
-        await event.reply("Error occured!\nError is " + str(e))
+        await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await event.reply("Successfully putted Duct Tape on that person's mouth")
+        await edit_or_reply(
+            event, "Successfully putted Duct Tape on that person's mouth"
+        )
 
-#@command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
-@jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
-@jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?", allow_sudo=True))
+
+# @command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
+@jarvis.on(admin_cmd(pattern=r"ungmute ?(\d+)?", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"ungmute ?(\d+)?", allow_sudo=True))
 async def endgmute(event):
     private = False
     if event.fwd_from:
         return
     elif event.is_private:
-        await event.reply("Removed Duct Tape from that person's mouth!")
+        await edit_or_reply(event, "Removed Duct Tape from that person's mouth!")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -81,17 +94,23 @@ async def endgmute(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await event.reply("Please reply to a user or add their into the command to ungmute them.")
-    chat_id = event.chat_id
+        return await edit_or_reply(
+            event,
+            "Please reply to a user or add their into the command to ungmute them.",
+        )
+    event.chat_id
     if not is_muted(userid, "gmute"):
-        return await event.edit("Duct Tape is not on this user's mouth")
+        return await edit_or_reply(event, "Duct Tape is not on this user's mouth")
     try:
         unmute(userid, "gmute")
     except Exception as e:
-        await event.reply("Error occured!\nError is " + str(e))
+        await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await event.reply("Successfully Removed Duct Tape from that person's mouth")
-        
+        await edit_or_reply(
+            event, "Successfully Removed Duct Tape from that person's mouth"
+        )
+
+
 @command(incoming=True)
 async def watcher(event):
     if is_muted(event.sender_id, "gmute"):

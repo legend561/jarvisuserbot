@@ -1,8 +1,8 @@
 try:
-    from jarvis.plugins.sql_helper import SESSION, BASE
+    from jarvis.plugins.sql_helper import BASE, SESSION
 except ImportError:
     raise AttributeError
-from sqlalchemy import Column, String, UnicodeText, Boolean, Integer, distinct, func
+from sqlalchemy import Column, String
 
 
 class GBan(BASE):
@@ -15,11 +15,13 @@ class GBan(BASE):
 
 GBan.__table__.create(checkfirst=True)
 
+
 def get_gban():
     try:
         return SESSION.query(GBan)
     finally:
         SESSION.close()
+
 
 def is_gban(chat_id):
     try:

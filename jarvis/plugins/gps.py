@@ -1,11 +1,13 @@
-#Credits :- Catuserbot Made By @Sandy1709
+# Credits :- Catuserbot Made By @Sandy1709
 from geopy.geocoders import Nominatim
-from jarvis.utils import admin_cmd
 from telethon.tl import types
-from jarvis import CMD_HELP 
+
+from jarvis import CMD_HELP
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="gps ?(.*)"))
+@jarvis.on(admin_cmd(pattern="gps ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="gps ?(.*)", allow_sudo=True))
 async def gps(event):
     if event.fwd_from:
         return
@@ -15,30 +17,28 @@ async def gps(event):
     input_str = event.pattern_match.group(1)
 
     if not input_str:
-        return await event.edit("Boss ! Give A Place To Search 😔 !.")
+        return await edit_or_reply(event, "Boss ! Give A Place To Search 😔 !.")
 
-    await event.edit("Finding This Location In Maps Server.....")
+    await edit_or_reply(event, "Finding This Location In Maps Server.....")
 
-    geolocator = Nominatim(user_agent="JARVIS USERBOT")
+    geolocator = Nominatim(user_agent="ios")
     geoloc = geolocator.geocode(input_str)
 
     if geoloc:
         lon = geoloc.longitude
         lat = geoloc.latitude
         await reply_to_id.reply(
-            input_str,
-            file=types.InputMediaGeoPoint(
-                types.InputGeoPoint(
-                    lat, lon
-                )
-            )
+            input_str, file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon))
         )
         await event.delete()
     else:
-        await event.edit("i coudn't find it")
+        await edit_or_reply(event, "I Coudn't Find it")
 
 
-CMD_HELP.update({"gps": "`.gps` <location name> :\
+CMD_HELP.update(
+    {
+        "gps": "`.gps` <location name> :\
       \nUSAGE: Sends you the given location name\
       "
-})
+    }
+)

@@ -1,11 +1,11 @@
 """.admin Plugin for @UniBorg"""
-import asyncio
-from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+
+from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="admins"))
+@jarvis.on(sudo_cmd(pattern="admins"))
 async def _(event):
     if event.fwd_from:
         return

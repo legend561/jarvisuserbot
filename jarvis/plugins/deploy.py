@@ -4,19 +4,17 @@ Available Commands:
 
 .deploy"""
 
-from telethon import events
 
 import asyncio
 
-from uniborg.util import admin_cmd
+from jarvis import ALIVE_NAME
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from jarvis import AUTONAME
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "jarvis"
 
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
-
-@jarvis.on(admin_cmd(pattern=r"deploy"))
-
+@jarvis.on(admin_cmd(pattern=r"deploy", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"deploy", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
@@ -27,31 +25,27 @@ async def _(event):
 
     animation_ttl = range(0, 12)
 
-   # input_str = event.pattern_match.group(1)
+    # input_str = event.pattern_match.group(1)
 
-
-
-    await event.edit("Deploying...")
+    await edit_or_reply(event, "Deploying...")
 
     animation_chars = [
-        
-            "**Heroku Connecting To Latest Github Build (StarkGang/FridayUserbot)**",
-            "**Build started by user** **{DEFAULTUSER}**",
-            "**Deploy** `535a74f0` **by user** **{DEFAULTUSER}**",
-            "**Restarting Heroku Server...**",
-            "**State changed from up to starting**",    
-            "**Stopping all processes with SIGTERM**",
-            "**Process exited with** `status 143`",
-            "**Starting process with command** `python3 -m stdborg`",
-            "**State changed from starting to up**",
-            "__INFO:Friday:Logged in as 557667062__",
-            "__INFO:Friday:Successfully loaded all plugins__",
-            "**Build Succeeded**"
-
- ]
+        "**Heroku Connecting To Latest Github Build (Jarvis-Works/JarvisUserbot)**",
+        "**Build started by user** **{DEFAULTUSER}**",
+        "**Deploy** `535a74f0` **by user** **{DEFAULTUSER}**",
+        "**Restarting Heroku Server...**",
+        "**State changed from up to starting**",
+        "**Stopping all processes with SIGTERM**",
+        "**Process exited with** `status 143`",
+        "**Starting process with command** `python3 -m jarvis`",
+        "**State changed from starting to up**",
+        "__INFO:Jarvis:Logged in as 557667062__",
+        "__INFO:Jarvis:Successfully loaded all plugins__",
+        "**Build Succeeded**",
+    ]
 
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 12])
+        await edit_or_reply(event, animation_chars[i % 12])
