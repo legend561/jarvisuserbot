@@ -20,8 +20,7 @@ from jarvis import (
     bot,
     lastfm,
 )
-from jarvis.events import register
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 # =================== CONSTANT ===================
 LFM_BIO_ENABLED = "```last.fm current music to bio is now enabled.```"
@@ -51,11 +50,11 @@ LastLog = False
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="lastfm$"))
-@jarvis.on(sudo_cmd(allow_sudo=True,pattern="lastfm$"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="lastfm$"))
 async def last_fm(lastFM):
     """ For .lastfm command, fetch scrobble data from last.fm. """
     if not lastFM.text[0].isalpha() and lastFM.text[0] not in ("/", "#", "@", "!"):
-        await edit_or_reply(lastFM,"Processing...")
+        await edit_or_reply(lastFM, "Processing...")
         preview = None
         playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
         username = f"https://www.last.fm/user/{LASTFM_USERNAME}"
@@ -185,7 +184,7 @@ async def get_curr_track(lfmbio):
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"lastbio (\S*)"))
-@jarvis.on(sudo_cmd(allow_sudo=True,pattern=r"lastbio (\S*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"lastbio (\S*)"))
 async def lastbio(lfmbio):
     if not lfmbio.text[0].isalpha() and lfmbio.text[0] not in ("/", "#", "@", "!"):
         arg = lfmbio.pattern_match.group(1)
@@ -196,22 +195,22 @@ async def lastbio(lfmbio):
             if not LASTFMCHECK:
                 LASTFMCHECK = True
                 environ["errorcheck"] = "0"
-                await edit_or_reply(lfmbio,LFM_BIO_ENABLED)
+                await edit_or_reply(lfmbio, LFM_BIO_ENABLED)
                 await sleep(4)
                 await get_curr_track(lfmbio)
             else:
-                await edit_or_reply(lfmbio,LFM_BIO_RUNNING)
+                await edit_or_reply(lfmbio, LFM_BIO_RUNNING)
         elif arg == "off":
             LASTFMCHECK = False
             RUNNING = False
             await bot(UpdateProfileRequest(about=DEFAULT_BIO))
-            await edit_or_reply(lfmbio,LFM_BIO_DISABLED)
+            await edit_or_reply(lfmbio, LFM_BIO_DISABLED)
         else:
-            await edit_or_reply(lfmbio,LFM_BIO_ERR)
+            await edit_or_reply(lfmbio, LFM_BIO_ERR)
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"lastlog (\S*)"))
-@jarvis.on(sudo_cmd(allow_sudo=True,pattern=r"lastlog (\S*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"lastlog (\S*)"))
 async def lastlog(lstlog):
     if not lstlog.text[0].isalpha() and lstlog.text[0] not in ("/", "#", "@", "!"):
         arg = lstlog.pattern_match.group(1)
@@ -219,12 +218,12 @@ async def lastlog(lstlog):
         LastLog = False
         if arg == "on":
             LastLog = True
-            await edit_or_reply(lstlog,LFM_LOG_ENABLED)
+            await edit_or_reply(lstlog, LFM_LOG_ENABLED)
         elif arg == "off":
             LastLog = False
-            await edit_or_reply(lstlog,LFM_LOG_DISABLED)
+            await edit_or_reply(lstlog, LFM_LOG_DISABLED)
         else:
-            await edit_or_reply(lstlog,LFM_LOG_ERR)
+            await edit_or_reply(lstlog, LFM_LOG_ERR)
 
 
 CMD_HELP.update(
