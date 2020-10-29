@@ -11,12 +11,13 @@ import re
 import bs4
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 langi = "en"
 
 # kanged from Blank-x ;---;
 @jarvis.on(admin_cmd("imdb (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("imdb (.*)",allow_sudo=True))
 async def imdb(e):
     try:
         movie_name = e.pattern_match.group(1)
@@ -84,7 +85,7 @@ async def imdb(e):
                 mov_rating = r.strong["title"]
         else:
             mov_rating = "Not available"
-        await e.edit(
+        await edit_or_reply(e,
             "<a href=" + poster + ">&#8203;</a>"
             "<b>Title : </b><code>"
             + mov_title
@@ -110,4 +111,4 @@ async def imdb(e):
             parse_mode="HTML",
         )
     except IndexError:
-        await e.edit("Plox enter **Valid movie name** kthx")
+        await edit_or_reply(e,"Plox enter **Valid movie name** kthx")
