@@ -1,9 +1,9 @@
 Pillow>=5.3.0
 PyGithub
 aiofiles
-aiohttp
+aiohttp>=3.6.2
 async_generator
-beautifulsoup4
+beautifulsoup4>=4.9.1
 bs4
 bwb==3.0.0
 cfscrape
@@ -25,7 +25,7 @@ hachoir
 heroku3
 httplib2
 humanize
-lxml
+lxml>=4.5.2
 lyricsgenius
 oauth2client
 PyLyrics
