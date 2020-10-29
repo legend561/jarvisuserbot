@@ -3,7 +3,9 @@ import asyncio
 import coffeehouse
 from coffeehouse.lydia import LydiaAI
 from telethon import events
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 # Non-SQL Mode
 ACC_LYDIA = {}
 SESSION_ID = {}
@@ -15,28 +17,28 @@ if Var.LYDIA_API_KEY:
 
 
 @jarvis.on(admin_cmd(pattern="repcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="repcf",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="repcf", allow_sudo=True))
 async def repcf(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event,"Processing...")
+    await edit_or_reply(event, "Processing...")
     try:
         session = Lydia.create_session()
         session_id = session.id
         reply = await event.get_reply_message()
         msg = reply.text
         text_rep = session.think_thought((session_id, msg))
-        await edit_or_reply(event," {0}".format(text_rep))
+        await edit_or_reply(event, " {0}".format(text_rep))
     except Exception as e:
-        await edit_or_reply(event,str(e))
+        await edit_or_reply(event, str(e))
 
 
 @jarvis.on(admin_cmd(pattern="addcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="addcf",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="addcf", allow_sudo=True))
 async def addcf(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event,"Running on NON-SQL mode for now...")
+    await edit_or_reply(event, "Running on NON-SQL mode for now...")
     await asyncio.sleep(3)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
@@ -57,11 +59,11 @@ async def addcf(event):
 
 
 @jarvis.on(admin_cmd(pattern="remcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="remcf",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="remcf", allow_sudo=True))
 async def remcf(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event,"Running on NON-SQL mode for now...")
+    await edit_or_reply(event, "Running on NON-SQL mode for now...")
     await asyncio.sleep(3)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
