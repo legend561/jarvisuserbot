@@ -7,17 +7,18 @@ cmd: .lol
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern=r"lol"))
+@jarvis.on(admin_cmd(pattern=r"lol", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"lol",allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    await event.edit("Typing...")
+    await edit_or_reply(event,"Typing...")
 
     await asyncio.sleep(2)
 
