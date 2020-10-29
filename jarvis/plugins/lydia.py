@@ -3,7 +3,7 @@ import asyncio
 import coffeehouse
 from coffeehouse.lydia import LydiaAI
 from telethon import events
-
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 # Non-SQL Mode
 ACC_LYDIA = {}
 SESSION_ID = {}
@@ -14,27 +14,29 @@ if Var.LYDIA_API_KEY:
     Lydia = LydiaAI(api_client)
 
 
-@command(pattern="^.repcf", outgoing=True)
+@jarvis.on(admin_cmd(pattern="repcf", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="repcf",allow_sudo=True))
 async def repcf(event):
     if event.fwd_from:
         return
-    await event.edit("Processing...")
+    await edit_or_reply(event,"Processing...")
     try:
         session = Lydia.create_session()
         session_id = session.id
         reply = await event.get_reply_message()
         msg = reply.text
         text_rep = session.think_thought((session_id, msg))
-        await event.edit(" {0}".format(text_rep))
+        await edit_or_reply(event," {0}".format(text_rep))
     except Exception as e:
-        await event.edit(str(e))
+        await edit_or_reply(event,str(e))
 
 
-@command(pattern="^.addcf", outgoing=True)
+@jarvis.on(admin_cmd(pattern="addcf", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="addcf",allow_sudo=True))
 async def addcf(event):
     if event.fwd_from:
         return
-    await event.edit("Running on NON-SQL mode for now...")
+    await edit_or_reply(event,"Running on NON-SQL mode for now...")
     await asyncio.sleep(3)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
@@ -46,7 +48,7 @@ async def addcf(event):
             {str(event.chat_id) + " " + str(reply_msg.from_id): session_id}
         )
         await event.edit(
-            "JARVIS CHATBOT successfully enabled for user: {} in chat: {}".format(
+            "Lydia Activated successfully enabled for user: {} in chat: {}".format(
                 str(reply_msg.from_id), str(event.chat_id)
             )
         )
@@ -54,11 +56,12 @@ async def addcf(event):
         await event.edit("Reply to a user to activate JARVIS AI on them")
 
 
-@command(pattern="^.remcf", outgoing=True)
+@jarvis.on(admin_cmd(pattern="remcf", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="remcf",allow_sudo=True))
 async def remcf(event):
     if event.fwd_from:
         return
-    await event.edit("Running on NON-SQL mode for now...")
+    await edit_or_reply(event,"Running on NON-SQL mode for now...")
     await asyncio.sleep(3)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
@@ -66,12 +69,12 @@ async def remcf(event):
         del ACC_LYDIA[str(event.chat_id) + " " + str(reply_msg.from_id)]
         del SESSION_ID[str(event.chat_id) + " " + str(reply_msg.from_id)]
         await event.edit(
-            "JARVIS CHATBOT successfully disabled for user: {} in chat: {}".format(
+            "Lydia successfully disabled for user: {} in chat: {}".format(
                 str(reply_msg.from_id), str(event.chat_id)
             )
         )
     except KeyError:
-        await event.edit("This person does not have JARVIS activated on him/her.")
+        await event.edit("This person does not have Lydia activated on him/her.")
 
 
 @bot.on(events.NewMessage(incoming=True))
