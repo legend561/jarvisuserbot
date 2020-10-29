@@ -7,15 +7,15 @@ by
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern=f"tip", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=f"tip",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=f"tip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event,"Well, let me give you a life-pro tip... 😉")
+    await edit_or_reply(event, "Well, let me give you a life-pro tip... 😉")
     await asyncio.sleep(2)
     x = random.randrange(1, 87)
     if x == 1:
