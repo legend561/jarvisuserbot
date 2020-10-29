@@ -4,10 +4,11 @@ import json
 
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="ifsc(.*)"))
+@jarvis.on(admin_cmd(pattern="ifsc(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="ifsc(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -18,6 +19,6 @@ async def _(event):
         b = r.json()
         a = json.dumps(b, sort_keys=True, indent=4)
         # https://stackoverflow.com/a/9105132/4723940
-        await event.edit(str(a))
+        await edit_or_reply(event,str(a))
     else:
-        await event.edit("`{}`: {}".format(input_str, r.text))
+        await edit_or_reply(event,"`{}`: {}".format(input_str, r.text))
