@@ -21,7 +21,7 @@ async def _(event):
     # await event.edit("Restarting [███]...\n`.ping` me or `.helpme` to check if I am online")
     # await asyncio.sleep(2)
     await event.edit(
-        "Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online"
+        f"Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online"
     )
     await borg.disconnect()
     # https://archive.is/im3rt
