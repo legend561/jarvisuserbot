@@ -8,11 +8,12 @@ Available Commands:
 import os
 import sys
 
-from jarvis.utils import admin_cmd,sudo_cmd,edit_or_reply
 from jarvis import CMD_HNDLR
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 
 @jarvis.on(admin_cmd(pattern="restart", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="restart",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="restart", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -21,8 +22,9 @@ async def _(event):
     # await asyncio.sleep(2)
     # await event.edit("Restarting [███]...\n`.ping` me or `.helpme` to check if I am online")
     # await asyncio.sleep(2)
-    await edit_or_reply(event,
-        f"Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online"
+    await edit_or_reply(
+        event,
+        f"Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online",
     )
     await borg.disconnect()
     # https://archive.is/im3rt
@@ -32,9 +34,9 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern="shutdown", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="shutdown",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="shutdown", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event,"Turning off ...Manually turn me on later")
+    await edit_or_reply(event, "Turning off ...Manually turn me on later")
     await borg.disconnect()
