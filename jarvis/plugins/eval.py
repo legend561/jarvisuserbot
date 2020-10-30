@@ -62,9 +62,9 @@ async def _(event):
                 caption=cmd,
                 reply_to=reply_to_id,
             )
-            await event.delete()
     else:
         await event.edit(final_output)
+    await event.delete()
 
 
 async def aexec(code, event):
