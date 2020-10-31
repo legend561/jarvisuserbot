@@ -3,10 +3,10 @@ Syntax: .meaning <word>"""
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd,sudo_cmd(pattern="meaning (.*)", allow_sudo=True, outgoing=True))
+@jarvis.on(admin_cmd, sudo_cmd(pattern="meaning (.*)", allow_sudo=True, outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -43,4 +43,4 @@ async def _(event):
         )
     except:
         pass
-    await edit_or_reply(event,caption_str)
+    await edit_or_reply(event, caption_str)
