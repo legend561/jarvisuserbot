@@ -1,7 +1,7 @@
 {
   "name": "JARVIS",
   "description": "Userbot created by a Poor Student and join https://t.me/jarvissupportot for any problems or support",
-  "logo": "https://github.com/jarvis210904/J.A.R.V.I.S-Userbot/blob/master/jarvis.png?raw=true",
+  "logo": "https://github.com/Jarvis-Works/JarvisUserbot/blob/master/jarvis.png?raw=true",
     "keywords": [
     "telegram",
     "userbot",
@@ -9,8 +9,8 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://www.jarvisuserbot.ga/userbot",
-  "website": "#TODO",
+  "repository": "https://github.com/Jarvis-Works/JarvisUserbot/",
+  "website": "https://jarvisworks.ga/userbot",
   "success_url": "#TODO",
   "stack": "container",
   "env": {
@@ -24,8 +24,9 @@
       "required": false
     },
     "CMD_HNDLR": {
-      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol ",
-      "value" : ""
+      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol  ",
+
+      "value" : "."
     },
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
@@ -136,7 +137,7 @@
       "required": false
     },
     "SUDO_HNDLR": {
-      "description": "Set Ur Handlr For Later Purposes",
+      "description": "Set Ur Handlr For Sudo User",
       "value": "!"
     },
     "PRIVATE_CHANNEL_BOT_API_ID": {
