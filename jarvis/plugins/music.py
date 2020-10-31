@@ -5,9 +5,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import CMD_HELP, bot
-
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
-from jarvis.events import register
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 try:
     pass
@@ -30,7 +28,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     chat = "@SpotifyMusicDownloaderBot"
-    await edit_or_reply(event,"```Getting Your Music```")
+    await edit_or_reply(event, "```Getting Your Music```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await event.edit("`Downloading music taking some times,  Stay Tuned.....`")
@@ -57,7 +55,7 @@ async def WooMai(netase):
     song = netase.pattern_match.group(1)
     chat = "@WooMaiBot"
     link = f"/netease {song}"
-    await edit_or_reply(netase,"```Getting Your Music```")
+    await edit_or_reply(netase, "```Getting Your Music```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await netase.edit("`Downloading...Please wait`")
@@ -84,9 +82,11 @@ async def DeezLoader(Deezlod):
         return
     d_link = Deezlod.pattern_match.group(1)
     if ".com" not in d_link:
-        await edit_or_reply(Deezlod,"` I need a link to download something pro.`**(._.)**")
+        await edit_or_reply(
+            Deezlod, "` I need a link to download something pro.`**(._.)**"
+        )
     else:
-        await edit_or_reply(Deezlod,"**Initiating Download!**")
+        await edit_or_reply(Deezlod, "**Initiating Download!**")
     chat = "@DeezLoadBot"
     async with bot.conversation(chat) as conv:
         try:
@@ -99,7 +99,9 @@ async def DeezLoader(Deezlod):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await edit_or_reply(Deezlod,"**Error:** `unblock` @DeezLoadBot `and retry!`")
+            await edit_or_reply(
+                Deezlod, "**Error:** `unblock` @DeezLoadBot `and retry!`"
+            )
             return
         await bot.send_file(Deezlod.chat_id, song, caption=details.text)
         await Deezlod.client.delete_messages(
