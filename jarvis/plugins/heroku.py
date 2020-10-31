@@ -41,13 +41,12 @@ async def variable(var):
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await edit_or_reply(
-                    var,
+                return await var.edit(
                     "**ConfigVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n",
                 )
             else:
-                return await edit_or_reply(
-                    var, "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
+                return await var.edit(
+                    "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
                 )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -63,8 +62,7 @@ async def variable(var):
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
-                    await edit_or_reply(
-                        var,
+                    await var.edit(
                         "`[HEROKU]` ConfigVars:\n\n"
                         "================================"
                         f"\n```{result}```\n"
@@ -76,42 +74,32 @@ async def variable(var):
         await edit_or_reply(var, "`Setting information ! Plz Wait ....`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await edit_or_reply(
-                var, ">`{CMD_HNDLR}set var <ConfigVars-name> <value>`"
-            )
+            return await var.edit(">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await edit_or_reply(
-                    var, ">`{CMD_HNDLR}set var <ConfigVars-name> <value>`"
-                )
+                return await var.edit(">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
-                var, f"**{variable}**  `successfully changed to`  ->  **{value}**"
-            )
+            await var.edit(f"**{variable}**  `successfully changed to`  ->  **{value}**")
         else:
-            await edit_or_reply(
-                var, f"**{variable}**  `successfully added with value`  ->  **{value}**"
-            )
+            await var.edit(f"**{variable}**  `successfully added with value`  ->  **{value}**")
         heroku_var[variable] = value
     elif exe == "del":
         await edit_or_reply(var, "`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await edit_or_reply(
-                var, "`Please specify ConfigVars you want to delete`"
-            )
+            return await var.edit("`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(var, f"**{variable}**  `successfully deleted`")
+            await var.edit(f"**{variable}**  `successfully deleted`")
             del heroku_var[variable]
         else:
-            return await edit_or_reply(var, f"**{variable}**  `is not exists`")
+            return await var.edit(f"**{variable}**  `is not exists`")
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"usage(?: |$)"))
