@@ -1,26 +1,27 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd("mask ?(.*)"))
+@jarvis.on(admin_cmd("mask ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("mask ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("```Reply to any user message.```")
+        await edit_or_reply(event,"```Reply to any user message.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("```reply to text message```")
+        await edit_or_reply(event,"```reply to text message```")
         return
     chat = "@hazmat_suit_bot"
     reply_message.sender
     if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
+        await edit_or_reply(event,"```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await edit_or_reply(event,"```Processing```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -29,7 +30,7 @@ async def _(event):
             await borg.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.edit("```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
