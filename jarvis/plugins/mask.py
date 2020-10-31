@@ -1,7 +1,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd("mask ?(.*)", outgoing=True))
@@ -10,18 +10,18 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await edit_or_reply(event,"```Reply to any user message.```")
+        await edit_or_reply(event, "```Reply to any user message.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await edit_or_reply(event,"```reply to text message```")
+        await edit_or_reply(event, "```reply to text message```")
         return
     chat = "@hazmat_suit_bot"
     reply_message.sender
     if reply_message.sender.bot:
-        await edit_or_reply(event,"```Reply to actual users message.```")
+        await edit_or_reply(event, "```Reply to actual users message.```")
         return
-    await edit_or_reply(event,"```Processing```")
+    await edit_or_reply(event, "```Processing```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
