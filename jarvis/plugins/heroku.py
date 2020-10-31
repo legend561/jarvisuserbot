@@ -10,9 +10,8 @@ import os
 import heroku3
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
-
 from jarvis import CMD_HNDLR
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
