@@ -24,7 +24,7 @@
       "required": false
     },
     "CMD_HNDLR": {
-      "description": "Changes The Trigger Of Commands Leave As it is for '.' Or Keep backwardslash yoursymbol  ",
+      "description": "Changes The Trigger Of Commands Leave As it is for '.' ",
 
       "value" : "."
     },
