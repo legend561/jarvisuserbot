@@ -6,7 +6,8 @@ import requests
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd, sudo_cmd(pattern="meaning (.*)", allow_sudo=True, outgoing=True))
+@jarvis.on(admin_cmd(pattern="meaning (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
