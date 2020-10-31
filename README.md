@@ -38,7 +38,9 @@
 
 [![Tutorial_to_deploy](http://img.youtube.com/vi/LJ0zioHgRTg/0.jpg)](http://www.youtube.com/watch?v=LJ0zioHgRTg)
 
-[![]<iframe width="703" height="397" src="https://www.youtube.com/embed/LJ0zioHgRTg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>](https://youtu.be/LJ0zioHgRTg)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LJ0zioHgRTg
+" target="_blank"><img src="http://img.youtube.com/vi/LJ0zioHgRTg/0.jpg" 
+alt="Tutorial_to_deploy" width="703" height="397" border="10" /></a>
 
 ## For any query or want to know how it works join Group And Channel
 [![](https://camo.githubusercontent.com/e531cdc1dbdcb78f8ffe767875a6b6d33c43e2e0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d2532304368616e6e656c2d7265642e7376673f6c6f676f3d54656c656772616d)](https://t.me/jarvisot)
