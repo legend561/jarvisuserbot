@@ -10,8 +10,8 @@
 from random import randint
 from time import sleep
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from jarvis import CMD_HNDLR
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="random"))
@@ -21,12 +21,13 @@ async def randomise(items):
     if not items.text[0].isalpha() and items.text[0] not in ("/", "#", "@", "!"):
         itemo = (items.text[8:]).split()
         index = randint(1, len(itemo) - 1)
-        await edit_or_reply(items,
+        await edit_or_reply(
+            items,
             "**Query: **\n`"
             + items.text[8:]
             + "`\n**Output: **\n`"
             + itemo[index]
-            + "`"
+            + "`",
         )
 
 
@@ -37,10 +38,10 @@ async def sleepybot(time):
     message = time.text
     if not message[0].isalpha() and message[0] not in ("/", "#", "@", "!"):
         if " " not in time.pattern_match.group(1):
-            await edit_or_reply(time,f"Syntax: `{CMD_HNDLR}sleep [seconds]`")
+            await edit_or_reply(time, f"Syntax: `{CMD_HNDLR}sleep [seconds]`")
         else:
             counter = int(time.pattern_match.group(1))
-            await edit_or_reply(time,"`I am sulking and snoozing....`")
+            await edit_or_reply(time, "`I am sulking and snoozing....`")
             sleep(2)
             if LOGGER:
                 await time.client.send_message(
