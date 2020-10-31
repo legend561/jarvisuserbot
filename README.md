@@ -36,6 +36,8 @@
 
 ## Video Tutorial By Infotel
 
+[![Tutorial_to_deploy](http://img.youtube.com/vi/LJ0zioHgRTg/0.jpg)](http://www.youtube.com/watch?v=LJ0zioHgRTg)
+
 [![]<iframe width="703" height="397" src="https://www.youtube.com/embed/LJ0zioHgRTg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>](https://youtu.be/LJ0zioHgRTg)
 
 ## For any query or want to know how it works join Group And Channel
