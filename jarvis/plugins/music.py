@@ -1,7 +1,3 @@
-# Originally from Bothub
-# Port to UserBot by @heyworld
-# Copyright (C) 2020 azrim.
-
 import asyncio
 import os
 
@@ -10,7 +6,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import CMD_HELP, bot
 
-# from userbot.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 from jarvis.events import register
 
 try:
@@ -27,13 +23,14 @@ def bruh(name):
     os.system("instantmusic -q -s " + name)
 
 
-@register(outgoing=True, pattern="^.spd(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="spd(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="spd(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
     chat = "@SpotifyMusicDownloaderBot"
-    await event.edit("```Getting Your Music```")
+    await edit_or_reply(event,"```Getting Your Music```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await event.edit("`Downloading music taking some times,  Stay Tuned.....`")
@@ -52,14 +49,15 @@ async def _(event):
         await bot.forward_messages(event.chat_id, respond.message)
 
 
-@register(outgoing=True, pattern="^.netease(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="netease(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="netease(?: |$)(.*)"))
 async def WooMai(netase):
     if netase.fwd_from:
         return
     song = netase.pattern_match.group(1)
     chat = "@WooMaiBot"
     link = f"/netease {song}"
-    await netase.edit("```Getting Your Music```")
+    await edit_or_reply(netase,"```Getting Your Music```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await netase.edit("`Downloading...Please wait`")
@@ -79,15 +77,16 @@ async def WooMai(netase):
     await netase.delete()
 
 
-@register(outgoing=True, pattern="^.dzd(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="dzd(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="dzd(?: |$)(.*)"))
 async def DeezLoader(Deezlod):
     if Deezlod.fwd_from:
         return
     d_link = Deezlod.pattern_match.group(1)
     if ".com" not in d_link:
-        await Deezlod.edit("` I need a link to download something pro.`**(._.)**")
+        await edit_or_reply(Deezlod,"` I need a link to download something pro.`**(._.)**")
     else:
-        await Deezlod.edit("**Initiating Download!**")
+        await edit_or_reply(Deezlod,"**Initiating Download!**")
     chat = "@DeezLoadBot"
     async with bot.conversation(chat) as conv:
         try:
@@ -100,7 +99,7 @@ async def DeezLoader(Deezlod):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
+            await edit_or_reply(Deezlod,"**Error:** `unblock` @DeezLoadBot `and retry!`")
             return
         await bot.send_file(Deezlod.chat_id, song, caption=details.text)
         await Deezlod.client.delete_messages(
