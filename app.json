@@ -25,7 +25,6 @@
     },
     "CMD_HNDLR": {
       "description": "Changes The Trigger Of Commands Leave As it is for '.' ",
-
       "value" : "."
     },
     "CUSTOM_PMPERMIT": {
@@ -137,7 +136,7 @@
       "required": false
     },
     "SUDO_HNDLR": {
-      "description": "Set Ur Handlr For Sudo User",
+      "description": "Set Ur Handler For Sudo User",
       "value": "!"
     },
     "PRIVATE_CHANNEL_BOT_API_ID": {
