@@ -2,15 +2,15 @@ from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
 
 from jarvis import ALIVE_NAME, CMD_HELP
-from jarvis.events import errors_handler, register
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.events import errors_handler
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
 # @register(outgoing=True, pattern=r"^.lock ?(.*)")
 @jarvis.on(admin_cmd(pattern=r"lock ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"lock ?(.*)",allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern=r"lock ?(.*)", allow_sudo=True))
 @errors_handler
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()
@@ -69,10 +69,10 @@ async def locks(event):
         what = "everything"
     else:
         if not input_str:
-            await edit_or_reply(event,"`I can't lock nothing !!`")
+            await edit_or_reply(event, "`I can't lock nothing !!`")
             return
         else:
-            await edit_or_reply(event,f"`Invalid lock type:` {input_str}")
+            await edit_or_reply(event, f"`Invalid lock type:` {input_str}")
             return
 
     lock_rights = ChatBannedRights(
@@ -92,14 +92,18 @@ async def locks(event):
         await event.client(
             EditChatDefaultBannedRightsRequest(peer=peer_id, banned_rights=lock_rights)
         )
-        await edit_or_reply(event,f"{DEFAULTUSER} `locked {what} Because its Rest Time Nimba!!`")
+        await edit_or_reply(
+            event, f"{DEFAULTUSER} `locked {what} Because its Rest Time Nimba!!`"
+        )
     except BaseException as e:
-        await edit_or_reply(event,f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
+        await edit_or_reply(
+            event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}"
+        )
         return
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"unlock ?(.*)"))
-@jarvis.on(sudo_cmd(allow_sudo=True,pattern=r"unlock ?(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"unlock ?(.*)"))
 @errors_handler
 async def rem_locks(event):
     input_str = event.pattern_match.group(1).lower()
@@ -158,10 +162,10 @@ async def rem_locks(event):
         what = "everything"
     else:
         if not input_str:
-            await edit_or_reply(event,"`I can't unlock nothing !!`")
+            await edit_or_reply(event, "`I can't unlock nothing !!`")
             return
         else:
-            await edit_or_reply(event,f"`Invalid unlock type:` {input_str}")
+            await edit_or_reply(event, f"`Invalid unlock type:` {input_str}")
             return
 
     unlock_rights = ChatBannedRights(
@@ -183,9 +187,13 @@ async def rem_locks(event):
                 peer=peer_id, banned_rights=unlock_rights
             )
         )
-        await edit_or_reply(event,f"{DEFAULTUSER} `Unlocked {what} now Start Chit Chat !!`")
+        await edit_or_reply(
+            event, f"{DEFAULTUSER} `Unlocked {what} now Start Chit Chat !!`"
+        )
     except BaseException as e:
-        await edit_or_reply(event,f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
+        await edit_or_reply(
+            event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}"
+        )
         return
 
 
