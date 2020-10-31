@@ -34,6 +34,10 @@
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q620SDB)
 
+## Video Tutorial By Infotel
+
+<iframe width="703" height="397" src="https://www.youtube.com/embed/LJ0zioHgRTg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## For any query or want to know how it works join Group And Channel
 [![](https://camo.githubusercontent.com/e531cdc1dbdcb78f8ffe767875a6b6d33c43e2e0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2d54656c656772616d2532304368616e6e656c2d7265642e7376673f6c6f676f3d54656c656772616d)](https://t.me/jarvisot)
 
@@ -41,7 +45,7 @@
 
 ## Installing Heroku
 
-###The Easy Way
+### The Easy Way
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/)
 
