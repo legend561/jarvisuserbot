@@ -73,9 +73,9 @@ class Development(Var):
   API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 ```
 
-##  UniBorg Configuration
+## Jarvis Configuration
 
- The UniBorg Config is situated in `jarvis/jconfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
+ The Jarvis Config is situated in `jarvis/jconfig.py`. Heroku Configuration Simply just leave the Config as it is. Local Configuration Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
 ##  Mandatory Vars
 
