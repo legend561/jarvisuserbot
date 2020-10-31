@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="convert (.*)", outgoing=True))  # pylint:disable=E0602
@@ -17,11 +17,12 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await edit_or_reply(event,
-            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
+        await edit_or_reply(
+            event,
+            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot",
         )
         return
-    await edit_or_reply(event,"trying to download media file, to my local")
+    await edit_or_reply(event, "trying to download media file, to my local")
     try:
         start = datetime.now()
         c_time = time.time()
@@ -33,12 +34,12 @@ async def _(event):
             ),
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await edit_or_reply(event,str(e))
+        await edit_or_reply(event, str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await edit_or_reply(event,
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+        await edit_or_reply(
+            event, "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
         new_required_file_caption = ""
