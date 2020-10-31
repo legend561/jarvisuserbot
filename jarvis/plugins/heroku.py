@@ -12,6 +12,8 @@ import requests
 
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+from jarvis import CMD_HNDLR
+
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
@@ -76,7 +78,7 @@ async def variable(var):
         await edit_or_reply(var, "`Setting information ! Plz Wait ....`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await var.edit(">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
+            return await var.edit(f"`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
