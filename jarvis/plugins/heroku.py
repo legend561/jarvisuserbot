@@ -84,9 +84,13 @@ async def variable(var):
                 return await var.edit(">`{CMD_HNDLR}set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await var.edit(f"**{variable}**  `successfully changed to`  ->  **{value}**")
+            await var.edit(
+                f"**{variable}**  `successfully changed to`  ->  **{value}**"
+            )
         else:
-            await var.edit(f"**{variable}**  `successfully added with value`  ->  **{value}**")
+            await var.edit(
+                f"**{variable}**  `successfully added with value`  ->  **{value}**"
+            )
         heroku_var[variable] = value
     elif exe == "del":
         await edit_or_reply(var, "`Getting information to deleting variable...`")
