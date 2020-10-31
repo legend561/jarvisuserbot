@@ -6,22 +6,22 @@ import os
 import time
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, progress
+from jarvis.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
-@jarvis.on(admin_cmd(pattern="convert (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="convert (.*)", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(sudo_cmd(pattern="convert (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.reply(
+        await edit_or_reply(event,
             "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
         )
         return
-    await event.reply("trying to download media file, to my local")
+    await edit_or_reply(event,"trying to download media file, to my local")
     try:
         start = datetime.now()
         c_time = time.time()
@@ -33,11 +33,11 @@ async def _(event):
             ),
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await event.reply(str(e))
+        await edit_or_reply(event,str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await event.reply(
+        await edit_or_reply(event,
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
@@ -82,7 +82,7 @@ async def _(event):
             voice_note = False
             supports_streaming = True
         else:
-            await event.reply("not supported")
+            await event.edit("not supported")
             os.remove(downloaded_file_name)
             return
         logger.info(command_to_run)
@@ -110,9 +110,9 @@ async def _(event):
                 voice_note=voice_note,
                 supports_streaming=supports_streaming,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, event, c_time, "trying to upload")
+                    progress(d, t, event, c_time, "Trying To Upload")
                 ),
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
-            await event.reply(f"converted in {ms_two} seconds")
+            await event.edit(f"converted in {ms_two} seconds")
