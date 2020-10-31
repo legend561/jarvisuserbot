@@ -7,10 +7,11 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="mashup ?(.*)"))
+@jarvis.on(admin_cmd(pattern="mashup ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="mashup ?(.*)",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,7 +20,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@vixtbot"
-    await event.edit("```Checking...```")
+    await edit_or_reply(event,"```Checking...```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -28,7 +29,7 @@ async def _(event):
             await event.client.send_message(chat, "{}".format(input_str))
             response = await response
         except YouBlockedUserError:
-            await event.reply("Unblock @vixtbot")
+            await event.edit("Unblock @vixtbot")
             return
         if response.text.startswith("I can't find that"):
             await event.edit("sorry i can't find it")
