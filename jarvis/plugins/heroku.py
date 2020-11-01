@@ -16,7 +16,7 @@ import os
 import heroku3
 import requests
 
-from jarvis import CMD_HNDLR
+from jarvis import CMD_HNDLR, CMD_HELP
 from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
