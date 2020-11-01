@@ -1,3 +1,5 @@
+#Credits: Catuserbot For Their CMD HELP
+
 from asyncio import sleep
 
 from telethon import functions
@@ -85,21 +87,21 @@ async def set_group_photo(gpic):
             photo = await gpic.client.download_file(replymsg.media.document)
         else:
             await edit_or_reply(gpic, INVALID_MEDIA)
-    sandy = None
+    sppidy = None
     if photo:
         try:
             await gpic.client(
                 EditPhotoRequest(gpic.chat_id, await gpic.client.upload_file(photo))
             )
             await edit_or_reply(gpic, CHAT_PP_CHANGED)
-            sandy = True
+            sppidy = True
         except PhotoCropSizeSmallError:
             await edit_or_reply(gpic, PP_TOO_SMOL)
         except ImageProcessFailedError:
             await edit_or_reply(gpic, PP_ERROR)
         except Exception as e:
             await edit_or_reply(gpic, f"**Error : **`{str(e)}`")
-        if BOTLOG and sandy:
+        if BOTLOG and sppidy:
             await gpic.client.send_message(
                 BOTLOG_CHATID,
                 "#GROUPPIC\n"
@@ -126,7 +128,7 @@ async def promote(promt):
         delete_messages=True,
         pin_messages=True,
     )
-    catevent = await edit_or_reply(promt, "`Promoting...`")
+    jevent = await edit_or_reply(promt, "`Promoting...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "Admin"
@@ -134,9 +136,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await catevent.edit("`Promoted Successfully! Now gib Party`")
+        await jevent.edit("`Promoted Successfully! Now gib Party`")
     except BadRequestError:
-        await catevent.edit(NO_PERM)
+        await jevent.edit(NO_PERM)
         return
     if BOTLOG:
         await promt.client.send_message(
@@ -157,7 +159,7 @@ async def demote(dmod):
     if not admin and not creator:
         await edit_or_reply(dmod, NO_ADMIN)
         return
-    catevent = await edit_or_reply(dmod, "`Demoting...`")
+    jevent = await edit_or_reply(dmod, "`Demoting...`")
     rank = "admeme"
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -174,9 +176,9 @@ async def demote(dmod):
     try:
         await dmod.client(EditAdminRequest(dmod.chat_id, user.id, newrights, rank))
     except BadRequestError:
-        await catevent.edit(NO_PERM)
+        await jevent.edit(NO_PERM)
         return
-    await catevent.edit("`Demoted Successfully! Betterluck next time`")
+    await jevent.edit("`Demoted Successfully! Betterluck next time`")
     if BOTLOG:
         await dmod.client.send_message(
             BOTLOG_CHATID,
@@ -199,25 +201,25 @@ async def ban(bon):
     user, reason = await get_user_from_event(bon)
     if not user:
         return
-    catevent = await edit_or_reply(bon, "`Whacking the pest!`")
+    jevent = await edit_or_reply(bon, "`Whacking the pest!`")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await catevent.edit(NO_PERM)
+        await jevent.edit(NO_PERM)
         return
     try:
         reply = await bon.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
-        await catevent.edit(
+        await jevent.edit(
             "`I dont have message nuking rights! But still he is banned!`"
         )
         return
     if reason:
-        await catevent.edit(f"`{str(user.id)}` is banned !!\nReason: {reason}")
+        await jevent.edit(f"`{str(user.id)}` is banned !!\nReason: {reason}")
     else:
-        await catevent.edit(f"`{str(user.id)}` is banned !!")
+        await jevent.edit(f"`{str(user.id)}` is banned !!")
     if BOTLOG:
         await bon.client.send_message(
             BOTLOG_CHATID,
@@ -237,14 +239,14 @@ async def nothanos(unbon):
     if not admin and not creator:
         await edit_or_reply(unbon, NO_ADMIN)
         return
-    catevent = await edit_or_reply(unbon, "`Unbanning...`")
+    jevent = await edit_or_reply(unbon, "`Unbanning...`")
     user = await get_user_from_event(unbon)
     user = user[0]
     if not user:
         return
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await catevent.edit("```Unbanned Successfully. Granting another chance.```")
+        await jevent.edit("```Unbanned Successfully. Granting another chance.```")
         if BOTLOG:
             await unbon.client.send_message(
                 BOTLOG_CHATID,
@@ -253,7 +255,7 @@ async def nothanos(unbon):
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
             )
     except UserIdInvalidError:
-        await catevent.edit("`Uh oh my unban logic broke!`")
+        await jevent.edit("`Uh oh my unban logic broke!`")
 
 
 @command(incoming=True)
@@ -479,19 +481,19 @@ async def kick(usr):
     if not user:
         await edit_or_reply(usr, "`Couldn't fetch user.`")
         return
-    catevent = await edit_or_reply(usr, "`Kicking...`")
+    jevent = await edit_or_reply(usr, "`Kicking...`")
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        await catevent.edit(NO_PERM + f"\n{str(e)}")
+        await jevent.edit(NO_PERM + f"\n{str(e)}")
         return
     if reason:
-        await catevent.edit(
+        await jevent.edit(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await catevent.edit(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await jevent.edit(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
     if BOTLOG:
         await usr.client.send_message(
             BOTLOG_CHATID,
