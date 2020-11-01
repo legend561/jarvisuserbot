@@ -1,7 +1,7 @@
 from telethon import functions
 
-from jarvis import ALIVE_NAME, CMD_LIST
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis import ALIVE_NAME, CMD_LIST, CMD_HELP, yaml_format
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
@@ -53,7 +53,32 @@ Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, i
         )
         await event.delete()
 
-
+@jarvis.on(admin_cmd(outgoing=True, pattern="info ?(.*)"))
+@jarvis.on(sudo_cmd(pattern="info ?(.*)", allow_sudo=True))
+async def info(event):
+    """ For .info command,"""
+    args = event.pattern_match.group(1).lower()
+    if args:
+        if args in CMD_HELP:
+            await edit_or_reply(event, str(CMD_HELP[args]))
+        else:
+            event = await edit_or_reply(event, "Please specify a valid plugin name.")
+            await asyncio.sleep(3)
+            await event.delete()
+    else:
+        string = "<b>Please specify which plugin do you want help for !!\
+            \nNumber of plugins : </b><code>{count}</code>\
+            \n<b>Usage : </b><code>.info</code> <plugin name>\n\n"
+        catcount = 0
+        for i in sorted(CMD_HELP):
+            string += "◆ " + f"<code>{str(i)}</code>"
+            string += "   "
+            catcount += 1
+        if event.from_id in Config.SUDO_USERS:
+            await event.reply(string.format(count=catcount), parse_mode="HTML")
+        else:
+            await event.edit(string.format(count=catcount), parse_mode="HTML")
+        
 @jarvis.on(admin_cmd(pattern="dc", outgoing=True))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="dc", allow_sudo=True))
 async def _(event):
