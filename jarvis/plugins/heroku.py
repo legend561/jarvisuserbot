@@ -1,4 +1,4 @@
-# Heroku manager for your catuserbot
+# Heroku manager for your JarvisUserbot
 
 # CC- @refundisillegal\nSyntax:-\n.get var NAME\n.del var NAME\n.set var NAME
 
