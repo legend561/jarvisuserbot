@@ -2,8 +2,8 @@ import os
 
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 from jarvis import CMD_HELP
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
