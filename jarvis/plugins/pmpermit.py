@@ -15,9 +15,9 @@ if PMPERMIT_PIC is None:
 else:
     WARN_PIC = PMPERMIT_PIC
 
-FAV_NAME=os.envrion.get("FAV_NAME", None)
+FAV_NAME = os.envrion.get("FAV_NAME", None)
 if FAV_NAME is None:
-    FAV_NAME="Jarvis"
+    FAV_NAME = "Jarvis"
 
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
