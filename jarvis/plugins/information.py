@@ -11,8 +11,8 @@ from telethon.utils import get_input_location
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("info ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd("info ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("whois ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("whois ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
