@@ -54,7 +54,7 @@ async def _(event):
     await event.delete()
 
 
-@borg.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
+@jarvis.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

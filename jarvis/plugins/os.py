@@ -71,7 +71,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=r"linux"))
+@jarvis.on(admin_cmd(pattern=r"linux"))
 async def _(event):
 
     if event.fwd_from:
@@ -105,7 +105,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=r"stock"))
+@jarvis.on(admin_cmd(pattern=r"stock"))
 async def _(event):
 
     if event.fwd_from:
@@ -139,7 +139,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=r"os"))
+@jarvis.on(admin_cmd(pattern=r"os"))
 async def _(event):
 
     if event.fwd_from:
