@@ -105,8 +105,8 @@ async def variable(var):
             return await j.edit(f"`{variable}`**  is not exists**")
 
 
-@borg.on(admin_cmd(pattern="usage$", outgoing=True))
-@borg.on(sudo_cmd(pattern="usage$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="usage$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="usage$", allow_sudo=True))
 async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
@@ -164,8 +164,8 @@ async def dyno_usage(dyno):
     )
 
 
-@borg.on(admin_cmd(pattern="logs$", outgoing=True))
-@borg.on(sudo_cmd(pattern="logs$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="logs$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="logs$", allow_sudo=True))
 async def _(dyno):
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
