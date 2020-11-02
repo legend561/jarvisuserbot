@@ -1,9 +1,5 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-""" Userbot module for getting the weather of a city. """
+
+# Userbot module for getting the weather of a city.
 
 import json
 from datetime import datetime
@@ -16,6 +12,7 @@ from pytz import timezone as tz
 from jarvis import CMD_HELP
 from jarvis import OPEN_WEATHER_MAP_APPID as OWM_API
 from jarvis.events import errors_handler, register
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply, eor
 
 # ===== CONSTANT =====
 DEFCITY = "Delhi"
@@ -35,13 +32,14 @@ async def get_tz(con):
         return
 
 
-@register(outgoing=True, pattern="^.weather(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="weather(?: |$)(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern="weather(?: |$)(.*)"))
 @errors_handler
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
 
     if not OWM_API:
-        await weather.edit("`Get an API key from` https://openweathermap.org/ `first.`")
+        await edit_or_reply(weather,"`Get an API key from` https://openweathermap.org/ `first.`")
         return
 
     APPID = OWM_API
@@ -49,7 +47,7 @@ async def get_weather(weather):
     if not weather.pattern_match.group(1):
         CITY = DEFCITY
         if not CITY:
-            await weather.edit("`Please specify a city or set one as default.`")
+            await edit_or_reply(weather,"`Please specify a city or set one as default.`")
             return
     else:
         CITY = weather.pattern_match.group(1)
@@ -78,7 +76,7 @@ async def get_weather(weather):
     result = json.loads(request.text)
 
     if request.status_code != 200:
-        await weather.edit(f"`Invalid country.`")
+        await edit_or_reply(weather,f"`Invalid country.`")
         return
 
     cityname = result["name"]
@@ -121,7 +119,7 @@ async def get_weather(weather):
         xx = datetime.fromtimestamp(unix, tz=ctimezone).strftime("%I:%M %p")
         return xx
 
-    await weather.edit(
+    await edit_or_reply(weather,
         f"**Temperature:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
         + f"**Human Feeling** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n"
         + f"**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
@@ -138,13 +136,13 @@ async def get_weather(weather):
     )
 
 
-@register(outgoing=True, pattern="^.setcity(?: |$)(.*)")
+@jarvis.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
 @errors_handler
 async def set_default_city(city):
     """ For .ctime command, change the default userbot country for date and time commands. """
 
     if not OWM_API:
-        await city.edit("`Get an API key from` https://openweathermap.org/ `first.`")
+        await edit_or_reply(city,"`Get an API key from` https://openweathermap.org/ `first.`")
         return
 
     global DEFCITY
@@ -153,7 +151,7 @@ async def set_default_city(city):
     if not city.pattern_match.group(1):
         CITY = DEFCITY
         if not CITY:
-            await city.edit("`Please specify a city to set one as default.`")
+            await edit_or_reply(city,"`Please specify a city to set one as default.`")
             return
     else:
         CITY = city.pattern_match.group(1)
@@ -182,7 +180,7 @@ async def set_default_city(city):
     result = json.loads(request.text)
 
     if request.status_code != 200:
-        await city.edit(f"`Invalid country.`")
+        await edit_or_reply(city,f"`Invalid country.`")
         return
 
     DEFCITY = CITY
@@ -191,7 +189,7 @@ async def set_default_city(city):
 
     fullc_n = c_n[f"{country}"]
 
-    await city.edit(f"`Set default city as {cityname}, {fullc_n}.`")
+    await edit_or_reply(city,f"`Set default city as {cityname}, {fullc_n}.`")
 
 
 CMD_HELP.update(
