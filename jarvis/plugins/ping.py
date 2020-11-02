@@ -48,7 +48,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    await event.delete()
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds * 0.00001
