@@ -43,6 +43,20 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     [Button.url("Join Channel 📃", "t.me/JarvisOT")],
                 ],
             )
+        else:
+            result = builder.article(
+                title="Stats",
+                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
+                buttons=[
+                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
+                    [
+                        Button.url(
+                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
+                        )
+                    ],
+                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
+                ],
+            )
         await event.answer([result] if result else None)
 
     @jarvisbot.on(
