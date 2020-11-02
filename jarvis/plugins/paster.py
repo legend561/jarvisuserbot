@@ -2,10 +2,12 @@
 Syntax: .npaste"""
 import logging
 import os
+from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis import CMD_HELP
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
@@ -18,7 +20,6 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-
 
 @jarvis.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="paste( (.*)|$)", allow_sudo=True))
@@ -61,8 +62,7 @@ async def _(event):
         await jevent.edit(
             f"**Pasted Successfully 🤗**\n**~ Pasted to dogbin : **[dog]({url})\n**~ Raw url :** [raw link](https://del.dog/raw/{r['key']})"
         )
-
-
+    
 @jarvis.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="neko( (.*)|$)", allow_sudo=True))
 async def _(event):
@@ -117,3 +117,13 @@ async def _(event):
         url = f"https://nekobin.com/{key}"
     reply_text = f"**Pasted Successfully 🤗**\n**~ Pasted to Nekobin : **[neko]({url})\n**~ Raw url : **[Raw](https://nekobin.com/raw/{key})"
     await jevent.edit(reply_text)
+
+    
+CMD_HELP.update(
+    {
+        "pastebin": "**Plugin : **`pastebin`\
+        \n\n**Syntax : **`.paste <text/reply>`\
+        \n**Function : **Create a paste or a shortened url using dogbin `https://del.dog/`\
+        \n\n**Syntax : **`.neko <text/reply>`\"
+    }
+)
