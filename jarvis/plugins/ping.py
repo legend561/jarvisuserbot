@@ -40,7 +40,7 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
-    await edit_or_reply(event, f"Pong! 🏓 {ms}Secs..")
+    await edit_or_reply(event, f"Pong! 🏓 {ms} ..")
 
 
 @jarvis.on(admin_cmd(pattern="pong", outgoing=True))
@@ -51,7 +51,7 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds * 0.00001
-    await edit_or_reply(mone, f"Ping! 🎾 {ms}Secs..")
+    await edit_or_reply(mone, f"Ping! 🎾 {ms} ..")
 
 
 CMD_HELP.update(
