@@ -4,7 +4,7 @@ import re
 
 from telethon import Button, custom, events
 
-from jarvis import ALIVE_NAME, CMD_LIST
+from jarvis import ALIVE_NAME, CMD_LIST, OWNER_ID
 from jarvis.plugins import inlinestats
 
 NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get(
@@ -29,7 +29,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 buttons=buttons,
                 link_preview=False,
             )
-        if event.query.user_id == bot.uid and query == "stats":
+        if event.query.user_id == OWNER_ID and query == "stats":
             result = builder.article(
                 title="Stats",
                 text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
@@ -45,17 +45,26 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
         else:
             result = builder.article(
-                title="Stats",
-                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
+                "Source Code",
+                text="**Deploy Jarvis**\n\n`Click To Know more`",
                 buttons=[
-                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
+                    [custom.Button.url("Video Tut", "https://youtu.be/LJ0zioHgRTg")],
                     [
-                        Button.url(
-                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
+                        custom.Button.url(
+                            "👨‍💻Source Code‍💻", "https://github.com/Jarvis-Works/JarvisUserbot"
+                        ),
+                        custom.Button.url(
+                            "Deploy 🌀",
+                            "https://dashboard.heroku.com/new?template=https://github.com/Jarvis-Works/JarvisUserbot",
+                        ),
+                    ],
+                    [
+                        custom.Button.url(
+                            "Updates and Support Group↗️", "https://t.me/JarvisSupportOT"
                         )
                     ],
-                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
                 ],
+                link_preview=False,
             )
         await event.answer([result] if result else None)
 
