@@ -55,3 +55,4 @@ youtube-dl
 covid
 validators
 psycopg2-binary
+pyrogram
