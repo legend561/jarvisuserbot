@@ -58,6 +58,7 @@ CMD_HELP.update(
         \n\n**Syntax : **`.ping`\
         \n**Function : **Shows you the ping speed of server`\
         \n\n**Syntax : **`.pong`\
-        \n**Function : **Shows you the ping speed of server (Opposite Of Ping)\"
+        \n**Function : **Shows you the ping speed of server (Opposite Of Ping)\
+        "
     }
 )
