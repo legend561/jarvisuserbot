@@ -51,15 +51,15 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds * 0.00001
-    await edit_or_reply(mone, f"Ping! 🎾 {ms} ..")
+    await edit_or_reply(event, f"Ping! 🎾 {ms} ..")
 
 
 CMD_HELP.update(
     {
         "ping": "**Plugin : **`Ping Pong`\
-        \n\n **Syntax : ** `.ping`\
-        \n**Function : **Shows you the ping speed of server`\
-        \n\n **Syntax : ** `.pong`\
+        \n\n **Syntax : **`.ping`\
+        \n**Function : **Shows you the ping speed of server\
+        \n\n**Syntax : **`.pong`\
         \n**Function : **Shows you the ping speed of server (Opposite Of Ping)\
         "
     }
