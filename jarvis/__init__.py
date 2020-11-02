@@ -122,8 +122,12 @@ if bool(ENV):
     # Cbutton
     PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
 
+    #SUDOUSERS
+    SUDO_USERS=os.environ.get("SUDO_USERS", None)
+    
     # CommandHandler
     CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
+    SUDO_HNDLR = os.environ.grt("SUDO_HNDLR", "!")
 
     # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
