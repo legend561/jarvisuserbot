@@ -43,7 +43,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     [Button.url("Join Channel 📃", "t.me/JarvisOT")],
                 ],
             )
-        elif event.query.user_id == OWNER_ID :
+        elif event.query.user_id == OWNER_ID:
             result = builder.article(
                 title="Stats",
                 text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
