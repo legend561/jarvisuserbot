@@ -45,45 +45,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     [Button.url("Join Channel 📃", "t.me/JarvisOT")],
                 ],
             )
-        elif event.query.user_id == OWNER_ID:
-            result = builder.article(
-                title="Stats",
-                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
-                buttons=[
-                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
-                    [
-                        Button.url(
-                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
-                        )
-                    ],
-                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
-                ],
-            )
-        else:
-            result = builder.article(
-                "Source Code",
-                text="**Deploy Jarvis**\n\n`Click To Know more`",
-                buttons=[
-                    [custom.Button.url("Video Tut", "https://youtu.be/LJ0zioHgRTg")],
-                    [
-                        custom.Button.url(
-                            "👨‍💻Source Code‍💻",
-                            "https://github.com/Jarvis-Works/JarvisUserbot",
-                        ),
-                        custom.Button.url(
-                            "Deploy 🌀",
-                            "https://dashboard.heroku.com/new?template=https://github.com/Jarvis-Works/JarvisUserbot",
-                        ),
-                    ],
-                    [
-                        custom.Button.url(
-                            "Updates and Support Group↗️",
-                            "https://t.me/JarvisSupportOT",
-                        )
-                    ],
-                ],
-                link_preview=False,
-            )
         await event.answer([result] if result else None)
 
     @jarvisbot.on(
