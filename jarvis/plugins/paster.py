@@ -124,6 +124,7 @@ CMD_HELP.update(
         "pastebin": "**Plugin : **`pastebin`\
         \n\n**Syntax : **`.paste <text/reply>`\
         \n**Function : **Create a paste or a shortened url using dogbin `https://del.dog/`\
-        \n\n**Syntax : **`.neko <text/reply>`\"
+        \n\n**Syntax : **`.neko <text/reply>`\
+        "
     }
 )
