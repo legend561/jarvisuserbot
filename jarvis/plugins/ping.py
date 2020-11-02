@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -38,20 +39,21 @@ async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
-    await edit_or_reply(event,f"Pong! 🏓 {ms}Secs..")
+    await edit_or_reply(event, f"Pong! 🏓 {ms}Secs..")
+
 
 @jarvis.on(admin_cmd(pattern="pong", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="pong", allow_sudo=True))
-async def _(event):	
-    if event.fwd_from:	
-        return	
+async def _(event):
+    if event.fwd_from:
+        return
     await event.delete()
     start = datetime.now()
-    end = datetime.now()	
-    ms = (end - start).microseconds * 0.00001	
-    await edit_or_reply(mone,f"Ping! 🎾 {ms}Secs..")
-    
-    
+    end = datetime.now()
+    ms = (end - start).microseconds * 0.00001
+    await edit_or_reply(mone, f"Ping! 🎾 {ms}Secs..")
+
+
 CMD_HELP.update(
     {
         "ping": "**Plugin : **`Ping Pong`\
