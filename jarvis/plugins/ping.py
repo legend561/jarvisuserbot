@@ -1,25 +1,6 @@
 from datetime import datetime
 
-from jarvis.utils import admin_cmd
-
-
-@jarvis.on(admin_cmd(pattern="pong ?(.*)"))
-async def _(event):
-    if event.fwd_from:
-        return
-    await event.delete()
-    start = datetime.now()
-    mone = await event.reply(
-        "⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛‎⏹️‎⏹️‎⏹️‎⏹️⏹️⏹️⏹️‎📶⬛ \n⬛⬛⬛⬛‎📶⬛⬛‎📶⬛ \n⬛⬛⬛⬛‎📶⬛⬛‎📶⬛ \n⬛⬛⬛⬛‎📶⬛⬛‎📶⬛ \n⬛⬛⬛⬛⬛‎📶‎📶⬛⬛ \n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛‎📶⬛⬛⬛⬛⬛‎📶⬛ \n⬛‎📶‎📶‎📶‎📶‎📶‎📶‎📶⬛ \n⬛‎📶⬛⬛⬛⬛⬛‎📶⬛ \n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛‎📶‎📶‎📶‎📶‎📶‎📶‎📶⬛ \n⬛⬛⬛⬛⬛⬛‎📶⬛⬛ \n⬛⬛⬛⬛⬛‎📶⬛⬛⬛ \n⬛⬛⬛⬛‎📶⬛⬛⬛⬛ \n⬛‎📶‎📶‎📶‎📶‎📶‎📶‎📶⬛ \n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛⬛‎📶‎📶‎📶‎📶‎📶⬛⬛ \n⬛‎📶⬛⬛⬛⬛⬛‎📶⬛ \n⬛‎📶⬛⬛⬛⬛⬛‎📶⬛ \n⬛‎📶⬛‎📶⬛⬛⬛‎📶⬛ \n⬛⬛‎📶‎📶⬛⬛‎📶⬛⬛ \n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛‎📶⬛‎📶‎📶‎📶‎📶‎📶⬛ \n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n \n My 𝗣𝗶𝗻𝗴  Is : Calculating..."
-    )
-    end = datetime.now()
-    ms = (end - start).microseconds * 0.00001
-    await mone.edit(
-        "‎‎‎‎‎‎‎‎‎‌‌‌‌‌‌‌‌‎🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦📶🟦🟦📶🟪\n🟪🟦🟦🟦🟦📶📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟦🟦🟦🟦🟦📶🟦🟪\n🟪🟦🟦🟦🟦📶🟦🟦🟪\n🟪🟦🟦🟦📶🟦🟦🟦🟪\n🟪📶📶📶📶📶📶📶🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪🟦📶📶📶📶📶🟦🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦🟦🟦🟦🟦📶🟪\n🟪📶🟦📶🟦🟦🟦📶🟪\n🟪🟦📶📶🟦🟦📶🟦🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n🟪📶🟦📶📶📶📶📶🟪\n🟪🟪🟪🟪🟪🟪🟪🟪🟪\n\n\n📥Ironman📥\n‌‌‌‌‌‌‌‌‎ \n \n 🔥𝕄𝕪 𝕡𝕚𝕟𝕘 𝕚𝕤🔥 : {} ms".format(
-            ms
-        )
-    )
-
+from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -49,13 +30,34 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-# @command(pattern="^.ping$")
-@jarvis.on(admin_cmd(pattern="ping$"))
-@jarvis.on(admin_cmd(pattern="ping$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="ping$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
-    await event.reply(f"Pong! 🎾 {ms} 💎️")
+    await edit_or_reply(event,f"Pong! 🏓 {ms}Secs..")
+
+@jarvis.on(admin_cmd(pattern="pong", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="pong", allow_sudo=True))
+async def _(event):	
+    if event.fwd_from:	
+        return	
+    await event.delete()
+    start = datetime.now()
+    end = datetime.now()	
+    ms = (end - start).microseconds * 0.00001	
+    await edit_or_reply(mone,f"Ping! 🎾 {ms}Secs..")
+    
+    
+CMD_HELP.update(
+    {
+        "ping": "**Plugin : **`Ping Pong`\
+        \n\n**Syntax : **`.ping`\
+        \n**Function : **Shows you the ping speed of server`\
+        \n\n**Syntax : **`.pong`\
+        \n**Function : **Shows you the ping speed of server (Opposite Of Ping)\"
+    }
+)
