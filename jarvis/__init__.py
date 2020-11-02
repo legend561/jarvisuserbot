@@ -157,6 +157,9 @@ if bool(ENV):
 
     # Gban
     USER_IS = os.environ.get("USER_IS", None)
+    
+    #For Bot Purposes
+    OWNER_ID = os.environ.get("OWNER_ID", None)
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
