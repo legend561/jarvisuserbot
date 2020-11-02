@@ -2,11 +2,10 @@
 Syntax: .npaste"""
 import logging
 import os
-from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
@@ -19,6 +18,7 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
+
 
 @jarvis.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="paste( (.*)|$)", allow_sudo=True))
@@ -61,7 +61,8 @@ async def _(event):
         await jevent.edit(
             f"**Pasted Successfully 🤗**\n**~ Pasted to dogbin : **[dog]({url})\n**~ Raw url :** [raw link](https://del.dog/raw/{r['key']})"
         )
-    
+
+
 @jarvis.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="neko( (.*)|$)", allow_sudo=True))
 async def _(event):
