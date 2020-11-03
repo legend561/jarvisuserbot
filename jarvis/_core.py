@@ -95,8 +95,8 @@ async def unload(event):
         jevent = await edit_or_reply(event,f"Jarvis has successfully unloaded {shortname}")
     except Exception as e:
         await jevent.edit(
-            "Jarvis Unloaded {shortname}\n{}".format(
-                shortname, str(e) "Successfully"
+            "Jarvis Successfully Unloaded {shortname}\n{}".format(
+                shortname, str(e)
             )
         )
 
