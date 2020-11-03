@@ -10,7 +10,6 @@ from jarvis.utils import *
 jarvis = bot
 DELETE_TIMEOUT = 5
 
-from telethon.tl.types import InputMessagesFilterDocument
 
 from jarvis import ALIVE_NAME
 
@@ -67,18 +66,20 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await edit_or_reply(event,
+                await edit_or_reply(
+                    event,
                     "Jarvis Succesfully Installed The Plugin `{}`".format(
                         os.path.basename(downloaded_file_name)
-                    )
+                    ),
                 )
             else:
                 os.remove(downloaded_file_name)
-                await edit_or_reply(event,
-                    "**Error!**\nPlugin cannot be installed!\nMight have been pre-installed."
+                await edit_or_reply(
+                    event,
+                    "**Error!**\nPlugin cannot be installed!\nMight have been pre-installed.",
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await edit_or_reply(event,str(e))
+            await edit_or_reply(event, str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
@@ -92,12 +93,12 @@ async def unload(event):
     shortname = event.pattern_match["shortname"]
     try:
         remove_plugin(shortname)
-        jevent = await edit_or_reply(event,f"Jarvis has successfully unloaded {shortname}")
+        jevent = await edit_or_reply(
+            event, f"Jarvis has successfully unloaded {shortname}"
+        )
     except Exception as e:
         await jevent.edit(
-            "Jarvis Successfully Unloaded {shortname}\n{}".format(
-                shortname, str(e)
-            )
+            "Jarvis Successfully Unloaded {shortname}\n{}".format(shortname, str(e))
         )
 
 
@@ -113,7 +114,9 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        jevent = await edit_or_reply(event,f"Jarvis has successfully loaded {shortname}")
+        jevent = await edit_or_reply(
+            event, f"Jarvis has successfully loaded {shortname}"
+        )
     except Exception as e:
         await jevent.edit(
             f"Jarvis could not load {shortname} because of the following error.\n{str(e)}"
