@@ -1,22 +1,19 @@
 #############################
-# Do Not Edit Unles U Know What are You Doing !!
+# Do Not Edit Unless U Know What are You Doing !!
 #############################
-
+# (c) JarvisWorks 2020
 
 import asyncio
 import os
-from datetime import datetime
+from datetime import *
 from pathlib import Path
-
-import jarvis.utils
-from jarvis import bot
+from telethon.tl.types import InputMessagesFilterDocument
+from jarvis import bot, ALIVE_NAME
 from jarvis.utils import *
+from time import *
 
 jarvis = bot
-DELETE_TIMEOUT = 5
-
-
-from jarvis import ALIVE_NAME
+DELETE_TIMEOUT = 5 
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./jarvis.png"
@@ -81,7 +78,7 @@ async def install(event):
                 os.remove(downloaded_file_name)
                 await edit_or_reply(
                     event,
-                    "**Error!**\nPlugin cannot be installed!\nMight have been pre-installed.",
+                    "** Boss Error!**\nPlugin cannot be installed!\nMight have been pre-installed.",
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
             await edit_or_reply(event, str(e))
@@ -124,5 +121,5 @@ async def load(event):
         )
     except Exception as e:
         await jevent.edit(
-            f"Jarvis could not load {shortname} because of the following error.\n{str(e)}"
+            f"Jarvis could not Reload {shortname} because of the following error.\n{str(e)}"
         )
