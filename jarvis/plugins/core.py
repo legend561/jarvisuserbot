@@ -5,7 +5,7 @@
 
 import asyncio
 import os
-from datetime import *
+from datetime import datetime
 from pathlib import Path
 from time import *
 
@@ -19,7 +19,7 @@ DELETE_TIMEOUT = 5
 thumb_image_path = "./jarvis.png"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis User"
 
-
+from datetime import datetime
 @jarvis.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
@@ -43,7 +43,7 @@ async def send(event):
         end = datetime.now()
         time_taken_in_ms = (end - start).seconds
         await pro.edit(
-            f"**► Plugin Name:** `{input_str}`\n**► Uploaded in {time_taken_in_ms} seconds.**\n**► Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n\n© @JarvisOT"
+            f"**× Plugin Name:** `{input_str}`\n**× Uploaded in {time_taken_in_ms} seconds.**\n**× Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n\n© @JarvisOT"
         )
         await asyncio.sleep(DELETE_TIMEOUT)
         await event.delete()
