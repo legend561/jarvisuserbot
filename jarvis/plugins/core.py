@@ -20,6 +20,8 @@ thumb_image_path = "./jarvis.png"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis User"
 
 from datetime import datetime
+
+
 @jarvis.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
