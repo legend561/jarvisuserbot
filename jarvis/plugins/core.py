@@ -7,13 +7,13 @@ import asyncio
 import os
 from datetime import *
 from pathlib import Path
-from telethon.tl.types import InputMessagesFilterDocument
-from jarvis import bot, ALIVE_NAME
-from jarvis.utils import *
 from time import *
 
+from jarvis import ALIVE_NAME, bot
+from jarvis.utils import *
+
 jarvis = bot
-DELETE_TIMEOUT = 5 
+DELETE_TIMEOUT = 5
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./jarvis.png"
