@@ -7,7 +7,7 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("rmbg ?(.*)", outgoing=True))
@@ -19,7 +19,9 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.REM_BG_API_KEY is None:
-        jevent = await eor(event, "You need API token from remove.bg to use this plugin.")
+        jevent = await eor(
+            event, "You need API token from remove.bg to use this plugin."
+        )
         return False
     input_str = event.pattern_match.group(1)
     start = datetime.now()
@@ -28,7 +30,9 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await jevent.edit("Connecting to Official JARVIS Server and analysing that img ...")
+        await jevent.edit(
+            "Connecting to Official JARVIS Server and analysing that img ..."
+        )
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
