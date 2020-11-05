@@ -4,7 +4,7 @@
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="pokedex ?(.*)", outgoing=True))
@@ -72,9 +72,9 @@ async def berry(event):
         ev += "\n**Size** = {}".format(size)
         ev += "\n**Smoothness** = {}".format(smooth)
         ev += "\n**Soil Dryness** = {}".format(dry)
-        await eor(event,ev)
+        await eor(event, ev)
     else:
-        await eor(event,"Berry Not Found.")
+        await eor(event, "Berry Not Found.")
 
 
 @jarvis.on(admin_cmd(pattern="move ?(.*)", outgoing=True))
@@ -107,6 +107,6 @@ async def moves(event):
             ev += "\n**Effect** = {}".format(effect)
         except BaseException:
             pass
-        await eor(event,ev)
+        await eor(event, ev)
     else:
-        await eor(event,"Uh is that even a move")
+        await eor(event, "Uh is that even a move")
