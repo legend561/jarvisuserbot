@@ -1,4 +1,4 @@
-#  (c)2020 JARVIS
+#  (c)2020 Jarvis-Works
 #
 # You may not use this plugin without proper authorship and consent from @JarvisSupportOt
 #
@@ -7,20 +7,21 @@
 import asyncio
 import os
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
 @jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="repack ?(.*)", allow_sudo=True))
 async def _(event):
-    a = await event.get_reply_message()
+    jevent = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
     b = open(input_str, "w")
     b.write(str(a.message))
     b.close()
-    a = await event.reply(f"**Packing into** `{input_str}`")
+    jevent = await eor(event,f"**Packing into** `{input_str}`")
     await asyncio.sleep(2)
-    await a.edit(f"**Uploading** `{input_str}`")
+    await jevent.edit(f"**Uploading** `{input_str}`")
     await asyncio.sleep(2)
-    await event.client.send_file(event.chat_id, input_str)
+    await jevent.client.send_file(event.chat_id, input_str)
     await a.delete()
     os.remove(input_str)
