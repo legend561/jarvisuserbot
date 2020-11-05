@@ -30,7 +30,8 @@ async def _(event):
     os.execl(sys.executable, sys.executable, *sys.argv)
     # You probably don't need it but whatever
     quit()
-    
+
+
 @jarvis.on(sudo_cmd(pattern="restart", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
