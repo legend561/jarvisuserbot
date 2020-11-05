@@ -2,10 +2,9 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
-from telethon.tl.types import InputMessagesFilterDocument
-from jarvis.utils import admin_cmd, sudo_cmd, load_module, remove_plugin
-from jarvis import ALIVE_NAME
-from jarvis import bot
+
+from jarvis import ALIVE_NAME, bot
+from jarvis.utils import admin_cmd, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./resource/20201012_204728.png"
@@ -88,9 +87,7 @@ async def unload(event):
         await event.edit(f"Successfully unloaded {shortname}")
     except Exception as e:
         await event.edit(
-            "Successfully unloaded {shortname}\n{}".format(
-                shortname, str(e)
-            )
+            "Successfully unloaded {shortname}\n{}".format(shortname, str(e))
         )
 
 
@@ -111,4 +108,3 @@ async def load(event):
         await event.edit(
             f"Sorry, could not load {shortname} because of the following error.\n{str(e)}"
         )
-
