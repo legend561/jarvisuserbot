@@ -4,27 +4,28 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import bot
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
 # @register(outgoing=True, pattern="^.q(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
+@jarvis.on(admin_cmd(pattern=r"qbot(?: |$)(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"qbot(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("```Reply to any user message.```")
+        jevent = await eor(event, "```Reply to any user message.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await event.edit("```Reply to text message```")
+        await jevent.edit("```Reply to text message```")
         return
     chat = "@QuotLyBot"
     reply_message.sender
     if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
+        await jevent.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Making a Quote```")
+    await jevent.edit("```Making a Quote```")
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -33,10 +34,10 @@ async def _(event):
             await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @QuotLyBot and try again```")
+            await jevent.edit("```Please unblock @QuotLyBot and try again```")
             return
         if response.text.startswith("Hi!"):
-            await event.edit(
+            await jevent.edit(
                 "```Can you kindly disable your forward privacy settings for good?```"
             )
         else:
