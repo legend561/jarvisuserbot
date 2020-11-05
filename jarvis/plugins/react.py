@@ -4,7 +4,6 @@
 
 import random
 
-from telethon import events
 from jarvis.utils import admin_cmd
 
 
