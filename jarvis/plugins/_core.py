@@ -5,7 +5,7 @@ from pathlib import Path
 
 from jarvis import ALIVE_NAME
 from jarvis import bot as jarvis
-from jarvis.utils import admin_cmd, load_module, remove_plugin, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./resource/20201012_204728.png"
@@ -34,8 +34,9 @@ async def send(event):
         )
         end = datetime.now()
         time_taken_in_ms = (end - start).seconds
-        await eor(pro,
-            f"**==> Plugin name:** `{input_str}`\n**==> Uploaded in {time_taken_in_ms} seconds only.**\n**==> Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
+        await eor(
+            pro,
+            f"**==> Plugin name:** `{input_str}`\n**==> Uploaded in {time_taken_in_ms} seconds only.**\n**==> Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n",
         )
         await asyncio.sleep(DELETE_TIMEOUT)
         await event.delete()
@@ -60,18 +61,20 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await eor(event,
+                await eor(
+                    event,
                     "Plugin successfully installed\n `{}`".format(
                         os.path.basename(downloaded_file_name)
-                    )
+                    ),
                 )
             else:
                 os.remove(downloaded_file_name)
-                await eor(event,
-                    "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed."
+                await eor(
+                    event,
+                    "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed.",
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await eor(event,str(e))
+            await eor(event, str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
@@ -85,7 +88,7 @@ async def unload(event):
     shortname = event.pattern_match["shortname"]
     try:
         remove_plugin(shortname)
-        qwe = await eor(event,f"Jarvis Has Successfully unloaded {shortname}")
+        qwe = await eor(event, f"Jarvis Has Successfully unloaded {shortname}")
     except Exception as e:
         await qwe.edit(
             "Jarvis has Successfully unloaded {shortname}\n{}".format(shortname, str(e))
@@ -104,7 +107,7 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        qwe = await eor(event,f"Successfully loaded {shortname}")
+        qwe = await eor(event, f"Successfully loaded {shortname}")
     except Exception as e:
         await qwe.edit(
             f"Jarvis could not load {shortname} because of the following error.\n{str(e)}"
