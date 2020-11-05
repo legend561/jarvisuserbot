@@ -5,19 +5,18 @@ import io
 
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
-@jarvis.on(admin_cmd("screencapture (.*)"))
+@jarvis.on(admin_cmd("screencapture (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("screencapture (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if Config.SCREEN_SHOT_LAYER_ACCESS_KEY is None:
-        await event.edit(
-            "Need to get an API key from https://screenshotlayer.com/product \nModule stopping!"
-        )
+        jevent = await eor(event,"Need to get an API key from https://screenshotlayer.com/product \nModule stopping!")
         return
-    await event.edit("Processing ...")
+    await jevent.edit("Processing ...")
     sample_url = "https://api.screenshotlayer.com/api/capture?access_key={}&url={}&fullpage={}&viewport={}&format={}&force={}"
     input_str = event.pattern_match.group(1)
     response_api = requests.get(
@@ -40,6 +39,6 @@ async def _(event):
                 )
                 await event.delete()
             except Exception as e:
-                await event.edit(str(e))
+                await jevent.edit(str(e))
     else:
-        await event.edit(response_api.text)
+        await jevent.edit(response_api.text)
