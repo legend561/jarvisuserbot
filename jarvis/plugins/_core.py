@@ -5,7 +5,7 @@ from pathlib import Path
 
 from jarvis import ALIVE_NAME
 from jarvis import bot as jarvis
-from jarvis.utils import admin_cmd, load_module, remove_plugin, sudo_cmd
+from jarvis.utils import admin_cmd, load_module, remove_plugin, sudo_cmd, eor
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./resource/20201012_204728.png"
@@ -21,7 +21,7 @@ async def send(event):
     message_id = event.message.id
     thumb = thumb_image_path
     input_str = event.pattern_match.group(1)
-    the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
+    the_plugin_file = "./jarvis/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         start = datetime.now()
         pro = await event.client.send_file(
@@ -34,13 +34,13 @@ async def send(event):
         )
         end = datetime.now()
         time_taken_in_ms = (end - start).seconds
-        await pro.edit(
+        await eor(pro,
             f"**==> Plugin name:** `{input_str}`\n**==> Uploaded in {time_taken_in_ms} seconds only.**\n**==> Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
         )
         await asyncio.sleep(DELETE_TIMEOUT)
         await event.delete()
     else:
-        await edit_or_reply(event, "**404**: __File Not Found__")
+        await eor(event, "**404**: __File Not Found__")
 
 
 @jarvis.on(admin_cmd(pattern="install"))
@@ -53,25 +53,25 @@ async def install(event):
             downloaded_file_name = (
                 await event.client.download_media(  # pylint:disable=E0602
                     await event.get_reply_message(),
-                    "userbot/plugins/",  # pylint:disable=E0602
+                    "jarvis/plugins/",  # pylint:disable=E0602
                 )
             )
             if "(" not in downloaded_file_name:
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit(
+                await eor(event,
                     "Plugin successfully installed\n `{}`".format(
                         os.path.basename(downloaded_file_name)
                     )
                 )
             else:
                 os.remove(downloaded_file_name)
-                await event.edit(
+                await eor(event,
                     "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed."
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await event.edit(str(e))
+            await eor(event,str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
@@ -85,10 +85,10 @@ async def unload(event):
     shortname = event.pattern_match["shortname"]
     try:
         remove_plugin(shortname)
-        await event.edit(f"Successfully unloaded {shortname}")
+        qwe = await eor(event,f"Jarvis Has Successfully unloaded {shortname}")
     except Exception as e:
-        await event.edit(
-            "Successfully unloaded {shortname}\n{}".format(shortname, str(e))
+        await qwe.edit(
+            "Jarvis has Successfully unloaded {shortname}\n{}".format(shortname, str(e))
         )
 
 
@@ -104,8 +104,8 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        await event.edit(f"Successfully loaded {shortname}")
+        qwe = await eor(event,f"Successfully loaded {shortname}")
     except Exception as e:
-        await event.edit(
-            f"Sorry, could not load {shortname} because of the following error.\n{str(e)}"
+        await qwe.edit(
+            f"Jarvis could not load {shortname} because of the following error.\n{str(e)}"
         )
