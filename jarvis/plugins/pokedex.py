@@ -47,7 +47,7 @@ async def pokedex(event):
             msg += "\n**Description** = {}".format(descsub)
         except BaseException:
             pass
-        await eor(event, msg, link_preview=True)
+        await eor(event, msg)
 
 
 @jarvis.on(admin_cmd(pattern="berry ?(.*)", outgoing=True))
