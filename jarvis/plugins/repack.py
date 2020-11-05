@@ -7,7 +7,7 @@
 import asyncio
 import os
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
@@ -18,7 +18,7 @@ async def _(event):
     b = open(input_str, "w")
     b.write(str(a.message))
     b.close()
-    jevent = await eor(event,f"**Packing into** `{input_str}`")
+    jevent = await eor(event, f"**Packing into** `{input_str}`")
     await asyncio.sleep(2)
     await jevent.edit(f"**Uploading** `{input_str}`")
     await asyncio.sleep(2)
