@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from jarvis import ALIVE_NAME, bot
+from jarvis import ALIVE_NAME, bot as jarvis
 from jarvis.utils import admin_cmd, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
