@@ -1,5 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
 # Thanks to @kandnub, for this awesome module !!
 #
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
@@ -17,7 +15,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 from jarvis import CMD_HELP, bot
-from jarvis.utils import admin_cmd, errors_handler
+from jarvis.utils import admin_cmd, errors_handler, sudo_cmd, eor
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
@@ -25,6 +23,7 @@ opener.addheaders = [("User-agent", useragent)]
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"reverse(?: |$)(\d*)"))
 @errors_handler
 async def okgoogle(img):
     """ For .reverse command, Google search images and stickers. """
@@ -36,15 +35,15 @@ async def okgoogle(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await img.edit("`Reply to photo or sticker nigger.`")
+        jevent = await eor(img,"`Reply to photo or sticker nigger.`")
         return
 
     if photo:
-        await img.edit("`Processing...`")
+        await jevent.edit("`Processing...`")
         try:
             image = Image.open(photo)
         except OSError:
-            await img.edit("`Unsupported , most likely.`")
+            await jevent.edit("`Unsupported , most likely.`")
             return
         name = "okgoogle.png"
         image.save(name, "PNG")
@@ -56,12 +55,12 @@ async def okgoogle(img):
         fetchUrl = response.headers["Location"]
 
         if response != 400:
-            await img.edit(
+            await jevent.edit(
                 "`Image successfully uploaded to Google. Maybe.`"
                 "\n`Parsing source now. Maybe.`"
             )
         else:
-            await img.edit("`Google told me to fuck off.`")
+            await jevent.edit("`Google told me to fuck off.`")
             return
 
         os.remove(name)
@@ -70,9 +69,9 @@ async def okgoogle(img):
         imgspage = match["similar_images"]
 
         if guess and imgspage:
-            await img.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
+            await jevent.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
         else:
-            await img.edit("`Can't find this piece of shit.`")
+            await jevent.edit("`Can't find this piece of shit.`")
             return
 
         if img.pattern_match.group(1):
@@ -92,7 +91,7 @@ async def okgoogle(img):
             )
         except TypeError:
             pass
-        await img.edit(
+        await jevent.edit(
             f"[{guess}]({fetchUrl})\n\n[Visually similar images]({imgspage})"
         )
 
