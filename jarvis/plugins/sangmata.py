@@ -1,7 +1,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("sg ?(.*)", outgoing=True))
@@ -65,4 +65,3 @@ async def _(event):
         else:
 
             await jevent.edit(f"{response.message.message}")
-
