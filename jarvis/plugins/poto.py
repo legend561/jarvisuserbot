@@ -5,7 +5,7 @@
 
 import logging
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 logger = logging.getLogger(__name__)
 
@@ -56,13 +56,13 @@ if 1 == 1:
 
                 if id <= 0:
 
-                    await eor(event,"`ID number you entered is invalid`")
+                    await eor(event, "`ID number you entered is invalid`")
 
                     return
 
             except:
 
-                await eor(event,"`Are you Comedy Me ?`")
+                await eor(event, "`Are you Comedy Me ?`")
 
                 return
 
@@ -74,6 +74,6 @@ if 1 == 1:
 
             else:
 
-                await eor(event,"`No photo found of that Nigga , now u Die`")
+                await eor(event, "`No photo found of that Nigga , now u Die`")
 
                 return
