@@ -6,7 +6,7 @@
 #
 import os
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern=r"reveal", outgoing=True))
@@ -16,7 +16,7 @@ async def _(event):
     a = open(b, "r")
     c = a.read()
     a.close()
-    d = await eor(event,"**Reading file...**")
+    d = await eor(event, "**Reading file...**")
     if len(c) > 4095:
         await d.edit("`The Total words in this file is more than telegram limits.`")
     else:
