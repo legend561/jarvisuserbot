@@ -2,16 +2,18 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
-
-from userbot import ALIVE_NAME, bot
-from userbot.utils import admin_cmd, load_module, remove_plugin
+from telethon.tl.types import InputMessagesFilterDocument
+from jarvis.utils import admin_cmd, sudo_cmd, load_module, remove_plugin
+from jarvis import ALIVE_NAME
+from jarvis import bot
 
 DELETE_TIMEOUT = 5
-thumb_image_path = "./Resources/IMG_20201005_150245_168.jpg"
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "DARK COBRA"
+thumb_image_path = "./resource/20201012_204728.png"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS"
 
 
 @bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
+@bot.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
     if event.fwd_from:
         return
@@ -42,6 +44,7 @@ async def send(event):
 
 
 @bot.on(admin_cmd(pattern="install"))
+@bot.on(sudo_cmd(pattern="install", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return
@@ -58,7 +61,7 @@ async def install(event):
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
                 await event.edit(
-                    "Plugin successfully installed\n @Dark_cobra_support `{}`".format(
+                    "Plugin successfully installed\n `{}`".format(
                         os.path.basename(downloaded_file_name)
                     )
                 )
@@ -75,6 +78,7 @@ async def install(event):
 
 
 @bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
+@bot.on(sudo_cmd(pattern=r"unload (?P<shortname>\w+)$", allow_sudo=True))
 async def unload(event):
     if event.fwd_from:
         return
@@ -84,11 +88,14 @@ async def unload(event):
         await event.edit(f"Successfully unloaded {shortname}")
     except Exception as e:
         await event.edit(
-            "Successfully unloaded {shortname}\n{}".format(shortname, str(e))
+            "Successfully unloaded {shortname}\n{}".format(
+                shortname, str(e)
+            )
         )
 
 
 @bot.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
+@bot.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:
         return
@@ -104,3 +111,4 @@ async def load(event):
         await event.edit(
             f"Sorry, could not load {shortname} because of the following error.\n{str(e)}"
         )
+
