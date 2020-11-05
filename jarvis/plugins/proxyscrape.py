@@ -9,7 +9,7 @@ import os
 
 from pySmartDL import SmartDL
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, sudo_cmd
 
 STARK_HTTP = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all"
 HTTP_TXT = "**Proxy Info** \nType: __HTTPS__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: All \nAnonymity: __All__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all) \nUploaded By [JARVIS](https://www.jarvisuserbot.com/) \n**Here Is Your Proxy** 👇"
