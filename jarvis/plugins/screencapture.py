@@ -5,7 +5,7 @@ import io
 
 import requests
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("screencapture (.*)", outgoing=True))
@@ -14,7 +14,10 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.SCREEN_SHOT_LAYER_ACCESS_KEY is None:
-        jevent = await eor(event,"Need to get an API key from https://screenshotlayer.com/product \nModule stopping!")
+        jevent = await eor(
+            event,
+            "Need to get an API key from https://screenshotlayer.com/product \nModule stopping!",
+        )
         return
     await jevent.edit("Processing ...")
     sample_url = "https://api.screenshotlayer.com/api/capture?access_key={}&url={}&fullpage={}&viewport={}&format={}&force={}"
