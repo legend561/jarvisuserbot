@@ -1,4 +1,4 @@
-"""Remove.BG Plugin for @UniBorg
+"""Remove.BG Plugin for Jarvis
 Syntax: .rmbg https://link.to/image.extension
 Syntax: .rmbg as reply to a media"""
 import io
@@ -7,10 +7,11 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
-@jarvis.on(admin_cmd("rmbg ?(.*)"))
+@jarvis.on(admin_cmd("rmbg ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd("rmbg ?(.*)", allow_sudo=True))
 async def _(event):
     HELP_STR = (
         "`.rmbg` as reply to a media, or give a link as an argument to this command"
@@ -18,7 +19,7 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.REM_BG_API_KEY is None:
-        await event.edit("You need API token from remove.bg to use this plugin.")
+        jevent = await eor(event, "You need API token from remove.bg to use this plugin.")
         return False
     input_str = event.pattern_match.group(1)
     start = datetime.now()
@@ -27,25 +28,23 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit(
-            "Connecting to Official J.A.R.V.I.S Server and analysing that img ..."
-        )
+        await jevent.edit("Connecting to Official JARVIS Server and analysing that img ...")
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
-            await event.edit(str(e))
+            await jevent.edit(str(e))
             return
         else:
-            await event.edit("sending to ReMove.BG")
+            await jevent.edit("sending to ReMove.BG")
             output_file_name = ReTrieveFile(downloaded_file_name)
             os.remove(downloaded_file_name)
     elif input_str:
-        await event.edit("sending to ReMove.BG")
+        await jevent.edit("sending to ReMove.BG")
         output_file_name = ReTrieveURL(input_str)
     else:
-        await event.edit(HELP_STR)
+        await jevent.edit(HELP_STR)
         return
     contentType = output_file_name.headers.get("content-type")
     if "image" in contentType:
@@ -61,13 +60,13 @@ async def _(event):
             )
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit(
+        await jevent.edit(
             "Removed dat annoying Backgroup in {} seconds, powered by JARVIS Userbot".format(
                 ms
             )
         )
     else:
-        await event.edit(
+        await jevent.edit(
             "ReMove.BG API returned Errors. Please report to @JarvisOt Support Group\n`{}".format(
                 output_file_name.content.decode("UTF-8")
             )
