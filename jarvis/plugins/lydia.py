@@ -79,7 +79,7 @@ async def remcf(event):
         await event.edit("This person does not have Lydia activated on him/her.")
 
 
-@bot.on(events.NewMessage(incoming=True))
+@jarvis.on(events.NewMessage(incoming=True))
 async def user(event):
     event.text
     try:

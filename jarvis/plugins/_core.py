@@ -11,8 +11,8 @@ thumb_image_path = "./resource/20201012_204728.png"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS"
 
 
-@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
     if event.fwd_from:
         return
@@ -42,8 +42,8 @@ async def send(event):
         await edit_or_reply(event, "**404**: __File Not Found__")
 
 
-@bot.on(admin_cmd(pattern="install"))
-@bot.on(sudo_cmd(pattern="install", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="install"))
+@jarvis.on(sudo_cmd(pattern="install", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return
@@ -76,8 +76,8 @@ async def install(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
-@bot.on(sudo_cmd(pattern=r"unload (?P<shortname>\w+)$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
+@jarvis.on(sudo_cmd(pattern=r"unload (?P<shortname>\w+)$", allow_sudo=True))
 async def unload(event):
     if event.fwd_from:
         return
@@ -91,8 +91,8 @@ async def unload(event):
         )
 
 
-@bot.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
-@bot.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
+@jarvis.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:
         return
