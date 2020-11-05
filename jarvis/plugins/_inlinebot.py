@@ -122,8 +122,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             txt = "You Can't View My Masters Stats"
             await event.answer(txt, alert=True)
 
-# thanks to @null7410  for callbackquery code
-# created by @sandy1709 and @mrconfused
+    # thanks to @null7410  for callbackquery code
+    # created by @sandy1709 and @mrconfused
     @jarvisbot.on(events.InlineQuery)
     async def inline_handler(event):
         result = None
@@ -173,7 +173,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     buttons=buttons,
                 )
                 await event.answer([result] if result else None)
-                
+
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
