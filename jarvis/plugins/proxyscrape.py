@@ -43,8 +43,8 @@ async def sppidy(event):
     await event.client.send_file(event.chat_id, downloaded_file_name)
 
 
-@jarvis.on(admin_cmd(pattern="proxysocks5" ,outgoing=True))
-@jarvis.on(sudo_cmd(pattern="proxysocks5" ,allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="proxysocks5", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="proxysocks5", allow_sudo=True))
 async def jarvis(event):
     await event.get_chat()
     file_name = "proxy_socks5.txt"
