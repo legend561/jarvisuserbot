@@ -6,11 +6,11 @@ import os
 
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="pbio (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="pbio (.*)", allow_sudo=True))# pylint:disable=E0602
+@jarvis.on(sudo_cmd(pattern="pbio (.*)", allow_sudo=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -25,7 +25,9 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern="pname ((.|\n)*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="pname ((.|\n)*)", allow_sudo=True)) # pylint:disable=E0602,W0703
+@jarvis.on(
+    sudo_cmd(pattern="pname ((.|\n)*)", allow_sudo=True)
+)  # pylint:disable=E0602,W0703
 async def _(event):
     if event.fwd_from:
         return
