@@ -13,9 +13,9 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = "./jarvis.png"
 
 
 def get_video_thumb(file, output=None, width=90):
@@ -42,19 +42,21 @@ def get_video_thumb(file, output=None, width=90):
         return output
 
 
-@jarvis.on(admin_cmd("rename (.*)"))
+@jarvis.on(admin_cmd("rename (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("rename (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit(
-        "Renaming In Process ! May Take Some Time If The File is Too Large 😅 After Rename Process Is Finished you Receive File Path "
-    )
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    jevent = await eor(event, "Renaming In Process 😅")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
+        thumb = thumb
         reply_message = await event.get_reply_message()
         # c_time = time.time()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
@@ -65,25 +67,24 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
-            await event.edit(
+            await jevent.edit(
                 "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
             )
         else:
-            await event.edit("Error Occurred\n {}".format(input_str))
+            await jevent.edit("Error Occurred\n {}".format(input_str))
     else:
-        await event.edit("Syntax // `.rename file.name` as reply to a Telegram media")
+        await jevent.edit("Syntax // `.rename file.name` as reply to a Telegram media")
 
 
-@jarvis.on(admin_cmd("rnupload (.*)"))
+@jarvis.on(admin_cmd("rnupload (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("rnupload (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     thumb = None
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
-    await event.edit(
-        "Rename & Upload in process ! It might take some time if file size is big"
-    )
+    jevent = await eor(event,"Rename & Upload in process ! It might take some time if file size is big")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -112,24 +113,23 @@ async def _(event):
             end_two = datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await event.edit(
+            await jevent.edit(
                 "Downloaded in {} seconds. Uploaded in {} seconds.".format(
                     ms_one, ms_two
                 )
             )
         else:
-            await event.edit("File Not Found {}".format(input_str))
+            await jevent.edit("File Not Found {}".format(input_str))
     else:
-        await event.edit("Syntax // .rnupload file.name as reply to a Telegram media")
+        await jevent.edit("Syntax // .rnupload file.name as reply to a Telegram media")
 
 
-@jarvis.on(admin_cmd("rnstreamupload (.*)"))
+@jarvis.on(admin_cmd("rnstreamupload (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("rnstreamupload (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit(
-        "Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
-    )
+    jevent = await eor(event,"Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -148,7 +148,7 @@ async def _(event):
         if os.path.exists(downloaded_file_name):
             thumb = None
             if not downloaded_file_name.endswith((".mkv", ".mp4", ".mp3", ".flac")):
-                await event.edit(
+                await jevent.edit(
                     "Sorry. But I don't think {} is a streamable file. Please try again.\n**Supported Formats**: MKV, MP4, MP3, FLAC".format(
                         downloaded_file_name
                     )
@@ -180,7 +180,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="This file Has Been Uploaded Using [Friday Userbot](t.me/fridayot)",
+                    caption="This file Has Been Uploaded Using [Jarvis Userbot](t.me/jarvisot)",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,
@@ -195,19 +195,19 @@ async def _(event):
                     ],
                 )
             except Exception as e:
-                await event.edit(str(e))
+                await jevent.edit(str(e))
             else:
                 end = datetime.now()
                 os.remove(downloaded_file_name)
                 ms_two = (end - end_one).seconds
-                await event.edit(
+                await jevent.edit(
                     "Downloaded in {} seconds. Uploaded in {} seconds.".format(
                         ms_one, ms_two
                     )
                 )
         else:
-            await event.edit("File Not Found {}".format(input_str))
+            await jevent.edit("File Not Found {}".format(input_str))
     else:
-        await event.edit(
+        await jevent.edit(
             "Syntax // .rnstreamupload file.name as reply to a Telegram media"
         )
