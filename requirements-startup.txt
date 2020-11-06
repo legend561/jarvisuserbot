@@ -56,3 +56,5 @@ covid
 validators
 psycopg2-binary
 pyrogram
+lottie
+glitch-this
