@@ -4,29 +4,20 @@
 # you may not use this file except in compliance with the License.
 #
 """ Based code + improve from AdekMaulana and aidilaryanto """
-#edited for all by @danish_00
+# edited for all by @danish_00
 
 import asyncio
-import io
 import os
-import random
-import re
 import textwrap
-import time
-import lottie
-from random import randint, uniform
 
-from glitch_this import ImageGlitcher
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
-from telethon import events, functions, types
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import DocumentAttributeFilename
 
-from jarvis import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from jarvis.utils import admin_cmd, sudo_cmd, eor
-from jarvis.utils import progress
+from jarvis import TEMP_DOWNLOAD_DIRECTORY
+from jarvis.utils import admin_cmd, eor, sudo_cmd
+
 THUMB_IMAGE_PATH = "./jarvis.png"
 
 
@@ -34,16 +25,17 @@ THUMB_IMAGE_PATH = "./jarvis.png"
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"mmf(?: |$)(.*)"))
 async def mim(event):
     if not event.reply_to_msg_id:
-        await eor(event,
-            "`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' "
+        await eor(
+            event,
+            "`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ",
         )
         return
 
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await eor(event,"```reply to a image/sticker/gif```")
+        await eor(event, "```reply to a image/sticker/gif```")
         return
-    await eor(event,"`Downloading Media..`")
+    await eor(event, "`Downloading Media..`")
     if reply_message.photo:
         dls_loc = await borg.download_media(
             reply_message,
@@ -73,9 +65,7 @@ async def mim(event):
             reply_message,
             downloaded_file_name,
         )
-    await event.edit(
-        "```Memefying ð¸ð¸ð¸```"
-    )
+    await event.edit("```Memefying ð¸ð¸ð¸```")
     await asyncio.sleep(5)
     text = event.pattern_match.group(1)
     webp_file = await draw_meme_text(dls_loc, text)
@@ -91,9 +81,7 @@ async def draw_meme_text(image_path, text):
     img = Image.open(image_path)
     os.remove(image_path)
     i_width, i_height = img.size
-    m_font = ImageFont.truetype(
-        "fonts/impact.ttf", int((70 / 640) * i_width)
-    )
+    m_font = ImageFont.truetype("fonts/impact.ttf", int((70 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
     else:
@@ -194,19 +182,21 @@ async def draw_meme_text(image_path, text):
     img.save(webp_file, "WebP")
     return webp_file
 
+
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"mms(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"mms(?: |$)(.*)"))
 async def mim(event):
     if not event.reply_to_msg_id:
-        await eor(event,
-            "`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' "
+        await eor(
+            event,
+            "`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ",
         )
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await eor(event,"```reply to a image/sticker/gif```")
+        await eor(event, "```reply to a image/sticker/gif```")
         return
-    await eor(event,"`Downloading Media..`")
+    await eor(event, "`Downloading Media..`")
     if reply_message.photo:
         dls_loc = await bot.download_media(
             reply_message,
@@ -235,15 +225,11 @@ async def mim(event):
             reply_message,
             "meme.png",
         )
-    await event.edit(
-        "```Memifying ð¸ð¸ð¸ ```"
-    )
+    await event.edit("```Memifying ð¸ð¸ð¸ ```")
     await asyncio.sleep(5)
     text = event.pattern_match.group(1)
     photo = await draw_meme(dls_loc, text)
-    await event.client.send_file(
-        event.chat_id, photo, reply_to=event.reply_to_msg_id
-    )
+    await event.client.send_file(event.chat_id, photo, reply_to=event.reply_to_msg_id)
     await event.delete()
     os.system("rm *.tgs *.mp4 *.png")
     os.remove(photo)
@@ -253,9 +239,7 @@ async def draw_meme(image_path, text):
     img = Image.open(image_path)
     os.remove(image_path)
     i_width, i_height = img.size
-    m_font = ImageFont.truetype(
-        "fonts/impact.ttf", int((70 / 640) * i_width)
-    )
+    m_font = ImageFont.truetype("fonts/impact.ttf", int((70 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
     else:
