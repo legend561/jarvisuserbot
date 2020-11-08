@@ -7,6 +7,7 @@ from telethon import Button, custom, events
 from jarvis.plugins import inlinestats
 
 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
    @jarvisbot.on(events.InlineQuery)
    async def inline_handler(event):
