@@ -165,39 +165,6 @@ async def dyno_usage(dyno):
         f"**|**  [`{percentage}`**%**]",
     )
 
-
-@jarvis.on(admin_cmd(pattern="info heroku"))
-@jarvis.on(sudo_cmd(pattern="info heroku", allow_sudo=True))
-async def info(event):
-    await borg.send_message(
-        event.chat_id,
-        "**Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**",
-    )
-    await event.delete()
-
-
-@jarvis.on(admin_cmd(pattern="logs$", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="logs$", allow_sudo=True))
-async def _(dyno):
-    try:
-        Heroku = heroku3.from_key(HEROKU_API_KEY)
-        app = Heroku.app(HEROKU_APP_NAME)
-    except BaseException:
-        return await dyno.reply(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
-        )
-    data = app.get_log()
-    key = (
-        requests.post("https://nekobin.com/api/documents", json={"content": data})
-        .json()
-        .get("result")
-        .get("key")
-    )
-    url = f"https://nekobin.com/{key}"
-    reply_text = f"As You Asked Logs of Jarvis is [here]({url})"
-    await edit_or_reply(dyno, reply_text)
-
-
 def prettyjson(obj, indent=2, maxlinelength=80):
     """Renders JSON content with indentation and line splits/concatenations to fit maxlinelength.
     Only dicts, lists and basic types are supported"""
@@ -210,6 +177,30 @@ def prettyjson(obj, indent=2, maxlinelength=80):
     )
     return indentitems(items, indent, level=0)
 
+
+@telebot.on(admin_cmd(outgoing=True, pattern=r"logs"))
+@telebot.on(sudo_cmd(allow_sudo=True, pattern=r"logs"))
+async def _(givelogs):
+    try:
+        Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
+        app = Heroku.app(Var.HEROKU_APP_NAME)
+    except BaseException:
+        return await eor(
+            givelogs,
+            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var !",
+        )
+    await eor(givelogs, "Pasting Logs..")
+    with open("jlogs.txt", "w") as log:
+        log.write(app.get_log())
+    ok = app.get_log()
+    message = ok
+    url = "https://del.dog/documents"
+    r = requests.post(url, data=message.encode("UTF-8")).json()
+    url = f"https://del.dog/{r['key']}"
+    await eor(givelogs, f"**Heroku** Jarvis Logs.\nPasted [here]({url}) !",)
+    await asyncio.sleep(3)
+    await givelogs.delete()
+    return os.remove("jlogs.txt")
 
 CMD_HELP.update(
     {
