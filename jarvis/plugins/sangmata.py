@@ -9,7 +9,7 @@ from jarvis.utils import admin_cmd, eor, sudo_cmd
 async def _(event):
 
     if event.fwd_from:
-        
+
         if not event.reply_to_msg_id:
             jevent = await eor(event, "```Reply to any user message.```")
             reply_message = await event.get_reply_message()
@@ -22,11 +22,15 @@ async def _(event):
             await jevent.edit("```Processing```")
             async with borg.conversation(chat) as conv:
                 try:
-                    response = conv.wait_event(events.NewMessage(incoming=True, from_users=461843263))
+                    response = conv.wait_event(
+                        events.NewMessage(incoming=True, from_users=461843263)
+                    )
                     await borg.forward_messages(chat, reply_message)
                     response = await response
                 except YouBlockedUserError:
-                    await jevent.edit("```Please unblock @sangmatainfo_bot and try again```")
+                    await jevent.edit(
+                        "```Please unblock @sangmatainfo_bot and try again```"
+                    )
                     return
         if response.text.startswith("Forward"):
             await jevent.edit(
