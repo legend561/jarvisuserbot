@@ -165,6 +165,7 @@ async def dyno_usage(dyno):
         f"**|**  [`{percentage}`**%**]",
     )
 
+
 def prettyjson(obj, indent=2, maxlinelength=80):
     """Renders JSON content with indentation and line splits/concatenations to fit maxlinelength.
     Only dicts, lists and basic types are supported"""
@@ -197,10 +198,14 @@ async def _(givelogs):
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"
-    await eor(givelogs, f"**Heroku** Jarvis Logs.\nPasted [here]({url}) !",)
+    await eor(
+        givelogs,
+        f"**Heroku** Jarvis Logs.\nPasted [here]({url}) !",
+    )
     await asyncio.sleep(3)
     await givelogs.delete()
     return os.remove("jlogs.txt")
+
 
 CMD_HELP.update(
     {
