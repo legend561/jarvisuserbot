@@ -7,8 +7,6 @@ from telethon import Button, custom, events
 from jarvis.plugins import inlinestats
 
 
-# thanks to @null7410  for callbackquery code
-# created by @sandy1709 and @mrconfused
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
    @jarvisbot.on(events.InlineQuery)
    async def inline_handler(event):
@@ -29,15 +27,15 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 try:
                     u = await event.client.get_entity(u)
                     if u.username:
-                        sandy = f"@{u.username}"
+                        yup = f"@{u.username}"
                     else:
-                        sandy = f"[{u.first_name}](tg://user?id={u.id})"
+                        yup = f"[{u.first_name}](tg://user?id={u.id})"
                 except ValueError:
                     # ValueError: Could not find the input entity
-                    sandy = f"[user](tg://user?id={u})"
+                    yup = f"[user](tg://user?id={u})"
                 result = builder.article(
                     title="secret message",
-                    text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                    text=f"🔒 A whisper message to {yup}, Only he/she can open it.",
                     buttons=buttons,
                 )
                 await event.answer([result] if result else None)
@@ -50,12 +48,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     )
                 ]
                 if u.username:
-                    sandy = f"@{u.username}"
+                    yup = f"@{u.username}"
                 else:
-                    sandy = f"[{u.first_name}](tg://user?id={u.id})"
+                    yup = f"[{u.first_name}](tg://user?id={u.id})"
                 result = builder.article(
                     title="secret message",
-                    text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                    text=f"🔒 A whisper message to {yup}, Only he/she can open it.",
                     buttons=buttons,3
                 )
                 await event.answer([result] if result else None)
