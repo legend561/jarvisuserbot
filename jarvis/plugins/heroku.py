@@ -179,8 +179,8 @@ def prettyjson(obj, indent=2, maxlinelength=80):
     return indentitems(items, indent, level=0)
 
 
-@telebot.on(admin_cmd(outgoing=True, pattern=r"logs"))
-@telebot.on(sudo_cmd(allow_sudo=True, pattern=r"logs"))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"logs"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"logs"))
 async def _(givelogs):
     try:
         Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
