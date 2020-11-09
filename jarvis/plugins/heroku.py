@@ -203,7 +203,6 @@ async def _(givelogs):
         f"**Heroku** Jarvis Logs.\nPasted [here]({url}) !",
     )
     await asyncio.sleep(3)
-    await givelogs.delete()
     return os.remove("jlogs.txt")
 
 
