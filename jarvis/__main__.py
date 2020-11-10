@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from sys import argv
 
@@ -7,6 +8,9 @@ from telethon import TelegramClient
 from jarvis import bot
 from jarvis.utils import load_module, start_assistant
 from var import Var
+
+LOAD_USERBOT = os.environ.get("LOAD_USERBOT", True)
+LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT", True)
 
 
 async def add_bot(bot_token):
@@ -35,22 +39,27 @@ else:
 
 import glob
 
-path = "jarvis/plugins/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        load_module(shortname.replace(".py", ""))
+if LOAD_USERBOT == True:
+    path = "jarvis/plugins/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            load_module(shortname.replace(".py", ""))
+else:
+    print("Userbot is Not Loading As U Have Disabled")
 
-
-path = "jarvis/plugins/assistant/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        start_assistant(shortname.replace(".py", ""))
+if LOAD_ASSISTANT == True:
+    path = "jarvis/plugins/assistant/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            start_assistant(shortname.replace(".py", ""))
+else:
+    print("Assitant is Not Loading As U Have Disabled")
 
 print("JARVIS AI AND YOUR ASSISTANT is Active Enjoy Join @JarvisOT For Updates.")
 
