@@ -34,7 +34,8 @@ else:
 
 
 import glob
-if LOAD_USERBOT == True :
+
+if LOAD_USERBOT == True:
     path = "jarvis/plugins/*.py"
     files = glob.glob(path)
     for name in files:
@@ -45,7 +46,7 @@ if LOAD_USERBOT == True :
 else:
     print("Userbot is Not Loading As U Have Disabled")
 
-if LOAD_ASSISTANT == True :
+if LOAD_ASSISTANT == True:
     path = "jarvis/plugins/assistant/*.py"
     files = glob.glob(path)
     for name in files:
