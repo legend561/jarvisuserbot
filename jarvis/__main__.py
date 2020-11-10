@@ -34,23 +34,27 @@ else:
 
 
 import glob
+if LOAD_USERBOT == True :
+    path = "jarvis/plugins/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            load_module(shortname.replace(".py", ""))
+else:
+    print("Userbot is Not Loading As U Have Disabled")
 
-path = "jarvis/plugins/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        load_module(shortname.replace(".py", ""))
-
-
-path = "jarvis/plugins/assistant/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        start_assistant(shortname.replace(".py", ""))
+if LOAD_ASSISTANT == True :
+    path = "jarvis/plugins/assistant/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            start_assistant(shortname.replace(".py", ""))
+else:
+    print("Assitant is Not Loading As U Have Disabled")
 
 print("JARVIS AI AND YOUR ASSISTANT is Active Enjoy Join @JarvisOT For Updates.")
 
