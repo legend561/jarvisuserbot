@@ -9,6 +9,10 @@ import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from jarvis import ALIVE_NAME, CMD_HELP
 from jarvis.utils import admin_cmd
 
+DEFAULTUSER = (
+    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+)
+
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "https://telegra.ph/file/9bfc1668ebf1d9e8b541d.jpg"
@@ -35,9 +39,6 @@ else:
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 
-DEFAULTUSER = (
-    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-)
 USER_BOT_WARN_ZERO = "`You were spamming my Boss's inbox, henceforth your retarded lame ass has been blocked by my master's userbot.`"
 USER_BOT_NO_WARN = (
     f"`Hello My Friend ! This is` **{FAV_NAME}** \n"
