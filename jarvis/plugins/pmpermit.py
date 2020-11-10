@@ -19,12 +19,12 @@ FAV_NAME = os.environ.get("FAV_NAME", None)
 if FAV_NAME is None:
     FAV_NAME = "Jarvis"
 
+PMPERMIMT_TEXT = os.environ.get("PMPERMIT_TEXT", None)
+if PMPERMIMT_TEXT is None:
+    PMPERMIMT_TEXT = USER_BOT_NO_WARN
+
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
-
-CUSTOM_MIDDLE_PMP = Config.CUSTOM_PMPERMIT
-if CUSTOM_MIDDLE_PMP is None:
-    CUSTOM_MIDDLE_PMP = "**If You Want You Can Leave A Message Here ! My Boss Will Surely See And Reply To You Soon !**"
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
@@ -227,7 +227,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             except:
                 return
         r = await event.client.send_file(
-            event.chat_id, WARN_PIC, caption=USER_BOT_NO_WARN
+            event.chat_id, PMPERMIT_PIC, caption=PMPERMIMT_TEXT
         )
         PM_WARNS[chat_id] += 1
         if chat_id in PREV_REPLY_MESSAGE:
