@@ -9,8 +9,16 @@ from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
+from jarvis import ALIVE_NAME, CMD_HELP
 from jarvis.utils import admin_cmd
 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
+DEFAULTUSERBIO = "404: No bio found!˙"
+if Config.PRIVATE_GROUP_BOT_API_ID is None:
+    BOTLOG = False
+else:
+    BOTLOG = True
+    BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 
 @jarvis.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
@@ -30,7 +38,8 @@ async def _(event):
     # https://stackoverflow.com/a/5072031/4723940
     # some Deleted Accounts do not have first_name
     if first_name is not None:
-        # some weird people (like me) have more than 4096 characters in their names
+        # some weird people (like me) have more than 4096 characters in their
+        # names
         first_name = first_name.replace("\u2060", "")
     last_name = replied_user.user.last_name
     # last_name is not Manadatory in @Telegram
@@ -38,15 +47,11 @@ async def _(event):
         last_name = html.escape(last_name)
         last_name = last_name.replace("\u2060", "")
     if last_name is None:
-        last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
-    # giving myself credits cause y not
+        last_name = "⁪⁬⁮⁮⁮"
+    # inspired by https://telegram.dog/afsaI181
     user_bio = replied_user.about
-    if user_id == 1318486004:
-        await event.edit("Sorry, can't clone my Dev")
-        await asyncio.sleep(3)
-        return
     if user_bio is not None:
-        user_bio = html.escape(replied_user.about)
+        user_bio = replied_user.about
     await borg(functions.account.UpdateProfileRequest(first_name=first_name))
     await borg(functions.account.UpdateProfileRequest(last_name=last_name))
     await borg(functions.account.UpdateProfileRequest(about=user_bio))
@@ -54,19 +59,35 @@ async def _(event):
     await borg(
         functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
     )
-    # message_id_to_reply = event.message.reply_to_msg_id
-    # if not message_id_to_reply:
-    #    message_id_to_reply = event.message.id
-    # await borg.send_message(
-    #  event.chat_id,
-    #  "Hey ? Whats Up !",
-    #  reply_to=message_id_to_reply,
-    #  )
     await event.delete()
     await borg.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
-
+    if BOTLOG:
+        await event.client.send_message(
+            BOTLOG_CHATID,
+            f"#CHEAT\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })",
+        )
+    
+@jarvis.on(admin_cmd(pattern="revert"))
+async def _(event):
+    if event.fwd_from:
+        return
+    name = f"{DEFAULTUSER}"
+    bio = f"{DEFAULTUSERBIO}"
+    n = 1
+    await borg(
+        functions.photos.DeletePhotosRequest(
+            await event.client.get_profile_photos("me", limit=n)
+        )
+    )
+    await borg(functions.account.UpdateProfileRequest(about=bio))
+    await borg(functions.account.UpdateProfileRequest(first_name=name))
+    await event.edit("succesfully reverted to your account back")
+    if BOTLOG:
+        await event.client.send_message(
+            BOTLOG_CHATID, f"#UNDO\nSuccesfully reverted back to your profile"
+        )
 
 async def get_full_user(event):
     if event.reply_to_msg_id:
@@ -120,3 +141,13 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
+
+CMD_HELP.update(
+    {
+        "clone": ".clone <reply to user who you want to clone.\
+    \n**Use - clone the replied user account.\
+    \n\n.revert\
+    \nUse - Reverts back to your profile which you have set in heroku.\
+    "
+    }
+)
