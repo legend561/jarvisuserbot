@@ -2,7 +2,6 @@
 and set as own profile.
 Syntax: .clone @username"""
 
-import asyncio
 import html
 
 from telethon.tl import functions
@@ -19,6 +18,7 @@ if Config.PRIVATE_GROUP_BOT_API_ID is None:
 else:
     BOTLOG = True
     BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+
 
 @jarvis.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
@@ -68,7 +68,8 @@ async def _(event):
             BOTLOG_CHATID,
             f"#CHEAT\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })",
         )
-    
+
+
 @jarvis.on(admin_cmd(pattern="revert"))
 async def _(event):
     if event.fwd_from:
@@ -88,6 +89,7 @@ async def _(event):
         await event.client.send_message(
             BOTLOG_CHATID, f"#UNDO\nSuccesfully reverted back to your profile"
         )
+
 
 async def get_full_user(event):
     if event.reply_to_msg_id:
@@ -141,6 +143,7 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
+
 
 CMD_HELP.update(
     {
