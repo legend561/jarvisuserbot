@@ -8,14 +8,15 @@ By: @Zero_cool7870
 import json
 import os
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
-@jarvis.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="sch ?(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="sch ?(.*)", allow_sudo=True))
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
 
-    await event.edit("**Searching for " + search_str + " ...**")
+    jevent = await eor(event,"**Searching for " + search_str + " ...**")
 
     command = "sp --json " + search_str + " > out.json"
 
@@ -30,4 +31,4 @@ async def sp_search(event):
     for element in data:
         msg = msg + "⁍ [" + element["title"] + "](" + element["link"] + ")\n\n"
 
-    await event.edit(msg)
+    await jevent.edit(msg)
