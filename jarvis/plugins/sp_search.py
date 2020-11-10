@@ -8,7 +8,7 @@ By: @Zero_cool7870
 import json
 import os
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="sch ?(.*)", outgoing=True))
@@ -16,7 +16,7 @@ from jarvis.utils import admin_cmd, sudo_cmd, eor
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
 
-    jevent = await eor(event,"**Searching for " + search_str + " ...**")
+    jevent = await eor(event, "**Searching for " + search_str + " ...**")
 
     command = "sp --json " + search_str + " > out.json"
 
