@@ -5,7 +5,7 @@ from datetime import datetime
 
 import speedtest
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("speed ?(.*)", outgoing=True))
@@ -22,7 +22,7 @@ async def _(event):
         as_document = True
     elif input_str == "text":
         as_text = True
-    await eor(event,"`Calculating my internet speed. Please wait!`")
+    await eor(event, "`Calculating my internet speed. Please wait!`")
     start = datetime.now()
     s = speedtest.Speedtest()
     s.get_best_server()
