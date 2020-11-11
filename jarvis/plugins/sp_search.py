@@ -16,7 +16,7 @@ from jarvis.utils import admin_cmd, eor, sudo_cmd
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
 
-    jevent = await eor(event, "**Searching for " + search_str + " ...**")
+    await eor(event, "**Searching for " + search_str + " ...**")
 
     command = "sp --json " + search_str + " > out.json"
 
@@ -31,4 +31,4 @@ async def sp_search(event):
     for element in data:
         msg = msg + "⁍ [" + element["title"] + "](" + element["link"] + ")\n\n"
 
-    await jevent.edit(msg)
+    await event.edit(msg)
