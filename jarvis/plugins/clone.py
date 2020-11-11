@@ -33,9 +33,6 @@ async def _(event):
     profile_pic = await event.client.download_profile_photo(
         user_id, Config.TMP_DOWNLOAD_DIRECTORY
     )
-    if replied_user == 1318486004:
-        await event.edit("I Cant Clone My Creator")
-        return False
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.user.first_name)
     # https://stackoverflow.com/a/5072031/4723940
