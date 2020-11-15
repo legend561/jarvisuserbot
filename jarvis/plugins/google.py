@@ -3,12 +3,11 @@ Available Commands:
 .go <query> credits to owner of bot
 """
 
-from re import findall
 
 from search_engine_parser import GoogleSearch
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 from jarvis import BOTLOG_CHATID
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 def progress(current, total):
@@ -51,4 +50,3 @@ async def gsearch(q_event):
             BOTLOG_CHATID,
             "Google Search query `" + match + "` was executed successfully",
         )
-
