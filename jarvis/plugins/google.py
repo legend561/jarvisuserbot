@@ -19,8 +19,8 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
-@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"gs (.*)"))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"go (.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"go (.*)"))
 async def gsearch(q_event):
     jevent = await edit_or_reply(q_event, "`Processing........`")
     match = q_event.pattern_match.group(1)
