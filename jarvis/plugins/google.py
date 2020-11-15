@@ -8,6 +8,7 @@ from re import findall
 from search_engine_parser import GoogleSearch
 
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis import BOTLOG_CHATID
 
 
 def progress(current, total):
@@ -18,12 +19,12 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd("go (.*)", outgoing=True))
-@jarvis.on(sudo_cmd("go (.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"gs (.*)"))
 async def gsearch(q_event):
-    """ For .google command, do a Google search. """
+    jevent = await edit_or_reply(q_event, "`Processing........`")
     match = q_event.pattern_match.group(1)
-    page = findall(r"page=\d+", match)
+    page = re.findall(r"page=\d+", match)
     try:
         page = page[0]
         page = page.replace("page=", "")
@@ -39,11 +40,15 @@ async def gsearch(q_event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            msg += f"[{title}]({link})\n`{desc}`\n\n"
+            msg += f"👉[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
-    await edit_or_reply(
-        q_event,
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg,
-        link_preview=False,
+    await jevent.edit(
+        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
+    if BOTLOG_CHATID:
+        await q_event.client.send_message(
+            BOTLOG_CHATID,
+            "Google Search query `" + match + "` was executed successfully",
+        )
+
