@@ -1,238 +1,127 @@
-"""Execute GNU/Linux commands inside Telegram
-Syntax: .lsroot , .lslocal"""
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-import asyncio
+# Copyright (C) 2020 The Raphielscape Company LLC.
+#
+# Licensed under the Raphielscape Public License, Version 1.d (the "License");
+# you may not use this file except in compliance with the License.
+#
+
 import io
 import os
+import os.path
 import time
+from os.path import exists, isdir
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis import CMD_HELP
+from jarvis.utils import admin_cmd, humanbytes, sudo_cmd, eor
 
-if not os.path.isdir("./SAVED"):
-    os.makedirs("./SAVED")
-if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-    os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+MAX_MESSAGE_SIZE_LIMIT = 4095
 
 
-@jarvis.on(admin_cmd(pattern="lslocal", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="lslocal", allow_sudo=True))
-async def _(event):
+@jarvis.on(admin_cmd(outgoing=True, pattern=r"ls ?(.*)"))
+@jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"ls ?(.*)"))
+async def lst(event):
     if event.fwd_from:
         return
-    PROCESS_RUN_TIME = 100
-    #    dirname = event.pattern_match.group(1)
-    #    tempdir = "localdir"
-    cmd = "ls -lh ./DOWNLOADS/"
-    #    if dirname == tempdir:
-
-    event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    OUTPUT = f"**Files in [JARVIS](https://t.me/JarvisOT) DOWNLOADS Folder:**\n"
-    stdout, stderr = await process.communicate()
-    if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(stdout)) as out_file:
-            out_file.name = "exec.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=OUTPUT,
-                reply_to=reply_to_id,
-            )
-            await event.delete()
-    if stderr.decode():
-        await event.reply(f"**{stderr.decode()}**")
-        return
-    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
-
-
-#    else:
-#        await event.edit("Unknown Command")
-
-
-@jarvis.on(admin_cmd(pattern=r"lsroot", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"lsroot", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    PROCESS_RUN_TIME = 100
-    cmd = "ls -lh"
-
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    OUTPUT = f"**Files in root directory:**\n"
-    stdout, stderr = await process.communicate()
-    if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(stdout)) as out_file:
-            out_file.name = "exec.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=OUTPUT,
-                reply_to=reply_to_id,
-            )
-            await event.delete()
-    if stderr.decode():
-        await event.reply(f"**{stderr.decode()}**")
-        return
-    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
-
-
-@jarvis.on(admin_cmd(pattern=r"lssaved", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"lssaved", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    PROCESS_RUN_TIME = 100
-    cmd = "ls ./SAVED/"
-
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    OUTPUT = f"**Files in SAVED directory:**\n"
-    stdout, stderr = await process.communicate()
-    if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(stdout)) as out_file:
-            out_file.name = "exec.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=OUTPUT,
-                reply_to=reply_to_id,
-            )
-            await event.delete()
-    if stderr.decode():
-        await event.reply(f"**{stderr.decode()}**")
-        return
-    await event.reply(f"{OUTPUT}`{stdout.decode()}`")
-
-
-@jarvis.on(admin_cmd(pattern=r"rnsaved ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"rnsaved ?(.*)", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    PROCESS_RUN_TIME = 100
-    input_str = event.pattern_match.group(1)
-    if "|" in input_str:
-        src, dst = input_str.split("|")
-        src = src.strip()
-        dst = dst.strip()
-    cmd = f"mv ./SAVED/{src} ./SAVED/{dst}"
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    OUTPUT = f"**Files in root directory:**\n"
-    stdout, stderr = await process.communicate()
-    if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(stdout)) as out_file:
-            out_file.name = "exec.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=OUTPUT,
-                reply_to=reply_to_id,
-            )
-            await event.delete()
-    if stderr.decode():
-        await event.reply(f"**{stderr.decode()}**")
-        return
-    await event.reply(f"File renamed `{src}` to `{dst}`")
-
-
-@jarvis.on(admin_cmd(pattern=r"rnlocal (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"rnlocal (.*)", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    PROCESS_RUN_TIME = 100
-    input_str = event.pattern_match.group(1)
-    if "|" in input_str:
-        src, dst = input_str.split("|")
-        src = src.strip()
-        dst = dst.strip()
-    cmd = f"mv ./DOWNLOADS/{src} ./DOWNLOADS/{dst}"
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    OUTPUT = f"**Files in root directory:**\n"
-    stdout, stderr = await process.communicate()
-    if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(stdout)) as out_file:
-            out_file.name = "exec.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=OUTPUT,
-                reply_to=reply_to_id,
-            )
-            await event.delete()
-    if stderr.decode():
-        await event.reply(f"**{stderr.decode()}**")
-        return
-    await event.reply(f"File renamed `{src}` to `{dst}`")
-
-
-@jarvis.on(admin_cmd(pattern=r"delsave (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"delsave (.*)", allow_sudo=True))
-async def handler(event):
-    if event.fwd_from:
-        return
-    input_str = event.pattern_match.group(1)
-    pathtofile = f"./SAVED/{input_str}"
-
-    if os.path.isfile(pathtofile):
-        os.remove(pathtofile)
-        await event.reply("✅ File Deleted 🗑")
-
+    jeve = event.pattern_match.group(1)
+    if jeve:
+        path = jeve
     else:
-        await event.reply("⛔️ File Not Found 😬")
-
-
-@jarvis.on(admin_cmd(pattern=r"delocal (.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"delocal (.*)", allow_sudo=True))
-async def handler(event):
-    if event.fwd_from:
+        path = os.getcwd()
+    if not exists(path):
+        await eor(
+            event,
+            f"There is no such directory or file with the name `{jeve}` check again!",
+        )
         return
-    input_str = event.pattern_match.group(1)
-    pathtofile = f"./BotHub/{input_str}"
-
-    if os.path.isfile(pathtofile):
-        os.remove(pathtofile)
-        await event.reply("✅ File Deleted 🗑")
-
+    if isdir(path):
+        if jeve:
+            msg = "Folders and Files in `{}` :\n\n".format(path)
+            lists = os.listdir(path)
+        else:
+            msg = "Folders and Files in Current Directory :\n\n"
+            lists = os.listdir(path)
+        files = ""
+        folders = ""
+        for contents in sorted(lists):
+            jpath = path + "/" + contents
+            if not isdir(jpath):
+                size = os.stat(jpath).st_size
+                if contents.endswith((".mp3", ".flac", ".wav", ".m4a")):
+                    files += "🎵 " + f"`{contents}`\n"
+                if contents.endswith((".opus")):
+                    files += "🎙 " + f"`{contents}`\n"
+                elif contents.endswith(
+                    (".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")
+                ):
+                    files += "🎞 " + f"`{contents}`\n"
+                elif contents.endswith(
+                    (".zip", ".tar", ".tar.gz", ".rar", ".7z", ".xz")
+                ):
+                    files += "🗜 " + f"`{contents}`\n"
+                elif contents.endswith(
+                    (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ". webp")
+                ):
+                    files += "🖼 " + f"`{contents}`\n"
+                elif contents.endswith((".exe", ".deb")):
+                    files += "⚙️ " + f"`{contents}`\n"
+                elif contents.endswith((".iso", ".img")):
+                    files += "💿 " + f"`{contents}`\n"
+                elif contents.endswith((".apk", ".xapk")):
+                    files += "📱 " + f"`{contents}`\n"
+                elif contents.endswith((".py")):
+                    files += "🐍 " + f"`{contents}`\n"
+                else:
+                    files += "📄 " + f"`{contents}`\n"
+            else:
+                folders += f"📁 `{contents}`\n"
+        if files or folders:
+            msg = msg + folders + files
+        else:
+            msg = msg + "__empty path__"
     else:
-        await event.reply("⛔️ File Not Found 😬")
+        size = os.stat(path).st_size
+        msg = "The details of given file :\n\n"
+        if path.endswith((".mp3", ".flac", ".wav", ".m4a")):
+            mode = "🎵 "
+        if path.endswith((".opus")):
+            mode = "🎙 "
+        elif path.endswith((".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")):
+            mode = "🎞 "
+        elif path.endswith((".zip", ".tar", ".tar.gz", ".rar", ".7z", ".xz")):
+            mode = "🗜 "
+        elif path.endswith((".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ". webp")):
+            mode = "🖼 "
+        elif path.endswith((".exe", ".deb")):
+            mode = "⚙️ "
+        elif path.endswith((".iso", ".img")):
+            mode = "💿 "
+        elif path.endswith((".apk", ".xapk")):
+            mode = "📱 "
+        elif path.endswith((".py")):
+            mode = "🐍 "
+        else:
+            mode = "📄 "
+        time.ctime(os.path.getctime(path))
+        time2 = time.ctime(os.path.getmtime(path))
+        time3 = time.ctime(os.path.getatime(path))
+        msg += f"**Location :** `{path}`\n"
+        msg += f"**Icon :** `{mode}`\n"
+        msg += f"**Size :** `{humanbytes(size)}`\n"
+        msg += f"**Last Modified Time:** `{time2}`\n"
+        msg += f"**Last Accessed Time:** `{time3}`"
+
+    if len(msg) > MAX_MESSAGE_SIZE_LIMIT:
+        with io.BytesIO(str.encode(msg)) as out_file:
+            out_file.name = "ls.txt"
+            await event.client.send_file(
+                event.chat_id,
+                out_file,
+                force_document=True,
+                allow_cache=False,
+                caption=path,
+            )
+            await event.delete()
+    else:
+        await eor(event, msg)
+
+
+CMD_HELP.update({"file": ".ls <directory>" "\nUsage: File Manager plugin for Jarvis."})
