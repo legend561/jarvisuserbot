@@ -14,7 +14,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from jarvis.utils import admin_cmd, eor, progress, sudo_cmd, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, eor, progress, sudo_cmd
 
 thumb_image_path = "/thumb_image.jpg"
 
