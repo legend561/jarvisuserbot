@@ -29,7 +29,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 buttons=buttons,
                 link_preview=False,
             )
-        if event.query.user_id == OWNER_ID and query == "stats":
+        if event.query.user_id is bot.uid and query == "stats":
             result = builder.article(
                 title="Stats",
                 text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
@@ -81,6 +81,9 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             await event.edit("Menu Closed \n(c) @JarvisOT")
+        else :
+            reply_popp_up_alert = "Lel Get Ur Own Jarvis and Dont Close My Menu!"
+            await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
     @jarvisbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
