@@ -112,6 +112,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 await event.answer(halps, cache_time=0, alert=True)
         else:
             reply_pop_up_alert = "Please get your own JARVIS BOT, and don't use mine!"
+            await event.answer(reply_pop_up_alert, alert=True)
 
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
