@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from jarvis import CMD_HELP
+from jarvis import CMD_HELP, Lastupdate
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
