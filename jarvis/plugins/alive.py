@@ -90,13 +90,8 @@ async def jarvis(alive):
         pm_caption += f"  🔸 ➣**Sυ∂σ**               `{ssudo}` \n"
         pm_caption += f"  🔸 ➣**Pм Lσgѕ**        `{pmllogs}` \n"
         pm_caption += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
-        pm_caption += f"  🔸 ➣**G-Dяινє**           `{wearenoob}`\n\n"
+        pm_caption += f"  🔸 ➣**G-Dяινє**           `{wearenoob}`\n"
         pm_caption += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
-        pm_caption += " **✓ SUPPORT INFO ✓** \n"
-        pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ    [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
-        pm_caption += "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
-        pm_caption += "🔹 ʟɪᴄᴇɴꜱᴇ                     [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-        pm_caption += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ          [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
         pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
         await borg.send_file(
@@ -116,11 +111,6 @@ async def jarvis(alive):
         pm_captionn += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
         pm_captionn += f"  🔸 ➣**G-Dяινє**           `{wearenoob}`\n\n"
         pm_captionn += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
-        pm_captionn += " **✓ SUPPORT INFO ✓** \n"
-        pm_captionn += "🔹 ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ    [ᴊᴏɪɴ](https://t.me/jarvisot)\n"
-        pm_captionn += "🔹 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ        [ᴊᴏɪɴ](https://t.me/jarvissupportot)\n"
-        pm_captionn += "🔹 ʟɪᴄᴇɴꜱᴇ                     [GPL-3.0  ʟɪᴄᴇɴꜱᴇ](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n"
-        pm_captionn += "🔹 ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ          [𝙅𝘼𝙍𝙑𝙄𝙎](https://jarvisuserbot.gitbook.io/jarvisuserbot/)\n\n"
         pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
         await borg.send_file(
