@@ -23,5 +23,5 @@ async def _(event):
     await jevent.edit(f"**Uploading** `{input_str}`")
     await asyncio.sleep(2)
     await jevent.client.send_file(event.chat_id, input_str)
-    await a.delete()
+    await event.delete()
     os.remove(input_str)
