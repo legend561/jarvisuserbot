@@ -42,9 +42,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await sppidy.edit(
-        f"**Pong !!**\n ➲ `{ms}` \n ➲ `{uptime}`"
-    )
+    await sppidy.edit(f"**Pong !!**\n ➲ `{ms}` \n ➲ `{uptime}`")
 
 
 @jarvis.on(admin_cmd(pattern="pong", outgoing=True))
