@@ -35,12 +35,16 @@ def get_readable_time(seconds: int) -> str:
 @jarvis.on(admin_cmd(pattern="ping", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="ping", allow_sudo=True))
 async def _(event):
+    sppidy = await edit_or_reply(event, "`Pong !`")
     if event.fwd_from:
         return
-    start_time = datetime.now()
-    end_time = datetime.now()
-    ms = round((end_time - start_time) * 1000, 3)
-    await edit_or_reply(event, f"Pong! 🏓 \n{ms}ms ..")
+    start = datetime.now()
+    end = datetime.now()
+    ms = (end - start).microseconds / 1000
+    uptime = get_readable_time((time.time() - Lastupdate))
+    await sppidy.edit(
+        f"**Pong !!**\n ➲ `{ms}` \n ➲ `{uptime}`"
+    )
 
 
 @jarvis.on(admin_cmd(pattern="pong", outgoing=True))
@@ -50,7 +54,7 @@ async def _(event):
         return
     start = datetime.now()
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    ms = (end - start).microseconds / 1000 * 2
     await edit_or_reply(event, f"Ping! 🎾 {ms} ..")
 
 
