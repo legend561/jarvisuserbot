@@ -7,10 +7,11 @@ from datetime import datetime
 
 from selenium import webdriver
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
-@jarvis.on(admin_cmd("screenlong (.*)"))
+@jarvis.on(admin_cmd("screenlong (.*)", outgoing=True))
+@jarvis.on(sudo_cmd("screenlong (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
