@@ -1,5 +1,3 @@
-# telegraph utils for catuserbot
-
 import os
 from datetime import datetime
 
