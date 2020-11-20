@@ -17,7 +17,7 @@ async def _(event):
     c = a.read()
     a.close()
     d = await eor(event, "**Reading file...**")
-    await event delete()
+    await event.delete()
     if len(c) > 4095:
         await d.edit("`The Total words in this file is more than telegram limits.`")
     else:
