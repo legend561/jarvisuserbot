@@ -7,7 +7,7 @@ from datetime import datetime
 
 from selenium import webdriver
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("screenlong (.*)", outgoing=True))
@@ -16,9 +16,9 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.GOOGLE_CHROME_BIN is None:
-        await eor(event,"need to install Google Chrome. Module Stopping.")
+        await eor(event, "need to install Google Chrome. Module Stopping.")
         return
-    jevent = await eor(event,"Processing ...")
+    jevent = await eor(event, "Processing ...")
     start = datetime.now()
     try:
         chrome_options = webdriver.ChromeOptions()
