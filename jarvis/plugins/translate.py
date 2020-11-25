@@ -6,11 +6,11 @@ Available Commands:
 import emoji
 from googletrans import Translator
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 
 @jarvis.on(admin_cmd("tr ?(.*)"))
-@jarvis.on(admin_cmd("tr ?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd("tr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -35,12 +35,12 @@ async def _(event):
         after_tr_text = translated.text
         # TODO: emojify the :
         # either here, or before translation
-        output_str = """**🔥𝕋𝕣𝕒𝕟𝕤𝕝𝕒𝕥𝕖𝕕 𝔹𝕪 𝕁𝔸ℝ𝕍𝕀𝕊🔥** 
+        output_str = """**🔰🆃🆁🅰🅽🆂🅻🅰🆃🅴🅳 🅱🆈 🅹🅰🆁🆅🅸🆂🔰** 
          Source **( {} )**
          Translation **( {} )**
          {}""".format(
             translated.src, lan, after_tr_text
         )
-        await event.reply(output_str)
+        await eor(event,output_str)
     except Exception as exc:
-        await event.reply(str(exc))
+        await eor(event,str(exc))
