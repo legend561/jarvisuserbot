@@ -6,7 +6,7 @@ Available Commands:
 import emoji
 from googletrans import Translator
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd("tr ?(.*)"))
@@ -41,6 +41,6 @@ async def _(event):
          {}""".format(
             translated.src, lan, after_tr_text
         )
-        await eor(event,output_str)
+        await eor(event, output_str)
     except Exception as exc:
-        await eor(event,str(exc))
+        await eor(event, str(exc))
