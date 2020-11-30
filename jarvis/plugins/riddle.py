@@ -12,7 +12,7 @@ import asyncio
 import random
 
 
-@jarvis.on(phantom_cmd(pattern=r"rdl", outgoing=True))
+@jarvis.on(admin_cmd(pattern=r"rdl", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
