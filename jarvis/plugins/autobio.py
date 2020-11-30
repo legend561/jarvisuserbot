@@ -6,6 +6,7 @@ from telethon.tl import functions
 
 from jarvis.utils import admin_cmd, sudo_cmd, eor
 
+
 DEL_TIME_OUT = 60
 
 
