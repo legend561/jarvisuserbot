@@ -10,6 +10,7 @@ Syntax: .rdl
 
 import asyncio
 import random
+from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern=r"rdl", outgoing=True))
