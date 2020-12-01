@@ -43,28 +43,29 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=f"bombs$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"bombs$",allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    reso = await eor(event,"▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await reso.edit("💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await reso.edit("▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
     await asyncio.sleep(1)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
+    await reso.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
     await asyncio.sleep(0.5)
-    await event.edit("`RIP PLOXXX......`")
+    await reso.edit("`RIP PLOXXX......`")
     await asyncio.sleep(2)
 
 
@@ -103,12 +104,13 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=f"kill$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"kill$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.7
     animation_ttl = range(0, 12)
-    await event.edit("ready to die dude.....")
+    killer = await eor(event,"ready to die dude.....")
     animation_chars = [
         "Ｆｉｉｉｉｉｒｅ",
         "(　･ิω･ิ)︻デ═一-->",
@@ -125,10 +127,11 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 12])
+        await killer.edit(animation_chars[i % 12])
 
 
 @jarvis.on(admin_cmd(pattern="ding$"))
+@jarvis.on(sudo_cmd(pattern="ding$", allow_sudo=True))
 async def _(event):
     animation_interval = 0.3
     animation_ttl = range(0, 30)
@@ -146,20 +149,21 @@ async def _(event):
     ]
     if event.fwd_from:
         return
-    await event.edit("ding..dong..ding..dong ...")
+    trigno = await eor(event,"ding..dong..ding..dong ...")
     await asyncio.sleep(4)
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 10])
+        await trigno.edit(animation_chars[i % 10])
 
 
 @jarvis.on(admin_cmd(pattern=f"hypno$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"hypno$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.3
     animation_ttl = range(0, 15)
-    await event.edit("hypo....")
+    hypnostar = await eor(event,"hypo....")
     animation_chars = [
         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬛⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
@@ -179,7 +183,7 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 15])
+        await hypnostar.edit(animation_chars[i % 15])
 
 
 @jarvis.on(admin_cmd(pattern="gangasta$"))
@@ -342,12 +346,13 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=f"tmoon$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"tmoon$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.1
     animation_ttl = range(0, 117)
-    await event.edit("tmoon")
+    tmono = await eor(event,"tmoon")
     animation_chars = [
         "🌗",
         "🌘",
@@ -384,10 +389,11 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 32])
+        await tmono.edit(animation_chars[i % 32])
 
 
 @jarvis.on(admin_cmd(pattern=f"clown$", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=f"clown$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -411,10 +417,10 @@ async def _(event):
         "You Are A",
         "You Are A Clown 🤡",
     ]
-
+    segment = await eor(event,"...")
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 16])
+        await segment.edit(animation_chars[i % 16])
 
 
 @jarvis.on(admin_cmd(pattern=r"star$", outgoing=True))
