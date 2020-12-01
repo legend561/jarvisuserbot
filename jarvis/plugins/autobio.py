@@ -4,8 +4,7 @@ import time
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
-
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 DEL_TIME_OUT = 60
 
@@ -26,7 +25,7 @@ async def _(event):
                     about=bio
                 )
             )
-            await eor(event,"Autobio Enabled !!")
+            await eor(event, "Autobio Enabled !!")
             await asyncio.sleep(2)
             await event.delete()
         except FloodWaitError as ex:
