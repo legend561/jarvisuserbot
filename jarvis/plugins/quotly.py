@@ -25,7 +25,7 @@ async def _(event):
     if reply_message.sender.bot:
         await jevent.edit("```Reply to actual users message.```")
         return
-    await jevent.edit("```Making a Quote```")
+    await event.edit("```Making a Quote```") # J.A.R.V.I.S play "Its HAPPENS only in India"
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
