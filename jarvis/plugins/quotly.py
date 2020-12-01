@@ -18,14 +18,16 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        wartime = await eor(event,"```Reply to text message```")
+        wartime = await eor(event, "```Reply to text message```")
         return
     chat = "@QuotLyBot"
     reply_message.sender
     if reply_message.sender.bot:
-        wartime = await eor(event,"```Reply to actual users message.```")
+        wartime = await eor(event, "```Reply to actual users message.```")
         return
-    wartime = await eor(event,"```Making a Quote```") # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
+    wartime = await eor(
+        event, "```Making a Quote```"
+    )  # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
