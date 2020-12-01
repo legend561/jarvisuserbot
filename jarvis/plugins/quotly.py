@@ -14,18 +14,18 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        jevent = await eor(event, "```Reply to any user message.```")
+        wartime = await eor(event, "```Reply to any user message.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await jevent.edit("```Reply to text message```")
+        wartime = await eor(event,"```Reply to text message```")
         return
     chat = "@QuotLyBot"
     reply_message.sender
     if reply_message.sender.bot:
-        await jevent.edit("```Reply to actual users message.```")
+        wartime = await eor(event,"```Reply to actual users message.```")
         return
-    await event.edit("```Making a Quote```") # J.A.R.V.I.S play "Its HAPPENS only in India"
+    wartime = await eor(event,"```Making a Quote```") # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -34,12 +34,12 @@ async def _(event):
             await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await jevent.edit("```Please unblock @QuotLyBot and try again```")
+            await wartime.edit("```Please unblock @QuotLyBot and try again```")
             return
         if response.text.startswith("Hi!"):
-            await jevent.edit(
+            await wartime.edit(
                 "```Can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await event.delete()
+            await wartime.delete()
             await bot.forward_messages(event.chat_id, response.message)
