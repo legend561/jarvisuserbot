@@ -6,18 +6,20 @@ import random
 from collections import deque
 
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
 @jarvis.on(admin_cmd(pattern="stupid$"))
+@jarvis.on(sudo_cmd(pattern="stupid$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 14)
-    await event.edit("brain")
+    jrevent = await eor(event,
+              "brain")
     animation_chars = [
         "YOᑌᖇ ᗷᖇᗩIᑎ ➡️ 🧠\n\n🧠         <(^_^ <)🗑",
         "YOᑌᖇ ᗷᖇᗩIᑎ ➡️ 🧠\n\n🧠       <(^_^ <)  🗑",
@@ -37,7 +39,7 @@ async def _(event):
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 14])
+        await jrevent.edit(animation_chars[i % 14])
 
 
 @jarvis.on(admin_cmd(pattern=f"bombs$", outgoing=True))
@@ -67,12 +69,14 @@ async def _(event):
 
 
 @jarvis.on(admin_cmd(pattern=r"call$"))
+@jarvis.on(sudo_cmd(pattern=r"call$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 3
     animation_ttl = range(0, 18)
-    await event.edit("Calling Pavel Durov (ceo of telegram)......")
+    war = await eor(event,
+                    "Calling Pavel Durov (ceo of telegram)......")
     animation_chars = [
         "`Connecting To Telegram Headquarters...`",
         "`Call Connected.`",
@@ -95,7 +99,7 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 18])
+        await war.edit(animation_chars[i % 18])
 
 
 @jarvis.on(admin_cmd(pattern=f"kill$", outgoing=True))
