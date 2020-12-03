@@ -19,9 +19,7 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.REM_BG_API_KEY is None:
-        await eor(
-            event, "You need API token from remove.bg to use this plugin."
-        )
+        await eor(event, "You need API token from remove.bg to use this plugin.")
         return False
     input_str = event.pattern_match.group(1)
     start = datetime.now()
@@ -30,8 +28,8 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        jevent = await eor(event ,
-            "Connecting to Official JARVIS Server and analysing that img ..."
+        jevent = await eor(
+            event, "Connecting to Official JARVIS Server and analysing that img ..."
         )
         try:
             downloaded_file_name = await borg.download_media(
