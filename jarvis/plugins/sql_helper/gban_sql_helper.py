@@ -1,16 +1,20 @@
 from sqlalchemy import Column, String
 
-from jarvis.plugins.sql_helper import SESSION, BASE
+from jarvis.plugins.sql_helper import BASE, SESSION
+
 
 class GBan(BASE):
     __tablename__ = "gban"
     chat_id = Column(String(14), primary_key=True)
     reason = Column(String(127))
+
     def __init__(self, chat_id, reason=""):
         self.chat_id = chat_id
         self.reason = reason
 
+
 GBan.__table__.create(checkfirst=True)
+
 
 def is_gbanned(chat_id):
     try:
@@ -20,16 +24,19 @@ def is_gbanned(chat_id):
     finally:
         SESSION.close()
 
+
 def jgban(chat_id, reason):
     adder = GBan(str(chat_id), str(reason))
     SESSION.add(adder)
     SESSION.commit()
+
 
 def jungban(chat_id):
     rem = SESSION.query(GBan).get(str(chat_id))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
+
 
 def get_all_gbanned():
     rem = SESSION.query(GBan).all()
