@@ -16,10 +16,9 @@ async def _(event):
     a = open(b, "r")
     c = a.read()
     a.close()
-    d = await eor(event, "**Reading file...**")
-    await event.delete()
+    await eor(event, "**Reading file...**")
     if len(c) > 4095:
-        await d.edit("`The Total words in this file is more than telegram limits.`")
+        await event.edit("`The Total words in this file is more than telegram limits.`")
     else:
         await event.client.send_message(event.chat_id, f"```{c}```")
     os.remove(b)
