@@ -2,7 +2,7 @@
 from telethon.events import ChatAction
 from telethon.tl.types import MessageEntityMentionName
 
-from jarvis.tl.functions.contacts import BlockRequest, UnblockRequest
+from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from jarvis.utils import admin_cmd
 
 
