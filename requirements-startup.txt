@@ -58,3 +58,5 @@ psycopg2-binary
 pyrogram
 lottie
 glitch-this
+psutil
+pytube
