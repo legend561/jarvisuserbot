@@ -4,7 +4,7 @@ import sys
 import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
-
+from antispaminc.connect import Connect
 import pylast
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
@@ -19,6 +19,7 @@ from var import Var
 from .function import jarvisfunction as topfunc
 
 Lastupdate = time.time()
+sed = logging.getLogger("WARNING")
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
