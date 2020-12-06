@@ -7,7 +7,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 from dotenv import load_dotenv
-from jconfig import Config
+from jarvis.jconfig import Config
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
