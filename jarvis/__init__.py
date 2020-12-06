@@ -12,7 +12,7 @@ from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-
+from jconfig import Config
 from var import Var
 
 from .function import jarvisfunction as topfunc
