@@ -10,7 +10,7 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis.utils import admin_cmd, sudo_cmd
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
