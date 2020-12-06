@@ -10,13 +10,13 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
 @jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -46,7 +46,7 @@ async def sticklet(event):
     image = Image.new("RGBA", (512, 512), (255, 255, 255, 0))
     draw = ImageDraw.Draw(image)
     fontsize = 230
-    FONT_FILE = await get_font_file(event.client, "@catfonts", font_file_name)
+    FONT_FILE = await get_font_file(event.client, "@jarvisfonts", font_file_name)
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
     while draw.multiline_textsize(sticktext, font=font) > (512, 512):
         fontsize -= 3
@@ -63,7 +63,7 @@ async def sticklet(event):
     await event.client.send_file(
         event.chat_id,
         image_stream,
-        caption="Created Using J.A.R.V.I.S Userbot",
+        caption="Created Using Jarvis Userbot",
         reply_to=event.message.reply_to_msg_id,
     )
     # cleanup
