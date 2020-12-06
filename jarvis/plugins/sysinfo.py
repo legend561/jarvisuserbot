@@ -1,9 +1,13 @@
 """Get the info your system. Using .neofetch then .sysd"""
 
 # .spc command is ported from  alfianandaa/ProjectAlf
+import asyncio
+import os
 import platform
+import shlex
 import sys
 from datetime import datetime
+from typing import Tuple
 
 import psutil
 from telethon import __version__
@@ -11,25 +15,10 @@ from telethon import __version__
 from jarvis import ALIVE_NAME, CMD_HELP
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-import asyncio
-import os
-import shlex
-from os import getcwd
-from os.path import basename, join
-from textwrap import wrap
-from typing import Optional, Tuple
-
-import numpy as np
-
 try:
-    from colour import Color as asciiColor
+    pass
 except:
     os.system("pip install colour")
-from PIL import Image, ImageDraw, ImageFont
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from wand.color import Color
-from wand.drawing import Drawing
-from wand.image import Image as jimage
 
 
 MARGINS = [50, 150, 250, 350, 450]
@@ -37,6 +26,7 @@ MARGINS = [50, 150, 250, 350, 450]
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 # ============================================
+
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
@@ -50,6 +40,7 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
         process.returncode,
         process.pid,
     )
+
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"spc$"))
 async def psu(event):
