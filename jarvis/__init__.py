@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import os
 import sys
 import time
@@ -12,7 +13,6 @@ from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient
-import logging
 from telethon.sessions import StringSession
 
 from jarvis.jconfig import Config
