@@ -10,6 +10,7 @@ if ENV:
         LOGGER = True
         # Get this value from my.telegram.org! Please do not steal
         ALVE_PIC = os.environ.get("ALIVE_PIC", None)
+        ANTI_SPAMINC_TOKEN = os.envrion.get("ANTI_SPAMINC_TOKEN" , None)
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
         # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
