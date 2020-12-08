@@ -21,7 +21,7 @@ from var import Var
 from .function import jarvisfunction as topfunc
 
 Lastupdate = time.time()
-sed = logging.getLogger("WARNING")
+sedprint = logging.getLogger("WARNING")
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
@@ -222,10 +222,14 @@ CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
 
-######Anti Spam system ######
+# AntispamINC Client
 
-if Config.ANTI_SPAMINC_TOKEN is not None:
+if Config.ANTI_SPAMINC_TOKEN == None:
+    sclient = None
+    sedprint.info("[Warning] - AntispamInc is None")
+else:
     try:
         sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
     except Exception as e:
-        sed.info("Antispaminc Client Failed to Start " + e)
+        sclient = None
+        sedprint.info('[Warning] - ' + e)
