@@ -45,6 +45,14 @@
       "description": "Fill your Full name or Username like @anonymoushackker.",
       "value": ""
     },
+    "ANTISPAM_FEATURE": {
+      "description": "Detects Spammers By Default Enabled.",
+      "value": "ENABLE"
+    },
+    "ANTI_SPAMINC_TOKEN": {
+      "description": "Get Your AntiSpaminc Token From @AntiSpamincBot",
+      "value": ""
+    },
     "ALIVE_PIC": {
       "description": "Put here any Telegraph Media link for custom alive pic.",
       "value": "",
