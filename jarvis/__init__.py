@@ -233,3 +233,4 @@ else:
     except Exception as e:
         sclient = None
         sedprint.info('[Warning] - ' + e)
+        sed.info("Antispaminc Client Failed to Start \nReason : " + e)
