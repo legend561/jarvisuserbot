@@ -228,4 +228,4 @@ if Config.ANTI_SPAMINC_TOKEN is not None:
     try:
         sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
     except Exception as e:
-        sed.info("Antispaminc Client Failed to Start " + e)
+        sed.info("Antispaminc Client Failed to Start \nReason : " + e)
