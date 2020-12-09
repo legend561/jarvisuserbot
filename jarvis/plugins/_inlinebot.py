@@ -207,9 +207,8 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=okmusic,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline(
-                    "Search Again", query="jm ", same_peer=True
-                ),
+                buttons=[[Button.switch_inline("Search Again", query="qm ", same_peer=True)],],
             )
         )
-    await event.answer(results)
+    await event.answer([results])
+    return
