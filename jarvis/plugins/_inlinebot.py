@@ -1,9 +1,11 @@
 import math
 import os
 import re
-
+import urllib
 from telethon import Button, custom, events
-
+from math import ceil
+import requests
+from telethon import Button, custom, events, functions
 from jarvis import ALIVE_NAME, CMD_LIST
 from jarvis.plugins import inlinestats
 
