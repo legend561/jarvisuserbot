@@ -175,6 +175,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ]
     return pairs
 
+
 @tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     event.builder
@@ -210,4 +211,3 @@ async def inline_id_handler(event: events.InlineQuery.Event):
             )
         )
     await event.answer(results)
-
