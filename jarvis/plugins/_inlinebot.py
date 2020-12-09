@@ -184,7 +184,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     testinput = event.pattern_match.group(1)
     sppidy = urllib.parse.quote_plus(testinput)
     results = []
-    search = f"https://jarvismusic.herokuapp.com/result/?query={sppidy}"
+    search = f"http://jarvismusic.herokuapp.com/result/?query={sppidy}"
     seds = requests.get(url=search).json()
     for okz in seds:
         okz["album"]
