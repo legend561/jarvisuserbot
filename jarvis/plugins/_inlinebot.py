@@ -174,3 +174,40 @@ def paginate_help(page_number, loaded_plugins, prefix):
             )
         ]
     return pairs
+
+@tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
+    event.builder
+    testinput = event.pattern_match.group(1)
+    sppidy = urllib.parse.quote_plus(testinput)
+    results = []
+    search = f"https://jarvismusic.herokuapp.com/result/?query={sppidy}"
+    seds = requests.get(url=search).json()
+    for okz in seds:
+        okz["album"]
+        okmusic = okz["music"]
+        hmmstar = okz["perma_url"]
+        singer = okz["singers"]
+        hmm = okz["duration"]
+        langs = okz["language"]
+        hidden_url = okz["media_url"]
+        okayz = (
+            f"**Song Name :** `{okmusic}` \n**Singer :** `{singer}` \n**Song Url :** `{hmmstar}`"
+            f"\n**Language :** `{langs}` \n**Download Able Url :** `{hidden_url}`"
+            f"\n**Duration :** `{hmm}`"
+        )
+        hmmkek = (
+            f"Song : {okmusic} Singer : {singer} Duration : {hmm} \nLanguage : {langs}"
+        )
+        results.append(
+            await event.builder.article(
+                title=okmusic,
+                description=hmmkek,
+                text=okayz,
+                buttons=Button.switch_inline(
+                    "Search Again", query="jm ", same_peer=True
+                ),
+            )
+        )
+    await event.answer(results)
+
