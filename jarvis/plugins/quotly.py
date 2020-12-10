@@ -24,14 +24,12 @@ async def _(event):
         return
     chat = "@QuotLyBot"
     reply_message.sender
-    wartime = await eor(
-        event, "```Making a Quote```"
-    )  # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
+    wartime = await eor(event, "```Making a Quote```"
+                        )  # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1031952739)
-            )
+                events.NewMessage(incoming=True, from_users=1031952739))
             await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
