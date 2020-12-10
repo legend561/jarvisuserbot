@@ -17,7 +17,7 @@ async def _(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-        
+
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -59,11 +59,12 @@ async def _(event):
                 caption=cmd,
                 reply_to=reply_to_id,
             )
-            await event.delete() # if used by sudo then nothing
+            await event.delete()  # if used by sudo then nothing
     else:
         await jarvisbot.edit(final_output)
 
 
 async def aexec(code, event):
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    exec(f"async def __aexec(event): " +
+         "".join(f"\n {l}" for l in code.split("\n")))
     return await locals()["__aexec"](event)
