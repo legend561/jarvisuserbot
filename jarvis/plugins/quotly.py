@@ -4,7 +4,9 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import bot
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import admin_cmd
+from jarvis.utils import eor
+from jarvis.utils import sudo_cmd
 
 
 # @register(outgoing=True, pattern="^.q(?: |$)(.*)")
