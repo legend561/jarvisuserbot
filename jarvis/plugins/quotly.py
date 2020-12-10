@@ -22,9 +22,6 @@ async def _(event):
         return
     chat = "@QuotLyBot"
     reply_message.sender
-    if reply_message.sender.bot:
-        wartime = await eor(event, "```Reply to actual users message.```")
-        return
     wartime = await eor(
         event, "```Making a Quote```"
     )  # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
