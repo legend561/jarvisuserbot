@@ -4,7 +4,10 @@ import io
 import sys
 import traceback
 
-from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+from jarvis.utils import admin_cmd
+from jarvis.utils import edit_or_reply
+from jarvis.utils import eor
+from jarvis.utils import sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="eval", outgoing=True))
