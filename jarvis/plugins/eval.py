@@ -4,7 +4,7 @@ import io
 import sys
 import traceback
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd, eor
 
 
 @jarvis.on(admin_cmd(pattern="eval", outgoing=True))
@@ -12,12 +12,12 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "Processing ...")
+    jarvisbot = await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-
+        
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -59,9 +59,9 @@ async def _(event):
                 caption=cmd,
                 reply_to=reply_to_id,
             )
-            await event.delete()
+            await event.delete() # if used by sudo then nothing
     else:
-        await event.edit(final_output)
+        await jarvisbot.edit(final_output)
 
 
 async def aexec(code, event):
