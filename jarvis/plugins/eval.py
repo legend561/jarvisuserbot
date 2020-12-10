@@ -4,7 +4,10 @@ import io
 import sys
 import traceback
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import admin_cmd
+from jarvis.utils import edit_or_reply
+from jarvis.utils import eor
+from jarvis.utils import sudo_cmd
 
 
 @jarvis.on(admin_cmd(pattern="eval", outgoing=True))
@@ -12,7 +15,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "Processing ...")
+    jarvisbot = await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -45,8 +48,7 @@ async def _(event):
         evaluation = "Success"
 
     final_output = "__►__ **EVAL**\n`{}` \n\n __►__ **OUTPUT**: \n`{}` \n".format(
-        cmd, evaluation
-    )
+        cmd, evaluation)
 
     if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(final_output)) as out_file:
@@ -59,11 +61,12 @@ async def _(event):
                 caption=cmd,
                 reply_to=reply_to_id,
             )
-            await event.delete()
+            await event.delete()  # if used by sudo then nothing
     else:
-        await event.edit(final_output)
+        await jarvisbot.edit(final_output)
 
 
 async def aexec(code, event):
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}"
+                                                 for l in code.split("\n")))
     return await locals()["__aexec"](event)
