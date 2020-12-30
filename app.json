@@ -49,8 +49,8 @@
       "description": "Detects Spammers By Default Enabled.",
       "value": "ENABLE"
     },
-    "ANTI_SPAMINC_TOKEN": {
-      "description": "Get Your AntiSpaminc Token From @AntiSpamincBot",
+    "NOSPAM_TOKEN": {
+      "description": "Get Your NoSpam+ Token From @NoSpamPlusBot",
       "value": ""
     },
     "ALIVE_PIC": {
