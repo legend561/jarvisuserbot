@@ -10,7 +10,7 @@ if ENV:
         LOGGER = True
         # Get this value from my.telegram.org! Please do not steal
         ALVE_PIC = os.environ.get("ALIVE_PIC", None)
-        ANTI_SPAMINC_TOKEN = os.environ.get("ANTI_SPAMINC_TOKEN", None)
+        NOSPAM_TOKEN = os.environ.get("NOSPAM_TOKEN", None)
         ANTISPAM_FEATURE = os.environ.get("ANTISPAM_FEATURE", "ENABLE")
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
