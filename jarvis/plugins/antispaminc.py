@@ -19,7 +19,7 @@ async def ok(event):
         user = sclient.is_banned(juser.id)
         if user:
             await event.reply(
-                f"**Jarvis Antispam System Powered By @AntiSpaminc** #ALERT \n**Detected Malicious User.** \n**User-ID :** `{juser.id}`  \n**Reason :** `{user.reason}`"
+                f"**Jarvis Antispam System Powered By @NoSpamPlus** #ALERT \n**Detected Malicious User.** \n**User-ID :** `{juser.id}`  \n**Reason :** `{user.reason}`"
             )
             try:
                 await borg.edit_permissions(
