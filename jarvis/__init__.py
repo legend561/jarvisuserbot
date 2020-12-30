@@ -7,7 +7,7 @@ from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
-from antispaminc.connect import Connect
+from nospamplus.connect import Connect
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -224,13 +224,13 @@ AFKREASON = None
 
 # AntispamINC Client
 
-if Config.ANTI_SPAMINC_TOKEN == None:
+if Config.NOSPAM_TOKEN == None:
     sclient = None
-    sedprint.info("[Warning] - AntispamInc is None")
+    sedprint.info("[Warning] - NoSpam + is None")
 else:
     try:
-        sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
+        sclient = Connect(Config.NOSPAM_TOKEN)
     except Exception as e:
         sclient = None
         sedprint.info("[Warning] - " + e)
-        sed.info("Antispaminc Client Failed to Start \nReason : " + e)
+        sed.info("NoSpam+ Client Failed to Start \nReason : " + e)
