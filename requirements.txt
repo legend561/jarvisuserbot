@@ -61,4 +61,4 @@ lottie
 glitch-this
 psutil
 pytube
-antispaminc
+nospamplus
