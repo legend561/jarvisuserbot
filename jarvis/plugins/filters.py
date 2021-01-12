@@ -11,6 +11,7 @@ import re
 
 from telethon import utils
 from telethon.tl import types
+from telethon import events
 
 from jarvis.plugins.sql_helper.filter_sql import (
     add_filter,
