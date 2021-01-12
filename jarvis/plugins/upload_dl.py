@@ -14,8 +14,8 @@ from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
 from jarvis import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
-from jarvis.events import register
-from jarvis.utils import admin_cmd, sudo_cmd , eor, edit_or_reply
+from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for both
@@ -81,7 +81,7 @@ def time_formatter(milliseconds: int) -> str:
 @jarvis.on(sudo_cmd(pattern="dl(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
-    await eor(target_file,"Processing using Jarvis server")
+    await eor(target_file, "Processing using Jarvis server")
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -161,7 +161,7 @@ async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
     if os.path.exists(input_str):
-        await eor(udir_event,"Processing....")
+        await eor(udir_event, "Processing....")
         lst_of_files = []
         for r, d, f in os.walk(input_str):
             for file in f:
@@ -246,7 +246,7 @@ async def uploadir(udir_event):
 @jarvis.on(sudo_cmd(pattern="upload (.*)", allow_sudo=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
-    await eor(u_event,"Processing ...")
+    await eor(u_event, "Processing ...")
     input_str = u_event.pattern_match.group(1)
     if input_str in ("userbot.session", "config.env"):
         await u_event.edit("`That's a dangerous operation! Not Permitted!`")
@@ -322,7 +322,7 @@ def extract_w_h(file):
 @jarvis.on(admin_cmd(pattern=r"uploadas(stream|vn|all) (.*)", outgoing=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
-    await eor(uas_event,"Processing ...")
+    await eor(uas_event, "Processing ...")
     type_of_upload = uas_event.pattern_match.group(1)
     supports_streaming = False
     round_message = False

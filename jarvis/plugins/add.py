@@ -28,7 +28,7 @@ async def _(event):
                         )
                     )
                 except Exception as e:
-                    await edit_or_reply(event,str(e))
+                    await edit_or_reply(event, str(e))
                     return
             await edit_or_reply(event, "Invited Successfully")
         else:
@@ -41,6 +41,6 @@ async def _(event):
                         )
                     )
                 except Exception as e:
-                    await edit_or_reply(event,str(e))
+                    await edit_or_reply(event, str(e))
                     return
             await edit_or_reply(event, "Invited Successfully")

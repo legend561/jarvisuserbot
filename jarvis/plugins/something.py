@@ -33,6 +33,7 @@ async def hai(event):
         return
     await event.edit("🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁")
 
+
 @jarvis.on(admin_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:

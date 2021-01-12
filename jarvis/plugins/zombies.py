@@ -4,13 +4,12 @@
 
 from asyncio import sleep
 
-from telethon import events
 from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
-from jarvis.utils import admin_cmd, sudo_cmd, eor
 from jarvis import CMD_HNDLR
+from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 # =================== CONSTANT ===================
 
@@ -53,7 +52,7 @@ async def rm_deletedacc(show):
     del_status = "`No deleted accounts found, Group is clean`"
 
     if con != "clean":
-        eh = await eor(show,"`Searching for ghost/deleted/zombie accounts...`")
+        eh = await eor(show, "`Searching for ghost/deleted/zombie accounts...`")
         async for user in show.client.iter_participants(show.chat_id):
 
             if user.deleted:
@@ -72,10 +71,10 @@ async def rm_deletedacc(show):
 
     # Well
     if not admin and not creator:
-        await eor(show,"`I am not an admin here!`")
+        await eor(show, "`I am not an admin here!`")
         return
 
-    ehh = await edit(show,"`Deleting deleted accounts...`")
+    ehh = await edit(show, "`Deleting deleted accounts...`")
     del_u = 0
     del_a = 0
 

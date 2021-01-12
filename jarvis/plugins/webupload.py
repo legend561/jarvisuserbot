@@ -1,9 +1,15 @@
 # credits: SNAPDRAGON (@s_n_a_p_s)
 import asyncio
 import time
+
 from jarvis.utils import admin_cmd
 
-@jarvis.on(admin_cmd(pattern="webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)"))
+
+@jarvis.on(
+    admin_cmd(
+        pattern="webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)"
+    )
+)
 async def _(event):
     if event.fwd_from:
         return

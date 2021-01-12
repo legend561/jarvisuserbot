@@ -2,14 +2,15 @@
 
 from random import randint
 from time import sleep
-from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
-from jarvis.utils import admin_cmd, sudo_cmd, eor
+
 from telethon.tl.types import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
     ChannelParticipantsAdmins,
+    ChannelParticipantsBots,
 )
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="random"))
@@ -48,6 +49,7 @@ async def sleepybot(time):
                 )
             sleep(counter)
 
+
 @jarvis.on(admin_cmd("listbots ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("listbots ?(.*)", allow_sudo=True))
 async def _(event):
@@ -80,6 +82,7 @@ async def _(event):
         mentions += " " + str(e) + "\n"
     await event.reply(mentions)
 
+
 from telethon.utils import pack_bot_file_id
 
 from jarvis.utils import admin_cmd, sudo_cmd
@@ -95,19 +98,22 @@ async def _(event):
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await eor(event,
+            await eor(
+                event,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
                     str(event.chat_id), str(r_msg.sender.id), bot_api_file_id
-                )
+                ),
             )
         else:
-            await eor(event,
+            await eor(
+                event,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`".fformat(
                     str(event.chat_id), str(r_msg.sender.id)
-                )
+                ),
             )
     else:
-        await eor(event,"Current Chat ID: `{}`".format(str(event.chat_id)))
+        await eor(event, "Current Chat ID: `{}`".format(str(event.chat_id)))
+
 
 @jarvis.on(admin_cmd("listadmins ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("listadmins ?(.*)", allow_sudo=True))

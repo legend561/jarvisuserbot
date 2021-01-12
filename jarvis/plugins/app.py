@@ -4,7 +4,6 @@
 
 import bs4
 import requests
-from telethon import events
 
 from jarvis.utils import admin_cmd, sudo_cmd
 
