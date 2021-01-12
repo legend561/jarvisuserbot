@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 # credits to @AvinashReddy3108 and @xditya
-# Rewritten for JARVIS by @jarvis210904
+# Rewritten for JARVIS by @sppidy
 
 """
 This module is used for updating JARVIS
@@ -25,8 +25,8 @@ requirements_path = path.join(
 
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
-GIT_REPO_NAME = "JARVIS"
-UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot.git"
+GIT_REPO_NAME = "JarvisUserbot"
+UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot"
 
 
 async def gen_chlog(repo, diff):
@@ -135,7 +135,7 @@ async def upstream(ups):
             remove("changelogs.txt")
         else:
             await ups.reply(changelog_str)
-        await ups.respond(f"Do `{CMD_HNDLR}update now` to update")
+        await ups.respond(f"Do `{CMD_HNDLR}update now`  to update")
         return
 
     if force_updateme:
