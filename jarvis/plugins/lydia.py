@@ -16,8 +16,8 @@ if Var.LYDIA_API_KEY:
     Lydia = LydiaAI(api_client)
 
 
-@jarvis.on(admin_cmd(pattern="repcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="repcf", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="clydia", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="clydia", allow_sudo=True))
 async def repcf(event):
     if event.fwd_from:
         return
@@ -33,8 +33,8 @@ async def repcf(event):
         await edit_or_reply(event, str(e))
 
 
-@jarvis.on(admin_cmd(pattern="addcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="addcf", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="lydiaon", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="lydiaon", allow_sudo=True))
 async def addcf(event):
     if event.fwd_from:
         return
@@ -58,8 +58,8 @@ async def addcf(event):
         await event.edit("Reply to a user to activate JARVIS AI on them")
 
 
-@jarvis.on(admin_cmd(pattern="remcf", outgoing=True))
-@jarvis.on(sudo_cmd(pattern="remcf", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern="lydiaoff", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="lydiaoff", allow_sudo=True))
 async def remcf(event):
     if event.fwd_from:
         return
