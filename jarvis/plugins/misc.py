@@ -2,7 +2,7 @@
 
 from random import randint
 from time import sleep
-
+from telethon.utils import pack_bot_file_id
 from telethon.tl.types import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
@@ -50,8 +50,8 @@ async def sleepybot(time):
             sleep(counter)
 
 
-@jarvis.on(admin_cmd("listbots ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd("listbots ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("listbots", outgoing=True))
+@jarvis.on(sudo_cmd("listbots", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,9 +83,6 @@ async def _(event):
     await event.reply(mentions)
 
 
-from telethon.utils import pack_bot_file_id
-
-from jarvis.utils import admin_cmd, sudo_cmd
 
 
 @jarvis.on(admin_cmd("id", outgoing=True))
@@ -107,7 +104,7 @@ async def _(event):
         else:
             await eor(
                 event,
-                "Current Chat ID: `{}`\nFrom User ID: `{}`".fformat(
+                "Current Chat ID: `{}`\nFrom User ID: `{}`".format(
                     str(event.chat_id), str(r_msg.sender.id)
                 ),
             )
@@ -115,8 +112,8 @@ async def _(event):
         await eor(event, "Current Chat ID: `{}`".format(str(event.chat_id)))
 
 
-@jarvis.on(admin_cmd("listadmins ?(.*)", outgoing=True))
-@jarvis.on(sudo_cmd("listadmins ?(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd("listadmins", outgoing=True))
+@jarvis.on(sudo_cmd("listadmins", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
