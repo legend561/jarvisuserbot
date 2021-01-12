@@ -36,4 +36,4 @@ async def _(event):
             os.remove("jarvis.png")
             await event.delete()
     else:
-        await event.reply("Syntax: `.color <color_code>`")
+        await edit_or_reply(event,"Syntax: `.color <color_code>`")

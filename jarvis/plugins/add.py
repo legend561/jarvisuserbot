@@ -28,7 +28,8 @@ async def _(event):
                         )
                     )
                 except Exception as e:
-                    await event.reply(str(e))
+                    await edit_or_reply(event,str(e))
+                    return
             await edit_or_reply(event, "Invited Successfully")
         else:
             # https://lonamiwebs.github.io/Telethon/methods/channels/invite_to_channel.html
@@ -40,5 +41,6 @@ async def _(event):
                         )
                     )
                 except Exception as e:
-                    await event.reply(str(e))
+                    await edit_or_reply(event,str(e))
+                    return
             await edit_or_reply(event, "Invited Successfully")

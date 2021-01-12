@@ -1,5 +1,3 @@
-# © By StarkGang™ And IndianBot™
-# For F.r.i.d.a.y And Indianbot ™
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
@@ -17,32 +15,33 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from jarvis import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
 from jarvis.events import register
-
+from jarvis.utils import admin_cmd, sudo_cmd , eor, edit_or_reply
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for uploads and downloads."""
+    """Generic progress_callback for both
+    upload.py and download.py"""
     now = time.time()
     diff = now - start
-    if round(diff % 10.00) == 0 or current != total:
+    if round(diff % 10.00) == 0 or current == total:
         percentage = current * 100 / total
         speed = current / diff
         elapsed_time = round(diff) * 1000
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
-        progress_str = "[{0}{1}] {2}%\n".format(
-            "".join(["▰" for i in range(math.floor(percentage / 10))]),
-            "".join(["▱" for i in range(10 - math.floor(percentage / 10))]),
+        progress_str = "[{0}{1}]\nProgress: {2}%\n".format(
+            "".join(["⦿" for i in range(math.floor(percentage / 5))]),
+            "".join(["⦾" for i in range(20 - math.floor(percentage / 5))]),
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
         if file_name:
-            await event.edit(
-                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            await edit_or_reply(
+                event, "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
             )
         else:
-            await event.edit("{}\n{}".format(type_of_ps, tmp))
+            await edit_or_reply(event, "{}\n{}".format(type_of_ps, tmp))
 
 
 def humanbytes(size):
@@ -78,10 +77,11 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-@register(pattern=r".dl(?: |$)(.*)", outgoing=True)
+@jarvis.on(admin_cmd(pattern="dl(?: |$)(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="dl(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
-    await target_file.edit("Processing using userbot server ( ◜‿◝ )♡")
+    await eor(target_file,"Processing using Jarvis server")
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -155,12 +155,13 @@ async def download(target_file):
         await target_file.edit("Reply to a message to download to my local server.")
 
 
-@register(pattern=r".uploadir (.*)", outgoing=True)
+@jarvis.on(admin_cmd(pattern="uploadir (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="uploadir (.*)", allow_sudo=True))
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
     if os.path.exists(input_str):
-        await udir_event.edit("Downloading Using Userbot Server....")
+        await eor(udir_event,"Processing....")
         lst_of_files = []
         for r, d, f in os.walk(input_str):
             for file in f:
@@ -241,10 +242,11 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-@register(pattern=r".upload (.*)", outgoing=True)
+@jarvis.on(admin_cmd(pattern="upload (.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern="upload (.*)", allow_sudo=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
-    await u_event.edit("Processing ...")
+    await eor(u_event,"Processing ...")
     input_str = u_event.pattern_match.group(1)
     if input_str in ("userbot.session", "config.env"):
         await u_event.edit("`That's a dangerous operation! Not Permitted!`")
@@ -317,10 +319,10 @@ def extract_w_h(file):
         return width, height
 
 
-@register(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True)
+@jarvis.on(admin_cmd(pattern=r"uploadas(stream|vn|all) (.*)", outgoing=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
-    await uas_event.edit("Processing ...")
+    await eor(uas_event,"Processing ...")
     type_of_upload = uas_event.pattern_match.group(1)
     supports_streaming = False
     round_message = False

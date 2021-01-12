@@ -22,7 +22,7 @@ async def _(event):
 
     if input_str == "whatsapp":
 
-        await event.edit(input_str)
+        await event.edit("Trying to Break Protocols")
 
         animation_chars = [
             "Looking for WhatsApp databases in targeted person...",

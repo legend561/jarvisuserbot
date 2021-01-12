@@ -2,12 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-"""Cmd= `.zombie`
-Usage: Searches for deleted accounts in a groups and channels.
-Use .zombies clean to remove deleted accounts from the groups and channels.
-\nPorted by ©[NIKITA](t.me/kirito6969) and ©[EYEPATCH](t.me/NeoMatrix90)"""
-
-#
 from asyncio import sleep
 
 from telethon import events
@@ -15,7 +9,8 @@ from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import admin_cmd, sudo_cmd, eor
+from jarvis import CMD_HNDLR
 
 # =================== CONSTANT ===================
 
@@ -48,8 +43,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@jarvis.on(admin_cmd(pattern=f"zombies", allow_sudo=True))
-@jarvis.on(events.NewMessage(pattern="^.zombies(?: |$)(.*)", outgoing=True))
+@jarvis.on(admin_cmd(pattern="zombies"))
+@jarvis.on(sudo_cmd(pattern="zombies", allow_sudo=True))
 async def rm_deletedacc(show):
     """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """
 
@@ -58,16 +53,16 @@ async def rm_deletedacc(show):
     del_status = "`No deleted accounts found, Group is clean`"
 
     if con != "clean":
-        await show.edit("`Searching for ghost/deleted/zombie accounts...`")
+        eh = await eor(show,"`Searching for ghost/deleted/zombie accounts...`")
         async for user in show.client.iter_participants(show.chat_id):
 
             if user.deleted:
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-            del_status = f"`Found` **{del_u}** `ghost/deleted/zombie account(s) in this group,\
-            \nclean them by using .zombies clean`"
-        await show.edit(del_status)
+            del_status = f"`Found` {del_u} `ghost/deleted/zombie account(s) in this group,\
+            \nClean them by using {CMD_HNDLR}zombies clean`"
+        await eh.edit(del_status)
         return
 
     # Here laying the sanity check
@@ -77,10 +72,10 @@ async def rm_deletedacc(show):
 
     # Well
     if not admin and not creator:
-        await show.edit("`I am not an admin here!`")
+        await eor(show,"`I am not an admin here!`")
         return
 
-    await show.edit("`Deleting deleted accounts...\nOh I can do that?!?!`")
+    ehh = await edit(show,"`Deleting deleted accounts...`")
     del_u = 0
     del_a = 0
 
@@ -91,7 +86,7 @@ async def rm_deletedacc(show):
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
                 )
             except ChatAdminRequiredError:
-                await show.edit("`I don't have ban rights in this group`")
+                await eh.edit("`I don't have ban rights in this group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
@@ -106,14 +101,14 @@ async def rm_deletedacc(show):
         del_status = f"Cleaned **{del_u}** deleted account(s) \
         \n**{del_a}** deleted admin accounts are not removed"
 
-    await show.edit(del_status)
+    await ehh.edit(del_status)
     await sleep(2)
     await show.delete()
 
-    if Config.G_BAN_LOGGER_GROUP is not None:
+    if Config.BOTLOG_CHATID is not None:
         await show.client.send_message(
-            Config.G_BAN_LOGGER_GROUP,
-            "#CLEANUP\n"
+            Config.BOTLOG_CHATID,
+            "#ZOMBIECLEANUP\n"
             f"Cleaned **{del_u}** deleted account(s) !!\
             \nCHAT: {show.chat.title}(`{show.chat_id}`)",
         )

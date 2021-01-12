@@ -5,7 +5,7 @@ import asyncio
 from jarvis.utils import admin_cmd
 
 
-@jarvis.on(admin_cmd(pattern="lcry"))
+@jarvis.on(admin_cmd(pattern="cry"))
 async def _(event):
 
     if event.fwd_from:

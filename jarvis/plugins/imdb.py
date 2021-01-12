@@ -1,11 +1,3 @@
-# For UniBorg
-# Copyright (c) JeepBot | 2019
-# (c) JeepBot is not occur to all modules in here
-"""
-Imdb Module
-.imdb
-"""
-
 import re
 
 import bs4
@@ -112,4 +104,4 @@ async def imdb(e):
             parse_mode="HTML",
         )
     except IndexError:
-        await edit_or_reply(e, "Plox enter **Valid movie name** kthx")
+        await edit_or_reply(e, "Please enter **Valid movie name**")

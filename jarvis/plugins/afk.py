@@ -129,7 +129,7 @@ async def on_afk(event):
             f"**My Boss is Away** ! \n\n**Reason** : `{reason}` \n\n**Away Since** : {afk_since}"
             + f"\n\n__Kindly Leave A Message__ ! \n`He Will Reply To You Soon !`"
             if reason
-            else f"**Hello, Boss Is Away Right Now And May Be Forgot List Reason ! Any Way He Will Come Back Soon !**"
+            else f"**Hello, Boss Is Away Right Now And May Be Forgot List Reason ! Any Way He Will Come Back Soon** !"
         )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)

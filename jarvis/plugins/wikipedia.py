@@ -1,19 +1,14 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-"""WikiPedia.ORG
-Syntax: .wikipedia Query"""
 import wikipedia
 
 from jarvis.utils import admin_cmd
 
 
 @jarvis.on(admin_cmd(pattern="wikipedia (.*)"))
-@jarvis.on(admin_cmd(pattern="wikipedia (.*)", allow_sudo=True))
+@jarvis.on(sudo_cmd(pattern="wikipedia (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.reply("Processing ...")
+    await eor(event,"Processing ...")
     input_str = event.pattern_match.group(1)
     result = ""
     results = wikipedia.search(input_str)
@@ -21,6 +16,4 @@ async def _(event):
         page = wikipedia.page(s)
         url = page.url
         result += f"> [{s}]({url}) \n"
-    await event.reply(
-        "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result)
-    )
+    await event.edit("Wikipedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result))

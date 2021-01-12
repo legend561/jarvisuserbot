@@ -30,7 +30,7 @@ global last_triggered_filters
 last_triggered_filters = {}  # pylint:disable=E0602
 
 
-@command(incoming=True)
+@jarvis.on(events.NewMessage(incoming=True))
 async def on_snip(event):
     global last_triggered_filters
     name = event.raw_text
