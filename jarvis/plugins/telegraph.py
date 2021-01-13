@@ -17,9 +17,9 @@ auth_url = r["auth_url"]
 async def _(event):
     if event.fwd_from:
         return
-    jevent = await eor(event, "`processing........`")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    jevent = await eor(event, "`Processing........`")
+    if not os.path.isdir(Config.TEMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TEMP_DOWNLOAD_DIRECTORY)
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
