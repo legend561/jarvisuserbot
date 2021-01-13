@@ -94,5 +94,3 @@ async def _(event):
         await event.client.send_message(
             event.chat_id, response.message, reply_to=reply_message
         )
-
-
