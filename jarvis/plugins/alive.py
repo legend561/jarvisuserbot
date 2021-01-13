@@ -26,7 +26,7 @@ if updaterok:
     updaterr = "Enabled"
 else:
     updaterr = "Disabled"
-    
+
 if isdbfine:
     dbstats = "All Fine 😉👍🏻"
 else:
