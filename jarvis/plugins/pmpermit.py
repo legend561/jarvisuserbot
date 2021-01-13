@@ -21,7 +21,7 @@ if PMPERMIT_PIC is None:
 else:
     WARN_PIC = PMPERMIT_PIC
 
-FAV_NAME = os.environ.get("FAV_NAME", Jarvis)
+FAV_NAME = os.environ.get("FAV_NAME", "Jarvis")
 if FAV_NAME is None:
     FAV_NAME = "Jarvis"
 
