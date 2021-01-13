@@ -10,8 +10,7 @@ sudousing = Config.SUDO_USERS
 pmlogss = Config.PM_LOGGR_BOT_API_ID
 isdbfine = Var.DB_URI
 updaterok = Var.HEROKU_APP_NAME
-gdriveisshit = Config.AUTH_TOKEN_DATA
-currentversion = "3.2"
+currentversion = "0.2"
 
 if sudousing:
     ssudo = "Enabled "
@@ -27,12 +26,7 @@ if updaterok:
     updaterr = "Enabled"
 else:
     updaterr = "Disabled"
-
-if gdriveisshit:
-    wearenoob = "Enabled"
-else:
-    wearenoob = "Disabled"
-
+    
 if isdbfine:
     dbstats = "All Fine 😉👍🏻"
 else:
@@ -90,7 +84,6 @@ async def jarvis(alive):
         pm_caption += f"  🔸 ➣**Sυ∂σ**               `{ssudo}` \n"
         pm_caption += f"  🔸 ➣**Pм Lσgѕ**        `{pmllogs}` \n"
         pm_caption += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
-        pm_caption += f"  🔸 ➣**G-Dяινє**           `{wearenoob}`\n"
         pm_caption += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
         pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
@@ -109,7 +102,6 @@ async def jarvis(alive):
         pm_captionn += f"  🔸 ➣**Sυ∂σ**               `{ssudo}` \n"
         pm_captionn += f"  🔸 ➣**Pм Lσgѕ**        `{pmllogs}` \n"
         pm_captionn += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
-        pm_captionn += f"  🔸 ➣**G-Dяινє**           `{wearenoob}`\n\n"
         pm_captionn += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
         pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
