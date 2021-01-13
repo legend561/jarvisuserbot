@@ -3,7 +3,6 @@
 import asyncio
 import os
 from html import unescape
-from pathlib import Path
 from time import time
 
 from googleapiclient.discovery import build
@@ -113,9 +112,9 @@ async def download_video(v_url):
     if jpg in form:
         jimg = jpg
     elif webp in form:
-        jimp = webp
+        pass
     else:
-        jimp = None
+        pass
     if song:
         await v_url.edit(
             f"`Preparing to upload song:`\
