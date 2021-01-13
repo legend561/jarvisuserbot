@@ -35,6 +35,7 @@ async def animepp():
         )
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
+
 @jarvis.on(admin_cmd(pattern="avengersdp ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="avengersdp ?(.*)", allow_sudo=True))
 async def main(event):
@@ -48,6 +49,7 @@ async def main(event):
         await event.client(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(1000)  # Edit this to your required needs
+
 
 import asyncio
 import os
@@ -115,6 +117,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 COLLECTION_STRINGZS = ["hacker-background"]
 
+
 async def animepp():
     os.system("rm -rf donot.jpg")
     rnd = random.randint(0, len(COLLECTION_STRINGZS) - 1)
@@ -144,6 +147,7 @@ async def main(event):
         await event.client(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(60)  # Edit this to your required needs
+
 
 import asyncio
 import os
@@ -210,4 +214,3 @@ async def main(event):
         os.system("rm -rf donottouch.jpg")
 
         await asyncio.sleep(3600)  # Edit this to your required needs
-
