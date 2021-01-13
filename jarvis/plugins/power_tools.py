@@ -23,7 +23,7 @@ async def _(event):
     # await asyncio.sleep(2)
     await edit_or_reply(
         event,
-        f"Restarted. `{CMD_HNDLR}ping` me or `{CMD_HNDLR}helpme` to check if I am online",
+        f"Restarted. `{CMD_HNDLR}ping` or `{CMD_HNDLR}help` to check if I am online",
     )
     await borg.disconnect()
     # https://archive.is/im3rt
@@ -43,7 +43,7 @@ async def _(event):
     # await asyncio.sleep(2)
     await edit_or_reply(
         event,
-        f"Restarted. `{SUDO_HNDLR}ping` me or `{SUDO_HNDLR}help` to check if I am online",
+        f"Restarted. `{SUDO_HNDLR}ping` or `{SUDO_HNDLR}help` to check if I am online",
     )
     await borg.disconnect()
     # https://archive.is/im3rt
