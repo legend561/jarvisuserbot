@@ -16,6 +16,7 @@ async def hhi(event):
         f"{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{cat}{cat}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{ct}{cat}{ct}\n{cat}{ct}{ct}{cat}{ct}{cat}{cat}{cat}\n☁☁☁☁☁☁☁☁",
     )
 
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -58,9 +59,12 @@ async def _(message):
                 await message.edit(something_else)
             except errors.MessageIdInvalidError:
                 return
-   
+
+
 import random
+
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 
 @jarvis.on(admin_cmd(pattern=r"jainder(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"jainder(.*)", allow_sudo=True))
@@ -161,6 +165,7 @@ async def _(event):
     output_str = emoticons[index]
     await edit_or_reply(event, output_str)
 
+
 import asyncio
 import random
 
@@ -236,7 +241,8 @@ async def _(event):
         await event.edit("hola lol")
     if x == 28:
         await event.edit("llllllllllllllooooooooooollllllllll")
-        
+
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -274,8 +280,8 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
-        
-        
+
+
 import asyncio
 
 from telethon import events
@@ -302,7 +308,8 @@ async def _(event):
     await event.edit("-------------✈")
     await asyncio.sleep(3)
     await event.delete()
-    
+
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -342,7 +349,8 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 11])
-        
+
+
 """
 custom riddle questions...
 Syntax: .rdl
@@ -568,6 +576,7 @@ async def _(event):
     if x == 60:
         await event.edit('`"What can touch someone once and last them a lifetime?"`')
 
+
 import random
 
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
@@ -604,6 +613,7 @@ async def _(event):
             await event.edit("The coin landed on: **Tails**.")
     else:
         await event.edit("¯\_(ツ)_/¯")
+
 
 import asyncio
 
@@ -650,7 +660,8 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 17])
-        
+
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -712,6 +723,7 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 35])
+
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -866,7 +878,8 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
-    
+
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -891,7 +904,7 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 6])
-        
+
 
 import asyncio
 
@@ -950,7 +963,8 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 72])
-        
+
+
 import asyncio
 from collections import deque
 
@@ -1009,7 +1023,8 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 12])
-        
+
+
 import asyncio
 import random
 
@@ -1641,6 +1656,7 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -1811,6 +1827,7 @@ async def _(event):
 
         await event.edit(animation_chars[i % 7])
 
+
 from jarvis.utils import admin_cmd
 
 
@@ -1832,6 +1849,7 @@ async def shout(args):
         result = "".join(result)
         msg = "\n" + result
         await args.edit("`" + msg + "`")
+
 
 import asyncio
 
@@ -1880,7 +1898,8 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 15])
-        
+
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -1912,7 +1931,8 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 72])
-        
+
+
 import random
 
 import requests
@@ -1944,6 +1964,7 @@ async def quote_search(event):
         await event.edit(result.replace("<code>", "`").replace("</code>", "`"))
     else:
         await event.edit("Zero results found")
+
 
 import asyncio
 
@@ -2034,6 +2055,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 33])
+
 
 import random
 
@@ -2142,6 +2164,7 @@ async def _(event):
     output_str = emoticons[index]
     await event.edit(output_str)
 
+
 import asyncio
 
 from jarvis.utils import admin_cmd
@@ -2189,7 +2212,6 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 17])
-
 
 
 CMD_HELP.update({"leave": "Leave a Chat"})
