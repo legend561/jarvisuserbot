@@ -106,9 +106,9 @@ async def download_video(v_url):
         await v_url.edit(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
+    jpg = f"{ytdl_data['id']}.mp3.jpg"
+    webp = f"{ytdl_data['id']}.mp3.webp"
     form = os.listdir()
-    jpg = f"{ytdl_data['id']}.jpg"
-    webp = f"{ytdl_data['id']}.webp"
     if jpg in form:
         jimg = jpg
     elif webp in form:
