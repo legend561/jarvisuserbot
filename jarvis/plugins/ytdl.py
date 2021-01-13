@@ -107,11 +107,15 @@ async def download_video(v_url):
         await v_url.edit(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
-    jimg = Path(f"{ytdl_data['id']}.jpg")
-    if not os.path.exists(jimg):
-        jimg = Path(f"{ytdl_data['id']}.webp")
-    elif not os.path.exists(jimg):
-        jimg = None
+    form = os.listdir()
+    jpg = f"{ytdl_data['id']}.jpg"
+    webp = f"{ytdl_data['id']}.webp"
+    if jpg in form:
+        jimg = jpg
+    elif webp in form:
+        jimp = webp
+    else:
+        jimp = None
     if song:
         await v_url.edit(
             f"`Preparing to upload song:`\
