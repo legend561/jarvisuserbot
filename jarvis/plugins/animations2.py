@@ -303,7 +303,7 @@ async def _(event):
     await asyncio.sleep(3)
     await event.delete()
     
-mport asyncio
+import asyncio
 
 from jarvis.utils import admin_cmd
 
