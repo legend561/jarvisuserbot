@@ -182,7 +182,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # userbot's should not reply to other userbot's
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
-        sender = await bot.get_entity(get_chat)
+        sender = await bot.get_entity(event.get_chat)
 
         if chat_id == bot.uid:
 
@@ -270,9 +270,9 @@ async def hehehe(event):
 CMD_HELP.update(
     {
         "pmpermit": "\
-.approve\
+.allow\
 \nUsage: Approves the mentioned/replied person to PM.\
-.disapprove\
+.dis\
 \nUsage: dispproves the mentioned/replied person to PM.\
 \n\n.block\
 \nUsage: Blocks the person.\
