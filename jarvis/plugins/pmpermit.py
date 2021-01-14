@@ -183,7 +183,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
         a = await event.get_chat()
-        sender = await bot.get_entity(a)
+        sender = await bot.get_entity(a.id)
 
         if chat_id == bot.uid:
 
