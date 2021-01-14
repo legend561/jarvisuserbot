@@ -56,9 +56,7 @@ async def _(event):
     await bot(functions.account.UpdateProfileRequest(last_name=last_name))
     await bot(functions.account.UpdateProfileRequest(about=user_bio))
     pfile = await bot.upload_file(profile_pic)  # pylint:disable=E060
-    await bot(
-        functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
-    )
+    await bot(functions.photos.UploadProfilePhotoRequest(pfile))  # pylint:disable=E0602
     await event.delete()
     await bot.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message

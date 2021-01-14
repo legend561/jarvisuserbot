@@ -22,9 +22,7 @@ async def ok(event):
                 f"**Jarvis Antispam System Powered By @NoSpamPlus** #ALERT \n**Detected Malicious User.** \n**User-ID :** `{juser.id}`  \n**Reason :** `{user.reason}`"
             )
             try:
-                await bot.edit_permissions(
-                    event.chat_id, juser.id, view_messages=False
-                )
+                await bot.edit_permissions(event.chat_id, juser.id, view_messages=False)
             except:
                 pass
         else:
