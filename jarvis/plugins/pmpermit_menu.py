@@ -10,14 +10,7 @@ from jarvis.utils import admin_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else Jarvis
 PREV_REPLY_MESSAGE = {}
 
-@jarvis.on(events.NewMessage
-    (
-        (
-            pattern='^/start",
-            incoming=True
-        )
-    )
-)
+@jarvis.on(events.NewMessage(pattern=r"^/start",incoming=True))
 async def _(event):
     chat_id = event.sender_id
     userid = event.sender_id
