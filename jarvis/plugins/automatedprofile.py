@@ -20,7 +20,7 @@ async def _(event):
         bio = f"📅 {DMY} | User Of JarvisUserbot 😎 | ⌚️ {HM}"
         logger.info(bio)
         try:
-            await borg(
+            await bot(
                 functions.account.UpdateProfileRequest(  # pylint:disable=E0602
                     about=bio
                 )
@@ -33,7 +33,7 @@ async def _(event):
             await asyncio.sleep(ex.seconds)
         # else:
         # logger.info(r.stringify())
-        # await borg.send_message(  # pylint:disable=E0602
+        # await bot.send_message(  # pylint:disable=E0602
         # Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
         # "Successfully Changed Profile Bio"
         # )
@@ -114,7 +114,7 @@ async def _(event):
         name = f"🕒{HM} ⚡{DEFAULTUSER}⚡ 📅{DM}"
         logger.info(name)
         try:
-            await borg(
+            await bot(
                 functions.account.UpdateProfileRequest(  # pylint:disable=E0602
                     first_name=name
                 )
@@ -125,7 +125,7 @@ async def _(event):
 
         # else:
         # logger.info(r.stringify())
-        # await borg.send_message(  # pylint:disable=E0602
+        # await bot.send_message(  # pylint:disable=E0602
         #     Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
         #     "Successfully Changed Profile Name"
         # )

@@ -20,7 +20,7 @@ async def lastname(steal):
         return
     lol = await eor(steal, "Processingg !!!!!")
     try:
-        async with borg.conversation(chat) as conv:
+        async with bot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
                 r = await conv.get_response()

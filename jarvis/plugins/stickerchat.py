@@ -67,7 +67,7 @@ if 1 == 1:
             "default_username_color": "#b48bf2",
         }
     )
-    client = borg
+    client = bot
 
     @jarvis.on(admin_cmd(pattern="chat(.*)"))
     async def quotecmd(message):  # noqa: C901

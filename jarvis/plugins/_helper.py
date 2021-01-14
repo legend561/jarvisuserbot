@@ -86,7 +86,7 @@ async def info(event):
 async def _(event):
     if event.fwd_from:
         return
-    result = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
+    result = await bot(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
     await edit_or_reply(event, result.stringify())
 
 
@@ -95,7 +95,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    result = await borg(functions.help.GetConfigRequest())  # pylint:disable=E0602
+    result = await bot(functions.help.GetConfigRequest())  # pylint:disable=E0602
     result = result.stringify()
     logger.info(result)  # pylint:disable=E0602
     await edit_or_reply(event, """Telethon UserBot powered by JARVIS UserBot""")

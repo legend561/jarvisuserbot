@@ -59,7 +59,7 @@ async def _(event):
         time.time()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await borg.download_media(
+        downloaded_file_name = await bot.download_media(
             reply_message, downloaded_file_name
         )
         end = datetime.now()
@@ -157,7 +157,7 @@ async def _(event):
         c_time = time.time()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await borg.download_media(
+        downloaded_file_name = await bot.download_media(
             reply_message, downloaded_file_name
         )
         end_one = datetime.now()
@@ -193,7 +193,7 @@ async def _(event):
             # Bad Request: VIDEO_CONTENT_TYPE_INVALID
             c_time = time.time()
             try:
-                await borg.send_file(
+                await bot.send_file(
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,

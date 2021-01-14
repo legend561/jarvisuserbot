@@ -27,7 +27,7 @@ async def jarvisot(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_HTTP}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, HTTP_TXT)
+    await bot.send_message(event.chat_id, HTTP_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)
 
 
@@ -39,7 +39,7 @@ async def sppidy(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_SOCKS4}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, SOCKS4_TXT)
+    await bot.send_message(event.chat_id, SOCKS4_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)
 
 
@@ -51,5 +51,5 @@ async def jarvis(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_SOCKS5}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, SOCKS5_TXT)
+    await bot.send_message(event.chat_id, SOCKS5_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)

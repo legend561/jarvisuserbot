@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 #     bc = 0 # number of channels
 #     b = 0 # number of bots
 #     await event.edit("Retrieving Telegram Count(s)")
-#     async for d in borg.iter_dialogs(limit=None):
+#     async for d in bot.iter_dialogs(limit=None):
 #         if d.is_user:
 #             if d.entity.bot:
 #                 b += 1

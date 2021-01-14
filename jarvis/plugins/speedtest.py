@@ -61,7 +61,7 @@ async def _(event):
                 )
             )
         else:
-            await borg.send_file(
+            await bot.send_file(
                 event.chat_id,
                 speedtest_image,
                 caption="**SpeedTest** completed in {} seconds".format(ms),

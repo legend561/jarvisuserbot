@@ -402,7 +402,7 @@ def load_module(shortname):
         # support for jarvis
         sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
-        mod.borg = bot
+        mod.bot = bot
         mod.jarvis = bot
         # support for jarvis
         sys.modules["jarvis.events"] = jarvis.utils

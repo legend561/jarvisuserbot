@@ -37,7 +37,7 @@ async def mim(event):
         return
     await eor(event, "`Downloading Media..`")
     if reply_message.photo:
-        dls_loc = await borg.download_media(
+        dls_loc = await bot.download_media(
             reply_message,
             "meme.png",
         )
@@ -45,7 +45,7 @@ async def mim(event):
         DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
         in reply_message.media.document.attributes
     ):
-        await borg.download_media(
+        await bot.download_media(
             reply_message,
             "meme.tgs",
         )

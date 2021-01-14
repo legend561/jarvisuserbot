@@ -52,15 +52,15 @@ async def _(event):
     user_bio = replied_user.about
     if user_bio is not None:
         user_bio = replied_user.about
-    await borg(functions.account.UpdateProfileRequest(first_name=first_name))
-    await borg(functions.account.UpdateProfileRequest(last_name=last_name))
-    await borg(functions.account.UpdateProfileRequest(about=user_bio))
-    pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060
-    await borg(
+    await bot(functions.account.UpdateProfileRequest(first_name=first_name))
+    await bot(functions.account.UpdateProfileRequest(last_name=last_name))
+    await bot(functions.account.UpdateProfileRequest(about=user_bio))
+    pfile = await bot.upload_file(profile_pic)  # pylint:disable=E060
+    await bot(
         functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
     )
     await event.delete()
-    await borg.send_message(
+    await bot.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
     if BOTLOG:
@@ -77,13 +77,13 @@ async def _(event):
     name = f"{DEFAULTUSER}"
     bio = f"{DEFAULTUSERBIO}"
     n = 1
-    await borg(
+    await bot(
         functions.photos.DeletePhotosRequest(
             await event.client.get_profile_photos("me", limit=n)
         )
     )
-    await borg(functions.account.UpdateProfileRequest(about=bio))
-    await borg(functions.account.UpdateProfileRequest(first_name=name))
+    await bot(functions.account.UpdateProfileRequest(about=bio))
+    await bot(functions.account.UpdateProfileRequest(first_name=name))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(

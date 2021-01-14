@@ -89,7 +89,7 @@ async def on_snip_list(event):
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "snips.text"
-            await borg.send_file(
+            await bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,

@@ -22,12 +22,12 @@ async def _(event):
         await edit_or_reply(event, "```Reply to actual users message.```")
         return
     await edit_or_reply(event, "```Processing```")
-    async with borg.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=905164246)
             )
-            await borg.send_message(chat, reply_message)
+            await bot.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.edit("```Please unblock @sangmatainfo_bot and try again```")
@@ -37,4 +37,4 @@ async def _(event):
                 "```can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await borg.send_file(event.chat_id, response.message.media)
+            await bot.send_file(event.chat_id, response.message.media)

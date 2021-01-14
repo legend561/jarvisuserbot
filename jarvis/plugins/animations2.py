@@ -749,12 +749,12 @@ async def _(event):
         await event.edit("```Reply to actual users message.```")
         return
     await event.edit(" `Sliding my tip, of fingers over it`")
-    async with borg.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=161163358)
             )
-            await borg.forward_messages(chat, reply_message)
+            await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.reply("```Please unblock @sangmatainfo_bot and try again```")
@@ -784,7 +784,7 @@ async def _(event):
         return
     mentions = "`━━━━━┓ \n┓┓┓┓┓┃\n┓┓┓┓┓┃　ヽ○ノ ⇦ Me When You Joined \n┓┓┓┓┓┃.     /　 \n┓┓┓┓┓┃ ノ) \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -801,7 +801,7 @@ async def _(event):
         return
     mentions = "`█▀▀▀▀▀█░▀▀░░░█░░░░█▀▀▀▀▀█\n█░███░█░█▄░█▀▀░▄▄░█░███░█\n█░▀▀▀░█░▀█▀▀▄▀█▀▀░█░▀▀▀░█\n▀▀▀▀▀▀▀░▀▄▀▄▀▄█▄▀░▀▀▀▀▀▀▀\n█▀█▀▄▄▀░█▄░░░▀▀░▄█░▄▀█▀░▀\n░█▄▀░▄▀▀░░░▄▄▄█░▀▄▄▄▀▄▄▀▄\n░░▀█░▀▀▀▀▀▄█░▄░████ ██▀█▄\n▄▀█░░▄▀█▀█▀░█▄▀░▀█▄██▀░█▄\n░░▀▀▀░▀░█▄▀▀▄▄░▄█▀▀▀█░█▀▀\n█▀▀▀▀▀█░░██▀█░░▄█░▀░█▄░██\n█░███░█░▄▀█▀██▄▄▀▀█▀█▄░▄▄\n█░▀▀▀░█░█░░▀▀▀░█░▀▀▀▀▄█▀░\n▀▀▀▀▀▀▀░▀▀░░▀░▀░░░▀▀░▀▀▀▀`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -818,7 +818,7 @@ async def _(event):
         return
     mentions = "`😏/\n/▌ \n/ \\n████\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\😦\n╬╬/▌\n╬╬/\`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -835,7 +835,7 @@ async def _(event):
         return
     mentions = "`😲💨  🔥\n/|\     🔥🔥\n/ \   🔥🔥🔥`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -852,7 +852,7 @@ async def _(event):
         return
     mentions = "`.      😎\n          |\👐\n         / \\\n━━━━━┓ ＼＼ \n┓┓┓┓┓┃\n┓┓┓┓┓┃ ヽ😩ノ\n┓┓┓┓┓┃ 　 /　\n┓┓┓┓┓┃  ノ)　 \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -869,7 +869,7 @@ async def _(event):
         return
     mentions = "`📔📚             📚\n📓📚📖  😫  📚📚📓\n📕📚📚  📝  📗💻📘\n📖⁣📖📖📖📖📖📖📖📖`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
