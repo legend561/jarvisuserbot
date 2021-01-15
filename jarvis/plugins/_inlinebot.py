@@ -20,11 +20,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if (
-            event.query.user_id == bot.uid
-            or event.query.user_id == SUDO_USERS
-            and query.startswith("Userbot")
-        ):
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query.startswith("Userbot"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
@@ -32,24 +28,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
-            )
-        if (
-            event.query.user_id == bot.uid
-            or event.query.user_id == SUDO_USERS
-            and query == "stats"
-        ):
-            result = builder.article(
-                title="Stats",
-                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
-                buttons=[
-                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
-                    [
-                        Button.url(
-                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
-                        )
-                    ],
-                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
-                ],
+                thumb = "./jarvis.png"
             )
         await event.answer([result] if result else None)
 
