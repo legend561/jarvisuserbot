@@ -73,6 +73,7 @@ async def _(event):
     if event.fwd_from:
         return
     name = f"{DEFAULTUSER}"
+    jarv = ""
     bio = f"{DEFAULTUSERBIO}"
     n = 1
     await bot(
@@ -82,6 +83,7 @@ async def _(event):
     )
     await bot(functions.account.UpdateProfileRequest(about=bio))
     await bot(functions.account.UpdateProfileRequest(first_name=name))
+    await bot(functions.account.UpdateProfileRequest(last_name=jarv))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(
@@ -95,14 +97,14 @@ async def get_full_user(event):
         if previous_message.forward:
             replied_user = await event.client(
                 GetFullUserRequest(
-                    previous_message.forward.from_id
+                    previous_message.forward.sender_id
                     or previous_message.forward.channel_id
                 )
             )
             return replied_user, None
         else:
             replied_user = await event.client(
-                GetFullUserRequest(previous_message.from_id)
+                GetFullUserRequest(previous_message.sender_id)
             )
             return replied_user, None
     else:
