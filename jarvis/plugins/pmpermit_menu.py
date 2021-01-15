@@ -40,6 +40,7 @@ async def _(event):
                 return
             await bot.send_message(chat, PM)
             chat_id = event.sender_id
+            chat = await event.get_chat()
             response = await conv.get_response(chat)
             y = response.text
             if y == "1":
