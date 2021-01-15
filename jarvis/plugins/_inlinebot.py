@@ -22,7 +22,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query.startswith("Userbot"):
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query.startswith("Userbot"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
@@ -31,7 +31,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 buttons=buttons,
                 link_preview=False,
             )
-        if event.query.user_id is bot.uid and query == "stats":
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query == "stats":
             result = builder.article(
                 title="Stats",
                 text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
@@ -53,13 +53,13 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:  # pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_popp_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_popp_up_alert = "Please get your own Jarvis, and don't use mine!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
     @jarvisbot.on(
@@ -68,7 +68,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:  # pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
@@ -81,7 +81,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:
+        if event.query.user_id == bot.uid  or event.query.user_id == SUDO_USERS:
             await event.edit("Menu Closed \n(c) @JarvisOT")
         else:
             reply_popp_up_alert = "Lel Get Ur Own Jarvis and Dont Close My Menu!"
@@ -93,7 +93,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:
             plugin_name = event.data_match.group(1).decode("UTF-8")
             help_string = ""
             try:
@@ -121,7 +121,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
-        if event.query.user_id == bot.uid:
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:
             text = inlinestats
             await event.answer(text, alert=True)
         else:
@@ -176,41 +176,3 @@ def paginate_help(page_number, loaded_plugins, prefix):
             )
         ]
     return pairs
-
-
-@tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
-async def inline_id_handler(event: events.InlineQuery.Event):
-    event.builder
-    testinput = event.pattern_match.group(1)
-    sppidy = urllib.parse.quote_plus(testinput)
-    results = []
-    search = f"http://jarvismusic.herokuapp.com/result/?query={sppidy}"
-    seds = requests.get(url=search).json()
-    for okz in seds:
-        okz["album"]
-        okmusic = okz["music"]
-        hmmstar = okz["perma_url"]
-        singer = okz["singers"]
-        hmm = okz["duration"]
-        langs = okz["language"]
-        hidden_url = okz["media_url"]
-        okayz = (
-            f"**Song Name :** `{okmusic}` \n**Singer :** `{singer}` \n**Song Url :** `{hmmstar}`"
-            f"\n**Language :** `{langs}` \n**Download Able Url :** `{hidden_url}`"
-            f"\n**Duration :** `{hmm}`"
-        )
-        hmmkek = (
-            f"Song : {okmusic} Singer : {singer} Duration : {hmm} \nLanguage : {langs}"
-        )
-        results.append(
-            await event.builder.article(
-                title=okmusic,
-                description=hmmkek,
-                text=okayz,
-                buttons=[
-                    [Button.switch_inline("Search Again", query="qm ", same_peer=True)],
-                ],
-            )
-        )
-    await event.answer([results])
-    return
