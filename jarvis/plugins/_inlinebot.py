@@ -1,9 +1,7 @@
 import math
 import os
 import re
-import urllib
 
-import requests
 from telethon import Button, custom, events
 
 from jarvis import ALIVE_NAME, CMD_LIST
@@ -22,7 +20,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query.startswith("Userbot"):
+        if (
+            event.query.user_id == bot.uid
+            or event.query.user_id == SUDO_USERS
+            and query.startswith("Userbot")
+        ):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
@@ -31,7 +33,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 buttons=buttons,
                 link_preview=False,
             )
-        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query == "stats":
+        if (
+            event.query.user_id == bot.uid
+            or event.query.user_id == SUDO_USERS
+            and query == "stats"
+        ):
             result = builder.article(
                 title="Stats",
                 text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
@@ -53,7 +59,9 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
+        if (
+            event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS
+        ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
             # https://t.me/TelethonChat/115200
@@ -68,7 +76,9 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
+        if (
+            event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS
+        ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
@@ -81,7 +91,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid  or event.query.user_id == SUDO_USERS:
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:
             await event.edit("Menu Closed \n(c) @JarvisOT")
         else:
             reply_popp_up_alert = "Lel Get Ur Own Jarvis and Dont Close My Menu!"
