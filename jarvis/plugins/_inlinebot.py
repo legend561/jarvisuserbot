@@ -4,7 +4,7 @@ import re
 
 from telethon import Button, custom, events
 
-from jarvis import ALIVE_NAME, CMD_LIST
+from jarvis import ALIVE_NAME, CMD_LIST, SUDO_USERS
 from jarvis.plugins import inlinestats
 
 NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get(
