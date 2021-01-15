@@ -2169,6 +2169,7 @@ import asyncio
 
 from jarvis.utils import admin_cmd
 
+
 @jarvis.on(admin_cmd(pattern="lucky"))
 async def _(event):
     if event.fwd_from:
@@ -2201,7 +2202,9 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 17])
 
+
 import asyncio
+
 from jarvis.utils import admin_cmd
 
 
@@ -2234,6 +2237,7 @@ async def _(event):
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 15])
+
 
 CMD_HELP.update({"leave": "Leave a Chat"})
 CMD_HELP.update({";__;": "You try it!"})
