@@ -1,9 +1,9 @@
 import asyncio
 
 from telethon import events, functions
-from jarvis import bot
+
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from jarvis import ALIVE_NAME
+from jarvis import ALIVE_NAME, bot
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else Jarvis
 PREV_REPLY_MESSAGE = {}
