@@ -1,7 +1,7 @@
 import asyncio
 
 from telethon import events, functions
-
+from jarvis import bot
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from jarvis import ALIVE_NAME
 
