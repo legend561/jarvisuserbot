@@ -100,7 +100,6 @@ async def imdb(e):
             + mov_link
             + "\n<b>Story Line : </b>"
             + story_line,
-            link_preview=True,
             parse_mode="HTML",
         )
     except IndexError:
