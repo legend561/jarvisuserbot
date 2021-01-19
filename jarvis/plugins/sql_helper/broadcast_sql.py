@@ -1,4 +1,4 @@
-# Credits : @HeisenbergTheDanger And Friday Userbot
+# Credits : @HeisenbergTheDanger And Friday Userjbot
 
 from sqlalchemy import Column, String
 

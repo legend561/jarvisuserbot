@@ -1,4 +1,4 @@
-# Heroku manager for your JarvisUserbot
+# Heroku manager for your JarvisUserjbot
 
 # CC- @refundisillegal\nSyntax:-\n.get var NAME\n.del var NAME\n.set var NAME
 
@@ -6,7 +6,7 @@
 # All rights reserved.
 
 """
-   Heroku manager for your userbot
+   Heroku manager for your userjbot
 """
 
 import asyncio
@@ -57,7 +57,7 @@ async def variable(var):
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 if len(result) >= 4096:
-                    await bot.send_file(
+                    await jbot.send_file(
                         var.chat_id,
                         "configs.json",
                         reply_to=var.id,
@@ -208,6 +208,6 @@ async def _(givelogs):
 
 CMD_HELP.update(
     {
-        "Heroku": "Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**\n\n`.herokulogs`\nUsage:sends you recent 100 lines of logs in heroku"
+        "Heroku": "Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the jbot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the jbot will restarted**\n\n`.herokulogs`\nUsage:sends you recent 100 lines of logs in heroku"
     }
 )

@@ -50,7 +50,7 @@ async def _(event):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
-        downloaded_file_name = await bot.download_media(
+        downloaded_file_name = await jbot.download_media(
             await event.get_reply_message(), Config.TMP_DOWNLOAD_DIRECTORY
         )
         if downloaded_file_name.endswith(".mp4"):
@@ -94,13 +94,13 @@ async def _(event):
     if event.reply_to_msg_id:
         r = await event.get_reply_message()
         try:
-            a = await bot.download_media(
+            a = await jbot.download_media(
                 r.media.document.thumbs[0], Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
             await event.edit(str(e))
         try:
-            await bot.send_file(
+            await jbot.send_file(
                 event.chat_id,
                 a,
                 force_document=False,
@@ -113,7 +113,7 @@ async def _(event):
             await event.edit(str(e))
     elif os.path.exists(thumb_image_path):
         caption_str = "Currently Saved Thumbnail. Clear with `.clearthumbnail`"
-        await bot.send_file(
+        await jbot.send_file(
             event.chat_id,
             thumb_image_path,
             caption=caption_str,
