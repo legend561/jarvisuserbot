@@ -1,6 +1,6 @@
 from telethon.events import ChatAction
 
-from jarvis import jbot, sclient
+from jarvis import bot, sclient
 from jarvis.jconfig import Config
 
 """Bans Spammers/Scammer At time Of Arrival 
@@ -13,7 +13,7 @@ async def ok(event):
     if Config.ANTISPAM_FEATURE != "ENABLE":
         return
     if event.user_joined:
-        hmmyep = await jarvis.get_permissions(event.chat_id, jbot.uid)
+        hmmyep = await jarvis.get_permissions(event.chat_id, bot.uid)
         if not hmmyep.is_admin:
             return
         user = sclient.is_banned(juser.id)
@@ -22,7 +22,7 @@ async def ok(event):
                 f"**Jarvis Antispam System Powered By @NoSpamPlus** #ALERT \n**Detected Malicious User.** \n**User-ID :** `{juser.id}`  \n**Reason :** `{user.reason}`"
             )
             try:
-                await jbot.edit_permissions(event.chat_id, juser.id, view_messages=False)
+                await bot.edit_permissions(event.chat_id, juser.id, view_messages=False)
             except:
                 pass
         else:

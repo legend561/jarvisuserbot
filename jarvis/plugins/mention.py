@@ -1,4 +1,4 @@
-# For Unijbot
+# For Unibot
 # (c) @INF1N17Y
 
 from jarvis.utils import admin_cmd

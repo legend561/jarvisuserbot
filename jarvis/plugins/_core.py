@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from jarvis import ALIVE_NAME
-from jarvis import jbot as jarvis
+from jarvis import bot as jarvis
 from jarvis.utils import admin_cmd, eor, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
@@ -17,7 +17,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS"
 async def send(event):
     if event.fwd_from:
         return
-    hmm = jbot.uid
+    hmm = bot.uid
     message_id = event.message.id
     thumb = thumb_image_path
     input_str = event.pattern_match.group(1)

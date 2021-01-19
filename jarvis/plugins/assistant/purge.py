@@ -18,14 +18,14 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis import jbot
-from jarvis.utils import jbot
+from jarvis import bot
+from jarvis.utils import bot
 
-OWNER_ID = jbot.uid
+OWNER_ID = bot.uid
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in tgjbot.iter_participants(
+    async for user in tgbot.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
         if user_id == user.id or OWNER_ID or SUDO_USERS:
@@ -34,7 +34,7 @@ async def is_administrator(user_id: int, message):
     return admin
 
 
-@tgjbot.on(events.NewMessage(pattern="^/purge"))
+@tgbot.on(events.NewMessage(pattern="^/purge"))
 async def purge(event):
     chat = event.chat_id
     msgs = []
@@ -52,17 +52,17 @@ async def purge(event):
         msg_id = msg.id
         count = 0
         to_delete = event.message.id - 1
-        await tgjbot.delete_messages(chat, event.message.id)
+        await tgbot.delete_messages(chat, event.message.id)
         msgs.append(event.reply_to_msg_id)
         for m_id in range(to_delete, msg_id - 1, -1):
             msgs.append(m_id)
             count += 1
             if len(msgs) == 100:
-                await tgjbot.delete_messages(chat, msgs)
+                await tgbot.delete_messages(chat, msgs)
                 msgs = []
 
-        await tgjbot.delete_messages(chat, msgs)
-        del_res = await tgjbot.send_message(
+        await tgbot.delete_messages(chat, msgs)
+        del_res = await tgbot.send_message(
             event.chat_id, f"Fast Purged {count} messages."
         )
 
@@ -77,7 +77,7 @@ async def purge(event):
         await del_res.delete()
 
 
-@tgjbot.on(events.NewMessage(pattern="^/del$"))
+@tgbot.on(events.NewMessage(pattern="^/del$"))
 async def delete_msg(event):
 
     if not await is_administrator(user_id=event.sender_id, message=event):
@@ -92,4 +92,4 @@ async def delete_msg(event):
     to_delete = event.message
     chat = await event.get_input_chat()
     rm = [msg, to_delete]
-    await tgjbot.delete_messages(chat, rm)
+    await tgbot.delete_messages(chat, rm)

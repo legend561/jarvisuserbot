@@ -1,15 +1,15 @@
-"""QuotLy: Avaible commands: .qjbot
+"""QuotLy: Avaible commands: .qbot
 """
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis import jbot
+from jarvis import bot
 from jarvis.utils import admin_cmd, eor, sudo_cmd
 
 
 # @register(outgoing=True, pattern="^.q(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"qjbot(?: |$)(.*)", outgoing=True))
-@jarvis.on(sudo_cmd(pattern=r"qjbot(?: |$)(.*)", allow_sudo=True))
+@jarvis.on(admin_cmd(pattern=r"qbot(?: |$)(.*)", outgoing=True))
+@jarvis.on(sudo_cmd(pattern=r"qbot(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -25,12 +25,12 @@ async def _(event):
     wartime = await eor(
         event, "```Making a Quote```"
     )  # J.A.R.V.I.S play "Its HAPPENS only in India" Xd
-    async with jbot.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=1031952739)
             )
-            await jbot.forward_messages(chat, reply_message)
+            await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await wartime.edit("```Please unblock @QuotLyBot and try again```")
@@ -41,4 +41,4 @@ async def _(event):
             )
         else:
             await wartime.delete()
-            await jbot.forward_messages(event.chat_id, response.message)
+            await bot.forward_messages(event.chat_id, response.message)

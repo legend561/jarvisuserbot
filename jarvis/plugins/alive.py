@@ -1,4 +1,4 @@
-"""Check if your userjbot is working."""
+"""Check if your userbot is working."""
 import os
 import time
 from datetime import datetime
@@ -70,7 +70,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
     start = datetime.now()
-    jbot.uid
+    bot.uid
     end = datetime.now()
     (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
@@ -85,9 +85,9 @@ async def jarvis(alive):
         pm_caption += f"  🔸 ➣**Pм Lσgѕ**        `{pmllogs}` \n"
         pm_caption += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
         pm_caption += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
-        pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userjbot)"
+        pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await jbot.send_file(
+        await bot.send_file(
             alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False
         )
         await alive.delete()
@@ -103,9 +103,9 @@ async def jarvis(alive):
         pm_captionn += f"  🔸 ➣**Pм Lσgѕ**        `{pmllogs}` \n"
         pm_captionn += f"  🔸 ➣**Hєяσкυ**          `{updaterr}` \n"
         pm_captionn += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
-        pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userjbot)"
+        pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await jbot.send_file(
+        await bot.send_file(
             alive.chat_id, PM_IMG, caption=pm_captionn, linkpreview=False
         )
         await alive.delete()

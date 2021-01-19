@@ -20,7 +20,7 @@ async def pmto(event):
     if msg == "":
         return
     try:
-        await jbot.send_message(chat_id, msg)
+        await bot.send_message(chat_id, msg)
         await event.edit("Message sent!")
     except:
         await event.edit("Something went wrong.")

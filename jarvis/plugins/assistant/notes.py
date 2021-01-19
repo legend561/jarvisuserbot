@@ -1,7 +1,7 @@
 from telethon import events, utils
 from telethon.tl import types
 
-from jarvis import jbot
+from jarvis import bot
 from jarvis.jconfig import Config
 from jarvis.plugins.sql_helper.snips_sql import (
     add_snip,
@@ -15,7 +15,7 @@ TYPE_PHOTO = 1
 TYPE_DOCUMENT = 2
 
 
-@tgjbot.on(events.NewMessage(pattern=r"\#(\S+)"))
+@tgbot.on(events.NewMessage(pattern=r"\#(\S+)"))
 async def on_snip(event):
     name = event.pattern_match.group(1)
     snip = get_snips(name)
@@ -37,13 +37,13 @@ async def on_snip(event):
         message_id = event.message.id
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
-        await tgjbot.send_message(
+        await tgbot.send_message(
             event.chat_id, snip.reply, reply_to=message_id, file=media
         )
 
 
-@tgjbot.on(
-    events.NewMessage(pattern="^/addnote #(.*)", func=lambda e: e.sender_id == jbot.uid)
+@tgbot.on(
+    events.NewMessage(pattern="^/addnote #(.*)", func=lambda e: e.sender_id == bot.uid)
 )
 async def _(event):
     name = event.pattern_match.group(1)
@@ -77,7 +77,7 @@ async def _(event):
         await event.reply("Reply to a message with `snips keyword` to save the snip")
 
 
-@tgjbot.on(events.NewMessage(pattern="^/notes"))
+@tgbot.on(events.NewMessage(pattern="^/notes"))
 async def on_snip_list(event):
     all_snips = get_all_snips()
     OUT_STR = "Available Snips:\n"
@@ -89,7 +89,7 @@ async def on_snip_list(event):
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "snips.text"
-            await jbot.send_file(
+            await bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -101,8 +101,8 @@ async def on_snip_list(event):
         await event.reply(OUT_STR)
 
 
-@tgjbot.on(
-    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == jbot.uid)
+@tgbot.on(
+    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == bot.uid)
 )
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)

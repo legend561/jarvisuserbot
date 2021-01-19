@@ -25,8 +25,8 @@ requirements_path = path.join(
 
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
-GIT_REPO_NAME = "JarvisUserjbot"
-UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserjbot"
+GIT_REPO_NAME = "JarvisUserbot"
+UPSTREAM_REPO_URL = "https://github.com/Jarvis-Works/jarvisuserbot"
 
 
 async def gen_chlog(repo, diff):
@@ -54,7 +54,7 @@ async def updateme_requirements():
 @jarvis.on(admin_cmd(pattern="update ?(.*)"))
 @jarvis.on(admin_cmd(pattern="update ?(.*)", allow_sudo=True))
 async def upstream(ups):
-    "For .update command, check if the jbot is up to date, update if specified"
+    "For .update command, check if the bot is up to date, update if specified"
     await ups.edit("`Searching for new updates, if any...`")
     conf = ups.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
@@ -77,7 +77,7 @@ async def upstream(ups):
             await ups.edit(
                 f"**Unfortunately, the directory {error} does not seem to be a git repository.\
                 \nOr Maybe it just needs a sync verification with {GIT_REPO_NAME}\
-            \nBut we can fix that by force updating the userjbot using** `.update now`."
+            \nBut we can fix that by force updating the userbot using** `.update now`."
             )
             return
         repo = Repo.init()
@@ -139,9 +139,9 @@ async def upstream(ups):
         return
 
     if force_updateme:
-        await ups.edit("`Force-Syncing to latest stable userjbot code, please wait...`")
+        await ups.edit("`Force-Syncing to latest stable userbot code, please wait...`")
     else:
-        await ups.edit("`Updating userjbot, please wait....`")
+        await ups.edit("`Updating userbot, please wait....`")
     # We're in a Heroku Dyno, handle it's memez.
     if Var.HEROKU_API_KEY is not None:
         import heroku3
@@ -151,7 +151,7 @@ async def upstream(ups):
         heroku_applications = heroku.apps()
         if not Var.HEROKU_APP_NAME:
             await ups.reply(
-                "`Please set up the HEROKU_APP_NAME variable to be able to update userjbot.`"
+                "`Please set up the HEROKU_APP_NAME variable to be able to update userbot.`"
             )
             repo.__del__()
             return
@@ -161,12 +161,12 @@ async def upstream(ups):
                 break
         if heroku_app is None:
             await ups.reply(
-                f"{txt}\n`Invalid Heroku credentials for updating userjbot dyno.`"
+                f"{txt}\n`Invalid Heroku credentials for updating userbot dyno.`"
             )
             repo.__del__()
             return
         await ups.edit(
-            "`Userjbot dyno build in progress, please wait for it to complete.`"
+            "`Userbot dyno build in progress, please wait for it to complete.`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -195,7 +195,7 @@ async def upstream(ups):
         await ups.edit(
             "`Successfully Updated!\n" "Bot is restarting... Wait for a second!`"
         )
-        # Spin a new instance of jbot
+        # Spin a new instance of bot
         args = [sys.executable, "-m", "jarvis"]
         execle(sys.executable, *args, environ)
         return

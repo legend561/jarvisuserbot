@@ -1,4 +1,4 @@
-# This Plugin originally Belongs to CatUserjbot Credits Goes to @sandy1709
+# This Plugin originally Belongs to CatUserbot Credits Goes to @sandy1709
 # Merged and Ported To JARVIS by @jarvis210904
 
 import asyncio
@@ -483,10 +483,10 @@ async def _(event):
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m stdjbot`",
+        "**Starting process with command** `python3 -m stdbot`",
         "**State changed from starting to up**",
-        "__INFO:Userjbot:Logged in as 557667062__",
-        "__INFO:Userjbot:Successfully loaded all plugins__",
+        "__INFO:Userbot:Logged in as 557667062__",
+        "__INFO:Userbot:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
     for i in animation_ttl:
@@ -1056,7 +1056,7 @@ async def _(event):
         "😧",
         "😡",
         "😢",
-        "[JARVIS IS BEST](https://jarvisuserjbot.gitbook.io/jarvisuserjbot/)",
+        "[JARVIS IS BEST](https://jarvisuserbot.gitbook.io/jarvisuserbot/)",
         "__**Good to See you Guys....**__",
     ]
     for i in animation_ttl:

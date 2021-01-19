@@ -16,25 +16,25 @@ async def _(event):
     if not reply_message.media:
         await edit_or_reply(event, "```reply to text message```")
         return
-    chat = "@hazmat_suit_jbot"
+    chat = "@hazmat_suit_bot"
     reply_message.sender
-    if reply_message.sender.jbot:
+    if reply_message.sender.bot:
         await edit_or_reply(event, "```Reply to actual users message.```")
         return
     await edit_or_reply(event, "```Processing```")
-    async with jbot.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=905164246)
             )
-            await jbot.send_message(chat, reply_message)
+            await bot.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.edit("```Please unblock @sangmatainfo_jbot and try again```")
+            await event.edit("```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
                 "```can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await jbot.send_file(event.chat_id, response.message.media)
+            await bot.send_file(event.chat_id, response.message.media)

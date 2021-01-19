@@ -1,4 +1,4 @@
-# Credits :- Catuserjbot Made By @Sandy1709
+# Credits :- Catuserbot Made By @Sandy1709
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 

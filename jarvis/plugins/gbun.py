@@ -18,7 +18,7 @@ async def gbun(event):
     await event.edit("**Summoning Grenades❗️⚜️☠️**")
     asyncio.sleep(3.5)
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in bot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
