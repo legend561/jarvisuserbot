@@ -1,7 +1,7 @@
 # Created By @StarkXD
 # Fixed By @MrConfused
 # UserBot Plugin To Send Fresh Proxies From Proxyscrape.com
-# Banned For Sensible Userbot And Users.
+# Banned For Sensible Userjbot And Users.
 # Usage : For Http Proxy : .proxyhttp , For Socks4 : .proxysocks4 , For socks5 : .proxysocks5
 # Credits Goes To Friday USER Bot
 
@@ -12,11 +12,11 @@ from pySmartDL import SmartDL
 from jarvis.utils import admin_cmd, sudo_cmd
 
 STARK_HTTP = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all"
-HTTP_TXT = "**Proxy Info** \nType: __HTTPS__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: All \nAnonymity: __All__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all) \nUploaded By [JARVIS](https://www.jarvisuserbot.com/) \n**Here Is Your Proxy** 👇"
+HTTP_TXT = "**Proxy Info** \nType: __HTTPS__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: All \nAnonymity: __All__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all) \nUploaded By [JARVIS](https://www.jarvisuserjbot.com/) \n**Here Is Your Proxy** 👇"
 STARK_SOCKS4 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&country=all"
-SOCKS4_TXT = "**Proxy Info** \nType: __SOCKS4__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&country=all) \nUploaded By [JARVIS](https://www.jarvisuserbot.com/) \n**Here Is Your Proxy** 👇"
+SOCKS4_TXT = "**Proxy Info** \nType: __SOCKS4__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&country=all) \nUploaded By [JARVIS](https://www.jarvisuserjbot.com/) \n**Here Is Your Proxy** 👇"
 STARK_SOCKS5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=10000&country=all"
-SOCKS5_TXT = "**Proxy Info** \nType: __SOCKS4__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=10000&country=all) \nUploaded By [JARVIS](https://www.jarvisuserbot.com/) \n**Here Is Your Proxy** 👇"
+SOCKS5_TXT = "**Proxy Info** \nType: __SOCKS4__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \n[Click Here To View Or Download File Manually](https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=10000&country=all) \nUploaded By [JARVIS](https://www.jarvisuserjbot.com/) \n**Here Is Your Proxy** 👇"
 
 
 @jarvis.on(admin_cmd(pattern="proxyhttp", outgoing=True))
@@ -27,7 +27,7 @@ async def jarvisot(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_HTTP}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await bot.send_message(event.chat_id, HTTP_TXT)
+    await jbot.send_message(event.chat_id, HTTP_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)
 
 
@@ -39,7 +39,7 @@ async def sppidy(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_SOCKS4}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await bot.send_message(event.chat_id, SOCKS4_TXT)
+    await jbot.send_message(event.chat_id, SOCKS4_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)
 
 
@@ -51,5 +51,5 @@ async def jarvis(event):
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{STARK_SOCKS5}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await bot.send_message(event.chat_id, SOCKS5_TXT)
+    await jbot.send_message(event.chat_id, SOCKS5_TXT)
     await event.client.send_file(event.chat_id, downloaded_file_name)

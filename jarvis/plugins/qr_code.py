@@ -27,7 +27,7 @@ async def _(event):
     start = datetime.now()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    downloaded_file_name = await bot.download_media(
+    downloaded_file_name = await jbot.download_media(
         await event.get_reply_message(),
         Config.TMP_DOWNLOAD_DIRECTORY,
         progress_callback=progress,
@@ -82,7 +82,7 @@ async def _(event):
         previous_message = await event.get_reply_message()
         reply_msg_id = previous_message.id
         if previous_message.media:
-            downloaded_file_name = await bot.download_media(
+            downloaded_file_name = await jbot.download_media(
                 previous_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=progress,
@@ -108,7 +108,7 @@ async def _(event):
     qr.make(fit=True)
     img = qr.make_image(fill_color="black", back_color="white")
     img.save("img_file.webp", "PNG")
-    await bot.send_file(
+    await jbot.send_file(
         event.chat_id,
         "img_file.webp",
         caption=message,

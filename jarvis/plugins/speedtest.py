@@ -61,7 +61,7 @@ async def _(event):
                 )
             )
         else:
-            await bot.send_file(
+            await jbot.send_file(
                 event.chat_id,
                 speedtest_image,
                 caption="**SpeedTest** completed in {} seconds".format(ms),

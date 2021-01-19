@@ -1,4 +1,4 @@
-# Credits: Catuserbot For Their CMD HELP
+# Credits: Catuserjbot For Their CMD HELP
 
 from asyncio import sleep
 
@@ -299,7 +299,7 @@ async def startmute(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-        if user.id == bot.uid:
+        if user.id == jbot.uid:
             return await edit_or_reply(event, "Sorry, I can't mute myself")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(
@@ -510,7 +510,7 @@ async def _(event):
         return
     c = await event.get_chat()
     if c.admin_rights or c.creator:
-        a = await bot.get_admin_log(event.chat_id, limit=5, edit=False, delete=True)
+        a = await jbot.get_admin_log(event.chat_id, limit=5, edit=False, delete=True)
         deleted_msg = "Deleted message in this group:"
         for i in a:
             deleted_msg += "\n👉`{}`".format(i.old.message)

@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-""" Userbot module for reverse searching stickers and images on Google """
+""" Userjbot module for reverse searching stickers and images on Google """
 
 import io
 import os
@@ -14,7 +14,7 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP, jbot
 from jarvis.utils import admin_cmd, eor, errors_handler, sudo_cmd
 
 opener = urllib.request.build_opener()
@@ -31,7 +31,7 @@ async def _(img):
     message = await img.get_reply_message()
     if message and message.media:
         photo = io.BytesIO()
-        await bot.download_media(message, photo)
+        await jbot.download_media(message, photo)
     else:
         await eor(img, "`Reply to photo or sticker nigger.`")
         return

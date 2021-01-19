@@ -18,6 +18,6 @@ async def leave(e):
         await edit_or_reply(e, "`I am leaving this chat.....!`")
         time.sleep(3)
         if "-" in str(e.chat_id):
-            await bot(LeaveChannelRequest(e.chat_id))
+            await jbot(LeaveChannelRequest(e.chat_id))
         else:
             await e.edit("`Sir This is Not A Chat`")

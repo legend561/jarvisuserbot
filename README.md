@@ -13,16 +13,16 @@
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 ![Python Version](https://img.shields.io/badge/Python-v3.8-blue)
-![Repo Size](https://img.shields.io/github/repo-size/Jarvis-Works/jarvisuserbot)
-![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserbot)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c31abbf24d14db89a96e5797b6db93e)](https://app.codacy.com/gh/Jarvis-Works/JarvisUserbot?utm_source=github.com&utm_medium=referral&utm_content=Jarvis-Works/JarvisUserbot&utm_campaign=Badge_Grade)
-[![HitCount](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot.svg)](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot)
-[![Contributors](https://img.shields.io/github/contributors/Jarvis-Works/jarvisuserbot)](https://github.com/Jarvis-Works/jarvisuserbot/graphs/contributors)
-![Last Commit](https://img.shields.io/github/last-commit/Jarvis-Works/jarvisuserbot/master)
-![Issues](https://img.shields.io/github/issues/Jarvis-Works/jarvisuserbot)
-![Pull Requests](https://img.shields.io/github/issues-pr/Jarvis-Works/jarvisuserbot)
+![Repo Size](https://img.shields.io/github/repo-size/Jarvis-Works/jarvisuserjbot)
+![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserjbot)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c31abbf24d14db89a96e5797b6db93e)](https://app.codacy.com/gh/Jarvis-Works/JarvisUserjbot?utm_source=github.com&utm_medium=referral&utm_content=Jarvis-Works/JarvisUserjbot&utm_campaign=Badge_Grade)
+[![HitCount](http://hits.dwyl.com/Jarvis-Works/jarvisuserjbot.svg)](http://hits.dwyl.com/Jarvis-Works/jarvisuserjbot)
+[![Contributors](https://img.shields.io/github/contributors/Jarvis-Works/jarvisuserjbot)](https://github.com/Jarvis-Works/jarvisuserjbot/graphs/contributors)
+![Last Commit](https://img.shields.io/github/last-commit/Jarvis-Works/jarvisuserjbot/master)
+![Issues](https://img.shields.io/github/issues/Jarvis-Works/jarvisuserjbot)
+![Pull Requests](https://img.shields.io/github/issues-pr/Jarvis-Works/jarvisuserjbot)
 [![StyleCI](https://github.styleci.io/repos/288419893/shield?branch=master)](https://github.styleci.io/repos/288419893?branch=master)
-[![License](https://img.shields.io/github/license/Jarvis-Works/jarvisuserbot)](LICENSE)
-[![CodeFactor](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot/badge)](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserbot)
+[![License](https://img.shields.io/github/license/Jarvis-Works/jarvisuserjbot)](LICENSE)
+[![CodeFactor](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserjbot/badge)](https://www.codefactor.io/repository/github/jarvis-works/jarvisuserjbot)
 
 ##  Most PowerFul And Better And Secure
 
@@ -48,18 +48,18 @@
 
 ### The Easy Way
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserbot/)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jarvis-Works/jarvisuserjbot/)
 
 ##  GET STRING SESSION FROM REPL RUN
 
- [![Run on Repl.it](https://camo.githubusercontent.com/05149b448485553c6f14f6430a45c12dcc79ed3c/68747470733a2f2f7265706c2e69742f62616467652f6769746875622f6a61727669733231303930342f4a6172766973)](https://jarvisuserbot.jarvis210904.repl.run/)
+ [![Run on Repl.it](https://camo.githubusercontent.com/05149b448485553c6f14f6430a45c12dcc79ed3c/68747470733a2f2f7265706c2e69742f62616467652f6769746875622f6a61727669733231303930342f4a6172766973)](https://jarvisuserjbot.jarvis210904.repl.run/)
 
 ##  The Normal Way
 
  Simply clone the repository and run the main file:
 
 ```text
-git clone https://github.com/Jarvis-Works/JARVISuserbot/
+git clone https://github.com/Jarvis-Works/JARVISuserjbot/
 cd jarvis
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
@@ -68,7 +68,7 @@ pip install -r requirements.txt
 python3 -m jarvis
 ```
 
-  An example `local_config.py` file could be: Not All of the variables are mandatory The Userbot should work by setting only the first two variables
+  An example `local_config.py` file could be: Not All of the variables are mandatory The Userjbot should work by setting only the first two variables
 
 ```text
 from heroku_config import Var
@@ -88,4 +88,4 @@ class Development(Var):
 * This is because of `telethon.errors.rpc_error_list.ApiIdPublishedFloodError`
   * `APP_ID`: You can get this value from [https://my.telegram.org](https://my.telegram.org/)
   * `API_HASH`: You can get this value from [https://my.telegram.org](https://my.telegram.org/)
-* The userbot will not work without setting the mandatory vars.
+* The userjbot will not work without setting the mandatory vars.

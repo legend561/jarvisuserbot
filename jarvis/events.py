@@ -3,8 +3,8 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-""" Userbot module for managing events.
- One of the main components of the userbot. """
+""" Userjbot module for managing events.
+ One of the main components of the userjbot. """
 
 import sys
 from asyncio import create_subprocess_shell as asyncsubshell
@@ -15,7 +15,7 @@ from traceback import format_exc
 
 from telethon import events
 
-from jarvis import BOTLOG_CHATID, LOGSPAMMER, bot
+from jarvis import BOTLOG_CHATID, LOGSPAMMER, jbot
 
 
 def register(**args):
@@ -128,8 +128,8 @@ def register(**args):
 
                     if LOGSPAMMER:
                         await check.client.respond(
-                            "`Sorry, my userbot has crashed.\
-                        \nThe error logs are stored in the userbot's log chat.`"
+                            "`Sorry, my userjbot has crashed.\
+                        \nThe error logs are stored in the userjbot's log chat.`"
                         )
 
                     await check.client.send_file(send_to, "error.log", caption=text)
@@ -138,8 +138,8 @@ def register(**args):
                 pass
 
         if not disable_edited:
-            bot.add_event_handler(wrapper, events.MessageEdited(**args))
-        bot.add_event_handler(wrapper, events.NewMessage(**args))
+            jbot.add_event_handler(wrapper, events.MessageEdited(**args))
+        jbot.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
 
     return decorator
