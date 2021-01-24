@@ -10,8 +10,8 @@ from jarvis.jconfig import Config
 from var import Var
 
 SUDO_LIST = Config.SUDO_USERS
-handler = "\\" + Config.CMD_HNDLR
-sudo_hndlr = "\\" + Config.SUDO_HNDLR
+handler = "^" + Config.CMD_HNDLR
+sudo_hndlr = "^" + Config.SUDO_HNDLR
 
 
 def command(**args):
