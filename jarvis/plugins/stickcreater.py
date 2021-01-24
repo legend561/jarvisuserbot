@@ -36,7 +36,7 @@ async def sticklet(event):
         return
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
-    # delete the userjjbot command,
+    # delete the userbot command,
     # i don't know why this is required
     await event.delete()
     # https://docs.python.org/3/library/textwrap.html#textwrap.wrap
@@ -63,7 +63,7 @@ async def sticklet(event):
     await event.client.send_file(
         event.chat_id,
         image_stream,
-        caption="Created Using Jarvis Userjjbot",
+        caption="Created Using Jarvis Userbot",
         reply_to=event.message.reply_to_msg_id,
     )
     # cleanup

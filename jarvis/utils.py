@@ -5,7 +5,7 @@ from pathlib import Path
 
 from telethon import events
 
-from jarvis import CMD_LIST, LOAD_PLUG, jjbot
+from jarvis import CMD_LIST, LOAD_PLUG, bot
 from jarvis.jconfig import Config
 from var import Var
 
@@ -15,7 +15,7 @@ sudo_hndlr = "^" + Config.SUDO_HNDLR
 
 
 def command(**args):
-    args["func"] = lambda e: e.via_jjbot_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -71,8 +71,8 @@ def command(**args):
 
         def decorator(func):
             if allow_edited_updates:
-                jjbot.add_event_handler(func, events.MessageEdited(**args))
-            jjbot.add_event_handler(func, events.NewMessage(**args))
+                bot.add_event_handler(func, events.MessageEdited(**args))
+            bot.add_event_handler(func, events.NewMessage(**args))
             try:
                 LOAD_PLUG[file_test].append(func)
             except:
@@ -83,7 +83,7 @@ def command(**args):
 
 
 def admin_cmd(pattern=None, **args):
-    args["func"] = lambda e: e.via_jjbot_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -127,7 +127,7 @@ def admin_cmd(pattern=None, **args):
 
 
 def sudo_cmd(pattern=None, **args):
-    args["func"] = lambda e: e.via_jjbot_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -187,8 +187,8 @@ async def eor(event, text):
     return await event.edit(text)
 
 
-""" Userjjbot module for managing events.
- One of the main components of the userjjbot. """
+""" Userbot module for managing events.
+ One of the main components of the userbot. """
 
 import asyncio
 import datetime
@@ -200,12 +200,12 @@ from time import gmtime, strftime
 
 from telethon import events
 
-from jarvis import jjbot
+from jarvis import bot
 
 
 def register(**args):
     """ Register a new event. """
-    args["func"] = lambda e: e.via_jjbot_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -238,8 +238,8 @@ def register(**args):
 
     def decorator(func):
         if not disable_edited:
-            jjbot.add_event_handler(func, events.MessageEdited(**args))
-        jjbot.add_event_handler(func, events.NewMessage(**args))
+            bot.add_event_handler(func, events.MessageEdited(**args))
+        bot.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
@@ -300,7 +300,7 @@ def errors_handler(func):
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for jjboth
+    """Generic progress_callback for both
     upload.py and download.py"""
     now = time.time()
     diff = now - start
@@ -362,10 +362,10 @@ def time_formatter(milliseconds: int) -> str:
 class Loader:
     def __init__(self, func=None, **args):
         self.Var = Var
-        jjbot.add_event_handler(func, events.NewMessage(**args))
+        bot.add_event_handler(func, events.NewMessage(**args))
 
 
-# Userjjbot
+# Userbot
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
@@ -393,17 +393,17 @@ def load_module(shortname):
         name = "jarvis.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.jjbot = jjbot
-        mod.tgjjbot = jjbot.tgjjbot
-        mod.jarvisjjbot = jjbot.tgjjbot
+        mod.bot = bot
+        mod.tgbot = bot.tgbot
+        mod.jarvisbot = bot.tgbot
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for jarvis
         sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
-        mod.jjbot = jjbot
-        mod.jarvis = jjbot
+        mod.bot = bot
+        mod.jarvis = bot
         # support for jarvis
         sys.modules["jarvis.events"] = jarvis.utils
         spec.loader.exec_module(mod)
@@ -416,16 +416,16 @@ def remove_plugin(shortname):
     try:
         try:
             for i in LOAD_PLUG[shortname]:
-                jjbot.remove_event_handler(i)
+                bot.remove_event_handler(i)
             del LOAD_PLUG[shortname]
 
         except:
             name = f"jarvis.plugins.{shortname}"
 
-            for i in reversed(range(len(jjbot._event_builders))):
-                ev, cb = jjbot._event_builders[i]
+            for i in reversed(range(len(bot._event_builders))):
+                ev, cb = bot._event_builders[i]
                 if cb.__module__ == name:
-                    del jjbot._event_builders[i]
+                    del bot._event_builders[i]
     except:
         raise ValueError
 
@@ -455,7 +455,7 @@ def start_assistant(shortname):
         name = "jarvis.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.tgjjbot = jjbot.tgjjbot
+        mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins.assistant" + shortname] = mod
     # print("Assistant Has imported " + shortname)

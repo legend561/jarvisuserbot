@@ -27,7 +27,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-""" Userjjbot module for frying stuff. ported by @NeoMatrix90 """
+""" Userbot module for frying stuff. ported by @NeoMatrix90 """
 
 import io
 from random import randint, uniform

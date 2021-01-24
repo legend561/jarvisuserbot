@@ -12,21 +12,21 @@ async def lastname(steal):
         await steal.edit("Reply to any user message.")
         return
     message = await steal.get_reply_message()
-    chat = "@SangMataInfo_jjbot"
+    chat = "@SangMataInfo_bot"
     user_id = message.sender.id
     id = f"/search_id {user_id}"
-    if message.sender.jjbot:
+    if message.sender.bot:
         await steal.edit("Reply to actual users message.")
         return
     lol = await eor(steal, "Processingg !!!!!")
     try:
-        async with jjbot.conversation(chat) as conv:
+        async with bot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
-                await lol.edit("Please unblock @sangmatainfo_jjbot and try again")
+                await lol.edit("Please unblock @sangmatainfo_bot and try again")
                 return
             if response.text.startswith("No records found"):
                 await lol.edit("No records found for this user")
@@ -41,4 +41,4 @@ async def lastname(steal):
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
     except TimeoutError:
-        return await lol.edit("Error: @SangMataInfo_jjbot is not responding!.")
+        return await lol.edit("Error: @SangMataInfo_bot is not responding!.")

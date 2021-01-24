@@ -1,6 +1,6 @@
 """ Powered by @Google
 Available Commands:
-.go <query> credits to owner of jjbot
+.go <query> credits to owner of bot
 """
 
 

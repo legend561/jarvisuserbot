@@ -11,26 +11,26 @@ NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN
 EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", None)
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 
-if Var.TG_BOT_USER_NAME_BF_HER is not None and tgjjbot is not None:
-    @jarvisjjbot.on(events.InlineQuery)  # pylint:disable=E0602
+if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+    @jarvisbot.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == jjbot.uid or event.query.user_id == SUDO_USERS and query.startswith("Userjjbot"):
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS and query.startswith("Userbot"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "©JARVIS Userjjbot Help",
+                "©JARVIS Userbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
         await event.answer([result] if result else None)
 
-    @jarvisjjbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"helpme_next\((.+?)\)")))
+    @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"helpme_next\((.+?)\)")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == jjbot.uid or event.query.user_id == SUDO_USERS:# pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:# pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
             # https://t.me/TelethonChat/115200
@@ -39,9 +39,9 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgjjbot is not None:
             reply_popp_up_alert = "Please get your own Jarvis, and don't use mine!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
-    @jarvisjjbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"helpme_prev\((.+?)\)")))
+    @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"helpme_prev\((.+?)\)")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == jjbot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
@@ -49,20 +49,20 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgjjbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Userjjbot, and don't use mine!"
+            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @jarvisjjbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
+    @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == jjbot.uid or event.query.user_id == SUDO_USERS:
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:
             await event.edit("Menu Closed \n(c) @JarvisOT")
         else:
             reply_popp_up_alert = "Lel Get Ur Own Jarvis and Dont Close My Menu!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
-    @jarvisjjbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"us_plugin_(.*)")))
+    @jarvisbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"us_plugin_(.*)")))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == jjbot.uid or event.query.user_id == SUDO_USERS:
+        if event.query.user_id == bot.uid or event.query.user_id == SUDO_USERS:
             plugin_name = event.data_match.group(1).decode("UTF-8")
             help_string = ""
             try:
@@ -76,7 +76,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgjjbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-                © JARVIS Userjjbot".format(
+                © JARVIS Userbot".format(
                 plugin_name
             )
             try:

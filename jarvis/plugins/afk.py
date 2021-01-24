@@ -24,12 +24,12 @@ async def set_not_afk(event):
     current_message = event.message.message
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         try:
-            await jjbot.send_message(  # pylint:disable=E0602
+            await bot.send_message(  # pylint:disable=E0602
                 Config.PLUGIN_CHANNEL,  # pylint:disable=E0602
                 "#AfkLogger My Boss is Busy",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await jjbot.send_message(  # pylint:disable=E0602
+            await bot.send_message(  # pylint:disable=E0602
                 event.chat_id,
                 "Please set `PLUGIN_CHANNEL` "
                 + "for the proper functioning of afk functionality "
@@ -55,7 +55,7 @@ async def _(event):
     last_afk_message = {}
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
-        last_seen_status = await jjbot(  # pylint:disable=E0602
+        last_seen_status = await bot(  # pylint:disable=E0602
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
@@ -70,7 +70,7 @@ async def _(event):
         await asyncio.sleep(5)
         await event.delete()
         try:
-            await jjbot.send_message(  # pylint:disable=E0602
+            await bot.send_message(  # pylint:disable=E0602
                 Config.PLUGIN_CHANNEL,  # pylint:disable=E0602
                 f"#AfkLogger Reason : {reason}",
             )
@@ -92,10 +92,10 @@ async def on_afk(event):
     afk_since = "**A While Ago**"
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text:
-        # userjjbot's should not reply to other userjjbot's
-        # https://core.telegram.org/jjbots/faq#why-doesn-39t-my-jjbot-see-messages-from-other-jjbots
+        # userbot's should not reply to other userbot's
+        # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return False
-    if USER_AFK and not (await event.get_sender()).jjbot:  # pylint:disable=E0602
+    if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602
         if afk_time:  # pylint:disable=E0602
             now = datetime.datetime.now()
             datime_since_afk = now - afk_time  # pylint:disable=E0602

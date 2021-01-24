@@ -42,7 +42,7 @@ async def locks(event):
         what = "games"
     elif input_str == "inline":
         ainline = True
-        what = "inline jjbots"
+        what = "inline bots"
     elif input_str == "poll":
         gpoll = True
         what = "polls"
@@ -135,7 +135,7 @@ async def rem_locks(event):
         what = "games"
     elif input_str == "inline":
         ainline = False
-        what = "inline jjbots"
+        what = "inline bots"
     elif input_str == "poll":
         gpoll = False
         what = "polls"

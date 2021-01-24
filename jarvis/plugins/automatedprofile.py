@@ -17,10 +17,10 @@ async def _(event):
     while True:
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
-        bio = f"📅 {DMY} | User Of JarvisUserjjbot 😎 | ⌚️ {HM}"
+        bio = f"📅 {DMY} | User Of JarvisUserbot 😎 | ⌚️ {HM}"
         logger.info(bio)
         try:
-            await jjbot(
+            await bot(
                 functions.account.UpdateProfileRequest(  # pylint:disable=E0602
                     about=bio
                 )
@@ -33,7 +33,7 @@ async def _(event):
             await asyncio.sleep(ex.seconds)
         # else:
         # logger.info(r.stringify())
-        # await jjbot.send_message(  # pylint:disable=E0602
+        # await bot.send_message(  # pylint:disable=E0602
         # Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
         # "Successfully Changed Profile Bio"
         # )
@@ -76,9 +76,9 @@ async def autopic(event):
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 50)
         drawn_text.text((95, 250), current_time, font=fnt, fill=(124, 252, 0))
         img.save(photo)
-        file = await jjbot.upload_file(photo)  # pylint:disable=E0602
+        file = await bot.upload_file(photo)  # pylint:disable=E0602
         try:
-            await jjbot(
+            await bot(
                 functions.photos.UploadProfilePhotoRequest(file)  # pylint:disable=E0602
             )
             os.remove(photo)
@@ -114,7 +114,7 @@ async def _(event):
         name = f"🕒{HM} ⚡{DEFAULTUSER}⚡ 📅{DM}"
         logger.info(name)
         try:
-            await jjbot(
+            await bot(
                 functions.account.UpdateProfileRequest(  # pylint:disable=E0602
                     first_name=name
                 )
@@ -125,7 +125,7 @@ async def _(event):
 
         # else:
         # logger.info(r.stringify())
-        # await jjbot.send_message(  # pylint:disable=E0602
+        # await bot.send_message(  # pylint:disable=E0602
         #     Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
         #     "Successfully Changed Profile Name"
         # )

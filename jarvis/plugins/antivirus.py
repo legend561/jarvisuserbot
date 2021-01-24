@@ -19,19 +19,19 @@ async def _(event):
         return
     chat = "@DrWebBot"
     reply_message.sender
-    if reply_message.sender.jjbot:
+    if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
     await event.edit(" `Sliding my tip, of fingers over it`")
-    async with jjbot.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=161163358)
             )
-            await jjbot.forward_messages(chat, reply_message)
+            await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_jjbot and try again```")
+            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(

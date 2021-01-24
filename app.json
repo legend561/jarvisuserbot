@@ -1,16 +1,16 @@
 {
   "name": "JARVIS",
-  "description": "Userjjbot created by a Poor Student and join https://t.me/jarvissupportot for any problems or support",
-  "logo": "https://github.com/Jarvis-Works/JarvisUserjjbot/blob/master/jarvis.png?raw=true",
+  "description": "Userbot created by a Poor Student and join https://t.me/jarvissupportot for any problems or support",
+  "logo": "https://github.com/Jarvis-Works/JarvisUserbot/blob/master/jarvis.png?raw=true",
     "keywords": [
     "telegram",
-    "userjjbot",
+    "userbot",
     "plugin",
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Jarvis-Works/JarvisUserjjbot/",
-  "website": "https://jarvisworks.ga/userjjbot",
+  "repository": "https://github.com/Jarvis-Works/JarvisUserbot/",
+  "website": "https://jarvisworks.ga/userbot",
   "success_url": "#TODO",
   "stack": "container",
   "env": {
@@ -77,15 +77,15 @@
       "value": ""
     },
     "PLUGIN_CHANNEL": {
-      "description": "Create a private group add rose  then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID jjboth values should be same",
+      "description": "Create a private group add rose  then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID both values should be same",
       "value": ""
     },
     "PRIVATE_GROUP_ID": {
-      "description": "Create a private group add rose jjbot then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID jjboth values should be same",
+      "description": "Create a private group add rose bot then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID both values should be same",
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Get this value from https://jarvisuserjjbot.jarvis210904.repl.run/",
+      "description": "Get this value from https://jarvisuserbot.jarvis210904.repl.run/",
       "value": ""
     },
     "GITHUB_ACCESS_TOKEN": {
@@ -94,7 +94,7 @@
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: jarvis210904/J.A.R.V.I.S-Userjjbot, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: jarvis210904/J.A.R.V.I.S-Userbot, but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
@@ -112,7 +112,7 @@
       "value": ""
     },
     "TG_BOT_TOKEN_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a jjbot at [BotFather](http://telegram.dog/BotFather) and get the token of your jjbot. And Don't Forget To Turn of inline Mode on jjbot settings. Get it.",
+      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. And Don't Forget To Turn of inline Mode on bot settings. Get it.",
       "value": ""
     },
     "SUDO_USERS": {
@@ -131,7 +131,7 @@
       "required": false
     },
     "TG_BOT_USER_NAME_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a jjbot at [BotFather](http://telegram.dog/BotFather) and get the username of your jjbot",
+      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot",
       "value": ""
     },
     "DOWNLOAD_PFP_URL_CLOCK": {

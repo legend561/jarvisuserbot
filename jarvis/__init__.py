@@ -26,10 +26,10 @@ sedprint = logging.getLogger("WARNING")
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
     session_name = str(Var.STRING_SESSION)
-    jjbot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
+    bot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
 else:
     session_name = "startup"
-    jjbot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
+    bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
 
 CMD_LIST = {}
@@ -84,11 +84,11 @@ if bool(ENV):
     except:
         pass
 
-    # Userjjbot logging feature switch.
+    # Userbot logging feature switch.
     BOTLOG = sb(os.environ.get("BOTLOG", "True"))
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "True"))
 
-    # Bleep Blop, this is a jjbot ;)
+    # Bleep Blop, this is a bot ;)
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
 
     # Console verbose logging
@@ -110,7 +110,7 @@ if bool(ENV):
     # OpenWeatherMap API Key
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 
-    # Anti Spamjjbot Config
+    # Anti Spambot Config
     ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 
     ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))

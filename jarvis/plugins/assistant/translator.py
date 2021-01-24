@@ -9,7 +9,7 @@ from googletrans import Translator
 from telethon import events
 
 
-@tgjjbot.on(events.NewMessage(pattern="^/tr ?(.*)"))
+@tgbot.on(events.NewMessage(pattern="^/tr ?(.*)"))
 async def _(event):
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
@@ -19,7 +19,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await tgjjbot.send_message(
+        await tgbot.send_message(
             event.chat_id, "`.tr LanguageCode` as reply to a message"
         )
         return
@@ -33,6 +33,6 @@ async def _(event):
         f"Source {translated.src} \nTranslation {lan} \nWhat I Can Translate From This {after_tr_text}"
     )
     try:
-        await tgjjbot.send_message(event.chat_id, output_str)
+        await tgbot.send_message(event.chat_id, output_str)
     except Exception:
-        await tgjjbot.send_message(event.chat_id, "Something Went Wrong 🤔")
+        await tgbot.send_message(event.chat_id, "Something Went Wrong 🤔")

@@ -52,13 +52,13 @@ async def _(event):
     user_bio = replied_user.about
     if user_bio is not None:
         user_bio = replied_user.about
-    await jjbot(functions.account.UpdateProfileRequest(first_name=first_name))
-    await jjbot(functions.account.UpdateProfileRequest(last_name=last_name))
-    await jjbot(functions.account.UpdateProfileRequest(about=user_bio))
-    pfile = await jjbot.upload_file(profile_pic)  # pylint:disable=E060
-    await jjbot(functions.photos.UploadProfilePhotoRequest(pfile))  # pylint:disable=E0602
+    await bot(functions.account.UpdateProfileRequest(first_name=first_name))
+    await bot(functions.account.UpdateProfileRequest(last_name=last_name))
+    await bot(functions.account.UpdateProfileRequest(about=user_bio))
+    pfile = await bot.upload_file(profile_pic)  # pylint:disable=E060
+    await bot(functions.photos.UploadProfilePhotoRequest(pfile))  # pylint:disable=E0602
     await event.delete()
-    await jjbot.send_message(
+    await bot.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
     if BOTLOG:
@@ -76,14 +76,14 @@ async def _(event):
     jarv = ""
     bio = f"{DEFAULTUSERBIO}"
     n = 1
-    await jjbot(
+    await bot(
         functions.photos.DeletePhotosRequest(
             await event.client.get_profile_photos("me", limit=n)
         )
     )
-    await jjbot(functions.account.UpdateProfileRequest(about=bio))
-    await jjbot(functions.account.UpdateProfileRequest(first_name=name))
-    await jjbot(functions.account.UpdateProfileRequest(last_name=jarv))
+    await bot(functions.account.UpdateProfileRequest(about=bio))
+    await bot(functions.account.UpdateProfileRequest(first_name=name))
+    await bot(functions.account.UpdateProfileRequest(last_name=jarv))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(

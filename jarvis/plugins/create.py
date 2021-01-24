@@ -1,5 +1,5 @@
 """
-for jjbot credits to @pureindialover
+for bot credits to @pureindialover
 """
 
 from telethon.tl import functions
@@ -29,7 +29,7 @@ async def telegraphs(grop):
 
                 result = await grop.client(
                     functions.messages.CreateChatRequest(  # pylint:disable=E0602
-                        users=["@Serena_Rojjbot"],
+                        users=["@Serena_Robot"],
                         # Not enough users (to create a chat, for example)
                         # Telegram, no longer allows creating a chat with ourselves
                         title=group_name,
@@ -40,7 +40,7 @@ async def telegraphs(grop):
 
                 await grop.client(
                     functions.messages.DeleteChatUserRequest(
-                        chat_id=created_chat_id, user_id="@Serena_Rojjbot"
+                        chat_id=created_chat_id, user_id="@Serena_Robot"
                     )
                 )
 

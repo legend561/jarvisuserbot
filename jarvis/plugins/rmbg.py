@@ -32,7 +32,7 @@ async def _(event):
             event, "Connecting to Official JARVIS Server and analysing that img ..."
         )
         try:
-            downloaded_file_name = await jjbot.download_media(
+            downloaded_file_name = await bot.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
@@ -52,7 +52,7 @@ async def _(event):
     if "image" in contentType:
         with io.BytesIO(output_file_name.content) as remove_bg_image:
             remove_bg_image.name = "@jarvisot.png"
-            await jjbot.send_file(
+            await bot.send_file(
                 event.chat_id,
                 remove_bg_image,
                 force_document=True,
@@ -63,7 +63,7 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         await jevent.edit(
-            "Removed dat annoying Backgroup in {} seconds, powered by JARVIS Userjjbot".format(
+            "Removed dat annoying Backgroup in {} seconds, powered by JARVIS Userbot".format(
                 ms
             )
         )

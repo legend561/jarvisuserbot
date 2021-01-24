@@ -40,7 +40,7 @@ if ENV:
         TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Jarvis")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
-        # Send .get_id in any group with all your administration jjbots (added)
+        # Send .get_id in any group with all your administration bots (added)
         G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
         # TG API limit. An album can have atmost 10 media!
         GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
@@ -53,7 +53,7 @@ if ENV:
         # DO NOT EDIT BELOW THIS LINE IF YOU DO NOT KNOW WHAT YOU ARE DOING
         # TG API limit. A message can have maximum 4096 characters!
         MAX_MESSAGE_SIZE_LIMIT = 4095
-        # set blacklist_chats where you do not want userjjbot's features
+        # set blacklist_chats where you do not want userbot's features
         UB_BLACK_LIST_CHAT = set(
             int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
         )
@@ -101,8 +101,8 @@ if ENV:
         # this should be a valid "regex" pattern
         CMD_HNDLR = os.environ.get("CMD_HNDLR", ".")
         SUDO_HNDLR = os.environ.get("SUDO_HNDLR", "!")
-        # specify list of users allowed to use jjbot
-        # WARNING: be careful who you grant access to your jjbot.
+        # specify list of users allowed to use bot
+        # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
         SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
         WHITELIST_USERS = set(
@@ -120,7 +120,7 @@ if ENV:
         # Middle PmPermit
         CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
         GROUP_REG_SED_EX_BOT_S = os.environ.get(
-            "GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)jjbot"
+            "GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)bot"
         )
         TEMP_DIR = os.environ.get("TEMP_DIR", None)
         CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))

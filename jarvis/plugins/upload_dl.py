@@ -1,4 +1,4 @@
-""" Userjjbot module which contains everything related to \
+""" Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
 import asyncio
@@ -18,7 +18,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for jjboth
+    """Generic progress_callback for both
     upload.py and download.py"""
     now = time.time()
     diff = now - start
@@ -80,7 +80,7 @@ def time_formatter(milliseconds: int) -> str:
 @jarvis.on(admin_cmd(pattern="dl(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="dl(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
-    """ For .dl command, download files to the userjjbot's server. """
+    """ For .dl command, download files to the userbot's server. """
     await eor(target_file, "Processing using Jarvis server")
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -245,10 +245,10 @@ async def uploadir(udir_event):
 @jarvis.on(admin_cmd(pattern="upload (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="upload (.*)", allow_sudo=True))
 async def upload(u_event):
-    """ For .upload command, allows you to upload a file from the userjjbot's server """
+    """ For .upload command, allows you to upload a file from the userbot's server """
     await eor(u_event, "Processing ...")
     input_str = u_event.pattern_match.group(1)
-    if input_str in ("userjjbot.session", "config.env"):
+    if input_str in ("userbot.session", "config.env"):
         await u_event.edit("`That's a dangerous operation! Not Permitted!`")
         return
     if os.path.exists(input_str):

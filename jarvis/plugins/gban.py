@@ -49,27 +49,27 @@ async def get_user_from_id(user, event):
 
 
 @jarvis.on(admin_cmd(pattern="gban ?(.*)", outgoing=True))
-async def gben(userjjbot):
-    dc = userjjbot
+async def gben(userbot):
+    dc = userbot
     sender = await dc.get_sender()
     me = await dc.client.get_me()
     if not sender.id == me.id:
         dark = await dc.reply("Gbanning This User !")
     else:
         dark = await dc.edit("Wait Processing.....")
-    me = await userjjbot.client.get_me()
+    me = await userbot.client.get_me()
     await dark.edit(f"Trying to ban you globally..weit nd watch you nub nibba")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await userjjbot.get_chat()
+    await userbot.get_chat()
     a = b = 0
-    if userjjbot.is_private:
-        user = userjjbot.chat
-        reason = userjjbot.pattern_match.group(1)
+    if userbot.is_private:
+        user = userbot.chat
+        reason = userbot.pattern_match.group(1)
     else:
-        userjjbot.chat.title
+        userbot.chat.title
     try:
-        user, reason = await get_full_user(userjjbot)
+        user, reason = await get_full_user(userbot)
     except:
         pass
     try:
@@ -85,17 +85,17 @@ async def gben(userjjbot):
         except:
             pass
         try:
-            await userjjbot.client(BlockRequest(user))
+            await userbot.client(BlockRequest(user))
         except:
             pass
-        testuserjjbot = [
+        testuserbot = [
             d.entity.id
-            for d in await userjjbot.client.get_dialogs()
+            for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
-        for i in testuserjjbot:
+        for i in testuserbot:
             try:
-                await userjjbot.client.edit_permissions(i, user, view_messages=False)
+                await userbot.client.edit_permissions(i, user, view_messages=False)
                 a += 1
                 await dark.edit(f"**Globally banned 🙄🙄 Total Affected Chats **: `{a}`")
             except:
@@ -113,27 +113,27 @@ async def gben(userjjbot):
 
 
 @jarvis.on(admin_cmd(pattern="ungban ?(.*)", outgoing=True))
-async def gunben(userjjbot):
-    dc = userjjbot
+async def gunben(userbot):
+    dc = userbot
     sender = await dc.get_sender()
     me = await dc.client.get_me()
     if not sender.id == me.id:
         dark = await dc.reply("**Wait Let Me Ungban This Guy**")
     else:
         dark = await dc.edit("Weit nd watch ! ")
-    me = await userjjbot.client.get_me()
+    me = await userbot.client.get_me()
     await dark.edit(f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await userjjbot.get_chat()
+    await userbot.get_chat()
     a = b = 0
-    if userjjbot.is_private:
-        user = userjjbot.chat
-        reason = userjjbot.pattern_match.group(1)
+    if userbot.is_private:
+        user = userbot.chat
+        reason = userbot.pattern_match.group(1)
     else:
-        userjjbot.chat.title
+        userbot.chat.title
     try:
-        user, reason = await get_full_user(userjjbot)
+        user, reason = await get_full_user(userbot)
     except:
         pass
     try:
@@ -151,17 +151,17 @@ async def gunben(userjjbot):
         except:
             pass
         try:
-            await userjjbot.client(UnblockRequest(user))
+            await userbot.client(UnblockRequest(user))
         except:
             pass
-        testuserjjbot = [
+        testuserbot = [
             d.entity.id
-            for d in await userjjbot.client.get_dialogs()
+            for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
-        for i in testuserjjbot:
+        for i in testuserbot:
             try:
-                await userjjbot.client.edit_permissions(i, user, send_messages=True)
+                await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
                 await dark.edit(f"**Ungbaning this nub nibba.. AFFECTED CHATS - {a} **")
             except:

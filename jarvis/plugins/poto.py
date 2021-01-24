@@ -14,7 +14,7 @@ if 1 == 1:
 
     name = "Profile Photos"
 
-    client = jjbot
+    client = bot
 
     @jarvis.on(admin_cmd(pattern="poto(.*)", outgoing=True))
     @jarvis.on(sudo_cmd(pattern="poto(.*)", allow_sudo=True))
@@ -46,7 +46,7 @@ if 1 == 1:
 
                 photo = await event.client.download_profile_photo(chat)
 
-                await jjbot.send_file(event.chat_id, photo)
+                await bot.send_file(event.chat_id, photo)
 
         else:
 
@@ -70,7 +70,7 @@ if 1 == 1:
 
                 send_photos = await event.client.download_media(photos[id - 1])
 
-                await jjbot.send_file(event.chat_id, send_photos)
+                await bot.send_file(event.chat_id, send_photos)
 
             else:
 

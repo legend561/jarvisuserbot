@@ -16,13 +16,13 @@ async def _(event):
         )
         return
     try:
-        e = await jjbot.get_entity(Config.PLUGIN_CHANNEL)
+        e = await bot.get_entity(Config.PLUGIN_CHANNEL)
     except Exception as e:
         await event.edit(str(e))
     else:
         re_message = await event.get_reply_message()
         # https://t.me/telethonofftopic/78166
-        fwd_message = await jjbot.forward_messages(e, re_message, silent=True)
-        await jjbot.forward_messages(event.chat_id, fwd_message)
+        fwd_message = await bot.forward_messages(e, re_message, silent=True)
+        await bot.forward_messages(event.chat_id, fwd_message)
         await fwd_message.delete()
         await event.delete()
