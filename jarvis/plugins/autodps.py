@@ -30,7 +30,7 @@ async def animepp():
     print(fy)
     if not os.path.exists("f.ttf"):
         urllib.request.urlretrieve(
-            "https://github.com/rebel6969/mym/raw/master/Rebel-rojbot-Regular.ttf",
+            "https://github.com/rebel6969/mym/raw/master/Rebel-rojjbot-Regular.ttf",
             "f.ttf",
         )
     urllib.request.urlretrieve(fy, "donottouch.jpg")
@@ -84,7 +84,7 @@ async def animepp():
     print(fy)
     if not os.path.exists("f.ttf"):
         urllib.request.urlretrieve(
-            "https://github.com/rebel6969/mym/raw/master/Rebel-rojbot-Regular.ttf",
+            "https://github.com/rebel6969/mym/raw/master/Rebel-rojjbot-Regular.ttf",
             "f.ttf",
         )
     urllib.request.urlretrieve(fy, "donottouch.jpg")
@@ -129,7 +129,7 @@ async def animepp():
     print(fy)
     if not os.path.exists("f.ttf"):
         urllib.request.urlretrieve(
-            "https://github.com/rebel6969/mym/raw/master/Rebel-rojbot-Regular.ttf",
+            "https://github.com/rebel6969/mym/raw/master/Rebel-rojjbot-Regular.ttf",
             "f.ttf",
         )
     urllib.request.urlretrieve(fy, "donottouch.jpg")
@@ -189,7 +189,7 @@ async def animepp():
     if not os.path.exists("f.ttf"):
 
         urllib.request.urlretrieve(
-            "https://github.com/rebel6969/mym/raw/master/Rebel-rojbot-Regular.ttf",
+            "https://github.com/rebel6969/mym/raw/master/Rebel-rojjbot-Regular.ttf",
             "f.ttf",
         )
 

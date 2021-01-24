@@ -1,5 +1,5 @@
 """
-G-Drive File Downloader Plugin For Userjbot. 
+G-Drive File Downloader Plugin For Userjjbot. 
 usage: .gdl File-Link
 By: @Zero_cool7870
 

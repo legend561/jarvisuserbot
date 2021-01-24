@@ -1,5 +1,5 @@
 #    Copyright (C) 2020  sandeep.n(π.$)
-# button post makker for catuserjbot thanks to unijbot for the base
+# button post makker for catuserjjbot thanks to unijjbot for the base
 # by @sandy1709 (@mrconfused)
 import os
 import re
@@ -11,7 +11,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 from .. import CMD_HELP
 
 # regex obtained from:
-# https://github.com/PaulSonOfLars/tgjbot/blob/master/tg_jbot/modules/helper_funcs/string_handling.py#L23
+# https://github.com/PaulSonOfLars/tgjjbot/blob/master/tg_jjbot/modules/helper_funcs/string_handling.py#L23
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
@@ -48,21 +48,21 @@ async def _(event):
         note_data += markdown_note[prev:]
     message_text = note_data.strip()
     tl_ib_buttons = build_keyboard(buttons)
-    tgjbot_reply_message = None
+    tgjjbot_reply_message = None
     if reply_message and reply_message.media:
-        tgjbot_reply_message = await jbot.download_media(reply_message.media)
-    await tgjbot.send_message(
+        tgjjbot_reply_message = await jjbot.download_media(reply_message.media)
+    await tgjjbot.send_message(
         entity=chat,
         message=message_text,
         parse_mode="html",
-        file=tgjbot_reply_message,
+        file=tgjjbot_reply_message,
         link_preview=False,
         buttons=tl_ib_buttons,
         silent=True,
     )
     await event.delete()
-    if tgjbot_reply_message:
-        os.remove(tgjbot_reply_message)
+    if tgjjbot_reply_message:
+        os.remove(tgjjbot_reply_message)
 
 
 # Helpers
@@ -80,11 +80,11 @@ async def _(event):
     if not catinput:
         catinput = (await event.get_reply_message()).text
     if not catinput:
-        await edit_or_reply(event, "`Give me some thing to write in jbot inline`")
+        await edit_or_reply(event, "`Give me some thing to write in jjbot inline`")
         return
     catinput = "Inline buttons " + catinput
-    tgjbotusername = Var.TG_BOT_USER_NAME_BF_HER
-    results = await jbot.inline_query(tgjbotusername, catinput)
+    tgjjbotusername = Var.TG_BOT_USER_NAME_BF_HER
+    results = await jjbot.inline_query(tgjjbotusername, catinput)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
 
@@ -104,10 +104,10 @@ CMD_HELP.update(
         "button": "**Plugin : **`button`\
     \n\n**SYNTAX : **`.cbutton`\
     \n**USAGE :** Buttons must be in th format as [name on button]<buttonurl:link you want to open> and markdown is Default to html\
-    \n**EXAMPLE :** `.cbutton test [google]<buttonurl:https://www.google.com> [JARVIS Userjbot]<buttonurl:https://t.me/jarvisot:same> [support]<buttonurl:https://t.me/jarvissupportot>`\
+    \n**EXAMPLE :** `.cbutton test [google]<buttonurl:https://www.google.com> [JARVIS Userjjbot]<buttonurl:https://t.me/jarvisot:same> [support]<buttonurl:https://t.me/jarvissupportot>`\
     \n\n**SYNTAX : **`.ibutton`\
     \n**USAGE :** Buttons must be in th format as [name on button]<buttonurl:link you want to open>\
-    \n**EXAMPLE :** `.ibutton test [google]<buttonurl:https://www.google.com> [JARVIS Userjbot]<buttonurl:https://t.me/jarvisot:same> [support]<buttonurl:https://t.me/jarvissupportot>`\
+    \n**EXAMPLE :** `.ibutton test [google]<buttonurl:https://www.google.com> [JARVIS Userjjbot]<buttonurl:https://t.me/jarvisot:same> [support]<buttonurl:https://t.me/jarvissupportot>`\
     "
     }
 )

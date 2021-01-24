@@ -30,7 +30,7 @@ async def _(event):
 
             time.time()
 
-            downloaded_file_name = await jbot.download_media(
+            downloaded_file_name = await jjbot.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
 
@@ -42,7 +42,7 @@ async def _(event):
                 directory_name
             )
 
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 directory_name + ".zip",
                 caption="Zipped By [JARVIS](https://t.me/JarvisOT)",

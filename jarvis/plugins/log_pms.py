@@ -27,7 +27,7 @@ BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 
 @jarvis.on(admin_cmd(outgoing=True, pattern=r"save(?: |$)([\s\S]*)"))
 async def log(log_text):
-    """ For .log command, forwards a message or the command argument to the jbot logs group """
+    """ For .log command, forwards a message or the command argument to the jjbot logs group """
     if BOTLOG:
         if log_text.reply_to_msg_id:
             reply_msg = await log_text.get_reply_message()
@@ -35,7 +35,7 @@ async def log(log_text):
         elif log_text.pattern_match.group(1):
             user = f"#LOG / Chat ID: {log_text.chat_id}\n\n"
             textx = user + log_text.pattern_match.group(1)
-            await jbot.send_message(BOTLOG_CHATID, textx)
+            await jjbot.send_message(BOTLOG_CHATID, textx)
         else:
             await log_text.edit("`What am I supposed to log?`")
             return
@@ -56,14 +56,14 @@ async def kickme(leave):
 @jarvis.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     sender = await event.get_sender()
-    if Config.NC_LOG_P_M_S and not sender.jbot:
+    if Config.NC_LOG_P_M_S and not sender.jjbot:
         chat = await event.get_chat()
-        if chat.id not in NO_PM_LOG_USERS and chat.id != jbot.uid:
+        if chat.id not in NO_PM_LOG_USERS and chat.id != jjbot.uid:
             try:
                 if Config.PM_LOGGR_BOT_API_ID:
                     if event.message:
-                        e = await jbot.get_entity(int(Config.PM_LOGGR_BOT_API_ID))
-                        fwd_message = await jbot.forward_messages(
+                        e = await jjbot.get_entity(int(Config.PM_LOGGR_BOT_API_ID))
+                        fwd_message = await jjbot.forward_messages(
                             e, event.message, silent=True
                         )
                     else:

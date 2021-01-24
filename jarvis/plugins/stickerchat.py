@@ -1,4 +1,4 @@
-#    Friendly Telegram (telegram userjbot)
+#    Friendly Telegram (telegram userjjbot)
 #    Copyright (C) 2018-2019 The Authors
 
 #    This program is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ if 1 == 1:
             "default_username_color": "#b48bf2",
         }
     )
-    client = jbot
+    client = jjbot
 
     @jarvis.on(admin_cmd(pattern="chat(.*)"))
     async def quotecmd(message):  # noqa: C901

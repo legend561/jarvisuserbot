@@ -12,7 +12,7 @@ async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
-    input_url = "https://jbots.shrimadhavuk.me/dictionary/?s={}".format(input_str)
+    input_url = "https://jjbots.shrimadhavuk.me/dictionary/?s={}".format(input_str)
     headers = {"USER-AGENT": "UniBorg"}
     caption_str = f"Meaning of __{input_str}__\n"
     try:
@@ -31,7 +31,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_msg_id = event.reply_to_msg_id
     try:
-        await jbot.send_file(
+        await jjbot.send_file(
             event.chat_id,
             pronounciation,
             caption=f"Pronounciation of __{input_str}__",

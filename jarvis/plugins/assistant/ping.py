@@ -9,7 +9,7 @@ from datetime import datetime
 
 from telethon import events
 
-from jarvis import Lastupdate, jbot
+from jarvis import Lastupdate, jjbot
 
 
 def get_readable_time(seconds: int) -> str:
@@ -40,13 +40,13 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@tgjbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == jbot.uid))
+@tgjjbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == jjbot.uid))
 async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await tgjbot.send_message(
+    await tgjjbot.send_message(
         event.chat_id,
         f"**╔═══╗╔══╗╔═╗─╔╗╔═══╗\n║╔═╗║╚╣─╝║║╚╗║║║╔═╗║\n║╚═╝║─║║─║╔╗╚╝║║║─╚╝\n║╔══╝─║║─║║╚╗║║║║╔═╗\n║║───╔╣─╗║║─║║║║╚╩═║\n╚╝───╚══╝╚╝─╚═╝╚═══╝**\n ➲ `{ms}` \n ➲ `{uptime}`",
     )

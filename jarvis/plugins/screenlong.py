@@ -53,7 +53,7 @@ async def _(event):
             message_id = event.reply_to_msg_id
         with io.BytesIO(im_png) as out_file:
             out_file.name = "@UniBorg.ScreenCapture.PNG"
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 out_file,
                 caption=input_str,

@@ -1,4 +1,4 @@
-""" Userjbot module for kanging stickers or making new ones. Thanks @rupansh"""
+""" Userjjbot module for kanging stickers or making new ones. Thanks @rupansh"""
 
 import io
 import math
@@ -16,7 +16,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from jarvis import CMD_HELP, jbot
+from jarvis import CMD_HELP, jjbot
 from jarvis.utils import admin_cmd
 
 KANGING_STR = [
@@ -36,7 +36,7 @@ KANGING_STR = [
 @jarvis.on(admin_cmd(pattern="kang ?(.*)"))
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
-    user = await jbot.get_me()
+    user = await jjbot.get_me()
     if not user.username:
         try:
             user.first_name.encode("utf-8").decode("ascii")
@@ -52,11 +52,11 @@ async def kang(args):
         if isinstance(message.media, MessageMediaPhoto):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            photo = await jbot.download_media(message.photo, photo)
+            photo = await jjbot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            await jbot.download_file(message.media.document, photo)
+            await jjbot.download_file(message.media.document, photo)
             if (
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.media.document.attributes
@@ -65,7 +65,7 @@ async def kang(args):
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
             await args.edit(f"`{random.choice(KANGING_STR)}`")
-            await jbot.download_file(message.media.document, "AnimatedSticker.tgs")
+            await jjbot.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
             for attribute in attributes:
@@ -92,10 +92,10 @@ async def kang(args):
             if char_is_emoji(splat[1]):
                 if char_is_emoji(splat[2]):
                     return await args.edit("check `.info stickers`")
-                pack = splat[2]  # User sent jboth
+                pack = splat[2]  # User sent jjboth
                 emoji = splat[1]
             elif char_is_emoji(splat[2]):
-                pack = splat[1]  # User sent jboth
+                pack = splat[1]  # User sent jjboth
                 emoji = splat[2]
             else:
                 return await args.edit("check `.info stickers`")
@@ -124,11 +124,11 @@ async def kang(args):
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
-            async with jbot.conversation("Stickers") as conv:
+            async with jjbot.conversation("Stickers") as conv:
                 await conv.send_message("/addsticker")
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
                 while (
@@ -157,11 +157,11 @@ async def kang(args):
                         await conv.send_message(cmd)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
@@ -173,14 +173,14 @@ async def kang(args):
                             "You can list several emoji in one message, but I recommend using no more than two per sticker"
                             not in rsp.text
                         ):
-                            await jbot.send_read_acknowledge(conv.chat_id)
+                            await jjbot.send_read_acknowledge(conv.chat_id)
                             await args.edit(
-                                f"Failed to add sticker, use @Stickers jbot to add the sticker manually.\n**error :**{rsp.txt}"
+                                f"Failed to add sticker, use @Stickers jjbot to add the sticker manually.\n**error :**{rsp.txt}"
                             )
                             return
                         await conv.send_message(emoji)
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
@@ -188,17 +188,17 @@ async def kang(args):
                             await conv.send_message(f"<{packnick}>")
                         # Ensure user doesn't get spamming notifications
                         await conv.get_response()
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await jbot.send_read_acknowledge(conv.chat_id)
+                        await jjbot.send_read_acknowledge(conv.chat_id)
                         await args.edit(
                             f"Sticker added in a Different Pack !\
                             \nThis Pack is Newly created!\
@@ -217,30 +217,30 @@ async def kang(args):
                     "You can list several emoji in one message, but I recommend using no more than two per sticker"
                     not in rsp.text
                 ):
-                    await jbot.send_read_acknowledge(conv.chat_id)
+                    await jjbot.send_read_acknowledge(conv.chat_id)
                     await args.edit(
-                        f"Failed to add sticker, use @Stickers jbot to add the sticker manually.\n**error :**{rsp.text}"
+                        f"Failed to add sticker, use @Stickers jjbot to add the sticker manually.\n**error :**{rsp.text}"
                     )
                     return
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
         else:
             await args.edit("`Brewing a new Pack...`")
-            async with jbot.conversation("Stickers") as conv:
+            async with jjbot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packnick)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
@@ -253,12 +253,12 @@ async def kang(args):
                     not in rsp.text
                 ):
                     await args.edit(
-                        f"Failed to add sticker, use @Stickers jbot to add the sticker manually.\n**error :**{rsp}"
+                        f"Failed to add sticker, use @Stickers jjbot to add the sticker manually.\n**error :**{rsp}"
                     )
                     return
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/publish")
                 if is_anim:
@@ -266,17 +266,17 @@ async def kang(args):
                     await conv.send_message(f"<{packnick}>")
                 # Ensure user doesn't get spamming notifications
                 await conv.get_response()
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message("/skip")
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message(packname)
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await jbot.send_read_acknowledge(conv.chat_id)
+                await jjbot.send_read_acknowledge(conv.chat_id)
         await args.edit(
             f"Sticker kanged successfully!\
             \nPack can be found [here](t.me/addstickers/{packname}) and emoji of the sticker is {emoji}",
@@ -330,7 +330,7 @@ async def get_pack_info(event):
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
         await event.edit("`This is not a sticker. Reply to a sticker.`")
         return
-    get_stickerset = await jbot(
+    get_stickerset = await jjbot(
         GetStickerSetRequest(
             InputStickerSetID(
                 id=stickerset_attr.stickerset.id,
@@ -357,7 +357,7 @@ CMD_HELP.update(
     {
         "stickers": "**Plugins : **`stickers`\
     \n\n**Syntax : **`.kang`\
-\n**Usage : **Reply .kang to a sticker or an image to kang it to your userjbot pack.\
+\n**Usage : **Reply .kang to a sticker or an image to kang it to your userjjbot pack.\
 \n\n**Syntax : **`.kang [emoji('s)]`\
 \n**Usage : **Works just like .kang but uses the emoji('s) you picked.\
 \n\n**Syntax : **`.kang [number]`\

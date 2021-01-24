@@ -3,7 +3,7 @@
 import random
 import re
 
-from jarvis import CMD_HELP, jbot
+from jarvis import CMD_HELP, jjbot
 from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 EMOJI_PATTERN = re.compile(
@@ -44,8 +44,8 @@ async def waifu(animu):
             )
             return
     animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
-    sticcers = await jbot.inline_query(
-        "stickerizerjbot", f"#{random.choice(animus)}{(deEmojify(text))}"
+    sticcers = await jjbot.inline_query(
+        "stickerizerjjbot", f"#{random.choice(animus)}{(deEmojify(text))}"
     )
     await sticcers[0].click(
         animu.chat_id,

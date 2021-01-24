@@ -26,7 +26,7 @@ async def _(event):
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
             im.save("jarvis.png", "PNG")
             input_str = input_str.replace("#", "#COLOR_")
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 "jarvis.png",
                 force_document=False,

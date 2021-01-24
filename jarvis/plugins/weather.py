@@ -1,4 +1,4 @@
-# Userjbot module for getting the weather of a city.
+# Userjjbot module for getting the weather of a city.
 
 import json
 from datetime import datetime
@@ -143,7 +143,7 @@ async def get_weather(weather):
 @jarvis.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
 @errors_handler
 async def set_default_city(city):
-    """ For .ctime command, change the default userjbot country for date and time commands. """
+    """ For .ctime command, change the default userjjbot country for date and time commands. """
 
     if not OWM_API:
         await edit_or_reply(

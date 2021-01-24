@@ -7,11 +7,11 @@ from telethon.tl import functions, types
 
 HEADER = "「sed」\n"
 KNOWN_RE_BOTS = re.compile(
-    r"(regex|moku|BananaButler_|rgx|l4mR)jbot", flags=re.IGNORECASE
+    r"(regex|moku|BananaButler_|rgx|l4mR)jjbot", flags=re.IGNORECASE
 )
 
 # Heavily based on
-# https://github.com/SijmenSchoon/regexjbot/blob/master/regexjbot.py
+# https://github.com/SijmenSchoon/regexjjbot/blob/master/regexjjbot.py
 
 last_msgs = defaultdict(lambda: deque(maxlen=10))
 
@@ -61,11 +61,11 @@ def doit(chat_id, match, original):
     return None, None
 
 
-async def group_has_sedjbot(group):
+async def group_has_sedjjbot(group):
     if isinstance(group, types.InputPeerChannel):
-        full = await jbot(functions.channels.GetFullChannelRequest(group))
+        full = await jjbot(functions.channels.GetFullChannelRequest(group))
     elif isinstance(group, types.InputPeerChat):
-        full = await jbot(functions.messages.GetFullChatRequest(group.chat_id))
+        full = await jjbot(functions.messages.GetFullChatRequest(group.chat_id))
     else:
         return False
 
@@ -89,8 +89,8 @@ async def on_edit(event):
 async def on_regex(event):
     if event.fwd_from:
         return
-    if not event.is_private and await group_has_sedjbot(await event.get_input_chat()):
-        # await event.edit("This group has a sed jbot. Ignoring this message!")
+    if not event.is_private and await group_has_sedjjbot(await event.get_input_chat()):
+        # await event.edit("This group has a sed jjbot. Ignoring this message!")
         return
 
     chat_id = utils.get_peer_id(await event.get_input_chat())
@@ -99,7 +99,7 @@ async def on_regex(event):
 
     if m is not None:
         s = f"{HEADER}{s}"
-        out = await jbot.send_message(await event.get_input_chat(), s, reply_to=m.id)
+        out = await jjbot.send_message(await event.get_input_chat(), s, reply_to=m.id)
         last_msgs[chat_id].appendleft(out)
     elif s is not None:
         await event.edit(s)

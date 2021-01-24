@@ -1,4 +1,4 @@
-# ported from The Raphielscape Company LLC. and unijbot
+# ported from The Raphielscape Company LLC. and unijjbot
 
 # Thanks to @r4v4n4
 

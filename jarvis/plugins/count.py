@@ -24,11 +24,11 @@ logger = logging.getLogger(__name__)
 #     g = 0 # number of basic groups
 #     c = 0 # number of super groups
 #     bc = 0 # number of channels
-#     b = 0 # number of jbots
+#     b = 0 # number of jjbots
 #     await event.edit("Retrieving Telegram Count(s)")
-#     async for d in jbot.iter_dialogs(limit=None):
+#     async for d in jjbot.iter_dialogs(limit=None):
 #         if d.is_user:
-#             if d.entity.jbot:
+#             if d.entity.jjbot:
 #                 b += 1
 #             else:
 #                 u += 1
@@ -59,7 +59,7 @@ async def stats(
     await event.edit("`Collecting stats, Wait Master`")
     start_time = time.time()
     private_chats = 0
-    jbots = 0
+    jjbots = 0
     groups = 0
     broadcast_channels = 0
     admin_in_groups = 0
@@ -94,8 +94,8 @@ async def stats(
 
         elif isinstance(entity, User):
             private_chats += 1
-            if entity.jbot:
-                jbots += 1
+            if entity.jjbot:
+                jjbots += 1
 
         elif isinstance(entity, Chat):
             groups += 1
@@ -111,8 +111,8 @@ async def stats(
     full_name = inline_mention(await event.client.get_me())
     response = f"🔸 **Stats for {full_name}** \n\n"
     response += f"**Private Chats:** {private_chats} \n"
-    response += f"   • `Users: {private_chats - jbots}` \n"
-    response += f"   • `Bots: {jbots}` \n"
+    response += f"   • `Users: {private_chats - jjbots}` \n"
+    response += f"   • `Bots: {jjbots}` \n"
     response += f"**Groups:** {groups} \n"
     response += f"**Channels:** {broadcast_channels} \n"
     response += f"**Admin in Groups:** {admin_in_groups} \n"

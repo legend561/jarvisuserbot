@@ -13,7 +13,7 @@ async def _(event):
         await edit_or_reply(event, "**Reply to any document.**")
         return
     reply_message = await event.get_reply_message()
-    chat = "@FiletolinkTGjbot"
+    chat = "@FiletolinkTGjjbot"
     reply_message.sender
     await edit_or_reply(event, "**Making public url...**")
     async with event.client.conversation(chat) as conv:
@@ -25,7 +25,7 @@ async def _(event):
             response = await response
         except YouBlockedUserError:
             await edit_or_reply(
-                event, "```Please unblock me (@FiletolinkTGjbot) u Nigga```"
+                event, "```Please unblock me (@FiletolinkTGjjbot) u Nigga```"
             )
             return
         await event.delete()
@@ -46,7 +46,7 @@ async def _(event):
     if not reply_message.text:
         await event.edit("**Reply to a message.**")
         return
-    chat = "@sangmatainfo_jbot"
+    chat = "@sangmatainfo_jjbot"
     reply_message.sender
     await event.edit("**Getting user's name history..**")
     async with event.client.conversation(chat) as conv:
@@ -57,7 +57,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.edit("```Please unblock me (@SangMataInfo_jbot) u Nigga```")
+            await event.edit("```Please unblock me (@SangMataInfo_jjbot) u Nigga```")
             return
         await event.delete()
         await event.client.send_message(

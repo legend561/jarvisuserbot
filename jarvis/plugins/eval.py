@@ -12,7 +12,7 @@ from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
-    jarvisjbot = await edit_or_reply(event, "Processing ...")
+    jarvisjjbot = await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -51,7 +51,7 @@ async def _(event):
     if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -61,7 +61,7 @@ async def _(event):
             )
             await event.delete()  # if used by sudo then nothing
     else:
-        await jarvisjbot.edit(final_output)
+        await jarvisjjbot.edit(final_output)
 
 
 async def aexec(code, event):

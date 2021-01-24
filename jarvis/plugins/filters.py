@@ -36,8 +36,8 @@ async def on_snip(event):
     name = event.raw_text
     if event.chat_id in last_triggered_filters:
         if name in last_triggered_filters[event.chat_id]:
-            # avoid userjbot spam
-            # "I demand rights for us jbots, we are equal to you humans." -Henri Koivuneva (t.me/UserjbotTesting/2698)
+            # avoid userjjbot spam
+            # "I demand rights for us jjbots, we are equal to you humans." -Henri Koivuneva (t.me/UserjjbotTesting/2698)
             return False
     snips = get_all_filters(event.chat_id)
     if snips:
@@ -119,7 +119,7 @@ async def on_snip_list(event):
     if len(OUT_STR) > 4096:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "filters.text"
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,

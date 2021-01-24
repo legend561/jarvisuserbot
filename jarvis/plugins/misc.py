@@ -1,4 +1,4 @@
-""" Userjbot module for other small commands. """
+""" Userjjbot module for other small commands. """
 
 from random import randint
 from time import sleep
@@ -9,7 +9,7 @@ from telethon.tl.types import (
     ChannelParticipantsAdmins,
     ChannelParticipantsBots,
 )
-from telethon.utils import pack_jbot_file_id
+from telethon.utils import pack_jjbot_file_id
 
 from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
 
@@ -33,8 +33,8 @@ async def randomise(items):
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="sleep( [0-9]+)?$"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="sleep( [0-9]+)?$"))
-async def sleepyjbot(time):
-    """ For .sleep command, let the userjbot snooze for a few second. """
+async def sleepyjjbot(time):
+    """ For .sleep command, let the userjjbot snooze for a few second. """
     message = time.text
     if not message[0].isalpha() and message[0] not in ("/", "#", "@", "!"):
         if " " not in time.pattern_match.group(1):
@@ -46,13 +46,13 @@ async def sleepyjbot(time):
             if LOGGER:
                 await time.client.send_message(
                     LOGGER_GROUP,
-                    "You put the jbot to sleep for " + str(counter) + " seconds",
+                    "You put the jjbot to sleep for " + str(counter) + " seconds",
                 )
             sleep(counter)
 
 
-@jarvis.on(admin_cmd("listjbots", outgoing=True))
-@jarvis.on(sudo_cmd("listjbots", allow_sudo=True))
+@jarvis.on(admin_cmd("listjjbots", outgoing=True))
+@jarvis.on(sudo_cmd("listjjbots", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -65,12 +65,12 @@ async def _(event):
     else:
         mentions = "Bots in {} channel: \n".format(input_str)
         try:
-            chat = await jbot.get_entity(input_str)
+            chat = await jjbot.get_entity(input_str)
         except Exception as e:
             await event.reply(str(e))
             return None
     try:
-        async for x in jbot.iter_participants(chat, filter=ChannelParticipantsBots):
+        async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsBots):
             if isinstance(x.participant, ChannelParticipantAdmin):
                 mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
                     x.first_name, x.id, x.id
@@ -93,11 +93,11 @@ async def _(event):
         await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
-            jbot_api_file_id = pack_jbot_file_id(r_msg.media)
+            jjbot_api_file_id = pack_jjbot_file_id(r_msg.media)
             await eor(
                 event,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
-                    str(event.chat_id), str(r_msg.sender.id), jbot_api_file_id
+                    str(event.chat_id), str(r_msg.sender.id), jjbot_api_file_id
                 ),
             )
         else:
@@ -133,19 +133,19 @@ async def _(event):
         mentions_heading = "Admins in {} channel: \n".format(input_str)
         mentions = mentions_heading
         try:
-            chat = await jbot.get_entity(input_str)
+            chat = await jjbot.get_entity(input_str)
         except Exception as e:
             await event.reply(str(e))
             return None
     try:
-        async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+        async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
             if not x.deleted:
                 if isinstance(x.participant, ChannelParticipantCreator):
                     mentions += "\n 🔱 [{}](tg://user?id={}) `{}`".format(
                         x.first_name, x.id, x.id
                     )
         mentions += "\n"
-        async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+        async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
             if not x.deleted:
                 if isinstance(x.participant, ChannelParticipantAdmin):
                     mentions += "\n 🥇 [{}](tg://user?id={}) `{}`".format(

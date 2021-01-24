@@ -8,7 +8,7 @@ import os
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis import CMD_HELP, jbot
+from jarvis import CMD_HELP, jjbot
 from jarvis.utils import admin_cmd
 
 try:
@@ -32,14 +32,14 @@ async def _(event):
     link = event.pattern_match.group(1)
     chat = "@SpotifyMusicDownloaderBot"
     await event.edit("```Getting Your Music```")
-    async with jbot.conversation(chat) as conv:
+    async with jjbot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await event.edit("`Downloading music taking some times,  Stay Tuned.....`")
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=752979930)
             )
-            await jbot.send_message(chat, link)
+            await jjbot.send_message(chat, link)
             respond = await response
         except YouBlockedUserError:
             await event.reply(
@@ -47,7 +47,7 @@ async def _(event):
             )
             return
         await event.delete()
-        await jbot.forward_messages(event.chat_id, respond.message)
+        await jjbot.forward_messages(event.chat_id, respond.message)
 
 
 @jarvis.on(admin_cmd(outgoing=True, pattern="song(?: |$)(.*)"))
@@ -58,7 +58,7 @@ async def WooMai(netase):
     chat = "@WooMaiBot"
     link = f"/song {song}"
     await netase.edit("```Getting Your Music```")
-    async with jbot.conversation(chat) as conv:
+    async with jjbot.conversation(chat) as conv:
         await asyncio.sleep(2)
         await netase.edit("`Downloading...Please wait`")
         try:
@@ -66,13 +66,13 @@ async def WooMai(netase):
             response = await conv.get_response()
             respond = await conv.get_response()
             """ - don't spam notif - """
-            await jbot.send_read_acknowledge(conv.chat_id)
+            await jjbot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await netase.reply("```Please unblock @WooMaiBot and try again```")
             return
         await netase.edit("`Sending Your Music...`")
         await asyncio.sleep(3)
-        await jbot.send_file(netase.chat_id, respond)
+        await jjbot.send_file(netase.chat_id, respond)
     await netase.client.delete_messages(conv.chat_id, [msg.id, response.id, respond.id])
     await netase.delete()
 
@@ -87,7 +87,7 @@ async def DeezLoader(Deezlod):
     else:
         await Deezlod.edit("**Initiating Download!**")
     chat = "@DeezLoadBot"
-    async with jbot.conversation(chat) as conv:
+    async with jjbot.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
             response = await conv.get_response()
@@ -96,11 +96,11 @@ async def DeezLoader(Deezlod):
             details = await conv.get_response()
             song = await conv.get_response()
             """ - don't spam notif - """
-            await jbot.send_read_acknowledge(conv.chat_id)
+            await jjbot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
             return
-        await jbot.send_file(Deezlod.chat_id, song, caption=details.text)
+        await jjbot.send_file(Deezlod.chat_id, song, caption=details.text)
         await Deezlod.client.delete_messages(
             conv.chat_id, [msg_start.id, response.id, r.id, msg.id, details.id, song.id]
         )

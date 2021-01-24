@@ -745,19 +745,19 @@ async def _(event):
         return
     chat = "@DrWebBot"
     reply_message.sender
-    if reply_message.sender.jbot:
+    if reply_message.sender.jjbot:
         await event.edit("```Reply to actual users message.```")
         return
     await event.edit(" `Sliding my tip, of fingers over it`")
-    async with jbot.conversation(chat) as conv:
+    async with jjbot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=161163358)
             )
-            await jbot.forward_messages(chat, reply_message)
+            await jjbot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_jbot and try again```")
+            await event.reply("```Please unblock @sangmatainfo_jjbot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -784,7 +784,7 @@ async def _(event):
         return
     mentions = "`━━━━━┓ \n┓┓┓┓┓┃\n┓┓┓┓┓┃　ヽ○ノ ⇦ Me When You Joined \n┓┓┓┓┓┃.     /　 \n┓┓┓┓┓┃ ノ) \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -801,7 +801,7 @@ async def _(event):
         return
     mentions = "`█▀▀▀▀▀█░▀▀░░░█░░░░█▀▀▀▀▀█\n█░███░█░█▄░█▀▀░▄▄░█░███░█\n█░▀▀▀░█░▀█▀▀▄▀█▀▀░█░▀▀▀░█\n▀▀▀▀▀▀▀░▀▄▀▄▀▄█▄▀░▀▀▀▀▀▀▀\n█▀█▀▄▄▀░█▄░░░▀▀░▄█░▄▀█▀░▀\n░█▄▀░▄▀▀░░░▄▄▄█░▀▄▄▄▀▄▄▀▄\n░░▀█░▀▀▀▀▀▄█░▄░████ ██▀█▄\n▄▀█░░▄▀█▀█▀░█▄▀░▀█▄██▀░█▄\n░░▀▀▀░▀░█▄▀▀▄▄░▄█▀▀▀█░█▀▀\n█▀▀▀▀▀█░░██▀█░░▄█░▀░█▄░██\n█░███░█░▄▀█▀██▄▄▀▀█▀█▄░▄▄\n█░▀▀▀░█░█░░▀▀▀░█░▀▀▀▀▄█▀░\n▀▀▀▀▀▀▀░▀▀░░▀░▀░░░▀▀░▀▀▀▀`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -818,7 +818,7 @@ async def _(event):
         return
     mentions = "`😏/\n/▌ \n/ \\n████\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\😦\n╬╬/▌\n╬╬/\`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -835,7 +835,7 @@ async def _(event):
         return
     mentions = "`😲💨  🔥\n/|\     🔥🔥\n/ \   🔥🔥🔥`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -852,7 +852,7 @@ async def _(event):
         return
     mentions = "`.      😎\n          |\👐\n         / \\\n━━━━━┓ ＼＼ \n┓┓┓┓┓┃\n┓┓┓┓┓┃ ヽ😩ノ\n┓┓┓┓┓┃ 　 /　\n┓┓┓┓┓┃  ノ)　 \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -869,7 +869,7 @@ async def _(event):
         return
     mentions = "`📔📚             📚\n📓📚📖  😫  📚📚📓\n📕📚📚  📝  📗💻📘\n📖⁣📖📖📖📖📖📖📖📖`"
     chat = await event.get_input_chat()
-    async for x in jbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in jjbot.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -987,7 +987,7 @@ import asyncio
 from jarvis import ALIVE_NAME
 from jarvis.utils import admin_cmd
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis Userjbot"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis Userjjbot"
 
 
 @jarvis.on(admin_cmd(pattern=r"police"))
@@ -1015,7 +1015,7 @@ async def _(event):
         "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
         "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
         "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
-        "[JARVIS](https://www.github.com/jaris-works/jarvisuserjbot) **Jarvis Police Service Here**",
+        "[JARVIS](https://www.github.com/jaris-works/jarvisuserjjbot) **Jarvis Police Service Here**",
     ]
 
     for i in animation_ttl:
@@ -1092,7 +1092,7 @@ async def _(event):
     if x == 10:
 
         await event.edit(
-            '`"Never leave water jbottles, reading glasses, or anything else that can focus light in a spot that could get direct sunlight. A significant number of house/vehicle fires happen every year because of this."`'
+            '`"Never leave water jjbottles, reading glasses, or anything else that can focus light in a spot that could get direct sunlight. A significant number of house/vehicle fires happen every year because of this."`'
         )
 
     if x == 11:
@@ -1260,13 +1260,13 @@ async def _(event):
     if x == 38:
 
         await event.edit(
-            '`"Keep your water jbottle near you and your alarm far from you in the morning for a great start to the day!"`'
+            '`"Keep your water jjbottle near you and your alarm far from you in the morning for a great start to the day!"`'
         )
 
     if x == 39:
 
         await event.edit(
-            '`"If you borrow money from someone, don’t let it get to the point that he/she has to ask for it back. It sucks for jboth. If you can’t repay now, show intent by paying what you can and keeping the other person posted often"`'
+            '`"If you borrow money from someone, don’t let it get to the point that he/she has to ask for it back. It sucks for jjboth. If you can’t repay now, show intent by paying what you can and keeping the other person posted often"`'
         )
 
     if x == 40:
@@ -1320,7 +1320,7 @@ async def _(event):
     if x == 48:
 
         await event.edit(
-            '`"Open chip bags upside down. They\'ve been sitting upright most of their lives which makes the seasoning settle to the jbottom of the bag."`'
+            '`"Open chip bags upside down. They\'ve been sitting upright most of their lives which makes the seasoning settle to the jjbottom of the bag."`'
         )
 
     if x == 49:
@@ -1332,7 +1332,7 @@ async def _(event):
     if x == 50:
 
         await event.edit(
-            '`"When asked online to confirm "I am not a rojbot", if you long press on the tick box and release, you will not be asked to complete the "click all store front" etc tests."`'
+            '`"When asked online to confirm "I am not a rojjbot", if you long press on the tick box and release, you will not be asked to complete the "click all store front" etc tests."`'
         )
 
     if x == 51:
@@ -1362,7 +1362,7 @@ async def _(event):
     if x == 55:
 
         await event.edit(
-            '`"Buy a small jbottle of perfume you have never tried on before going for a vacation and use it for while you\'re there. At any point after your vacation, you get a sniff of it, it brings back those memories instantly. Because scents are among the most powerful memory triggers."`'
+            '`"Buy a small jjbottle of perfume you have never tried on before going for a vacation and use it for while you\'re there. At any point after your vacation, you get a sniff of it, it brings back those memories instantly. Because scents are among the most powerful memory triggers."`'
         )
 
     if x == 56:
@@ -1392,7 +1392,7 @@ async def _(event):
     if x == 60:
 
         await event.edit(
-            '`"Never shake spices over a hot pan. The steam will enter the jbottle causing the spice to go hard."`'
+            '`"Never shake spices over a hot pan. The steam will enter the jjbottle causing the spice to go hard."`'
         )
 
     if x == 61:
@@ -1512,7 +1512,7 @@ async def _(event):
     if x == 79:
 
         await event.edit(
-            '`"If you burn food to the jbottom of a pot and can\'t scrub it out, put the pot back on the stove and boil water in it. It will loosen the burnt food and make it easier to clean."`'
+            '`"If you burn food to the jjbottom of a pot and can\'t scrub it out, put the pot back on the stove and boil water in it. It will loosen the burnt food and make it easier to clean."`'
         )
 
     if x == 80:
@@ -1563,7 +1563,7 @@ from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from jarvis import CMD_HELP, jbot
+from jarvis import CMD_HELP, jjbot
 from jarvis.utils import admin_cmd
 
 
@@ -1573,7 +1573,7 @@ async def leave(e):
         await e.edit("`I iz Leaving dis Lol Group kek!`")
         time.sleep(3)
         if "-" in str(e.chat_id):
-            await jbot(LeaveChannelRequest(e.chat_id))
+            await jjbot(LeaveChannelRequest(e.chat_id))
         else:
             await e.edit("`But Boss! This is Not A Chat`")
 
@@ -1635,14 +1635,14 @@ async def _(event):
 # @register(outgoing=True, pattern="^.source$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://jarvisuserjbot.gitbook.io/jarvisuserjbot/")
+        await e.edit("https://jarvisuserjjbot.gitbook.io/jarvisuserjjbot/")
 
 
 @jarvis.on(admin_cmd("readme"))
 # @register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://jarvisuserjbot.gitbook.io/jarvisuserjbot/")
+        await e.edit("https://jarvisuserjjbot.gitbook.io/jarvisuserjjbot/")
 
 
 @jarvis.on(admin_cmd("hheart"))
@@ -1946,7 +1946,7 @@ async def quote_search(event):
         return
     await event.edit("Processing...")
     search_string = event.pattern_match.group(1)
-    input_url = "https://jbots.shrimadhavuk.me/Telegram/GoodReadsQuotesBot/?q={}".format(
+    input_url = "https://jjbots.shrimadhavuk.me/Telegram/GoodReadsQuotesBot/?q={}".format(
         search_string
     )
     headers = {"USER-AGENT": "Jarvis"}
@@ -2180,23 +2180,23 @@ async def _(event):
     # if input_str == "lucky":
     await event.edit("Lucky..")
     animation_chars = [
-        "⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬜⬜⬜⬜\n👇⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬜⬜⬜\n⬜👇⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬛⬜⬜\n⬜⬜👇⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬛⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜",
-        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot/)⬜\n⬜⬜⬜⬜⬜",
-        "⬛⬛⬛⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-        "⬛⬛⬛⬜⬜\n⬜⬜👇⬜⬜\n⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot/)⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-        "⬛⬛⬜⬜⬜\n⬜👇⬜⬜⬜\n⬜[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-        "⬛⬜⬜⬜⬜\n👇⬜⬜⬜⬜\n[🎁](https://github.com/jarvis-works/jarvisuserjbot)⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬜⬜⬜⬜\n👇⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬜⬜⬜\n⬜👇⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬛⬜⬜\n⬜⬜👇⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬛⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜",
+        "⬛⬛⬛⬛⬜\n⬜⬜⬜⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot/)⬜\n⬜⬜⬜⬜⬜",
+        "⬛⬛⬛⬛⬜\n⬜⬜⬜👇⬜\n⬜⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬛⬛⬛⬜⬜\n⬜⬜👇⬜⬜\n⬜⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot/)⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬛⬛⬜⬜⬜\n⬜👇⬜⬜⬜\n⬜[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
+        "⬛⬜⬜⬜⬜\n👇⬜⬜⬜⬜\n[🎁](https://github.com/jarvis-works/jarvisuserjjbot)⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
         "⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
         "⬜⬜⬜⬜\n⬜⬜⬜⬜\n⬜⬜⬜⬜\n⬜⬜⬜⬜",
         "⬜⬜⬜\n⬜⬜⬜\n⬜⬜⬜",
         "⬜⬜\n⬜⬜",
-        "[🎁](https://github.com/jarvis-works/jarvisuserjbot)",
+        "[🎁](https://github.com/jarvis-works/jarvisuserjjbot)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -2246,7 +2246,7 @@ CMD_HELP.update({"fp": "Send face palm emoji."})
 CMD_HELP.update({"moon": "Bot will send a cool moon animation."})
 CMD_HELP.update({"clock": "Bot will send a cool clock animation."})
 CMD_HELP.update({"readme": "Reedme."})
-CMD_HELP.update({"source": "Gives the source of your userjbot"})
+CMD_HELP.update({"source": "Gives the source of your userjjbot"})
 CMD_HELP.update({"myusernames": "List of Usernames owned by you."})
 CMD_HELP.update({"oof": "Same as ;__; but ooof"})
 CMD_HELP.update({"earth": "Sends Kensar Earth animation"})

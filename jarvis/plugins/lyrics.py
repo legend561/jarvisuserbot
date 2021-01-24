@@ -1,4 +1,4 @@
-# Credits :- Catuserjbot Made By @Sandy1709
+# Credits :- Catuserjjbot Made By @Sandy1709
 import io
 import os
 
@@ -40,7 +40,7 @@ async def _(event):
     if len(reply) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(reply)) as out_file:
             out_file.name = "lyrics.text"
-            await jbot.send_file(
+            await jjbot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
