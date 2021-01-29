@@ -18,7 +18,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis import bot
+from jarvis import jarvisub
 from jarvis.utils import bot
 
 OWNER_ID = jarvisub.uid

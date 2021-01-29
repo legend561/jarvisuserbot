@@ -3,7 +3,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis import bot
+from jarvis import jarvisub
 from jarvis.utils import j_cmd, eor, sudo_cmd
 
 

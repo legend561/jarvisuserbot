@@ -1,7 +1,7 @@
 from telethon import events, utils
 from telethon.tl import types
 
-from jarvis import bot
+from jarvis import jarvisub
 from jarvis.jconfig import Config
 from jarvis.plugins.sql_helper.snips_sql import (
     add_snip,

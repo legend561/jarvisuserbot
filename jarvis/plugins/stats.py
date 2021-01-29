@@ -2,7 +2,7 @@ from datetime import datetime
 
 from telethon.tl.types import Channel, Chat, User
 
-from jarvis import bot
+from jarvis import jarvisub
 from jarvis.utils import j_cmd, sudo_cmd
 
 
