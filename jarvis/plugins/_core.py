@@ -4,7 +4,6 @@ from datetime import datetime
 from pathlib import Path
 
 from jarvis import ALIVE_NAME
-from jarvis import bot as jarvis
 from jarvis.utils import j_cmd, eor, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
