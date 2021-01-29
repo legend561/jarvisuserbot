@@ -12,6 +12,7 @@ RUN apt-get install -y\
     figlet \
     gcc \
     g++ \
+    sudo \
     git \
     util-linux \
     libevent-dev \
