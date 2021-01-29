@@ -70,7 +70,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
     start = datetime.now()
-    bot.uid
+    jarvisub.uid
     end = datetime.now()
     (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))

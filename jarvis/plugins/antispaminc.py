@@ -13,7 +13,7 @@ async def ok(event):
     if Config.ANTISPAM_FEATURE != "ENABLE":
         return
     if event.user_joined:
-        hmmyep = await jarvis.get_permissions(event.chat_id, bot.uid)
+        hmmyep = await jarvis.get_permissions(event.chat_id, jarvisub.uid)
         if not hmmyep.is_admin:
             return
         user = sclient.is_banned(juser.id)

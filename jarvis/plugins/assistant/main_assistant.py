@@ -40,8 +40,8 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     vent = event.chat_id
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [JARVIS Userbot](t.me/JarvisOT)"
-    if event.sender_id == bot.uid:
+    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={jarvisub.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [JARVIS Userbot](t.me/JarvisOT)"
+    if event.sender_id == jarvisub.uid:
         await tgbot.send_message(
             vent,
             message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
@@ -77,7 +77,7 @@ async def start(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"deploy")))
 async def help(event):
     await event.delete()
-    if event.query.user_id is not bot.uid:
+    if event.query.user_id is not jarvisub.uid:
         await tgbot.send_message(
             event.chat_id,
             message="You Can Deploy JARVIS In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
@@ -90,7 +90,7 @@ async def help(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
 async def users(event):
-    if event.query.user_id == bot.uid:
+    if event.query.user_id == jarvisub.uid:
         await event.delete()
         total_users = get_all_users()
         users_list = "List Of Total Users In Bot. \n\n"
@@ -123,12 +123,12 @@ async def all_messages_catcher(event):
         return
     if event.raw_text.startswith("/"):
         pass
-    elif event.sender_id == bot.uid:
+    elif event.sender_id == jarvisub.uid:
         return
     else:
         await event.get_sender()
         event.chat_id
-        sed = await event.forward_to(bot.uid)
+        sed = await event.forward_to(jarvisub.uid)
         # Add User To Database ,Later For Broadcast Purpose
         # (C) @SpecHide
         add_me_in_db(sed.id, event.sender_id, event.id)
@@ -140,7 +140,7 @@ async def sed(event):
     
     msg_s = event.raw_text
     user_id, reply_message_id = his_userid(msg.sender.id)
-    if event.sender_id == bot.uid:
+    if event.sender_id == jarvisub.uid:
         if event.raw_text.startswith("/"):
             pass
         else:
@@ -150,7 +150,7 @@ async def sed(event):
 # broadcast
 @tgbot.on(
     events.NewMessage(
-        pattern="^/broadcast ?(.*)", func=lambda e: e.sender_id == bot.uid
+        pattern="^/broadcast ?(.*)", func=lambda e: e.sender_id == jarvisub.uid
     )
 )
 async def sedlyfsir(event):
@@ -175,7 +175,7 @@ async def sedlyfsir(event):
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/stats ?(.*)", func=lambda e: e.sender_id == bot.uid)
+    events.NewMessage(pattern="^/stats ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
 )
 async def starkisnoob(event):
     starkisnoob = get_all_users()
@@ -184,17 +184,17 @@ async def starkisnoob(event):
     )
 
 
-@tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == jarvisub.uid))
 async def starkislub(event):
     grabonx = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n➤ /purge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \n➤ /del - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
     await event.reply(grabonx)
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/block ?(.*)", func=lambda e: e.sender_id == bot.uid)
+    events.NewMessage(pattern="^/block ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
 )
 async def starkisnoob(event):
-    if event.sender_id == bot.uid:
+    if event.sender_id == jarvisub.uid:
         msg = await event.get_reply_message()
         msg.id
         event.raw_text
@@ -210,10 +210,10 @@ async def starkisnoob(event):
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/unblock ?(.*)", func=lambda e: e.sender_id == bot.uid)
+    events.NewMessage(pattern="^/unblock ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
 )
 async def starkisnoob(event):
-    if event.sender_id == bot.uid:
+    if event.sender_id == jarvisub.uid:
         msg = await event.get_reply_message()
         msg.id
         event.raw_text

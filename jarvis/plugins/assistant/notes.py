@@ -43,7 +43,7 @@ async def on_snip(event):
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/addnote #(.*)", func=lambda e: e.sender_id == bot.uid)
+    events.NewMessage(pattern="^/addnote #(.*)", func=lambda e: e.sender_id == jarvisub.uid)
 )
 async def _(event):
     name = event.pattern_match.group(1)
@@ -102,7 +102,7 @@ async def on_snip_list(event):
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == bot.uid)
+    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == jarvisub.uid)
 )
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)

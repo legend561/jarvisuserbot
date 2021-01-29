@@ -58,7 +58,7 @@ async def monito_p_m_s(event):
     sender = await event.get_sender()
     if Config.NC_LOG_P_M_S and not sender.bot:
         chat = await event.get_chat()
-        if chat.id not in NO_PM_LOG_USERS and chat.id != bot.uid:
+        if chat.id not in NO_PM_LOG_USERS and chat.id != jarvisub.uid:
             try:
                 if Config.PM_LOGGR_BOT_API_ID:
                     if event.message:

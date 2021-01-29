@@ -19,6 +19,6 @@ pm_caption += "➥ **Copyright** : By [JARVIS WORKS](GitHub.com/Jarvis-Works)\n"
 pm_caption += "[Assistant By JARVIS 🇮🇳](https://telegra.ph/FRIDAY-06-15)"
 
 # only Owner Can Use it
-@tgbot.on(events.NewMessage(pattern="^/alive", func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="^/alive", func=lambda e: e.sender_id == jarvisub.uid))
 async def jarvis(event):
     await tgbot.send_file(event.chat_id, PM_IMG, caption=pm_caption)

@@ -21,7 +21,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from jarvis import bot
 from jarvis.utils import bot
 
-OWNER_ID = bot.uid
+OWNER_ID = jarvisub.uid
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False

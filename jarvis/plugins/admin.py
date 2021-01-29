@@ -299,7 +299,7 @@ async def startmute(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-        if user.id == bot.uid:
+        if user.id == jarvisub.uid:
             return await edit_or_reply(event, "Sorry, I can't mute myself")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(

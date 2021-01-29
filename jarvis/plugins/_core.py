@@ -16,7 +16,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS"
 async def send(event):
     if event.fwd_from:
         return
-    hmm = bot.uid
+    hmm = jarvisub.uid
     message_id = event.message.id
     thumb = thumb_image_path
     input_str = event.pattern_match.group(1)

@@ -165,7 +165,7 @@ if Var.PRIVATE_GROUP_ID is not None:
 
     @jarvis.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
-        if event.sender_id == bot.uid:
+        if event.sender_id == jarvisub.uid:
             return
 
         if Var.PRIVATE_GROUP_ID is None:
@@ -183,7 +183,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
         sender = await bot.get_entity(chat_id)
-        if chat_id == bot.uid:
+        if chat_id == jarvisub.uid:
 
             # don't log Saved Messages
 
