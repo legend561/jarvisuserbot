@@ -1,6 +1,6 @@
 from telethon.events import ChatAction
 
-from jarvis import bot, sclient
+from jarvis import sclient
 from jarvis.jconfig import Config
 
 """Bans Spammers/Scammer At time Of Arrival 
