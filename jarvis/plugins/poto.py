@@ -14,7 +14,7 @@ if 1 == 1:
 
     name = "Profile Photos"
 
-    client = jarvisub
+    client = jarvis
 
     @jarvis.on(j_cmd(pattern="poto(.*)", outgoing=True))
     @jarvis.on(sudo_cmd(pattern="poto(.*)", allow_sudo=True))
