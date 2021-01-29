@@ -3,7 +3,7 @@ import asyncio
 from telethon import events, functions
 
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from jarvis import ALIVE_NAME, bot
+from jarvis import ALIVE_NAME, jarvisub
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else Jarvis
 PREV_REPLY_MESSAGE = {}
@@ -35,7 +35,7 @@ async def _(event):
         FIVE = "`Okay. please have the basic manners as to not bother my master too much. If he wishes to help you, he will respond to you soon.`\n**Kindly Do not ask repeatdly else you will be blocked and reported.**"
         LWARN = "**This is your last warning. DO NOT send another message else you will be blocked and reported. Keep patience. My master will respond you ASAP.**\n__Use__ `/start` __to go back to the main menu.__"
 
-        async with bot.conversation(chat) as conv:
+        async with jarvisub.conversation(chat) as conv:
             if pmpermit_sql.is_approved(chat_id):
                 return
             await jarvis.send_message(chat, PM)
