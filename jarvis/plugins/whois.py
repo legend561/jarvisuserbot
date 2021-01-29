@@ -20,7 +20,7 @@ async def _(event):
     if replied_user is None:
         await edit_or_reply(event, str(error_i_a))
         return False
-    replied_user_profile_photos = await bot(
+    replied_user_profile_photos = await jarvis.
         GetUserPhotosRequest(
             user_id=replied_user.user.id, offset=42, max_id=0, limit=80
         )
@@ -75,7 +75,7 @@ async def _(event):
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
         message_id_to_reply = event.message.id
-    await bot.send_message(
+    await jarvis.send_message(
         event.chat_id,
         caption,
         reply_to=message_id_to_reply,

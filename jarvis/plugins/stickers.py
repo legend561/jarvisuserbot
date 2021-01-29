@@ -36,7 +36,7 @@ KANGING_STR = [
 @jarvis.on(j_cmd(pattern="kang ?(.*)"))
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
-    user = await bot.get_me()
+    user = await jarvis.get_me()
     if not user.username:
         try:
             user.first_name.encode("utf-8").decode("ascii")
@@ -52,11 +52,11 @@ async def kang(args):
         if isinstance(message.media, MessageMediaPhoto):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            photo = await bot.download_media(message.photo, photo)
+            photo = await jarvis.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            await bot.download_file(message.media.document, photo)
+            await jarvis.download_file(message.media.document, photo)
             if (
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.media.document.attributes
@@ -65,7 +65,7 @@ async def kang(args):
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
             await args.edit(f"`{random.choice(KANGING_STR)}`")
-            await bot.download_file(message.media.document, "AnimatedSticker.tgs")
+            await jarvis.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
             for attribute in attributes:
@@ -128,7 +128,7 @@ async def kang(args):
                 await conv.send_message("/addsticker")
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
                 while (
@@ -157,11 +157,11 @@ async def kang(args):
                         await conv.send_message(cmd)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
@@ -173,14 +173,14 @@ async def kang(args):
                             "You can list several emoji in one message, but I recommend using no more than two per sticker"
                             not in rsp.text
                         ):
-                            await bot.send_read_acknowledge(conv.chat_id)
+                            await jarvis.send_read_acknowledge(conv.chat_id)
                             await args.edit(
                                 f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp.txt}"
                             )
                             return
                         await conv.send_message(emoji)
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
@@ -188,17 +188,17 @@ async def kang(args):
                             await conv.send_message(f"<{packnick}>")
                         # Ensure user doesn't get spamming notifications
                         await conv.get_response()
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
+                        await jarvis.send_read_acknowledge(conv.chat_id)
                         await args.edit(
                             f"Sticker added in a Different Pack !\
                             \nThis Pack is Newly created!\
@@ -217,30 +217,30 @@ async def kang(args):
                     "You can list several emoji in one message, but I recommend using no more than two per sticker"
                     not in rsp.text
                 ):
-                    await bot.send_read_acknowledge(conv.chat_id)
+                    await jarvis.send_read_acknowledge(conv.chat_id)
                     await args.edit(
                         f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp.text}"
                     )
                     return
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
         else:
             await args.edit("`Brewing a new Pack...`")
             async with bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packnick)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
@@ -258,7 +258,7 @@ async def kang(args):
                     return
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/publish")
                 if is_anim:
@@ -266,17 +266,17 @@ async def kang(args):
                     await conv.send_message(f"<{packnick}>")
                 # Ensure user doesn't get spamming notifications
                 await conv.get_response()
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.send_message("/skip")
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message(packname)
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-                await bot.send_read_acknowledge(conv.chat_id)
+                await jarvis.send_read_acknowledge(conv.chat_id)
         await args.edit(
             f"Sticker kanged successfully!\
             \nPack can be found [here](t.me/addstickers/{packname}) and emoji of the sticker is {emoji}",
@@ -330,7 +330,7 @@ async def get_pack_info(event):
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
         await event.edit("`This is not a sticker. Reply to a sticker.`")
         return
-    get_stickerset = await bot(
+    get_stickerset = await jarvis.
         GetStickerSetRequest(
             InputStickerSetID(
                 id=stickerset_attr.stickerset.id,

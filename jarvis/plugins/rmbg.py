@@ -32,7 +32,7 @@ async def _(event):
             event, "Connecting to Official JARVIS Server and analysing that img ..."
         )
         try:
-            downloaded_file_name = await bot.download_media(
+            downloaded_file_name = await jarvis.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
@@ -52,7 +52,7 @@ async def _(event):
     if "image" in contentType:
         with io.BytesIO(output_file_name.content) as remove_bg_image:
             remove_bg_image.name = "@jarvisot.png"
-            await bot.send_file(
+            await jarvis.send_file(
                 event.chat_id,
                 remove_bg_image,
                 force_document=True,

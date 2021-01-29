@@ -14,7 +14,7 @@ async def _(event):
     if event.reply_to_msg_id:
         message_id = event.reply_to_msg_id
     r = requests.get("https://yesno.wtf/api").json()
-    await bot.send_message(
+    await jarvis.send_message(
         event.chat_id, r["answer"], reply_to=message_id, file=r["image"]
     )
     await event.delete()

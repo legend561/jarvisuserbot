@@ -26,7 +26,7 @@ async def _(event):
     try:
         start = datetime.now()
         c_time = time.time()
-        downloaded_file_name = await bot.download_media(
+        downloaded_file_name = await jarvis.download_media(
             reply_message,
             Config.TMP_DOWNLOAD_DIRECTORY,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
@@ -101,7 +101,7 @@ async def _(event):
         os.remove(downloaded_file_name)
         if os.path.exists(new_required_file_name):
             end_two = datetime.now()
-            await bot.send_file(
+            await jarvis.send_file(
                 entity=event.chat_id,
                 file=new_required_file_name,
                 caption=new_required_file_caption,

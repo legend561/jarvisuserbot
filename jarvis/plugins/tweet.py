@@ -110,31 +110,31 @@ async def nekobot(bot):
     text = bot.pattern_match.group(1)
     reply_to_id = bot.message
     if bot.reply_to_msg_id:
-        reply_to_id = await bot.get_reply_message()
+        reply_to_id = await jarvis.get_reply_message()
     if not text:
         if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await bot.edit("Send you text to trump so he can tweet.")
+                await jarvis.edit("Send you text to trump so he can tweet.")
                 return
         else:
-            await bot.edit("send you text to trump so he can tweet.")
+            await jarvis.edit("send you text to trump so he can tweet.")
             return
-    await bot.edit("Requesting trump to tweet...")
+    await jarvis.edit("Requesting trump to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await bot.client(san)
+        await jarvis.client(san)
     except:
         pass
     text = deEmojify(text)
     botfile = await trumptweet(text)
-    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
-    await bot.delete()
+    await jarvis.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await jarvis.delete()
 
 
 @register(pattern="^.modi(?: |$)(.*)", outgoing=True)
@@ -142,31 +142,31 @@ async def nekobot(bot):
     text = bot.pattern_match.group(1)
     reply_to_id = bot.message
     if bot.reply_to_msg_id:
-        reply_to_id = await bot.get_reply_message()
+        reply_to_id = await jarvis.get_reply_message()
     if not text:
         if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await bot.edit("Send you text to modi so he can tweet.")
+                await jarvis.edit("Send you text to modi so he can tweet.")
                 return
         else:
-            await bot.edit("send you text to modi so he can tweet.")
+            await jarvis.edit("send you text to modi so he can tweet.")
             return
-    await bot.edit("Requesting modi to tweet...")
+    await jarvis.edit("Requesting modi to tweet...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await bot.client(san)
+        await jarvis.client(san)
     except:
         pass
     text = deEmojify(text)
     botfile = await moditweet(text)
-    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
-    await bot.delete()
+    await jarvis.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await jarvis.delete()
 
 
 @register(pattern="^.cmm(?: |$)(.*)", outgoing=True)
@@ -174,31 +174,31 @@ async def nekobot(bot):
     text = bot.pattern_match.group(1)
     reply_to_id = bot.message
     if bot.reply_to_msg_id:
-        reply_to_id = await bot.get_reply_message()
+        reply_to_id = await jarvis.get_reply_message()
     if not text:
         if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await bot.edit("Give text for to write on banner, man")
+                await jarvis.edit("Give text for to write on banner, man")
                 return
         else:
-            await bot.edit("Give text for to write on banner, man")
+            await jarvis.edit("Give text for to write on banner, man")
             return
-    await bot.edit("Your banner is under creation wait a sec...")
+    await jarvis.edit("Your banner is under creation wait a sec...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await bot.client(san)
+        await jarvis.client(san)
     except:
         pass
     text = deEmojify(text)
     botfile = await changemymind(text)
-    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
-    await bot.delete()
+    await jarvis.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await jarvis.delete()
 
 
 @register(pattern="^.kanna(?: |$)(.*)", outgoing=True)
@@ -206,31 +206,31 @@ async def nekobot(bot):
     text = bot.pattern_match.group(1)
     reply_to_id = bot.message
     if bot.reply_to_msg_id:
-        reply_to_id = await bot.get_reply_message()
+        reply_to_id = await jarvis.get_reply_message()
     if not text:
         if bot.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await bot.edit("what should kanna write give text ")
+                await jarvis.edit("what should kanna write give text ")
                 return
         else:
-            await bot.edit("what should kanna write give text")
+            await jarvis.edit("what should kanna write give text")
             return
-    await bot.edit("Kanna is writing your text...")
+    await jarvis.edit("Kanna is writing your text...")
     try:
         san = str(
             pybase64.b64decode(
                 "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
             )
         )[2:49]
-        await bot.client(san)
+        await jarvis.client(san)
     except:
         pass
     text = deEmojify(text)
     botfile = await kannagen(text)
-    await bot.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
-    await bot.delete()
+    await jarvis.client.send_file(bot.chat_id, botfile, reply_to=reply_to_id)
+    await jarvis.delete()
 
 
 CMD_HELP.update(

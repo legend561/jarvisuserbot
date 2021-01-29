@@ -23,14 +23,14 @@ async def _(event):
         if event.user_joined:
             if cws.should_clean_welcome:
                 try:
-                    await bot.delete_messages(  # pylint:disable=E0602
+                    await jarvis.delete_messages(  # pylint:disable=E0602
                         event.chat_id, cws.previous_welcome
                     )
                 except Exception as e:  # pylint:disable=C0103,W0703
                     logger.warn(str(e))  # pylint:disable=E0602
             a_user = await event.get_user()
             chat = await event.get_chat()
-            me = await bot.get_me()
+            me = await jarvis.get_me()
 
             title = chat.title if chat.title else "this chat"
             participants = await event.client.get_participants(chat)
