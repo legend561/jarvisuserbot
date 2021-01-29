@@ -65,7 +65,7 @@ async def _(event):
     else:
         mentions = "Bots in {} channel: \n".format(input_str)
         try:
-            chat = await bot.get_entity(input_str)
+            chat = await jarvis.get_entity(input_str)
         except Exception as e:
             await event.reply(str(e))
             return None
@@ -133,7 +133,7 @@ async def _(event):
         mentions_heading = "Admins in {} channel: \n".format(input_str)
         mentions = mentions_heading
         try:
-            chat = await bot.get_entity(input_str)
+            chat = await jarvis.get_entity(input_str)
         except Exception as e:
             await event.reply(str(e))
             return None

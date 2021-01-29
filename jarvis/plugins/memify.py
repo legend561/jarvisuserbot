@@ -37,7 +37,7 @@ async def mim(event):
         return
     await eor(event, "`Downloading Media..`")
     if reply_message.photo:
-        dls_loc = await bot.download_media(
+        dls_loc = await jarvis.download_media(
             reply_message,
             "meme.png",
         )
@@ -45,14 +45,14 @@ async def mim(event):
         DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
         in reply_message.media.document.attributes
     ):
-        await bot.download_media(
+        await jarvis.download_media(
             reply_message,
             "meme.tgs",
         )
         os.system("lottie_convert.py --frame 0 -if lottie -of png meme.tgs meme.png")
         dls_loc = "meme.png"
     elif reply_message.video:
-        video = await bot.download_media(
+        video = await jarvis.download_media(
             reply_message,
             "meme.mp4",
         )
@@ -61,7 +61,7 @@ async def mim(event):
         dls_loc = "meme.png"
     else:
         downloaded_file_name = os.path.join(TEMP_DOWNLOAD_DIRECTORY, "meme.png")
-        dls_loc = await bot.download_media(
+        dls_loc = await jarvis.download_media(
             reply_message,
             downloaded_file_name,
         )
@@ -198,7 +198,7 @@ async def mim(event):
         return
     await eor(event, "`Downloading Media..`")
     if reply_message.photo:
-        dls_loc = await bot.download_media(
+        dls_loc = await jarvis.download_media(
             reply_message,
             "meme.png",
         )
@@ -206,14 +206,14 @@ async def mim(event):
         DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
         in reply_message.media.document.attributes
     ):
-        await bot.download_media(
+        await jarvis.download_media(
             reply_message,
             "meme.tgs",
         )
         os.system("lottie_convert.py --frame 0 -if lottie -of png meme.tgs meme.png")
         dls_loc = "meme.png"
     elif reply_message.video:
-        video = await bot.download_media(
+        video = await jarvis.download_media(
             reply_message,
             "meme.mp4",
         )
@@ -221,7 +221,7 @@ async def mim(event):
         os.system("ffmpeg -i meme.mp4 -vframes 1 -an -s 480x360 -ss 1 meme.png")
         dls_loc = "meme.png"
     else:
-        dls_loc = await bot.download_media(
+        dls_loc = await jarvis.download_media(
             reply_message,
             "meme.png",
         )

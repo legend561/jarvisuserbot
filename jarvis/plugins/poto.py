@@ -46,7 +46,7 @@ if 1 == 1:
 
                 photo = await event.client.download_profile_photo(chat)
 
-                await bot.send_file(event.chat_id, photo)
+                await jarvis.send_file(event.chat_id, photo)
 
         else:
 
@@ -70,7 +70,7 @@ if 1 == 1:
 
                 send_photos = await event.client.download_media(photos[id - 1])
 
-                await bot.send_file(event.chat_id, send_photos)
+                await jarvis.send_file(event.chat_id, send_photos)
 
             else:
 

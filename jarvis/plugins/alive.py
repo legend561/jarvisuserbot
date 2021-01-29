@@ -87,7 +87,7 @@ async def jarvis(alive):
         pm_caption += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
         pm_caption += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await bot.send_file(
+        await jarvis.send_file(
             alive.chat_id, ALIVE_PIC, caption=pm_caption, linkpreview=False
         )
         await alive.delete()
@@ -105,7 +105,7 @@ async def jarvis(alive):
         pm_captionn += f"  🔸 ➣**UρTιмє**           `{uptime}`\n\n"
         pm_captionn += "[☆ Git Repo ☆](https://jarvisworks.ga/userbot)"
         await alive.get_chat()
-        await bot.send_file(
+        await jarvis.send_file(
             alive.chat_id, PM_IMG, caption=pm_captionn, linkpreview=False
         )
         await alive.delete()
