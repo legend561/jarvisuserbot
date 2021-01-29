@@ -16,7 +16,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP
 from jarvis.utils import j_cmd
 
 KANGING_STR = [

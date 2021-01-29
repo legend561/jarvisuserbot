@@ -8,7 +8,7 @@ import os
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP
 from jarvis.utils import j_cmd
 
 try:

@@ -3,7 +3,7 @@
 import random
 import re
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP
 from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 EMOJI_PATTERN = re.compile(

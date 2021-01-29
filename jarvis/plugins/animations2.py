@@ -1563,7 +1563,7 @@ from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP
 from jarvis.utils import j_cmd
 
 
