@@ -45,7 +45,7 @@ async def ocr(event):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     lang_code = event.pattern_match.group(1)
-    downloaded_file_name = await jarvis.download_media(
+    downloaded_file_name = await bot.download_media(
         await event.get_reply_message(), Config.TEMP_DIR
     )
     test_file = await ocr_space_file(filename=downloaded_file_name, language=lang_code)

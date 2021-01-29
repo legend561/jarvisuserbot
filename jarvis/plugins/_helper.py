@@ -22,7 +22,7 @@ async def cmd_list(event):
         if len(string) > 4095:
             with io.BytesIO(str.encode(string)) as out_file:
                 out_file.name = "cmd.txt"
-                await jarvis.send_file(
+                await bot.send_file(
                     event.chat_id,
                     out_file,
                     force_document=True,
@@ -45,7 +45,7 @@ async def cmd_list(event):
     else:
         help_string = f"""Userbot Helper.. Provided by 💗{DEFAULTUSER} \n
 Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
-        results = await jarvis.inline_query(  # pylint:disable=E0602
+        results = await bot.inline_query(  # pylint:disable=E0602
             tgbotusername, help_string
         )
         await results[0].click(
@@ -86,7 +86,7 @@ async def info(event):
 async def _(event):
     if event.fwd_from:
         return
-    result = await jarvis.functions.help.GetNearestDcRequest())  # pylint:disable=E0602
+    result = await bot(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
     await edit_or_reply(event, result.stringify())
 
 
@@ -95,7 +95,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    result = await jarvis.functions.help.GetConfigRequest())  # pylint:disable=E0602
+    result = await bot(functions.help.GetConfigRequest())  # pylint:disable=E0602
     result = result.stringify()
     logger.info(result)  # pylint:disable=E0602
     await edit_or_reply(event, """Telethon UserBot powered by JARVIS UserBot""")

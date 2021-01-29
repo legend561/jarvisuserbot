@@ -754,7 +754,7 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=161163358)
             )
-            await jarvis.forward_messages(chat, reply_message)
+            await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.reply("```Please unblock @sangmatainfo_bot and try again```")
@@ -1573,7 +1573,7 @@ async def leave(e):
         await e.edit("`I iz Leaving dis Lol Group kek!`")
         time.sleep(3)
         if "-" in str(e.chat_id):
-            await jarvis.LeaveChannelRequest(e.chat_id))
+            await bot(LeaveChannelRequest(e.chat_id))
         else:
             await e.edit("`But Boss! This is Not A Chat`")
 

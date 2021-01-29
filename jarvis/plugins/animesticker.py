@@ -44,7 +44,7 @@ async def waifu(animu):
             )
             return
     animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
-    sticcers = await jarvis.inline_query(
+    sticcers = await bot.inline_query(
         "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}"
     )
     await sticcers[0].click(

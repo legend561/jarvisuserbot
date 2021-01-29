@@ -17,7 +17,7 @@ async def _(event):
     c = 0
     bc = 0
     b = 0
-    dialogs = await jarvis.get_dialogs(limit=None, ignore_migrated=True)
+    dialogs = await bot.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
         if type(currrent_entity) is User:

@@ -50,7 +50,7 @@ async def _(event):
     tl_ib_buttons = build_keyboard(buttons)
     tgbot_reply_message = None
     if reply_message and reply_message.media:
-        tgbot_reply_message = await jarvis.download_media(reply_message.media)
+        tgbot_reply_message = await bot.download_media(reply_message.media)
     await tgbot.send_message(
         entity=chat,
         message=message_text,
@@ -84,7 +84,7 @@ async def _(event):
         return
     catinput = "Inline buttons " + catinput
     tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
-    results = await jarvis.inline_query(tgbotusername, catinput)
+    results = await bot.inline_query(tgbotusername, catinput)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
 

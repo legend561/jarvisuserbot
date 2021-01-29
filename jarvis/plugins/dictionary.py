@@ -31,7 +31,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_msg_id = event.reply_to_msg_id
     try:
-        await jarvis.send_file(
+        await bot.send_file(
             event.chat_id,
             pronounciation,
             caption=f"Pronounciation of __{input_str}__",

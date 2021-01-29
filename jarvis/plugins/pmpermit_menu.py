@@ -38,7 +38,7 @@ async def _(event):
         async with bot.conversation(chat) as conv:
             if pmpermit_sql.is_approved(chat_id):
                 return
-            await jarvis.send_message(chat, PM)
+            await bot.send_message(chat, PM)
             chat_id = event.sender_id
             chat = await event.get_chat()
             response = await conv.get_response(chat)
@@ -46,14 +46,14 @@ async def _(event):
             if y == "1":
                 if pmpermit_sql.is_approved(chat_id):
                     return
-                await jarvis.send_message(chat, ONE)
+                await bot.send_message(chat, ONE)
                 response = await conv.get_response(chat)
                 await event.delete()
                 if not response.text == "/start":
                     await response.delete()
                     if pmpermit_sql.is_approved(chat_id):
                         return
-                    await jarvis.send_message(chat, LWARN)
+                    await bot.send_message(chat, LWARN)
                     response = await conv.get_response(chat)
                     await event.delete()
                     await response.delete()
@@ -61,59 +61,59 @@ async def _(event):
                     if not response.text == "/start":
                         if pmpermit_sql.is_approved(chat_id):
                             return
-                        await jarvis.send_message(chat, TWO)
+                        await bot.send_message(chat, TWO)
                         await asyncio.sleep(3)
                         await event.client(functions.contacts.BlockRequest(chat_id))
             elif y == "2":
                 if pmpermit_sql.is_approved(chat_id):
                     return
-                await jarvis.send_message(chat, LWARN)
+                await bot.send_message(chat, LWARN)
                 response = await conv.get_response(chat)
                 if not response.text == "/start":
                     if pmpermit_sql.is_approved(chat_id):
                         return
-                    await jarvis.send_message(chat, TWO)
+                    await bot.send_message(chat, TWO)
                     await asyncio.sleep(3)
                     await event.client(functions.contacts.BlockRequest(chat_id))
             elif y == "3":
                 if pmpermit_sql.is_approved(chat_id):
                     return
-                await jarvis.send_message(chat, FOUR)
+                await bot.send_message(chat, FOUR)
                 response = await conv.get_response(chat)
                 await event.delete()
                 await response.delete()
                 if not response.text == "/start":
                     if pmpermit_sql.is_approved(chat_id):
                         return
-                    await jarvis.send_message(chat, LWARN)
+                    await bot.send_message(chat, LWARN)
                     await event.delete()
                     response = await conv.get_response(chat)
                     if not response.text == "/start":
                         if pmpermit_sql.is_approved(chat_id):
                             return
-                        await jarvis.send_message(chat, TWO)
+                        await bot.send_message(chat, TWO)
                         await asyncio.sleep(3)
                         await event.client(functions.contacts.BlockRequest(chat_id))
             elif y == "4":
                 if pmpermit_sql.is_approved(chat_id):
                     return
-                await jarvis.send_message(chat, FIVE)
+                await bot.send_message(chat, FIVE)
                 response = await conv.get_response(chat)
                 if not response.text == "/start":
                     if pmpermit_sql.is_approved(chat_id):
                         return
-                    await jarvis.send_message(chat, LWARN)
+                    await bot.send_message(chat, LWARN)
                     response = await conv.get_response(chat)
                     if not response.text == "/start":
                         if pmpermit_sql.is_approved(chat_id):
                             return
-                        await jarvis.send_message(chat, TWO)
+                        await bot.send_message(chat, TWO)
                         await asyncio.sleep(3)
                         await event.client(functions.contacts.BlockRequest(chat_id))
             else:
                 if pmpermit_sql.is_approved(chat_id):
                     return
-                await jarvis.send_message(
+                await bot.send_message(
                     chat,
                     "`You have entered an invalid command. Please send /start again or do not send another message if you do not wish to be blocked and reported.`",
                 )
@@ -122,11 +122,11 @@ async def _(event):
                 if not z == "/start":
                     if pmpermit_sql.is_approved(chat_id):
                         return
-                    await jarvis.send_message(chat, LWARN)
+                    await bot.send_message(chat, LWARN)
                     await conv.get_response(chat)
                     if not response.text == "/start":
                         if pmpermit_sql.is_approved(chat_id):
                             return
-                        await jarvis.send_message(chat, TWO)
+                        await bot.send_message(chat, TWO)
                         await asyncio.sleep(3)
                         await event.client(functions.contacts.BlockRequest(chat_id))

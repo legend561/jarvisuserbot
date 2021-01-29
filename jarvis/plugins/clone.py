@@ -52,13 +52,13 @@ async def _(event):
     user_bio = replied_user.about
     if user_bio is not None:
         user_bio = replied_user.about
-    await jarvis.functions.account.UpdateProfileRequest(first_name=first_name))
-    await jarvis.functions.account.UpdateProfileRequest(last_name=last_name))
-    await jarvis.functions.account.UpdateProfileRequest(about=user_bio))
-    pfile = await jarvis.upload_file(profile_pic)  # pylint:disable=E060
-    await jarvis.functions.photos.UploadProfilePhotoRequest(pfile))  # pylint:disable=E0602
+    await bot(functions.account.UpdateProfileRequest(first_name=first_name))
+    await bot(functions.account.UpdateProfileRequest(last_name=last_name))
+    await bot(functions.account.UpdateProfileRequest(about=user_bio))
+    pfile = await bot.upload_file(profile_pic)  # pylint:disable=E060
+    await bot(functions.photos.UploadProfilePhotoRequest(pfile))  # pylint:disable=E0602
     await event.delete()
-    await jarvis.send_message(
+    await bot.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
     if BOTLOG:
@@ -76,14 +76,14 @@ async def _(event):
     jarv = ""
     bio = f"{DEFAULTUSERBIO}"
     n = 1
-    await jarvis.
+    await bot(
         functions.photos.DeletePhotosRequest(
             await event.client.get_profile_photos("me", limit=n)
         )
     )
-    await jarvis.functions.account.UpdateProfileRequest(about=bio))
-    await jarvis.functions.account.UpdateProfileRequest(first_name=name))
-    await jarvis.functions.account.UpdateProfileRequest(last_name=jarv))
+    await bot(functions.account.UpdateProfileRequest(about=bio))
+    await bot(functions.account.UpdateProfileRequest(first_name=name))
+    await bot(functions.account.UpdateProfileRequest(last_name=jarv))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(

@@ -30,7 +30,7 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=1031952739)
             )
-            await jarvis.forward_messages(chat, reply_message)
+            await bot.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await wartime.edit("```Please unblock @QuotLyBot and try again```")
@@ -41,4 +41,4 @@ async def _(event):
             )
         else:
             await wartime.delete()
-            await jarvis.forward_messages(event.chat_id, response.message)
+            await bot.forward_messages(event.chat_id, response.message)

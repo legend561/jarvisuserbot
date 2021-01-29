@@ -9,7 +9,7 @@ async def _(event):
         return
     c = await event.get_chat()
     if c.admin_rights or c.creator:
-        a = await jarvis.get_admin_log(
+        a = await bot.get_admin_log(
             event.chat_id, limit=5, search="", edit=False, delete=True
         )
         for i in a:

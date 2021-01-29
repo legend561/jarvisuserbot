@@ -33,7 +33,7 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             time.time()
-            downloaded_file_name = await jarvis.download_media(
+            downloaded_file_name = await bot.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
             )
@@ -82,7 +82,7 @@ async def _(event):
                         )
                     ]
                 try:
-                    await jarvis.send_file(
+                    await bot.send_file(
                         event.chat_id,
                         single_file,
                         caption=f"UnZipped `{caption_rts}`",
@@ -96,7 +96,7 @@ async def _(event):
                         # )
                     )
                 except Exception as e:
-                    await jarvis.send_message(
+                    await bot.send_message(
                         event.chat_id,
                         "{} caused `{}`".format(caption_rts, str(e)),
                         reply_to=event.message.id,

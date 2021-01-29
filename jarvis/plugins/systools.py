@@ -21,7 +21,7 @@ async def _(event):
         event,
         f"Restarted. `{CMD_HNDLR}ping` or `{CMD_HNDLR}help` to check if I am online",
     )
-    await jarvis.disconnect()
+    await bot.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
     # You probably don't need it but whatever
@@ -41,7 +41,7 @@ async def _(event):
         event,
         f"Restarted. `{SUDO_HNDLR}ping` or `{SUDO_HNDLR}help` to check if I am online",
     )
-    await jarvis.disconnect()
+    await bot.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
     # You probably don't need it but whatever
@@ -54,4 +54,4 @@ async def _(event):
     if event.fwd_from:
         return
     await edit_or_reply(event, "Turning off ...Manually turn me on later")
-    await jarvis.disconnect()
+    await bot.disconnect()

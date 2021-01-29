@@ -57,7 +57,7 @@ async def variable(var):
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 if len(result) >= 4096:
-                    await jarvis.send_file(
+                    await bot.send_file(
                         var.chat_id,
                         "configs.json",
                         reply_to=var.id,

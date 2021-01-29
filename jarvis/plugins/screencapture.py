@@ -33,7 +33,7 @@ async def _(event):
         with io.BytesIO(response_api.content) as screenshot_image:
             screenshot_image.name = "screencapture.png"
             try:
-                await jarvis.send_file(
+                await bot.send_file(
                     event.chat_id,
                     screenshot_image,
                     caption=input_str,

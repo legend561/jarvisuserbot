@@ -35,7 +35,7 @@ async def log(log_text):
         elif log_text.pattern_match.group(1):
             user = f"#LOG / Chat ID: {log_text.chat_id}\n\n"
             textx = user + log_text.pattern_match.group(1)
-            await jarvis.send_message(BOTLOG_CHATID, textx)
+            await bot.send_message(BOTLOG_CHATID, textx)
         else:
             await log_text.edit("`What am I supposed to log?`")
             return
@@ -62,8 +62,8 @@ async def monito_p_m_s(event):
             try:
                 if Config.PM_LOGGR_BOT_API_ID:
                     if event.message:
-                        e = await jarvis.get_entity(int(Config.PM_LOGGR_BOT_API_ID))
-                        fwd_message = await jarvis.forward_messages(
+                        e = await bot.get_entity(int(Config.PM_LOGGR_BOT_API_ID))
+                        fwd_message = await bot.forward_messages(
                             e, event.message, silent=True
                         )
                     else:

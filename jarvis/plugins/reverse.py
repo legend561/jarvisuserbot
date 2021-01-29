@@ -31,7 +31,7 @@ async def _(img):
     message = await img.get_reply_message()
     if message and message.media:
         photo = io.BytesIO()
-        await jarvis.download_media(message, photo)
+        await bot.download_media(message, photo)
     else:
         await eor(img, "`Reply to photo or sticker nigger.`")
         return

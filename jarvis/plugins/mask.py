@@ -27,7 +27,7 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=905164246)
             )
-            await jarvis.send_message(chat, reply_message)
+            await bot.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.edit("```Please unblock @sangmatainfo_bot and try again```")
@@ -37,4 +37,4 @@ async def _(event):
                 "```can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await jarvis.send_file(event.chat_id, response.message.media)
+            await bot.send_file(event.chat_id, response.message.media)

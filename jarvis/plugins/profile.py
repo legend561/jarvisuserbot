@@ -16,7 +16,7 @@ async def _(event):
         return
     bio = event.pattern_match.group(1)
     try:
-        await jarvis.
+        await bot(
             functions.account.UpdateProfileRequest(about=bio)  # pylint:disable=E0602
         )
         await eor(event, "Succesfully changed my profile bio")
@@ -37,7 +37,7 @@ async def _(event):
     if "\\n" in names:
         first_name, last_name = names.split("\\n", 1)
     try:
-        await jarvis.
+        await bot(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
                 first_name=first_name, last_name=last_name
             )
@@ -58,7 +58,7 @@ async def _(event):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
     photo = None
     try:
-        photo = await jarvis.download_media(  # pylint:disable=E0602
+        photo = await bot.download_media(  # pylint:disable=E0602
             reply_message, Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
         )
     except Exception as e:  # pylint:disable=C0103,W0703
@@ -66,9 +66,9 @@ async def _(event):
     else:
         if photo:
             await event.edit("now, Uploading to @Telegram ...")
-            file = await jarvis.upload_file(photo)  # pylint:disable=E0602
+            file = await bot.upload_file(photo)  # pylint:disable=E0602
             try:
-                await jarvis.
+                await bot(
                     functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
                         file
                     )
