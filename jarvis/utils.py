@@ -5,7 +5,7 @@ from pathlib import Path
 
 from telethon import events
 
-from jarvis import CMD_LIST, LOAD_PLUG, bot
+from jarvis import CMD_LIST, LOAD_PLUG, jarvisub
 from jarvis.jconfig import Config
 from var import Var
 
@@ -71,8 +71,8 @@ def command(**args):
 
         def decorator(func):
             if allow_edited_updates:
-                bot.add_event_handler(func, events.MessageEdited(**args))
-            bot.add_event_handler(func, events.NewMessage(**args))
+                jarvisub.add_event_handler(func, events.MessageEdited(**args))
+            jarvisub.add_event_handler(func, events.NewMessage(**args))
             try:
                 LOAD_PLUG[file_test].append(func)
             except:
@@ -200,7 +200,7 @@ from time import gmtime, strftime
 
 from telethon import events
 
-from jarvis import bot
+from jarvis import jarvisub
 
 
 def register(**args):
@@ -238,8 +238,8 @@ def register(**args):
 
     def decorator(func):
         if not disable_edited:
-            bot.add_event_handler(func, events.MessageEdited(**args))
-        bot.add_event_handler(func, events.NewMessage(**args))
+            jarvisub.add_event_handler(func, events.MessageEdited(**args))
+        jarvisub.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
@@ -362,7 +362,7 @@ def time_formatter(milliseconds: int) -> str:
 class Loader:
     def __init__(self, func=None, **args):
         self.Var = Var
-        bot.add_event_handler(func, events.NewMessage(**args))
+        jarvisub.add_event_handler(func, events.NewMessage(**args))
 
 
 # Userbot
@@ -393,17 +393,15 @@ def load_module(shortname):
         name = "jarvis.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = bot
-        mod.tgbot = bot.tgbot
-        mod.jarvisbot = bot.tgbot
+        mod.tgbot = jarvisub.tgbot
+        mod.jarvisbot = jarvisub.tgbot
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for jarvis
         sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
-        mod.bot = bot
-        mod.jarvis = bot
+        mod.jarvis = jarvisub
         # support for jarvis
         sys.modules["jarvis.events"] = jarvis.utils
         spec.loader.exec_module(mod)
@@ -416,16 +414,16 @@ def remove_plugin(shortname):
     try:
         try:
             for i in LOAD_PLUG[shortname]:
-                bot.remove_event_handler(i)
+                jarvisub.remove_event_handler(i)
             del LOAD_PLUG[shortname]
 
         except:
             name = f"jarvis.plugins.{shortname}"
 
-            for i in reversed(range(len(bot._event_builders))):
-                ev, cb = bot._event_builders[i]
+            for i in reversed(range(len(jarvisub._event_builders))):
+                ev, cb = jarvisub._event_builders[i]
                 if cb.__module__ == name:
-                    del bot._event_builders[i]
+                    del jarvisub._event_builders[i]
     except:
         raise ValueError
 
@@ -455,7 +453,7 @@ def start_assistant(shortname):
         name = "jarvis.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.tgbot = bot.tgbot
+        mod.tgbot = jarvisub.tgbot
         spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins.assistant" + shortname] = mod
     # print("Assistant Has imported " + shortname)
