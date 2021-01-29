@@ -8,12 +8,12 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "await bot"
-          replace: "await jarvis"
+          find: "from jarvis import CMD_HELP, bot"
+          replace: "from jarvis import CMD_HELP"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Security Fixes'
+          commit_message: 'Fix Typos'
           commit_options: '--no-verify'
           repository: .
           commit_user_name: sppidy
