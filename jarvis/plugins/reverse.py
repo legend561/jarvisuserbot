@@ -14,7 +14,7 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 
-from jarvis import CMD_HELP, bot
+from jarvis import CMD_HELP
 from jarvis.utils import j_cmd, eor, errors_handler, sudo_cmd
 
 opener = urllib.request.build_opener()
