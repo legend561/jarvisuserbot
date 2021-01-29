@@ -8,12 +8,12 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "admin_cmd"
-          replace: "j_cmd"
+          find: "bot.uid"
+          replace: "jarvisub.uid"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Replace Uniborg Dependencies'
+          commit_message: 'Security Fixes'
           commit_options: '--no-verify'
           repository: .
           commit_user_name: sppidy
