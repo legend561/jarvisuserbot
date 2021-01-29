@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 from jarvis import ALIVE_NAME, Lastupdate
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 sudousing = Config.SUDO_USERS
 pmlogss = Config.PM_LOGGR_BOT_API_ID
@@ -66,7 +66,7 @@ def get_readable_time(seconds: int) -> str:
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
-@jarvis.on(admin_cmd(pattern=r"alive"))
+@jarvis.on(j_cmd(pattern=r"alive"))
 @jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
     start = datetime.now()

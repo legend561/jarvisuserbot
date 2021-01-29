@@ -7,7 +7,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 COLLECTION_STRING = [
     "avengers-logo-wallpaper",
@@ -36,7 +36,7 @@ async def animepp():
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
 
-@jarvis.on(admin_cmd(pattern="avengersdp ?(.*)"))
+@jarvis.on(j_cmd(pattern="avengersdp ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="avengersdp ?(.*)", allow_sudo=True))
 async def main(event):
     await edit_or_reply(
@@ -60,7 +60,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 COLLECTION_STRINGZ = [
     "star-wars-wallpaper-1080p",
@@ -90,7 +90,7 @@ async def animepp():
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
 
-@jarvis.on(admin_cmd(pattern="gamerdp ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="gamerdp ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="gamerdp ?(.*)", allow_sudo=True))
 async def main(event):
     await edit_or_reply(
@@ -113,7 +113,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 COLLECTION_STRINGZS = ["hacker-background"]
 
@@ -135,7 +135,7 @@ async def animepp():
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
 
-@jarvis.on(admin_cmd(pattern="hackerdp ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="hackerdp ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="hackerdp ?(.*)", allow_sudo=True))
 async def main(event):
     await edit_or_reply(
@@ -158,7 +158,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 # Space lovers
 COLLECTION_STRINGSZ = [
@@ -196,7 +196,7 @@ async def animepp():
     urllib.request.urlretrieve(fy, "jarvis.jpg")
 
 
-@jarvis.on(admin_cmd(pattern="spacedp ?(.*)"))
+@jarvis.on(j_cmd(pattern="spacedp ?(.*)"))
 async def main(event):
 
     await event.edit(

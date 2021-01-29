@@ -6,10 +6,10 @@ import os
 
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="pbio (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="pbio (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="pbio (.*)", allow_sudo=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
@@ -24,7 +24,7 @@ async def _(event):
         await eor(event, str(e))
 
 
-@jarvis.on(admin_cmd(pattern="pname ((.|\n)*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="pname ((.|\n)*)", outgoing=True))
 @jarvis.on(
     sudo_cmd(pattern="pname ((.|\n)*)", allow_sudo=True)
 )  # pylint:disable=E0602,W0703
@@ -47,7 +47,7 @@ async def _(event):
         await eor(event, str(e))
 
 
-@jarvis.on(admin_cmd(pattern="ppic", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="ppic", outgoing=True))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="ppic", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -86,10 +86,10 @@ async def _(event):
 from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosRequest
 from telethon.tl.types import InputPhoto
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="delpfp ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="delpfp ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="delpfp ?(.*)", allow_sudo=True))
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """

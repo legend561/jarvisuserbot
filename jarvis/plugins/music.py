@@ -5,7 +5,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import CMD_HELP, bot
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 try:
     pass
@@ -21,7 +21,7 @@ def bruh(name):
     os.system("instantmusic -q -s " + name)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="spd(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="spd(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="spd(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -47,7 +47,7 @@ async def _(event):
         await bot.forward_messages(event.chat_id, respond.message)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="netease(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="netease(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="netease(?: |$)(.*)"))
 async def WooMai(netase):
     if netase.fwd_from:
@@ -75,7 +75,7 @@ async def WooMai(netase):
     await netase.delete()
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="dzd(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="dzd(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="dzd(?: |$)(.*)"))
 async def DeezLoader(Deezlod):
     if Deezlod.fwd_from:

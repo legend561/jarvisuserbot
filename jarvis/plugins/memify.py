@@ -16,12 +16,12 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import DocumentAttributeFilename
 
 from jarvis import TEMP_DOWNLOAD_DIRECTORY
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 THUMB_IMAGE_PATH = "./jarvis.png"
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"mmf(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"mmf(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"mmf(?: |$)(.*)"))
 async def mim(event):
     if not event.reply_to_msg_id:
@@ -183,7 +183,7 @@ async def draw_meme_text(image_path, text):
     return webp_file
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"mms(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"mms(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"mms(?: |$)(.*)"))
 async def mim(event):
     if not event.reply_to_msg_id:

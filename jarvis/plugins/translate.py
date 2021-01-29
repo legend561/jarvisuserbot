@@ -6,10 +6,10 @@ Available Commands:
 import emoji
 from googletrans import Translator
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd("tr ?(.*)"))
+@jarvis.on(j_cmd("tr ?(.*)"))
 @jarvis.on(sudo_cmd("tr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

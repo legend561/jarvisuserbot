@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.options import Options
 from jarvis import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
 from jarvis.helpers.functions import deEmojify
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import j_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "jarvis"
 
@@ -21,7 +21,7 @@ CARBONLANG = "auto"
 LANG = "en"
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="carbon(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
@@ -81,7 +81,7 @@ async def carbon_api(e):
     await jarvis.delete()
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="krb"))
+@jarvis.on(j_cmd(outgoing=True, pattern="krb"))
 @jarvis.on(sudo_cmd(pattern="krb", allow_sudo=True))
 async def carbon_api(e):
     jarvis = await edit_or_reply(e, "`Processing....`")
@@ -161,7 +161,7 @@ async def carbon_api(e):
     await jarvis.delete()
 
 
-@jarvis.on(admin_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="kar1(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
@@ -220,7 +220,7 @@ async def carbon_api(e):
     await jarvis.delete()  # Deleting msg
 
 
-@jarvis.on(admin_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="kar2(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
@@ -279,7 +279,7 @@ async def carbon_api(e):
     await jarvis.delete()  # Deleting msg
 
 
-@jarvis.on(admin_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="kar3(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
@@ -342,7 +342,7 @@ async def carbon_api(e):
     await jarvis.delete()  # Deleting msg
 
 
-@jarvis.on(admin_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="kar4(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
@@ -405,7 +405,7 @@ async def carbon_api(e):
     await jarvis.delete()  # Deleting msg
 
 
-@jarvis.on(admin_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="rgbk2(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)
@@ -472,7 +472,7 @@ async def carbon_api(e):
     await jarvis.delete()  # Deleting msg
 
 
-@jarvis.on(admin_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="kargb(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)

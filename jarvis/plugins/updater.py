@@ -17,7 +17,7 @@ from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from jarvis import CMD_HNDLR
-from jarvis.events import admin_cmd
+from jarvis.events import j_cmd
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
@@ -51,8 +51,8 @@ async def updateme_requirements():
         return repr(e)
 
 
-@jarvis.on(admin_cmd(pattern="update ?(.*)"))
-@jarvis.on(admin_cmd(pattern="update ?(.*)", allow_sudo=True))
+@jarvis.on(j_cmd(pattern="update ?(.*)"))
+@jarvis.on(j_cmd(pattern="update ?(.*)", allow_sudo=True))
 async def upstream(ups):
     "For .update command, check if the bot is up to date, update if specified"
     await ups.edit("`Searching for new updates, if any...`")

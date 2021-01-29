@@ -4,7 +4,7 @@ By :- @PhycoNinja13b
 Modified by :- @kirito6969
 .weeb <text> """
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 normiefont = [
     "a",
@@ -64,7 +64,7 @@ weebyfont = [
 ]
 
 
-@jarvis.on(admin_cmd(pattern="weeb ?(.*)"))
+@jarvis.on(j_cmd(pattern="weeb ?(.*)"))
 async def weebify(event):
 
     args = event.pattern_match.group(1)

@@ -22,10 +22,10 @@ from youtube_dl.utils import (
 from jarvis import time
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+from ..utils import j_cmd, edit_or_reply, progress, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="yt(a|v) (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
 async def download_video(v_url):
     """ For .ytdl command, download media from YouTube and many other sites. """
@@ -170,7 +170,7 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@jarvis.on(admin_cmd(pattern="yts (.*)"))
+@jarvis.on(j_cmd(pattern="yts (.*)"))
 @jarvis.on(sudo_cmd(pattern="yts (.*)", allow_sudo=True))
 async def yt_search(video_q):
     """ For .yts command, do a YouTube search from Telegram. """

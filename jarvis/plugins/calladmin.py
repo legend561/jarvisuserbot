@@ -1,10 +1,10 @@
 """.admin Plugin for @UniBorg"""
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="admins"))
+@jarvis.on(j_cmd(pattern="admins"))
 @jarvis.on(sudo_cmd(pattern="admins"))
 async def _(event):
     if event.fwd_from:

@@ -5,14 +5,14 @@ from pathlib import Path
 
 from jarvis import ALIVE_NAME
 from jarvis import bot as jarvis
-from jarvis.utils import admin_cmd, eor, load_module, remove_plugin, sudo_cmd
+from jarvis.utils import j_cmd, eor, load_module, remove_plugin, sudo_cmd
 
 DELETE_TIMEOUT = 5
 thumb_image_path = "./resource/20201012_204728.png"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "JARVIS"
 
 
-@jarvis.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
     if event.fwd_from:
@@ -44,7 +44,7 @@ async def send(event):
         await eor(event, "**404**: __File Not Found__")
 
 
-@jarvis.on(admin_cmd(pattern="install"))
+@jarvis.on(j_cmd(pattern="install"))
 @jarvis.on(sudo_cmd(pattern="install", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
@@ -80,7 +80,7 @@ async def install(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
+@jarvis.on(j_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 @jarvis.on(sudo_cmd(pattern=r"unload (?P<shortname>\w+)$", allow_sudo=True))
 async def unload(event):
     if event.fwd_from:
@@ -95,7 +95,7 @@ async def unload(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
+@jarvis.on(j_cmd(pattern=r"load (?P<shortname>\w+)$"))
 @jarvis.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:

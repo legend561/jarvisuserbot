@@ -11,7 +11,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
@@ -42,7 +42,7 @@ def get_video_thumb(file, output=None, width=320):
         return output
 
 
-@jarvis.on(admin_cmd(pattern="savethumbnail"))
+@jarvis.on(j_cmd(pattern="savethumbnail"))
 async def _(event):
     if event.fwd_from:
         return
@@ -78,7 +78,7 @@ async def _(event):
         await event.edit("Reply to a photo to save custom thumbnail")
 
 
-@jarvis.on(admin_cmd(pattern="clearthumbnail"))
+@jarvis.on(j_cmd(pattern="clearthumbnail"))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,7 +87,7 @@ async def _(event):
     await event.edit("✅ Custom thumbnail cleared succesfully.")
 
 
-@jarvis.on(admin_cmd(pattern="getthumbnail"))
+@jarvis.on(j_cmd(pattern="getthumbnail"))
 async def _(event):
     if event.fwd_from:
         return

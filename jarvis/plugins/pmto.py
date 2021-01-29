@@ -2,10 +2,10 @@
 # @its_xditya
 # Kangers keep credits
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("pmto ?(.*)"))
+@jarvis.on(j_cmd("pmto ?(.*)"))
 async def pmto(event):
     a = event.pattern_match.group(1)
     b = a.split(" ")

@@ -6,7 +6,7 @@ import os
 import requests
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
@@ -21,7 +21,7 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
+@jarvis.on(j_cmd(pattern="paste( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="paste( (.*)|$)", allow_sudo=True))
 async def _(event):
     jevent = await edit_or_reply(event, "`Pasting .. 😅`")
@@ -64,7 +64,7 @@ async def _(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
+@jarvis.on(j_cmd(pattern="neko( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="neko( (.*)|$)", allow_sudo=True))
 async def _(event):
     jevent = await edit_or_reply(event, "`Pasting .. 😅`")

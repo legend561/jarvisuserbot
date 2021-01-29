@@ -25,7 +25,7 @@ from telethon.tl.types import (
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS
 from jarvis.plugins.sql_helper.mute_sql import is_muted, mute, unmute
-from jarvis.utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, errors_handler, sudo_cmd
 
 # =================== CONSTANT ===================
 
@@ -65,7 +65,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@jarvis.on(admin_cmd("setgpic$"))
+@jarvis.on(j_cmd("setgpic$"))
 @jarvis.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
@@ -110,7 +110,7 @@ async def set_group_photo(gpic):
             )
 
 
-@jarvis.on(admin_cmd("promote(?: |$)(.*)"))
+@jarvis.on(j_cmd("promote(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
@@ -149,7 +149,7 @@ async def promote(promt):
         )
 
 
-@jarvis.on(admin_cmd("demote(?: |$)(.*)"))
+@jarvis.on(j_cmd("demote(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="demote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
@@ -188,7 +188,7 @@ async def demote(dmod):
         )
 
 
-@jarvis.on(admin_cmd("ban(?: |$)(.*)"))
+@jarvis.on(j_cmd("ban(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="ban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ban(bon):
@@ -229,7 +229,7 @@ async def ban(bon):
         )
 
 
-@jarvis.on(admin_cmd("unban(?: |$)(.*)"))
+@jarvis.on(j_cmd("unban(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="unban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
@@ -267,7 +267,7 @@ async def watcher(event):
             LOGS.info(str(e))
 
 
-@jarvis.on(admin_cmd("mute(?: |$)(.*)"))
+@jarvis.on(j_cmd("mute(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="mute(?: |$)(.*)", allow_sudo=True))
 async def startmute(event):
     if event.is_private:
@@ -363,7 +363,7 @@ async def startmute(event):
             )
 
 
-@jarvis.on(admin_cmd("unmute(?: |$)(.*)"))
+@jarvis.on(j_cmd("unmute(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="unmute(?: |$)(.*)", allow_sudo=True))
 async def endmute(event):
     if event.is_private:
@@ -427,7 +427,7 @@ async def endmute(event):
             )
 
 
-@jarvis.on(admin_cmd("pin($| (.*))"))
+@jarvis.on(j_cmd("pin($| (.*))"))
 @jarvis.on(sudo_cmd(pattern="pin($| (.*))", allow_sudo=True))
 @errors_handler
 async def pin(msg):
@@ -467,7 +467,7 @@ async def pin(msg):
         pass
 
 
-@jarvis.on(admin_cmd("kick(?: |$)(.*)"))
+@jarvis.on(j_cmd("kick(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern="kick(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def kick(usr):
@@ -503,7 +503,7 @@ async def kick(usr):
         )
 
 
-@jarvis.on(admin_cmd("iundlt$"))
+@jarvis.on(j_cmd("iundlt$"))
 @jarvis.on(sudo_cmd(pattern="iundlt$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

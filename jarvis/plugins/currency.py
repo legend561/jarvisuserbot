@@ -4,10 +4,10 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="currency (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="currency (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="currency (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

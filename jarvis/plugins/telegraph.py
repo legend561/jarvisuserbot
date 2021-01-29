@@ -5,14 +5,14 @@ from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
 from jarvis import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@jarvis.on(admin_cmd(pattern="telegraph (media|text) ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="telegraph (media|text) ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="telegraph (media|text) ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

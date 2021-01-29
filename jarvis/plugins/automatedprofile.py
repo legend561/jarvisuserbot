@@ -4,12 +4,12 @@ import time
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 DEL_TIME_OUT = 60
 
 
-@jarvis.on(admin_cmd(pattern="bio"))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="bio"))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="bio", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -49,12 +49,12 @@ from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.tl import functions
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 FONT_FILE_TO_USE = "fonts/digital.ttf"
 
 
-@jarvis.on(admin_cmd(pattern=r"autopic"))
+@jarvis.on(j_cmd(pattern=r"autopic"))
 @jarvis.on(sudo_cmd(pattern=r"autopic", allow_sudo=True))
 async def autopic(event):
     downloaded_file_name = "jarvis/original_pic.png"
@@ -97,13 +97,13 @@ from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 DEL_TIME_OUT = 60
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
-@jarvis.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="autoname"))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="autoname", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

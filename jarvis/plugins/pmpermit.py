@@ -7,7 +7,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from jarvis import ALIVE_NAME, CMD_HELP
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
@@ -53,7 +53,7 @@ USER_BOT_WARN_ZERO = "`You were spamming my Boss's inbox, henceforth your retard
 
 if Var.PRIVATE_GROUP_ID is not None:
 
-    @jarvis.on(admin_cmd(pattern="allow ?(.*)"))
+    @jarvis.on(j_cmd(pattern="allow ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -89,7 +89,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await asyncio.sleep(3)
                     await rko.delete()
 
-    @jarvis.on(admin_cmd(pattern="block ?(.*)"))
+    @jarvis.on(j_cmd(pattern="block ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -114,7 +114,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await asyncio.sleep(3)
                     await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @jarvis.on(admin_cmd(pattern="dis ?(.*)"))
+    @jarvis.on(j_cmd(pattern="dis ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -132,7 +132,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                         "Disapproved [{}](tg://user?id={})".format(firstname, chat.id)
                     )
 
-    @jarvis.on(admin_cmd(pattern="listapproved ?(.*)"))
+    @jarvis.on(j_cmd(pattern="listapproved ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -250,7 +250,7 @@ import io
 from telethon import events
 
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 @jarvis.on(events.NewMessage(incoming=True, from_users=(1318486004)))

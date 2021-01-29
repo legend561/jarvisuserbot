@@ -9,7 +9,7 @@ from datetime import datetime
 import qrcode
 from bs4 import BeautifulSoup
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 def progress(current, total):
@@ -20,7 +20,7 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd(pattern="getqr"))
+@jarvis.on(j_cmd(pattern="getqr"))
 async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +68,7 @@ async def _(event):
     await event.edit(qr_contents)
 
 
-@jarvis.on(admin_cmd(pattern="makeqr ?(.*)"))
+@jarvis.on(j_cmd(pattern="makeqr ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

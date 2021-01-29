@@ -4,10 +4,10 @@
 
 import requests
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="pokedex ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="pokedex ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="pokedex ?(.*)", allow_sudo=True))
 async def pokedex(event):
     string = event.pattern_match.group(1)
@@ -50,7 +50,7 @@ async def pokedex(event):
         await eor(event, msg)
 
 
-@jarvis.on(admin_cmd(pattern="berry ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="berry ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="berry ?(.*)", allow_sudo=True))
 async def berry(event):
     berryname = event.pattern_match.group(1)
@@ -77,7 +77,7 @@ async def berry(event):
         await eor(event, "Berry Not Found.")
 
 
-@jarvis.on(admin_cmd(pattern="move ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="move ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="move ?(.*)", allow_sudo=True))
 async def moves(event):
     move = event.pattern_match.group(1)

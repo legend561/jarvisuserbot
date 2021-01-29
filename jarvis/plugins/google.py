@@ -9,7 +9,7 @@ import re
 from search_engine_parser import GoogleSearch
 
 from jarvis import BOTLOG_CHATID
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
 def progress(current, total):
@@ -20,7 +20,7 @@ def progress(current, total):
     )
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"go (.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"go (.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"go (.*)"))
 async def gsearch(q_event):
     jevent = await edit_or_reply(q_event, "`Processing........`")

@@ -11,7 +11,7 @@ import re
 from telethon import events
 
 import jarvis.plugins.sql_helper.blacklist_sql as sql
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
 @jarvis.on(events.NewMessage(incoming=True))
@@ -32,7 +32,7 @@ async def on_new_message(event):
             break
 
 
-@jarvis.on(admin_cmd("addblacklist ((.|\n)*)", outgoing=True))
+@jarvis.on(j_cmd("addblacklist ((.|\n)*)", outgoing=True))
 @jarvis.on(sudo_cmd("addblacklist ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     text = event.pattern_match.group(1)
@@ -49,7 +49,7 @@ async def on_add_black_list(event):
     )
 
 
-@jarvis.on(admin_cmd("listblacklist", outgoing=True))
+@jarvis.on(j_cmd("listblacklist", outgoing=True))
 @jarvis.on(sudo_cmd("listblacklist", allow_sudo=True))
 async def on_view_blacklist(event):
     all_blacklisted = sql.get_chat_blacklist(event.chat_id)
@@ -75,7 +75,7 @@ async def on_view_blacklist(event):
         await edit_or_reply(event, OUT_STR)
 
 
-@jarvis.on(admin_cmd("rmblacklist ((.|\n)*)", outgoing=True))
+@jarvis.on(j_cmd("rmblacklist ((.|\n)*)", outgoing=True))
 @jarvis.on(sudo_cmd("rmblacklist ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     text = event.pattern_match.group(1)

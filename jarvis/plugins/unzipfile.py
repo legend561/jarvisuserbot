@@ -12,7 +12,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
@@ -20,8 +20,8 @@ if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
 
-@jarvis.on(admin_cmd(pattern="unzip"))
-@jarvis.on(admin_cmd(pattern="unzip", allow_sudo=True))
+@jarvis.on(j_cmd(pattern="unzip"))
+@jarvis.on(j_cmd(pattern="unzip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

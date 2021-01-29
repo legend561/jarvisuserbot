@@ -1,9 +1,9 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd("sg ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("sg ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("sg ?(.*)", allow_sudo=True))
 async def lastname(steal):
     if steal.fwd_from:

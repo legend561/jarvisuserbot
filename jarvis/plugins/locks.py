@@ -3,13 +3,13 @@ from telethon.tl.types import ChatBannedRights
 
 from jarvis import ALIVE_NAME, CMD_HELP
 from jarvis.events import errors_handler
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
 # @register(outgoing=True, pattern=r"^.lock ?(.*)")
-@jarvis.on(admin_cmd(pattern=r"lock ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"lock ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"lock ?(.*)", allow_sudo=True))
 @errors_handler
 async def locks(event):
@@ -102,7 +102,7 @@ async def locks(event):
         return
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"unlock ?(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"unlock ?(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"unlock ?(.*)"))
 @errors_handler
 async def rem_locks(event):

@@ -5,7 +5,7 @@
 
 import logging
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ if 1 == 1:
 
     client = bot
 
-    @jarvis.on(admin_cmd(pattern="poto(.*)", outgoing=True))
+    @jarvis.on(j_cmd(pattern="poto(.*)", outgoing=True))
     @jarvis.on(sudo_cmd(pattern="poto(.*)", allow_sudo=True))
     async def potocmd(event):
 

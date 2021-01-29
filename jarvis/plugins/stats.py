@@ -3,10 +3,10 @@ from datetime import datetime
 from telethon.tl.types import Channel, Chat, User
 
 from jarvis import bot
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"stats"))
+@jarvis.on(j_cmd(pattern=r"stats"))
 @jarvis.on(sudo_cmd(pattern=r"stats", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

@@ -6,13 +6,13 @@ import lyricsgenius
 from tswift import Song
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="lyrics (.*)"))
-@jarvis.on(admin_cmd(pattern="lyrics (.*)", allow_sudo=True))
+@jarvis.on(j_cmd(outgoing=True, pattern="lyrics (.*)"))
+@jarvis.on(j_cmd(pattern="lyrics (.*)", allow_sudo=True))
 async def _(event):
     await event.reply("wi8..! I am searching your lyrics....`")
     reply_to_id = event.message.id
@@ -53,7 +53,7 @@ async def _(event):
         await event.reply(reply)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
 async def lyrics(lyric):
     if r"-" in lyric.text:
         pass

@@ -6,12 +6,12 @@ import random
 from collections import deque
 
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 
 
-@jarvis.on(admin_cmd(pattern="stupid$"))
+@jarvis.on(j_cmd(pattern="stupid$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@jarvis.on(admin_cmd(pattern=f"bombs$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"bombs$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -66,7 +66,7 @@ async def _(event):
     await asyncio.sleep(2)
 
 
-@jarvis.on(admin_cmd(pattern=r"call$"))
+@jarvis.on(j_cmd(pattern=r"call$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -98,7 +98,7 @@ async def _(event):
         await event.edit(animation_chars[i % 18])
 
 
-@jarvis.on(admin_cmd(pattern=f"kill$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"kill$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -124,7 +124,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@jarvis.on(admin_cmd(pattern="ding$"))
+@jarvis.on(j_cmd(pattern="ding$"))
 async def _(event):
     animation_interval = 0.3
     animation_ttl = range(0, 30)
@@ -149,7 +149,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@jarvis.on(admin_cmd(pattern=f"hypno$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"hypno$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -178,7 +178,7 @@ async def _(event):
         await event.edit(animation_chars[i % 15])
 
 
-@jarvis.on(admin_cmd(pattern="gangasta$"))
+@jarvis.on(j_cmd(pattern="gangasta$"))
 async def _(event):
     await event.edit("EVERyBOdy")
     await asyncio.sleep(0.3)
@@ -197,7 +197,7 @@ async def _(event):
     await event.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥🔥🔥")
 
 
-@jarvis.on(admin_cmd(pattern=f"charging$"))
+@jarvis.on(j_cmd(pattern=f"charging$"))
 async def timer_blankx(e):
     txt = (
         e.text[10:]
@@ -216,7 +216,7 @@ async def timer_blankx(e):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"lul$"))
+@jarvis.on(j_cmd(pattern=r"lul$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -227,7 +227,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"nothappy$"))
+@jarvis.on(j_cmd(pattern=r"nothappy$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -238,7 +238,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="clock$"))
+@jarvis.on(j_cmd(outgoing=True, pattern="clock$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -249,7 +249,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"muah$"))
+@jarvis.on(j_cmd(pattern=r"muah$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -260,7 +260,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern="heart$"))
+@jarvis.on(j_cmd(pattern="heart$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -271,7 +271,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern="gym$", outgoing=True))
+@jarvis.on(j_cmd(pattern="gym$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -282,7 +282,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=f"earth$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"earth$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -293,7 +293,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="moon$"))
+@jarvis.on(j_cmd(outgoing=True, pattern="moon$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -304,7 +304,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"candy$"))
+@jarvis.on(j_cmd(pattern=r"candy$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -315,7 +315,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=f"smoon$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"smoon$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -337,7 +337,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@jarvis.on(admin_cmd(pattern=f"tmoon$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"tmoon$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -383,7 +383,7 @@ async def _(event):
         await event.edit(animation_chars[i % 32])
 
 
-@jarvis.on(admin_cmd(pattern=f"clown$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"clown$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -413,7 +413,7 @@ async def _(event):
         await event.edit(animation_chars[i % 16])
 
 
-@jarvis.on(admin_cmd(pattern=r"star$", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"star$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -424,7 +424,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"boxs"))
+@jarvis.on(j_cmd(pattern=r"boxs"))
 async def _(event):
     if event.fwd_from:
         return
@@ -435,7 +435,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=f"rain$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"rain$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -446,7 +446,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"clol$"))
+@jarvis.on(j_cmd(pattern=r"clol$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -457,7 +457,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"odra$"))
+@jarvis.on(j_cmd(pattern=r"odra$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -468,7 +468,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd(pattern=r"deploy$"))
+@jarvis.on(j_cmd(pattern=r"deploy$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -494,7 +494,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@jarvis.on(admin_cmd(pattern="dump ?(.*)"))
+@jarvis.on(j_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
@@ -533,7 +533,7 @@ async def _(message):
                 return
 
 
-@jarvis.on(admin_cmd(pattern="fleaveme$"))
+@jarvis.on(j_cmd(pattern="fleaveme$"))
 async def _(event):
     animation_interval = 1
     animation_ttl = range(0, 10)
@@ -558,7 +558,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@jarvis.on(admin_cmd(pattern="loveu", outgoing=True))
+@jarvis.on(j_cmd(pattern="loveu", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -607,7 +607,7 @@ async def _(event):
         await event.edit(animation_chars[i % 35])
 
 
-@jarvis.on(admin_cmd(pattern=f"plane", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"plane", outgoing=True))
 async def _(event):
     if event.fwd_from:
         retun
@@ -629,7 +629,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern=r"police"))
+@jarvis.on(j_cmd(pattern=r"police"))
 async def _(event):
     if event.fwd_from:
         return
@@ -655,7 +655,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@jarvis.on(admin_cmd(pattern=f"jio$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"jio$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -688,7 +688,7 @@ async def _(event):
         await event.edit(animation_chars[i % 19])
 
 
-@jarvis.on(admin_cmd(pattern=f"solarsystem", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"solarsystem", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -710,7 +710,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@jarvis.on(admin_cmd(pattern=f"snake$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"snake$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -751,7 +751,7 @@ async def _(event):
         await event.edit(animation_chars[i % 27])
 
 
-@jarvis.on(admin_cmd(pattern=f"human$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"human$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -781,7 +781,7 @@ async def _(event):
         await event.edit(animation_chars[i % 16])
 
 
-@jarvis.on(admin_cmd(pattern=f"mc$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"mc$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -823,7 +823,7 @@ async def _(event):
         await event.edit(animation_chars[i % 28])
 
 
-@jarvis.on(admin_cmd(pattern="virus$"))
+@jarvis.on(j_cmd(pattern="virus$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -867,7 +867,7 @@ async def _(event):
         await event.edit(animation_chars[i % 30])
 
 
-@jarvis.on(admin_cmd(pattern=f"isro$"))
+@jarvis.on(j_cmd(pattern=f"isro$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -906,7 +906,7 @@ async def _(event):
         await event.edit(animation_chars[i % 24])
 
 
-@jarvis.on(admin_cmd(pattern=f"music$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"music$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -931,7 +931,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=f"squ$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"squ$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -980,7 +980,7 @@ async def _(event):
     await asyncio.sleep(6)
 
 
-@jarvis.on(admin_cmd(pattern=f"loading$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"loading$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -992,7 +992,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@jarvis.on(admin_cmd(pattern=f"square$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"square$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1004,7 +1004,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@jarvis.on(admin_cmd(pattern=f"up$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"up$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1016,7 +1016,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@jarvis.on(admin_cmd(pattern=f"round$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"round$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1028,7 +1028,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@jarvis.on(admin_cmd(pattern=f"hart$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"hart$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1040,7 +1040,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@jarvis.on(admin_cmd(pattern=f"anim$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"anim$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1064,7 +1064,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=f"fnl$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"fnl$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1076,7 +1076,7 @@ async def _(event):
         await event.edit(animation_chars[i % 6])
 
 
-@jarvis.on(admin_cmd(pattern=f"monkey$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"monkey$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1088,7 +1088,7 @@ async def _(event):
         await event.edit(animation_chars[i % 6])
 
 
-@jarvis.on(admin_cmd(pattern=f"herber$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"herber$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1111,7 +1111,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=f"hand$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"hand$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1137,7 +1137,7 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@jarvis.on(admin_cmd(pattern=f"gsg$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"gsg$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1162,7 +1162,7 @@ async def _(event):
         await event.edit(animation_chars[i % 13])
 
 
-@jarvis.on(admin_cmd(pattern=r"theart$", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"theart$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1193,7 +1193,7 @@ async def _(event):
         await event.edit(animation_chars[i % 18])
 
 
-@jarvis.on(admin_cmd(pattern=r"fdance"))
+@jarvis.on(j_cmd(pattern=r"fdance"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1213,7 +1213,7 @@ async def _(event):
         await event.edit(animation_chars[i % 5])
 
 
-@jarvis.on(admin_cmd("bigoof"))
+@jarvis.on(j_cmd("bigoof"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1237,7 +1237,7 @@ async def _(event):
         await event.edit(animation_chars[i % 7])
 
 
-@jarvis.on(admin_cmd(pattern="g1 ?(.*)"))
+@jarvis.on(j_cmd(pattern="g1 ?(.*)"))
 async def payf(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -1365,7 +1365,7 @@ async def payf(event):
     await event.edit(pay)
 
 
-@jarvis.on(admin_cmd(pattern="uff ?(.*)"))
+@jarvis.on(j_cmd(pattern="uff ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1391,7 +1391,7 @@ async def _(event):
         await event.edit(animation_chars[i % 13])
 
 
-@jarvis.on(admin_cmd(pattern="ctext ?(.*)"))
+@jarvis.on(j_cmd(pattern="ctext ?(.*)"))
 async def payf(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -1411,7 +1411,7 @@ async def payf(event):
     await event.edit(pay)
 
 
-@jarvis.on(admin_cmd(pattern="ftext ?(.*)"))
+@jarvis.on(j_cmd(pattern="ftext ?(.*)"))
 async def payf(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -1431,7 +1431,7 @@ async def payf(event):
     await event.edit(pay)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="kf$(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="kf$(.*)"))
 async def _(event):
     r = random.randint(0, 3)
     logger.debug(r)
@@ -1442,7 +1442,7 @@ async def _(event):
         await event.edit("╭━━━╮\n┃╭━━╯\n┃╰━━╮\n┃╭━━╯\n┃┃\n╰╯")
 
 
-@jarvis.on(admin_cmd(pattern="f (.*)"))
+@jarvis.on(j_cmd(pattern="f (.*)"))
 async def payf(e):
     paytext = e.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}".format(

@@ -9,12 +9,12 @@ from jarvis.plugins.sql_helper.broadcast_sql import (
     in_channels,
     rm_channel,
 )
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 logs_id = Var.PLUGIN_CHANNEL
 
 
-@jarvis.on(admin_cmd("bforward ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("bforward ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("bforward ?(.*)", allow_sudo=True))
 async def forw(event):
     if event.fwd_from:
@@ -61,7 +61,7 @@ async def forw(event):
             await event.edit("Set up log channel for checking errors.")
 
 
-@jarvis.on(admin_cmd("broadcast ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("broadcast ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("broadcast ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -178,7 +178,7 @@ async def _(event):
 # Written by @HeisenbergTheDanger
 
 
-@jarvis.on(admin_cmd("badd ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("badd ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("badd ?(.*)", allow_sudo=True))
 async def add_ch(event):
     if event.fwd_from:
@@ -214,7 +214,7 @@ async def add_ch(event):
         await event.delete()
 
 
-@jarvis.on(admin_cmd("brm ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("brm ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("brm ?(.*)", allow_sudo=True))
 async def remove_ch(event):
     if event.fwd_from:
@@ -244,7 +244,7 @@ async def remove_ch(event):
         await event.delete()
 
 
-@jarvis.on(admin_cmd("listchannels", allow_sudo=True))
+@jarvis.on(j_cmd("listchannels", allow_sudo=True))
 async def list(event):
     if event.fwd_from:
         return

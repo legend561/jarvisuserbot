@@ -1,6 +1,6 @@
 import random
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 RUNSREACTS = [
     "`Congratulations and BRAVO!`",
@@ -16,7 +16,7 @@ RUNSREACTS = [
 ]
 
 
-@jarvis.on(admin_cmd(pattern="congo", outgoing=True))
+@jarvis.on(j_cmd(pattern="congo", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="congo", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

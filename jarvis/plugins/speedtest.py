@@ -5,10 +5,10 @@ from datetime import datetime
 
 import speedtest
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd("speed ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("speed ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("speed ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

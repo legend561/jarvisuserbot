@@ -1,11 +1,11 @@
 # For Unibot
 # (c) @INF1N17Y
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("mention (.*)"))
-@jarvis.on(admin_cmd("mention (.*)", allow_sudo=True))
+@jarvis.on(j_cmd("mention (.*)"))
+@jarvis.on(j_cmd("mention (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

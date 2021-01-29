@@ -4,7 +4,7 @@ import random
 import re
 
 from jarvis import CMD_HELP, bot
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 EMOJI_PATTERN = re.compile(
     "["
@@ -29,7 +29,7 @@ def deEmojify(inputString: str) -> str:
 
 
 # @register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
-@jarvis.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
+@jarvis.on(j_cmd(pattern=r"waifu(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(pattern=r"waifu(?: |$)(.*)", allow_sudo=True))
 async def waifu(animu):
     # """Creates random anime sticker!"""

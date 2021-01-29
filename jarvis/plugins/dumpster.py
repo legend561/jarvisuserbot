@@ -1,9 +1,9 @@
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="dump ?(.*)"))
+@jarvis.on(j_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)

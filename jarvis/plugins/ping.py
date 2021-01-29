@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from jarvis import CMD_HELP, Lastupdate, time
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
 def get_readable_time(seconds: int) -> str:
@@ -32,7 +32,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@jarvis.on(admin_cmd(pattern="ping", outgoing=True))
+@jarvis.on(j_cmd(pattern="ping", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="ping", allow_sudo=True))
 async def _(event):
     sppidy = await edit_or_reply(event, "`Pong !`")
@@ -45,7 +45,7 @@ async def _(event):
     await sppidy.edit(f"**Pong !!**\n ➲ `{ms}` \n ➲ `{uptime}`")
 
 
-@jarvis.on(admin_cmd(pattern="pong", outgoing=True))
+@jarvis.on(j_cmd(pattern="pong", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="pong", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

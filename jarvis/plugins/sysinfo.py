@@ -13,7 +13,7 @@ import psutil
 from telethon import __version__
 
 from jarvis import ALIVE_NAME, CMD_HELP
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 try:
     pass
@@ -42,7 +42,7 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     )
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"spc$"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"spc$"))
 async def psu(event):
     uname = platform.uname()
     softw = "**System Information**\n"
@@ -98,7 +98,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 
-@jarvis.on(admin_cmd(pattern="cpu$"))
+@jarvis.on(j_cmd(pattern="cpu$"))
 @jarvis.on(sudo_cmd(pattern="cpu$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -110,7 +110,7 @@ async def _(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=f"sysd$", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"sysd$", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=f"sysd$", allow_sudo=True))
 async def sysdetails(sysd):
     cmd = "git clone https://github.com/dylanaraps/neofetch.git"

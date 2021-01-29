@@ -1,7 +1,7 @@
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="ftext ?(.*)"))
+@jarvis.on(j_cmd(pattern="ftext ?(.*)"))
 async def payf(event):
     input_str = event.pattern_match.group(1)
     if input_str:

@@ -11,7 +11,7 @@ from pytz import timezone as tz
 from jarvis import CMD_HELP
 from jarvis import OPEN_WEATHER_MAP_APPID as OWM_API
 from jarvis.events import errors_handler
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 # ===== CONSTANT =====
 DEFCITY = "Delhi"
@@ -31,7 +31,7 @@ async def get_tz(con):
         return
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="weather(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="weather(?: |$)(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="weather(?: |$)(.*)"))
 @errors_handler
 async def get_weather(weather):
@@ -140,7 +140,7 @@ async def get_weather(weather):
     )
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
 @errors_handler
 async def set_default_city(city):
     """ For .ctime command, change the default userbot country for date and time commands. """

@@ -8,7 +8,7 @@ from jarvis.plugins.sql_helper.welcome_sql import (
     rm_welcome_setting,
     update_previous_welcome,
 )
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 @jarvis.on(events.ChatAction())  # pylint:disable=E0602
@@ -65,7 +65,7 @@ async def _(event):
             update_previous_welcome(event.chat_id, current_message.id)
 
 
-@jarvis.on(admin_cmd(pattern="savewel"))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="savewel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -80,7 +80,7 @@ async def _(event):
         await event.edit("Welcome note saved. ")
 
 
-@jarvis.on(admin_cmd(pattern="clearwel"))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="clearwel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -92,7 +92,7 @@ async def _(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern="listwel"))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="listwel"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

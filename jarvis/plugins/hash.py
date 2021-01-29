@@ -7,10 +7,10 @@ import pybase64
 
 from jarvis import CMD_HELP
 from jarvis.events import errors_handler
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="hash (.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="hash (.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="hash (.*)"))
 @errors_handler
 async def gethash(hash_q):
@@ -56,7 +56,7 @@ async def gethash(hash_q):
         await edit_or_reply(hash_q, ans)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="hbase (en|de) (.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="hbase (en|de) (.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="hbase (en|de) (.*)"))
 @errors_handler
 async def endecrypt(query):

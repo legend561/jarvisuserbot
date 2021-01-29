@@ -4,7 +4,7 @@ import coffeehouse
 from coffeehouse.lydia import LydiaAI
 from telethon import events
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 # Non-SQL Mode
 ACC_LYDIA = {}
@@ -16,7 +16,7 @@ if Var.LYDIA_API_KEY:
     Lydia = LydiaAI(api_client)
 
 
-@jarvis.on(admin_cmd(pattern="clydia", outgoing=True))
+@jarvis.on(j_cmd(pattern="clydia", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="clydia", allow_sudo=True))
 async def repcf(event):
     if event.fwd_from:
@@ -33,7 +33,7 @@ async def repcf(event):
         await edit_or_reply(event, str(e))
 
 
-@jarvis.on(admin_cmd(pattern="lydiaon", outgoing=True))
+@jarvis.on(j_cmd(pattern="lydiaon", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="lydiaon", allow_sudo=True))
 async def addcf(event):
     if event.fwd_from:
@@ -58,7 +58,7 @@ async def addcf(event):
         await event.edit("Reply to a user to activate JARVIS AI on them")
 
 
-@jarvis.on(admin_cmd(pattern="lydiaoff", outgoing=True))
+@jarvis.on(j_cmd(pattern="lydiaoff", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="lydiaoff", allow_sudo=True))
 async def remcf(event):
     if event.fwd_from:

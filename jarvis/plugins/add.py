@@ -3,10 +3,10 @@ Syntax: .invite <User(s)>"""
 
 from telethon import functions
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="invite ?(.*)"))
+@jarvis.on(j_cmd(pattern="invite ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="invite ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

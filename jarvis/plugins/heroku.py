@@ -17,13 +17,13 @@ import heroku3
 import requests
 
 from jarvis import CMD_HELP, CMD_HNDLR
-from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, eor, sudo_cmd
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-@jarvis.on(admin_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
 async def variable(var):
     """
@@ -103,7 +103,7 @@ async def variable(var):
             return await toput.edit(f"`{variable}`** doesn't exist**")
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"usage(?: |$)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"usage(?: |$)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"usage(?: |$)"))
 async def dyno_usage(dyno):
     """
@@ -179,7 +179,7 @@ def prettyjson(obj, indent=2, maxlinelength=80):
     return indentitems(items, indent, level=0)
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"logs"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"logs"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"logs"))
 async def _(givelogs):
     try:

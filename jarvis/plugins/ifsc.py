@@ -4,10 +4,10 @@ import json
 
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="ifsc(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="ifsc(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="ifsc(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

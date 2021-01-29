@@ -1,9 +1,9 @@
 """use command .ducduckgo"""
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("ducduckgo (.*)", outgoing=True))
+@jarvis.on(j_cmd("ducduckgo (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("ducduckgo (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

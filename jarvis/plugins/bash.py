@@ -2,11 +2,11 @@ import asyncio
 import io
 import time
 
-from jarvis.utils import admin_cmd, edit_or_reply
+from jarvis.utils import j_cmd, edit_or_reply
 
 
-@jarvis.on(admin_cmd(pattern="bash (.*)", outgoing=True))
-@jarvis.on(admin_cmd(pattern="bash (.*)", allow_sudo=True))
+@jarvis.on(j_cmd(pattern="bash (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="bash (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

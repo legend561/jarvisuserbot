@@ -13,7 +13,7 @@ from telethon import events
 
 from jarvis import CMD_HELP
 from jarvis.jconfig import Config
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.WARN
@@ -25,7 +25,7 @@ BOTLOG = True
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"save(?: |$)([\s\S]*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"save(?: |$)([\s\S]*)"))
 async def log(log_text):
     """ For .log command, forwards a message or the command argument to the bot logs group """
     if BOTLOG:
@@ -46,7 +46,7 @@ async def log(log_text):
     await log_text.delete()
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="kickme$"))
+@jarvis.on(j_cmd(outgoing=True, pattern="kickme$"))
 async def kickme(leave):
     """ Basically it's a .kickme command """
     await leave.edit("Nope, no, no, I go away")
@@ -78,7 +78,7 @@ async def monito_p_m_s(event):
                 print(e)
 
 
-@jarvis.on(admin_cmd(pattern="log(?: |$)(.*)"))
+@jarvis.on(j_cmd(pattern="log(?: |$)(.*)"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         event.pattern_match.group(1)
@@ -90,7 +90,7 @@ async def set_no_log_p_m(event):
                 await asyncio.sleep(3)
 
 
-@jarvis.on(admin_cmd(pattern="nolog(?: |$)(.*)"))
+@jarvis.on(j_cmd(pattern="nolog(?: |$)(.*)"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         event.pattern_match.group(1)

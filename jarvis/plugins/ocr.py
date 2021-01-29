@@ -3,7 +3,7 @@ import os
 import requests
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
@@ -38,7 +38,7 @@ async def ocr_space_file(
     return r.json()
 
 
-@jarvis.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="ocr(?: |$)(.*)", allow_sudo=True))
 async def ocr(event):
     jevent = await edit_or_reply(event, "`Reading...`")

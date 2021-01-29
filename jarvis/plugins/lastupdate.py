@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 
 from jarvis.__init__ import Lastupdate
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
 def get_readable_time(seconds: int) -> str:
@@ -34,7 +34,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@jarvis.on(admin_cmd(pattern="uptime", outgoing=True))
+@jarvis.on(j_cmd(pattern="uptime", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="uptime", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

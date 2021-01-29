@@ -10,12 +10,12 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
-@jarvis.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0, 256)

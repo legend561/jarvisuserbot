@@ -6,10 +6,10 @@ Available Commands:
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"padmin"))
+@jarvis.on(j_cmd(pattern=r"padmin"))
 async def _(event):
 
     if event.fwd_from:

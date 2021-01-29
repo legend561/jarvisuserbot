@@ -18,7 +18,7 @@ from jarvis.plugins.sql_helper.filter_sql import (
     remove_all_filters,
     remove_filter,
 )
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 DELETE_TIMEOUT = 0
 TYPE_TEXT = 0
@@ -69,7 +69,7 @@ async def on_snip(event):
                 last_triggered_filters[event.chat_id].remove(name)
 
 
-@jarvis.on(admin_cmd(pattern="savefilter (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="savefilter (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="savefilter (.*)", allow_sudo=True))
 async def on_snip_save(event):
     name = event.pattern_match.group(1)
@@ -106,7 +106,7 @@ async def on_snip_save(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern="listfilters$", outgoing=True))
+@jarvis.on(j_cmd(pattern="listfilters$", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="listfilters$", allow_sudo=True))
 async def on_snip_list(event):
     all_snips = get_all_filters(event.chat_id)
@@ -132,7 +132,7 @@ async def on_snip_list(event):
         await edit_or_reply(event, OUT_STR)
 
 
-@jarvis.on(admin_cmd(pattern="clearfilter (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="clearfilter (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="clearfilter (.*)", allow_sudo=True))
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
@@ -140,7 +140,7 @@ async def on_snip_delete(event):
     await edit_or_reply(event, f"filter {name} deleted successfully")
 
 
-@jarvis.on(admin_cmd(pattern="clearallfilters", outgoing=True))
+@jarvis.on(j_cmd(pattern="clearallfilters", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="clearallfilters", allow_sudo=True))
 async def on_all_snip_delete(event):
     remove_all_filters(event.chat_id)

@@ -14,7 +14,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from jarvis.utils import admin_cmd, edit_or_reply, eor, progress, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, eor, progress, sudo_cmd
 
 thumb_image_path = "/thumb_image.jpg"
 
@@ -43,7 +43,7 @@ def get_video_thumb(file, output=None, width=90):
         return output
 
 
-@jarvis.on(admin_cmd("rename (.*)", outgoing=True))
+@jarvis.on(j_cmd("rename (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("rename (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -74,7 +74,7 @@ async def _(event):
         await ievent.edit("Syntax // `.rename file.name` as reply to a Telegram media")
 
 
-@jarvis.on(admin_cmd(pattern="rnupload (.*)"))
+@jarvis.on(j_cmd(pattern="rnupload (.*)"))
 @jarvis.on(sudo_cmd(pattern="rnup (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -141,7 +141,7 @@ async def _(event):
         )
 
 
-@jarvis.on(admin_cmd("rnstreamupload (.*)"))
+@jarvis.on(j_cmd("rnstreamupload (.*)"))
 @jarvis.on(sudo_cmd("rnstreamupload (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

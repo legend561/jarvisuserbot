@@ -3,12 +3,12 @@ import re
 import bs4
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 langi = "en"
 
 # kanged from Blank-x ;---;
-@jarvis.on(admin_cmd("imdb (.*)", outgoing=True))
+@jarvis.on(j_cmd("imdb (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("imdb (.*)", allow_sudo=True))
 async def imdb(e):
     try:

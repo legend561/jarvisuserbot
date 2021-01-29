@@ -4,10 +4,10 @@
 import asyncio
 from collections import deque
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"clock"))
+@jarvis.on(j_cmd(pattern=r"clock"))
 async def _(event):
     if event.fwd_from:
         return

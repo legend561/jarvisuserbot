@@ -82,7 +82,7 @@ def command(**args):
         return decorator
 
 
-def admin_cmd(pattern=None, **args):
+def j_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()

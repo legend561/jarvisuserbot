@@ -6,7 +6,7 @@ import datetime
 from telethon import events
 from telethon.tl import functions, types
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -41,7 +41,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 
-@jarvis.on(admin_cmd(pattern=r"afk ?(.*)"))
+@jarvis.on(j_cmd(pattern=r"afk ?(.*)"))
 @jarvis.on(sudo_cmd(pattern=r"afk ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

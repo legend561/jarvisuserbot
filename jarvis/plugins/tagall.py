@@ -3,11 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"tagall", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"tagall", allow_sudo=True))
+@jarvis.on(j_cmd(pattern=r"tagall", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"tagall", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,8 +19,8 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern=r"admin", outgoing=True))
-@jarvis.on(admin_cmd(pattern=r"admin", allow_sudo=True))
+@jarvis.on(j_cmd(pattern=r"admin", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"admin", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

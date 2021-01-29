@@ -1,7 +1,7 @@
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"lmoon"))
+@jarvis.on(j_cmd(pattern=r"lmoon"))
 async def test(event):
     if event.fwd_from:
         return
@@ -10,7 +10,7 @@ async def test(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"city"))
+@jarvis.on(j_cmd(pattern=r"city"))
 async def test(event):
     if event.fwd_from:
         return
@@ -27,2142 +27,2142 @@ async def test(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"hai"))
+@jarvis.on(j_cmd(pattern=r"hai"))
 async def hai(event):
     if event.fwd_from:
         return
     await event.edit("🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"love"))
+@jarvis.on(j_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"my"))
+@jarvis.on(j_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 ")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔❤️❤️")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓??𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("🧡🧡𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔🧡🧡")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💙💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("🖤🖤𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔🖤🖤")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💙💙")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💝💝𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💝💝")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💖💖𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💖💖")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💝💝𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💝💝")
 
 
-@jarvis.on(admin_cmd(pattern=r"hi"))
+@jarvis.on(j_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
 
-@jarvis.on(admin_cmd(pattern=r"cheer"))
+@jarvis.on(j_cmd(pattern=r"cheer"))
 async def cheer(event):
     if event.fwd_from:
         return
@@ -2171,14 +2171,14 @@ async def cheer(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"getwell"))
+@jarvis.on(j_cmd(pattern=r"getwell"))
 async def getwell(event):
     if event.fwd_from:
         return
     await event.edit("🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GetBetter Soon! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹")
 
 
-@jarvis.on(admin_cmd(pattern=r"sprinkle"))
+@jarvis.on(j_cmd(pattern=r"sprinkle"))
 async def sprinkle(event):
     if event.fwd_from:
         return
@@ -2187,7 +2187,7 @@ async def sprinkle(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kerala"))
+@jarvis.on(j_cmd(pattern=r"kerala"))
 async def kerala(event):
     if event.fwd_from:
         return
@@ -2196,7 +2196,7 @@ async def kerala(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"ind"))
+@jarvis.on(j_cmd(pattern=r"ind"))
 async def ind(event):
     if event.fwd_from:
         return
@@ -2205,7 +2205,7 @@ async def ind(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"like"))
+@jarvis.on(j_cmd(pattern=r"like"))
 async def like(event):
     if event.fwd_from:
         return
@@ -2214,7 +2214,7 @@ async def like(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"sup"))
+@jarvis.on(j_cmd(pattern=r"sup"))
 async def sup(event):
     if event.fwd_from:
         return
@@ -2223,7 +2223,7 @@ async def sup(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2232,7 +2232,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2241,7 +2241,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2250,7 +2250,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2259,7 +2259,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2268,7 +2268,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2277,7 +2277,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2286,7 +2286,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2295,7 +2295,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2304,7 +2304,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2313,7 +2313,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2322,7 +2322,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2331,7 +2331,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2340,7 +2340,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2349,7 +2349,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2358,7 +2358,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2367,7 +2367,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2376,7 +2376,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2385,7 +2385,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2394,7 +2394,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2403,7 +2403,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2412,7 +2412,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2421,7 +2421,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2430,7 +2430,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2439,7 +2439,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2448,7 +2448,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"kis"))
+@jarvis.on(j_cmd(pattern=r"kis"))
 async def kis(event):
     if event.fwd_from:
         return
@@ -2457,7 +2457,7 @@ async def kis(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"hello"))
+@jarvis.on(j_cmd(pattern=r"hello"))
 async def hello(event):
     if event.fwd_from:
         return
@@ -2466,7 +2466,7 @@ async def hello(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"welcome"))
+@jarvis.on(j_cmd(pattern=r"welcome"))
 async def getwell(event):
     if event.fwd_from:
         return
@@ -2484,7 +2484,7 @@ async def getwell(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"ooof"))
+@jarvis.on(j_cmd(pattern=r"ooof"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -2498,7 +2498,7 @@ async def hi(event):
     )
 
 
-@jarvis.on(admin_cmd(pattern=r"indiaflag"))
+@jarvis.on(j_cmd(pattern=r"indiaflag"))
 async def hi(event):
     if event.fwd_from:
         return

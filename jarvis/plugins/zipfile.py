@@ -3,11 +3,11 @@ import os
 import time
 import zipfile
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="compress ?(.*)"))
-@jarvis.on(admin_cmd(pattern="compress ?(.*)", allow_sudo=True))
+@jarvis.on(j_cmd(pattern="compress ?(.*)"))
+@jarvis.on(j_cmd(pattern="compress ?(.*)", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:

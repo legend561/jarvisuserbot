@@ -9,7 +9,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from jarvis import ALIVE_NAME, CMD_HELP
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis"
 DEFAULTUSERBIO = "404: No bio found!˙"
@@ -20,7 +20,7 @@ else:
     BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 
 
-@jarvis.on(admin_cmd(pattern="clone ?(.*)"))
+@jarvis.on(j_cmd(pattern="clone ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +68,7 @@ async def _(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern="revert"))
+@jarvis.on(j_cmd(pattern="revert"))
 async def _(event):
     if event.fwd_from:
         return

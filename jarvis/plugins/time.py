@@ -7,13 +7,13 @@ from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@jarvis.on(admin_cmd("time ?(.*)"))  # pylint:disable=E0602
-@jarvis.on(admin_cmd("time ?(.*)", allow_sudo=True))
+@jarvis.on(j_cmd("time ?(.*)"))  # pylint:disable=E0602
+@jarvis.on(j_cmd("time ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -54,7 +54,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
+@jarvis.on(j_cmd("gtime (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

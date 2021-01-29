@@ -4,11 +4,11 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from jarvis import bot
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
 # @register(outgoing=True, pattern="^.q(?: |$)(.*)")
-@jarvis.on(admin_cmd(pattern=r"qbot(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"qbot(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"qbot(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

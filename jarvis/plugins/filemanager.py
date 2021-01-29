@@ -11,12 +11,12 @@ import time
 from os.path import exists, isdir
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd, eor, humanbytes, sudo_cmd
+from jarvis.utils import j_cmd, eor, humanbytes, sudo_cmd
 
 MAX_MESSAGE_SIZE_LIMIT = 4095
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern=r"ls ?(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern=r"ls ?(.*)"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern=r"ls ?(.*)"))
 async def lst(event):
     if event.fwd_from:

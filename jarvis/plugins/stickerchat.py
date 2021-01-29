@@ -24,7 +24,7 @@ import requests
 import telethon
 from PIL import Image
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 logger = logging.getLogger(__name__)
 
@@ -69,7 +69,7 @@ if 1 == 1:
     )
     client = bot
 
-    @jarvis.on(admin_cmd(pattern="chat(.*)"))
+    @jarvis.on(j_cmd(pattern="chat(.*)"))
     async def quotecmd(message):  # noqa: C901
         """Quote a message.
         Usage: .quote [template]

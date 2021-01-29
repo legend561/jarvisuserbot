@@ -1,10 +1,10 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="purl ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="purl ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="purl ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -34,7 +34,7 @@ async def _(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern="sang ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="sang ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="sang ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -65,7 +65,7 @@ async def _(event):
         )
 
 
-@jarvis.on(admin_cmd(pattern="reader ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="reader ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="reader ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

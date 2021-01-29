@@ -11,10 +11,10 @@ from telethon.tl.types import (
 )
 from telethon.utils import pack_bot_file_id
 
-from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="random"))
+@jarvis.on(j_cmd(outgoing=True, pattern="random"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="random"))
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
@@ -31,7 +31,7 @@ async def randomise(items):
         )
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="sleep( [0-9]+)?$"))
+@jarvis.on(j_cmd(outgoing=True, pattern="sleep( [0-9]+)?$"))
 @jarvis.on(sudo_cmd(allow_sudo=True, pattern="sleep( [0-9]+)?$"))
 async def sleepybot(time):
     """ For .sleep command, let the userbot snooze for a few second. """
@@ -51,7 +51,7 @@ async def sleepybot(time):
             sleep(counter)
 
 
-@jarvis.on(admin_cmd("listbots", outgoing=True))
+@jarvis.on(j_cmd("listbots", outgoing=True))
 @jarvis.on(sudo_cmd("listbots", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -84,7 +84,7 @@ async def _(event):
     await event.reply(mentions)
 
 
-@jarvis.on(admin_cmd("id", outgoing=True))
+@jarvis.on(j_cmd("id", outgoing=True))
 @jarvis.on(sudo_cmd("id", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -111,7 +111,7 @@ async def _(event):
         await eor(event, "Current Chat ID: `{}`".format(str(event.chat_id)))
 
 
-@jarvis.on(admin_cmd("listadmins", outgoing=True))
+@jarvis.on(j_cmd("listadmins", outgoing=True))
 @jarvis.on(sudo_cmd("listadmins", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

@@ -10,11 +10,11 @@ from datetime import datetime
 from gtts import gTTS
 
 from jarvis import CMD_HELP
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="voice (.*)"))
-@jarvis.on(admin_cmd(pattern="voice (.*)", allow_sudo=True))
+@jarvis.on(j_cmd(pattern="voice (.*)"))
+@jarvis.on(j_cmd(pattern="voice (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

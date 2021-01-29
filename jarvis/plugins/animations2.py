@@ -1,7 +1,7 @@
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"hhi ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"hhi ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"hhi ?(.*)", allow_sudo=True))
 async def hhi(event):
     giveVar = event.text
@@ -19,10 +19,10 @@ async def hhi(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="dump ?(.*)"))
+@jarvis.on(j_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
@@ -63,10 +63,10 @@ async def _(message):
 
 import random
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"jainder(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"jainder(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"jainder(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -169,10 +169,10 @@ async def _(event):
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"lol", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"lol", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"lol", allow_sudo=True))
 async def _(event):
 
@@ -245,10 +245,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("ok"))
+@jarvis.on(j_cmd("ok"))
 async def _(event):
     if event.fwd_from:
         return
@@ -287,7 +287,7 @@ import asyncio
 from telethon import events
 
 
-@jarvis.on(admin_cmd(pattern="plane", outgoing=True))
+@jarvis.on(j_cmd(pattern="plane", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -312,10 +312,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"quickheal"))
+@jarvis.on(j_cmd(pattern=r"quickheal"))
 async def _(event):
 
     if event.fwd_from:
@@ -364,10 +364,10 @@ Syntax: .rdl
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"rdl", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"rdl", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -579,10 +579,10 @@ async def _(event):
 
 import random
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="coin ?(.*)"))
+@jarvis.on(j_cmd(pattern="coin ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="coin ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -617,10 +617,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"fleave"))
+@jarvis.on(j_cmd(pattern=r"fleave"))
 async def _(event):
 
     if event.fwd_from:
@@ -664,10 +664,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="cry"))
+@jarvis.on(j_cmd(pattern="cry"))
 async def _(event):
 
     if event.fwd_from:
@@ -728,10 +728,10 @@ async def _(event):
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("scan ?(.*)"))
+@jarvis.on(j_cmd("scan ?(.*)"))
 @jarvis.on(sudo_cmd("scan ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -775,10 +775,10 @@ async def _(event):
 """COMMAND : .join , .pay , .work , .push , .aag , .climb"""
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="join"))
+@jarvis.on(j_cmd(pattern="join"))
 async def _(event):
     if event.fwd_from:
         return
@@ -795,7 +795,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="pay"))
+@jarvis.on(j_cmd(pattern="pay"))
 async def _(event):
     if event.fwd_from:
         return
@@ -812,7 +812,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="climb"))
+@jarvis.on(j_cmd(pattern="climb"))
 async def _(event):
     if event.fwd_from:
         return
@@ -829,7 +829,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="aag"))
+@jarvis.on(j_cmd(pattern="aag"))
 async def _(event):
     if event.fwd_from:
         return
@@ -846,7 +846,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="push"))
+@jarvis.on(j_cmd(pattern="push"))
 async def _(event):
     if event.fwd_from:
         return
@@ -863,7 +863,7 @@ async def _(event):
     await event.delete()
 
 
-@jarvis.on(admin_cmd(pattern="work"))
+@jarvis.on(j_cmd(pattern="work"))
 async def _(event):
     if event.fwd_from:
         return
@@ -882,10 +882,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="watt"))
+@jarvis.on(j_cmd(pattern="watt"))
 async def _(event):
 
     if event.fwd_from:
@@ -908,10 +908,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("think"))
+@jarvis.on(j_cmd("think"))
 async def _(event):
     if event.fwd_from:
         return
@@ -971,7 +971,7 @@ from collections import deque
 from telethon import events
 
 
-@jarvis.on(admin_cmd(pattern="rainl", outgoing=True))
+@jarvis.on(j_cmd(pattern="rainl", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -985,12 +985,12 @@ async def _(event):
 import asyncio
 
 from jarvis import ALIVE_NAME
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Jarvis Userbot"
 
 
-@jarvis.on(admin_cmd(pattern=r"police"))
+@jarvis.on(j_cmd(pattern=r"police"))
 async def _(event):
 
     if event.fwd_from:
@@ -1028,10 +1028,10 @@ async def _(event):
 import asyncio
 import random
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=f"tip", outgoing=True))
+@jarvis.on(j_cmd(pattern=f"tip", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=f"tip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -1564,10 +1564,10 @@ from collections import deque
 from telethon.tl.functions.channels import LeaveChannelRequest
 
 from jarvis import CMD_HELP, bot
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("leave"))
+@jarvis.on(j_cmd("leave"))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`I iz Leaving dis Lol Group kek!`")
@@ -1578,7 +1578,7 @@ async def leave(e):
             await e.edit("`But Boss! This is Not A Chat`")
 
 
-@jarvis.on(admin_cmd(";__;"))
+@jarvis.on(j_cmd(";__;"))
 # @register(outgoing=True, pattern="^;__;$")
 async def fun(e):
     t = ";__;"
@@ -1587,7 +1587,7 @@ async def fun(e):
         await e.edit(t)
 
 
-@jarvis.on(admin_cmd("yo"))
+@jarvis.on(j_cmd("yo"))
 # @register(outgoing=True, pattern="^yo$")
 async def Ooo(e):
     t = "yo"
@@ -1596,7 +1596,7 @@ async def Ooo(e):
         await e.edit(t)
 
 
-@jarvis.on(admin_cmd("oof"))
+@jarvis.on(j_cmd("oof"))
 # @register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
     t = "Oof"
@@ -1605,21 +1605,21 @@ async def Oof(e):
         await e.edit(t)
 
 
-@jarvis.on(admin_cmd("ccry"))
+@jarvis.on(j_cmd("ccry"))
 # @register(outgoing=True, pattern="^.cry$")
 async def cry(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
 
 
-@jarvis.on(admin_cmd("fp"))
+@jarvis.on(j_cmd("fp"))
 # @register(outgoing=True, pattern="^.fp$")
 async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("🤦‍♂")
 
 
-@jarvis.on(admin_cmd("moon"))
+@jarvis.on(j_cmd("moon"))
 # @register(outgoing=True, pattern="^.mmoon$")
 async def _(event):
     if event.fwd_from:
@@ -1631,21 +1631,21 @@ async def _(event):
         deq.rotate(1)
 
 
-@jarvis.on(admin_cmd("source"))
+@jarvis.on(j_cmd("source"))
 # @register(outgoing=True, pattern="^.source$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("https://jarvisuserbot.gitbook.io/jarvisuserbot/")
 
 
-@jarvis.on(admin_cmd("readme"))
+@jarvis.on(j_cmd("readme"))
 # @register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("https://jarvisuserbot.gitbook.io/jarvisuserbot/")
 
 
-@jarvis.on(admin_cmd("hheart"))
+@jarvis.on(j_cmd("hheart"))
 # @register(outgoing=True, pattern="^.heart$")
 async def _(event):
     if event.fwd_from:
@@ -1659,10 +1659,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"macos"))
+@jarvis.on(j_cmd(pattern=r"macos"))
 async def _(event):
 
     if event.fwd_from:
@@ -1696,7 +1696,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=r"windows"))
+@jarvis.on(j_cmd(pattern=r"windows"))
 async def _(event):
 
     if event.fwd_from:
@@ -1730,7 +1730,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=r"linux"))
+@jarvis.on(j_cmd(pattern=r"linux"))
 async def _(event):
 
     if event.fwd_from:
@@ -1764,7 +1764,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=r"stock"))
+@jarvis.on(j_cmd(pattern=r"stock"))
 async def _(event):
 
     if event.fwd_from:
@@ -1798,7 +1798,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@jarvis.on(admin_cmd(pattern=r"os"))
+@jarvis.on(j_cmd(pattern=r"os"))
 async def _(event):
 
     if event.fwd_from:
@@ -1828,10 +1828,10 @@ async def _(event):
         await event.edit(animation_chars[i % 7])
 
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"shout"))
+@jarvis.on(j_cmd(pattern=r"shout"))
 async def shout(args):
     if args.fwd_from:
         return
@@ -1853,10 +1853,10 @@ async def shout(args):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"hypno"))
+@jarvis.on(j_cmd(pattern=r"hypno"))
 async def _(event):
 
     if event.fwd_from:
@@ -1902,10 +1902,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd("moody"))
+@jarvis.on(j_cmd("moody"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1937,10 +1937,10 @@ import random
 
 import requests
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="quote ?(.*)"))
+@jarvis.on(j_cmd(pattern="quote ?(.*)"))
 async def quote_search(event):
     if event.fwd_from:
         return
@@ -1968,10 +1968,10 @@ async def quote_search(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"smoon"))
+@jarvis.on(j_cmd(pattern=r"smoon"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1998,7 +1998,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@jarvis.on(admin_cmd(pattern=r"tmoon"))
+@jarvis.on(j_cmd(pattern=r"tmoon"))
 async def _(event):
 
     if event.fwd_from:
@@ -2059,10 +2059,10 @@ async def _(event):
 
 import random
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"react (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"react (.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -2167,10 +2167,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern="lucky"))
+@jarvis.on(j_cmd(pattern="lucky"))
 async def _(event):
     if event.fwd_from:
         return
@@ -2205,10 +2205,10 @@ async def _(event):
 
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

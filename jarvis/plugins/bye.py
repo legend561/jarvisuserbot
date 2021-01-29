@@ -8,10 +8,10 @@ import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("bye", outgoing=True))
+@jarvis.on(j_cmd("bye", outgoing=True))
 @jarvis.on(sudo_cmd("bye", allow_sudo=True))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):

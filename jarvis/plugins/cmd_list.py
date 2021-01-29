@@ -1,10 +1,10 @@
 import asyncio
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 # @command(pattern="^.cmds", outgoing=True)
-@jarvis.on(admin_cmd(pattern=r"cmds"))
+@jarvis.on(j_cmd(pattern=r"cmds"))
 async def install(event):
     if event.fwd_from:
         return

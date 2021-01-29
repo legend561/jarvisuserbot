@@ -5,10 +5,10 @@ import os
 import sys
 
 from jarvis import CMD_HNDLR, SUDO_HNDLR
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="restart", outgoing=True))
+@jarvis.on(j_cmd(pattern="restart", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -48,7 +48,7 @@ async def _(event):
     quit()
 
 
-@jarvis.on(admin_cmd(pattern="shutdown", outgoing=True))
+@jarvis.on(j_cmd(pattern="shutdown", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="shutdown", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

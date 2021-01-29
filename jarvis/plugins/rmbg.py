@@ -7,10 +7,10 @@ from datetime import datetime
 
 import requests
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd("rmbg ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("rmbg ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("rmbg ?(.*)", allow_sudo=True))
 async def _(event):
     HELP_STR = (

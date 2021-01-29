@@ -4,10 +4,10 @@ import io
 import sys
 import traceback
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="eval", outgoing=True))
+@jarvis.on(j_cmd(pattern="eval", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

@@ -6,10 +6,10 @@ import os
 import time
 from datetime import datetime
 
-from jarvis.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, progress, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="convert (.*)", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="convert (.*)", outgoing=True))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="convert (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

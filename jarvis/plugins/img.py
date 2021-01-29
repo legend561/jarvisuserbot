@@ -8,10 +8,10 @@ import shutil
 from re import findall
 
 from jarvis.google_imgs import googleimagesdownload
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="img ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="img ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="img ?(.*)", allow_sudo=True))
 async def img_sampler(event):
     await edit_or_reply(event, "`Processing...`")

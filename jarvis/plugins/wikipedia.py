@@ -1,9 +1,9 @@
 import wikipedia
 
-from jarvis.utils import admin_cmd, sudo_cmd
+from jarvis.utils import j_cmd, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="wikipedia (.*)"))
+@jarvis.on(j_cmd(pattern="wikipedia (.*)"))
 @jarvis.on(sudo_cmd(pattern="wikipedia (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

@@ -3,7 +3,7 @@ from telethon.events import ChatAction
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import MessageEntityMentionName
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 async def get_full_user(event):
@@ -48,7 +48,7 @@ async def get_user_from_id(user, event):
     return user_obj
 
 
-@jarvis.on(admin_cmd(pattern="gban ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="gban ?(.*)", outgoing=True))
 async def gben(userbot):
     dc = userbot
     sender = await dc.get_sender()
@@ -112,7 +112,7 @@ async def gben(userbot):
     )
 
 
-@jarvis.on(admin_cmd(pattern="ungban ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="ungban ?(.*)", outgoing=True))
 async def gunben(userbot):
     dc = userbot
     sender = await dc.get_sender()

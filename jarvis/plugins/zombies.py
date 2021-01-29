@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 from jarvis import CMD_HNDLR
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 # =================== CONSTANT ===================
 
@@ -42,7 +42,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@jarvis.on(admin_cmd(pattern="zombies"))
+@jarvis.on(j_cmd(pattern="zombies"))
 @jarvis.on(sudo_cmd(pattern="zombies", allow_sudo=True))
 async def rm_deletedacc(show):
     """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """

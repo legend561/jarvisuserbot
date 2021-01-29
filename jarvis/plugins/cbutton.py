@@ -6,7 +6,7 @@ import re
 
 from telethon import Button
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 from .. import CMD_HELP
 
@@ -15,7 +15,7 @@ from .. import CMD_HELP
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@jarvis.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"cbutton(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     chat = event.chat_id
@@ -68,7 +68,7 @@ async def _(event):
 # Helpers
 
 
-@jarvis.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"ibutton( (.*)|$)", allow_sudo=True))
 async def _(event):
     reply_to_id = None

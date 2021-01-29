@@ -2,11 +2,11 @@
 import asyncio
 import time
 
-from jarvis.utils import admin_cmd
+from jarvis.utils import j_cmd
 
 
 @jarvis.on(
-    admin_cmd(
+    j_cmd(
         pattern="webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)"
     )
 )

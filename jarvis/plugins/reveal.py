@@ -6,10 +6,10 @@
 #
 import os
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern=r"reveal", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"reveal", outgoing=True))
 @jarvis.on(sudo_cmd(pattern=r"reveal", allow_sudo=True))
 async def _(event):
     b = await event.client.download_media(await event.get_reply_message())

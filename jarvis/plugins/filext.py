@@ -3,10 +3,10 @@ Syntax: .filext EXTENSION"""
 import requests
 from bs4 import BeautifulSoup
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="filext (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="filext (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="filext (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

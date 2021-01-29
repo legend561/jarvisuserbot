@@ -1,12 +1,12 @@
 from telethon import functions
 
 from jarvis import ALIVE_NAME, CMD_HELP, CMD_LIST
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@JarvisOT"
 
 
-@jarvis.on(admin_cmd(pattern="help ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="help ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def cmd_list(event):
     tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
@@ -54,7 +54,7 @@ Jarvis Helper to reveal all the commands\n__Do .help plugin_name for commands, i
         await event.delete()
 
 
-@jarvis.on(admin_cmd(outgoing=True, pattern="info ?(.*)"))
+@jarvis.on(j_cmd(outgoing=True, pattern="info ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="info ?(.*)", allow_sudo=True))
 async def info(event):
     """ For .info command,"""
@@ -81,7 +81,7 @@ async def info(event):
             await event.edit(string.format(count=catcount), parse_mode="HTML")
 
 
-@jarvis.on(admin_cmd(pattern="dc", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="dc", outgoing=True))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -90,7 +90,7 @@ async def _(event):
     await edit_or_reply(event, result.stringify())
 
 
-@jarvis.on(admin_cmd(pattern="config", outgoing=True))  # pylint:disable=E0602
+@jarvis.on(j_cmd(pattern="config", outgoing=True))  # pylint:disable=E0602
 @jarvis.on(sudo_cmd(pattern="config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -101,7 +101,7 @@ async def _(event):
     await edit_or_reply(event, """Telethon UserBot powered by JARVIS UserBot""")
 
 
-@jarvis.on(admin_cmd(pattern="syntax (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="syntax (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="syntax (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

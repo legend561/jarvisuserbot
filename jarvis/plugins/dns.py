@@ -6,10 +6,10 @@ Available Commands:
 .unshort <short url>"""
 import requests
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("dns (.*)", outgoing=True))
+@jarvis.on(j_cmd("dns (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("dns (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -25,7 +25,7 @@ async def _(event):
         await event.edit("i can't seem to find {} on the internet".format(input_str))
 
 
-@jarvis.on(admin_cmd("url (.*)", outgoing=True))
+@jarvis.on(j_cmd("url (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("url (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -41,7 +41,7 @@ async def _(event):
         await event.edit("something is wrong. please try again later.")
 
 
-@jarvis.on(admin_cmd("unshort (.*)", outgoing=True))
+@jarvis.on(j_cmd("unshort (.*)", outgoing=True))
 @jarvis.on(sudo_cmd("unshort (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

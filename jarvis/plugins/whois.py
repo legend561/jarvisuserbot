@@ -8,10 +8,10 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from jarvis.utils import admin_cmd, edit_or_reply, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
-@jarvis.on(admin_cmd("whois ?(.*)", outgoing=True))
+@jarvis.on(j_cmd("whois ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd("whois ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

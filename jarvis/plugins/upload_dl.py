@@ -14,7 +14,7 @@ from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
 from jarvis import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
-from jarvis.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+from jarvis.utils import j_cmd, edit_or_reply, eor, sudo_cmd
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
@@ -77,7 +77,7 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-@jarvis.on(admin_cmd(pattern="dl(?: |$)(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="dl(?: |$)(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="dl(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
@@ -155,7 +155,7 @@ async def download(target_file):
         await target_file.edit("Reply to a message to download to my local server.")
 
 
-@jarvis.on(admin_cmd(pattern="uploadir (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="uploadir (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="uploadir (.*)", allow_sudo=True))
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
@@ -242,7 +242,7 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-@jarvis.on(admin_cmd(pattern="upload (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="upload (.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="upload (.*)", allow_sudo=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
@@ -319,7 +319,7 @@ def extract_w_h(file):
         return width, height
 
 
-@jarvis.on(admin_cmd(pattern=r"uploadas(stream|vn|all) (.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern=r"uploadas(stream|vn|all) (.*)", outgoing=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
     await eor(uas_event, "Processing ...")

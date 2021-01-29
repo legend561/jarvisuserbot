@@ -7,10 +7,10 @@
 import asyncio
 import os
 
-from jarvis.utils import admin_cmd, eor, sudo_cmd
+from jarvis.utils import j_cmd, eor, sudo_cmd
 
 
-@jarvis.on(admin_cmd(pattern="repack ?(.*)", outgoing=True))
+@jarvis.on(j_cmd(pattern="repack ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="repack ?(.*)", allow_sudo=True))
 async def _(event):
     jevent = await event.get_reply_message()
