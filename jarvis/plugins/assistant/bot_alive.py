@@ -1,6 +1,6 @@
 from telethon import events
 
-from jarvis import ALIVE_NAME, bot
+from jarvis import ALIVE_NAME
 from jarvis.plugins import currentversion
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
