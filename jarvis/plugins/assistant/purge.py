@@ -19,7 +19,7 @@ from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
 from jarvis import jarvisub
-from jarvis.utils import bot
+
 
 OWNER_ID = jarvisub.uid
 # Check if user has admin rights
