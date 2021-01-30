@@ -9,7 +9,7 @@ from datetime import datetime
 
 from telethon import events
 
-from jarvis import Lastupdate, bot
+from jarvis import Lastupdate
 
 
 def get_readable_time(seconds: int) -> str:
