@@ -2,7 +2,7 @@
 import time
 from datetime import datetime
 
-from jarvis.__init__ import Lastupdate
+from jarvis import Lastupdate
 from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
 
