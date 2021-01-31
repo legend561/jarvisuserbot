@@ -69,13 +69,15 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @jarvis.on(j_cmd(pattern=r"alive"))
 @jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
+    if event.fwd_from:
+        return
     start = datetime.now()
     jarvisub.uid
     end = datetime.now()
     (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
     if ALIVE_PIC:
-        pm_caption = "**Master JARVIS AT YOU SERVICE 🤗 **\n"
+        pm_caption = "**Jarvis Is Alive 🤗 **\n"
         pm_caption += f"**••Mу Bσѕѕ••**           {DEFAULTUSER}\n"
         pm_caption += " **✓ JARVIS STATS ✓** \n"
         pm_caption += "  🔸 ➣**Pутнση Vєяѕιση**    `3.8.5`\n"
