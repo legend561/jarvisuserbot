@@ -94,7 +94,6 @@ async def autopic(event):
 .autoname"""
 import asyncio
 import time
-from jarvis import PRIVATE_GROUP_BOT_API_ID
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 import logging
