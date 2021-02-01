@@ -57,6 +57,8 @@ FONT_FILE_TO_USE = "fonts/digital.ttf"
 @jarvis.on(j_cmd(pattern=r"autopic"))
 @jarvis.on(sudo_cmd(pattern=r"autopic", allow_sudo=True))
 async def autopic(event):
+    if event.fwd_from:
+        return
     downloaded_file_name = "jarvis/original_pic.png"
     downloader = SmartDL(
         Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False
@@ -92,10 +94,10 @@ async def autopic(event):
 .autoname"""
 import asyncio
 import time
-
+from jarvis import PRIVATE_GROUP_BOT_API_ID
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
-
+import logging
 from jarvis import ALIVE_NAME
 from jarvis.utils import j_cmd, edit_or_reply, sudo_cmd
 
@@ -123,11 +125,11 @@ async def _(event):
             logger.warning(str(e))
             await asyncio.sleep(ex.seconds)
 
-        # else:
-        # logger.info(r.stringify())
-        # await jarvis.send_message(  # pylint:disable=E0602
-        #     Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-        #     "Successfully Changed Profile Name"
-        # )
+        #if PRIVATE_GROUP_BOT_API_ID :
+         #   logger.info(r.stringify())
+          #  await jarvis.send_message( # pylint:disable=E0602
+           #     Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+            #    "Successfully Changed Profile Name"
+            #)
         await asyncio.sleep(DEL_TIME_OUT)
     await edit_or_reply(event, f"Auto Name has been started Master")
