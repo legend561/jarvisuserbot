@@ -6,7 +6,7 @@ from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 
 import jarvis.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from jarvis import ALIVE_NAME, CMD_HELP
+from jarvis import ALIVE_NAME, CMD_HELP, jarvisub
 from jarvis.utils import j_cmd
 
 DEFAULTUSER = (
