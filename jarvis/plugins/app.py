@@ -11,6 +11,8 @@ from jarvis.utils import j_cmd, sudo_cmd
 @jarvis.on(j_cmd(pattern="app (.*)"))
 @jarvis.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(e):
+    if event.fwd_from:
+        return
     try:
         app_name = e.pattern_match.group(1)
         remove_space = app_name.split(" ")
