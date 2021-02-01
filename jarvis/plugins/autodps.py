@@ -39,6 +39,8 @@ async def animepp():
 @jarvis.on(j_cmd(pattern="avengersdp ?(.*)"))
 @jarvis.on(sudo_cmd(pattern="avengersdp ?(.*)", allow_sudo=True))
 async def main(event):
+    if event.fwd_from:
+        return
     await edit_or_reply(
         event,
         "**Starting Avengers Profile Pic...\n\nDone ! Check Your DP By @JarvisOt**",
@@ -93,6 +95,8 @@ async def animepp():
 @jarvis.on(j_cmd(pattern="gamerdp ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="gamerdp ?(.*)", allow_sudo=True))
 async def main(event):
+    if event.fwd_from:
+        return
     await edit_or_reply(
         event, "**Starting Gamer Profile Pic...\n\nDone !!! Check Your DP"
     )
@@ -138,6 +142,8 @@ async def animepp():
 @jarvis.on(j_cmd(pattern="hackerdp ?(.*)", outgoing=True))
 @jarvis.on(sudo_cmd(pattern="hackerdp ?(.*)", allow_sudo=True))
 async def main(event):
+    if event.fwd_from:
+        return
     await edit_or_reply(
         event, "**Starting Hacker Profile Pic...\n\nDone !!! Check Your DP"
     )  # Owner MarioDevs
@@ -198,7 +204,8 @@ async def animepp():
 
 @jarvis.on(j_cmd(pattern="spacedp ?(.*)"))
 async def main(event):
-
+    if event.fwd_from:
+        return
     await event.edit(
         "**Starting Space Profile Pic...\n\nDone !!! Check Your DP"
     )  # Owner MarioDevs
