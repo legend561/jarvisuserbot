@@ -12,7 +12,7 @@
 [![GPL-3.0 license](https://img.shields.io/badge/License-GPL3.0-blue.svg)](https://perso.crans.org/besson/LICENSE.html)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-![Python Version](https://img.shields.io/badge/Python-v3.8-blue)
+![Python Version](https://img.shields.io/badge/Python-v3.9-green)
 ![Repo Size](https://img.shields.io/github/repo-size/Jarvis-Works/jarvisuserbot)
 ![Commit Activity](https://img.shields.io/github/commit-activity/w/Jarvis-Works/jarvisuserbot)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c31abbf24d14db89a96e5797b6db93e)](https://app.codacy.com/gh/Jarvis-Works/JarvisUserbot?utm_source=github.com&utm_medium=referral&utm_content=Jarvis-Works/JarvisUserbot&utm_campaign=Badge_Grade)
 [![HitCount](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot.svg)](http://hits.dwyl.com/Jarvis-Works/jarvisuserbot)
