@@ -69,7 +69,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 @jarvis.on(j_cmd(pattern=r"alive"))
 @jarvis.on(sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def jarvis(alive):
-    if event.fwd_from:
+    if alive.fwd_from:
         return
     start = datetime.now()
     jarvisub.uid
