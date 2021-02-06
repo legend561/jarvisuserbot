@@ -17,6 +17,7 @@ import requests
 from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 from jarvis.plugins.sql_helper import server_pinger_sql as jserver
 from jarvis.utils import j_cmd
+from jarvis.jconfig import Config
 if Config.PING_SERVERS:
     @jarvis.on(j_cmd(pattern="aping"))
     async def _(event):
