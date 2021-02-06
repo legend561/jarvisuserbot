@@ -151,7 +151,7 @@ if ENV:
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "ENABLE")
         ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
-
+        PING_SERVER_EVERY_MINUTE_VALUE = int(os.environ.get("PING_SERVER_EVERY_MINUTE_VALUE", 10))
 
 else:
 
