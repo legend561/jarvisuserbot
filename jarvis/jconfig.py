@@ -152,7 +152,7 @@ if ENV:
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "ENABLE")
         ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
         PING_SERVER_EVERY_MINUTE_VALUE = int(os.environ.get("PING_SERVER_EVERY_MINUTE_VALUE", 10))
-
+        PING_SERVERS = os.environ.get("PING_SERVERS", None)
 else:
 
     class Config(object):
