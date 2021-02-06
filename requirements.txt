@@ -62,4 +62,4 @@ glitch-this
 psutil
 pytube
 nospamplus
-apsheduler
+apscheduler
