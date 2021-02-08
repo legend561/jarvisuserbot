@@ -400,7 +400,7 @@ def load_module(shortname):
         mod.logger = logging.getLogger(shortname)
         sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
-        mod.jarvis = jarvis
+        mod.jarvis = jarvisub
         mod.jarvisub = jarvisub
         mod.j_cmd = j_cmd
         mod.sudo_cmd = sudo_cmd
