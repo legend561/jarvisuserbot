@@ -402,6 +402,10 @@ def load_module(shortname):
         mod.Config = Config
         mod.jarvis = jarvis
         mod.jarvisub = jarvisub
+        mod.j_cmd = j_cmd
+        mod.sudo_cmd = sudo_cmd
+        mod.eor = eor
+        mod.edit_or_reply = edit_or_reply
         sys.modules["jarvis.events"] = jarvis.utils
         spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins." + shortname] = mod
