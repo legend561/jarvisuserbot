@@ -10,8 +10,8 @@ from jarvis.jconfig import Config
 from var import Var
 
 SUDO_LIST = Config.SUDO_USERS
-handler = "^" + Config.CMD_HNDLR
-sudo_hndlr = "^" + Config.SUDO_HNDLR
+handler = Config.CMD_HNDLR
+sudo_hndlr = Config.SUDO_HNDLR
 
 
 def command(**args):
@@ -398,16 +398,14 @@ def load_module(shortname):
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
-        # support for jarvis
         sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
-        mod.jarvis = jarvisub
-        # support for jarvis
+        mod.jarvis = jarvis
+        mod.jarvisub = jarvisub
         sys.modules["jarvis.events"] = jarvis.utils
         spec.loader.exec_module(mod)
-        # for imports
         sys.modules["jarvis.plugins." + shortname] = mod
-        # print("Jarvis Has Been Started Sucessfully")
+        #print("Jarvis Has Been Started Sucessfully")
 
 
 def remove_plugin(shortname):
