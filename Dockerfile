@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:buster
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt upgrade -y && apt-get install sudo -y
 
