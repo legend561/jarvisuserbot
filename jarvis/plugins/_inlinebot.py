@@ -1,6 +1,7 @@
 import math
 import os
 import re
+from jarvis import jarvisub
 
 from telethon import custom, events
 
@@ -21,7 +22,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "©JARVIS Userbot Help",
+                "Â©JARVIS Userbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
@@ -76,7 +77,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-                © JARVIS Userbot".format(
+                Â© JARVIS Userbot".format(
                 plugin_name
             )
             try:
@@ -127,11 +128,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⌫", data="{}_prev({})".format(prefix, modulo_page)
+                    "â«", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("☐", data="close"),
+                custom.Button.inline("â", data="close"),
                 custom.Button.inline(
-                    "⌦", data="{}_next({})".format(prefix, modulo_page)
+                    "â¦", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
