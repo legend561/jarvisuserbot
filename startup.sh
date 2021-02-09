@@ -11,4 +11,4 @@ Hey There , Join @JarvisOT For Updates
 
 "
 
-python3 -m jarvis
+python -m jarvis
