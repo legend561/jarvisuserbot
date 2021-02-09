@@ -1,5 +1,4 @@
-FROM debian:buster
-ARG DEBIAN_FRONTEND=noninteractive
+FROM ubuntu:14.04
 RUN apt-get update && apt upgrade -y && apt-get install sudo -y
 
 RUN apt-get install -y\
