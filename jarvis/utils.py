@@ -2,12 +2,11 @@ import inspect
 import logging
 import re
 from pathlib import Path
-
 from telethon import events
-
 from jarvis import CMD_LIST, LOAD_PLUG, jarvisub
 from jarvis.jconfig import Config
 from var import Var
+import jarvis.function
 
 SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
@@ -432,10 +431,10 @@ def remove_plugin(shortname):
 # Copyright (C) 2020-21 Midhun KM
 def assistant_cmd(add_cmd, is_args=False):
     def cmd(func):
-        jarvis = bot.tgbot
+        jarvisbot = bot.tgbot
         if is_args:
             pattern = bothandler + add_cmd + "(?: |$)(.*)"
-        elif is_args == "stark":
+        elif is_args == "spidy":
             pattern = bothandler + add_cmd + " (.*)"
         elif is_args == "heck":
             pattern = bothandler + add_cmd
@@ -443,7 +442,7 @@ def assistant_cmd(add_cmd, is_args=False):
             pattern = bothandler + add_cmd + " (\S+)"
         else:
             pattern = bothandler + add_cmd + "$"
-        serena.add_event_handler(
+        jarvisbot.add_event_handler(
             func, events.NewMessage(incoming=True, pattern=pattern)
         )
 
@@ -454,8 +453,8 @@ def is_admin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            serena = bot.tgbot
-            sed = await serena.get_permissions(event.chat_id, event.sender_id)
+            jarvisbot = bot.tgbot
+            sed = await jarvisbot.get_permissions(event.chat_id, event.sender_id)
             user = event.sender_id
             kek = bot.uid
             if sed.is_admin:
@@ -476,9 +475,9 @@ def is_bot_admin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            serena = bot.tgbot
-            pep = await serena.get_me()
-            sed = await serena.get_permissions(event.chat_id, pep)
+            jarvisbot = bot.tgbot
+            pep = await jarvisbot.get_me()
+            sed = await jarvisbot.get_permissions(event.chat_id, pep)
             if sed.is_admin:
                 await func(event)
             else:
