@@ -7,6 +7,7 @@ from jarvis import CMD_LIST, LOAD_PLUG, jarvisub
 from jarvis.jconfig import Config
 from var import Var
 import jarvis.function
+import functools
 
 SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
