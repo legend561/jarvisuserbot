@@ -21,10 +21,8 @@ import re
 
 from telethon import events
 
-from fridaybot import bot
-from fridaybot.Configs import Config
-from fridaybot.Configs import Config
-
+from jarvis import jarvisub
+from jarvis.jconfig import Config
 
 def ignore_fwd():
     def decorator(func):
