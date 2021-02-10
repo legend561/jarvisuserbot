@@ -373,7 +373,6 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-
         import jarvis.utils
 
         path = Path(f"jarvis/plugins/{shortname}.py")
@@ -386,9 +385,8 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-
         import jarvis.utils
-
+        
         path = Path(f"jarvis/plugins/{shortname}.py")
         name = "jarvis.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
@@ -398,17 +396,18 @@ def load_module(shortname):
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
-        sys.modules["jarvis.utils"] = jarvis.utils
         mod.Config = Config
         mod.jarvis = jarvisub
         mod.jarvisub = jarvisub
         mod.j_cmd = j_cmd
         mod.sudo_cmd = sudo_cmd
         mod.eor = eor
+        mod.errors_handler = errors_handler
         mod.edit_or_reply = edit_or_reply
         sys.modules["jarvis.events"] = jarvis.utils
-        spec.loader.exec_module(mod)
         sys.modules["jarvis.plugins." + shortname] = mod
+        sys.modules["jarvis.util"] = jarvis.utils
+        spec.loader.exec_module(mod)
         #print("Jarvis Has Been Started Sucessfully")
 
 
