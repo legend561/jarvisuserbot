@@ -1,4 +1,4 @@
-from jarvis import topfunc
+import jarvis.function.jarvisfunction as topfunc
 from jarvis.jconfig import Config
 from jarvis.utils import j_cmd
 from var import Var
