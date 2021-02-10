@@ -431,7 +431,7 @@ def remove_plugin(shortname):
 # Copyright (C) 2020-21 Midhun KM
 def assistant_cmd(add_cmd, is_args=False):
     def cmd(func):
-        jarvisbot = bot.tgbot
+        jarvisbot = jarvisub.tgbot
         if is_args:
             pattern = bothandler + add_cmd + "(?: |$)(.*)"
         elif is_args == "spidy":
@@ -453,10 +453,10 @@ def is_admin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            jarvisbot = bot.tgbot
+            jarvisbot = jarvisub.tgbot
             sed = await jarvisbot.get_permissions(event.chat_id, event.sender_id)
             user = event.sender_id
-            kek = bot.uid
+            kek = jarvisub.uid
             if sed.is_admin:
                 await func(event)
             if event.sender_id == kek:
@@ -475,7 +475,7 @@ def is_bot_admin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            jarvisbot = bot.tgbot
+            jarvisbot = jarvisub.tgbot
             pep = await jarvisbot.get_me()
             sed = await jarvisbot.get_permissions(event.chat_id, pep)
             if sed.is_admin:
@@ -493,7 +493,7 @@ def only_pro():
         @functools.wraps(func)
         async def wrapper(event):
             kek = list(Config.SUDO_USERS)
-            kek.append(bot.uid)
+            kek.append(jarvisub.uid)
             if event.sender_id in kek:
                 await func(event)
             else:
@@ -508,7 +508,7 @@ def god_only():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            moms = bot.uid
+            moms = jarvisub.uid
             if event.sender_id == moms:
                 await func(event)
             else:
@@ -552,7 +552,7 @@ def peru_only():
         @functools.wraps(func)
         async def wrapper(event):
             kek = list(Config.SUDO_USERS)
-            kek.append(bot.uid)
+            kek.append(jarvisub.uid)
             if event.sender_id in kek:
                 await func(event)
             else:
@@ -601,8 +601,8 @@ def start_assistant(shortname):
         name = "jarvis.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.tgbot = bot.tgbot
-        mod.jarvisbot = bot.tgbot
+        mod.tgbot = jarvisub.tgbot
+        mod.jarvisbot = jarvisub.tgbot
         mod.assistant_cmd = assistant_cmd
         mod.god_only = god_only()
         mod.only_groups = only_groups()
