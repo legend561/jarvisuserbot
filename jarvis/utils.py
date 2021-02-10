@@ -12,7 +12,7 @@ import functools
 SUDO_LIST = Config.SUDO_USERS
 handler = Config.CMD_HNDLR
 sudo_hndlr = Config.SUDO_HNDLR
-
+bothandler = "/"
 
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
