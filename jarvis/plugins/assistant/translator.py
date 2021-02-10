@@ -9,7 +9,8 @@ from googletrans import Translator
 from telethon import events
 
 
-@tgbot.on(events.NewMessage(pattern="^/tr ?(.*)"))
+@assistant_cmd("tr", is_args=True)
+@peru_only
 async def _(event):
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
@@ -20,7 +21,7 @@ async def _(event):
         lan, text = input_str.split("|")
     else:
         await tgbot.send_message(
-            event.chat_id, "`.tr LanguageCode` as reply to a message"
+            event.chat_id, "`/tr LanguageCode` as reply to a message"
         )
         return
     text = emoji.demojize(text.strip())
@@ -30,7 +31,7 @@ async def _(event):
     after_tr_text = translated.text
     output_str = (
         f"**Translated By JARVIS Assistant Bot** \n"
-        f"Source {translated.src} \nTranslation {lan} \nWhat I Can Translate From This {after_tr_text}"
+        f"Source {translated.src} \nTranslation {lan} \n {after_tr_text}"
     )
     try:
         await tgbot.send_message(event.chat_id, output_str)
