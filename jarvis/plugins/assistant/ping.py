@@ -6,11 +6,8 @@
 
 import time
 from datetime import datetime
-
 from telethon import events
-
 from jarvis import Lastupdate
-
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -40,7 +37,8 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@tgbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == jarvisub.uid))
+@assistant_cmd("ping", is_args=False)
+@peru_only
 async def _(event):
     start = datetime.now()
     end = datetime.now()
