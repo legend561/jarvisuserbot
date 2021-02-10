@@ -42,9 +42,8 @@ async def on_snip(event):
         )
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/addnote #(.*)", func=lambda e: e.sender_id == jarvisub.uid)
-)
+@assistant_cmd("addnote", is_args=True)
+@pro_only
 async def _(event):
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
@@ -77,7 +76,8 @@ async def _(event):
         await event.reply("Reply to a message with `snips keyword` to save the snip")
 
 
-@tgbot.on(events.NewMessage(pattern="^/notes"))
+@assistant_cmd("notes", is_args=True)
+@pro_only
 async def on_snip_list(event):
     all_snips = get_all_snips()
     OUT_STR = "Available Snips:\n"
@@ -85,7 +85,7 @@ async def on_snip_list(event):
         for a_snip in all_snips:
             OUT_STR += f"➤ `#{a_snip.snip}` \n"
     else:
-        OUT_STR = "No Snips. Start Saving using `/addnote`"
+        OUT_STR = "No Notes. Start Saving using `/addnote`"
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "snips.text"
@@ -101,9 +101,8 @@ async def on_snip_list(event):
         await event.reply(OUT_STR)
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == jarvisub.uid)
-)
+@assistant_cmd("rmnote", is_args="snips")
+@pro_only
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_snip(name)
