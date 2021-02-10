@@ -1,8 +1,7 @@
-from telethon import events
 from telethon.utils import pack_bot_file_id
 
 
-@tgbot.on(events.NewMessage(pattern="^/id"))
+@assistant_cmd("id", is_args=True)
 async def _(event):
     if event.reply_to_msg_id:
         await event.get_input_chat()
