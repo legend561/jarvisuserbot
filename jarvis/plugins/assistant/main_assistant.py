@@ -32,7 +32,7 @@ from jarvis.plugins.sql_helper.idadder_sql import (
 )
 
 
-@tgbot.on(events.NewMessage(pattern="^/start"))
+@assistant_cmd("start", is_args=False)
 async def start(event):
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
@@ -147,36 +147,35 @@ async def sed(event):
             await tgbot.send_message(user_id, msg_s)
 
 
-# broadcast
-@tgbot.on(
-    events.NewMessage(
-        pattern="^/broadcast ?(.*)", func=lambda e: e.sender_id == jarvisub.uid
-    )
-)
+@assistant_cmd("broadcast", is_args='heck')
+@god_only
 async def sedlyfsir(event):
-    msgtobroadcast = event.pattern_match.group(1)
+    msgtobroadcast = event.text.split(" ", maxsplit=1)[1]
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
+    hmmok = ""
+    if msgtobroadcast == None:
+        await event.reply("`Wait. What? Broadcast None?`")
+        return
+    elif msgtobroadcast == " ":
+        await event.reply("`Wait. What? Broadcast None?`")
+        return
     for starkcast in userstobc:
         try:
             sent_count += 1
             await tgbot.send_message(int(starkcast.chat_id), msgtobroadcast)
             await asyncio.sleep(0.2)
-        except Exception as e:
-            try:
-                logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
-            except:
-                pass
+        except:
+            error_count += 1
     await tgbot.send_message(
         event.chat_id,
         f"Broadcast Done in {sent_count} Group/Users and I got {error_count} Error and Total Number Was {len(userstobc)}",
     )
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/stats ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
-)
+@assistant_cmd("stats", is_args=False)
+@peru_only
 async def starkisnoob(event):
     starkisnoob = get_all_users()
     await event.reply(
@@ -184,20 +183,18 @@ async def starkisnoob(event):
     )
 
 
-@tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == jarvisub.uid))
+@assistant_cmd("help", is_args=False)
+@peru_only
 async def starkislub(event):
-    grabonx = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n➤ /purge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \n➤ /del - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
+    grabonx = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
     await event.reply(grabonx)
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/block ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
-)
+@assistant_cmd("block", is_args=False)
+@god_only
 async def starkisnoob(event):
-    if event.sender_id == jarvisub.uid:
+    if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
-        msg.id
-        event.raw_text
         user_id, reply_message_id = his_userid(msg.id)
     if is_he_added(user_id):
         await event.reply("Already Blacklisted")
@@ -209,11 +206,10 @@ async def starkisnoob(event):
         )
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/unblock ?(.*)", func=lambda e: e.sender_id == jarvisub.uid)
-)
+@assistant_cmd("unblock", is_args=False)
+@god_only
 async def starkisnoob(event):
-    if event.sender_id == jarvisub.uid:
+    if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
         msg.id
         event.raw_text
