@@ -33,6 +33,7 @@ from jarvis.plugins.sql_helper.idadder_sql import (
 
 
 @assistant_cmd("start", is_args=False)
+@only_pvt
 async def start(event):
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
