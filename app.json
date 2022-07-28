@@ -1,7 +1,7 @@
 {
   "name": "JARVIS",
   "description": "Userbot created by a Poor Student and join https://t.me/jarvissupportot for any problems or support",
-  "logo": "https://github.com/jarvis210904/J.A.R.V.I.S-Userbot/blob/master/jarvis.jpg?raw=true",
+  "logo": "https://github.com/Jarvis-Works/JarvisUserbot/blob/master/jarvis.png?raw=true",
     "keywords": [
     "telegram",
     "userbot",
@@ -9,9 +9,10 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://www.jarvisuserbot.com/",
-  "website": "#TODO",
+  "repository": "https://github.com/Jarvis-Works/JarvisUserbot/",
+  "website": "https://jarvisworks.ga/userbot",
   "success_url": "#TODO",
+  "stack": "container",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -19,22 +20,43 @@
     },
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go. Can be accesed by giving command .ls",
-      "value": "./userbot/DOWNLOADS/",
+      "value": "./jarvis/DOWNLOADS/",
       "required": false
+    },
+    "CMD_HNDLR": {
+      "description": "Changes The Trigger Of Commands Leave As it is for '.' ",
+      "value" : "."
     },
     "CUSTOM_PMPERMIT": {
       "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
       "value": "",
       "required": false
     },
+    "OWNER_ID": {
+      "description": "Add Your ID For Assitant Bot Functionality",
+      "value" : ""
+    },
     "PMPERMIT_PIC": {
-      "description": "put here any telegraph media link for pmpermit custom pic.",
+      "description": "put here any telegraph media link for pmpermit custom pic Note Use http://telegra.ph/wedwewf-dfwre.jpg instead of https://telegra.ph/wedwewf-dfwre.jpg.",
       "value": "",
       "required": false
     },
     "ALIVE_NAME": {
       "description": "Fill your Full name or Username like @anonymoushackker.",
       "value": ""
+    },
+    "ANTISPAM_FEATURE": {
+      "description": "Detects Spammers By Default Enabled.",
+      "value": "ENABLE"
+    },
+    "NOSPAM_TOKEN": {
+      "description": "Get Your NoSpam+ Token From @NoSpamPlusBot",
+      "value": ""
+    },
+    "ALIVE_PIC": {
+      "description": "Put here any Telegraph Media link for custom alive pic.",
+      "value": "",
+      "required": false
     },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
@@ -94,8 +116,8 @@
       "value": ""
     },
     "SUDO_USERS": {
-      "description": "Makes your acc and bot stable",
-      "value": "11111111",
+      "description": "Give Ur ID Of Ur Second Account For Sudo Purposes",
+      "value": "",
       "required": false
     },
     "CHROME_BIN": {
@@ -121,6 +143,10 @@
       "description": "Get your own APPID from https://api.openweathermap.org/data/2.5/weather",
       "required": false
     },
+    "SUDO_HNDLR": {
+      "description": "Set Ur Handler For Sudo User",
+      "value": "!"
+    },
     "PRIVATE_CHANNEL_BOT_API_ID": {
       "description": "Enter A Channel Id.Required For Cbutton Plugin",
       "required": false
@@ -128,8 +154,6 @@
     "PM_LOGGR_BOT_API_ID": {
       "description": "Enter Valid Id. Required For Pm Logger Plugin Ignore If You Want [Useful If You Want To Log Your Messages]",
       "required": false
-
-
     },
     "TZ": {
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
@@ -141,27 +165,7 @@
   "addons": [{
     "plan": "heroku-postgresql",
     "options": {
-      "version": "12"
+      "version": "9.6"
     }
-  }],
-"buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "https://github.com/amivin/aria2-heroku.git"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-    },
-    {
-      "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-    },
-    {
-      "url": "heroku/python"
-    }
-  ]
+  }]
 }
